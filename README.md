@@ -1,4 +1,4 @@
-# YOUR PROJECT NAME
+# Exploding Kittens
 
 ## Contributors
 - Sami Khan
