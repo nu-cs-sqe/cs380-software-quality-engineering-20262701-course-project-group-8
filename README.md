@@ -1,4 +1,4 @@
-# Exploding Kittens
+# Catan
 
 ## Contributors
 - Sami Khan
