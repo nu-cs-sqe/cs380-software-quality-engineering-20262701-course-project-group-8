@@ -7,6 +7,7 @@
 1. [done] Stephi: Added Github Action [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/1]
 2. [done] Stephi: Added gradle build [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/2]
 3. [done] Stephi: Updated read me [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/3]
+4. [done] Stephi: Scheduled and attended team meeting with Professor
 
 # Week 5 (10/26/2026-11/01/2026)
 **Planning and Progress Tracking**:
