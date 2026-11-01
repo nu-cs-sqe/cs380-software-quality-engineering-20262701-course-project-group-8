@@ -13,6 +13,7 @@
 **Planning and Progress Tracking**:
 1. [done] Stephi: Created use-case analysis document and added start new Catan game use case [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/9]
 2. [done] Stephi: Added Catan game rules [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/8]
+3. [done] Jiadong Li: Added the Game Setup user story and use case to the GitHub Project board [https://github.com/orgs/nu-cs-sqe/projects/105]
 
 # One section per week until the last week of class (the week before the Finals week)
 
