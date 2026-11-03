@@ -33,6 +33,7 @@ public class DiceTest {
         Random randomMock = mock(Random.class);
         expect(randomMock.nextInt(6)).andReturn(firstDice);
         expect(randomMock.nextInt(6)).andReturn(secondDice);
+        replay(randomMock);
 
         Dice dice = new Dice(randomMock);
 
@@ -67,7 +68,7 @@ public class DiceTest {
     @Test
     public void testRollTwiceUsesNewValues() {
         Random randomMock = mock(Random.class);
-        expect(randomMock.nextInt(6)).andReturn(9).times(2);
+        expect(randomMock.nextInt(6)).andReturn(0).times(2);
         expect(randomMock.nextInt(6)).andReturn(5).times(2);
         replay(randomMock);
 

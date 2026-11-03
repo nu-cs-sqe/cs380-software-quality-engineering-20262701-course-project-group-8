@@ -40,10 +40,10 @@ public class Dice {
 ### Method under test: `roll()`
 |             | State of the System | Expected output | Implemented? |
 |-------------|---------------------|-----------------|--------------|
-| Test Case 3 | Mock returns 0, 0 (both dice at minimum) | Returns 2 | :x: |
-| Test Case 4 | Mock returns 5, 5 (both dice at maximum) | Returns 12 | :x: |
-| Test Case 5 | Mock returns 0, 5 (one die at minimum, one at maximum) | Returns 7 | :x: |
-| Test Case 6 | Mock returns 0, 1 (one die at minimum, one at min+1) | Returns 3 | :x: |
-| Test Case 7 | Mock returns 4, 5 (one die at max-1, one at maximum) | Returns 11 | :x: |
-| Test Case 8 | Mock expects `nextInt(6)` exactly twice (returns 0, 0); `verify()` is called after `roll()` | `nextInt` is called exactly 2 times per roll, each with bound 6 | :x: |
-| Test Case 9 | Mock returns 0, 0, then 5, 5; `roll()` is called twice | First call returns 2, second call returns 12 (each roll uses new random values) | :x: |
+| Test Case 3 | Mock returns 0, 0 (both dice at minimum) | Returns 2 | :white_check_mark: |
+| Test Case 4 | Mock returns 5, 5 (both dice at maximum) | Returns 12 | :white_check_mark: |
+| Test Case 5 | Mock returns 0, 5 (one die at minimum, one at maximum) | Returns 7 | :white_check_mark: |
+| Test Case 6 | Mock returns 0, 1 (one die at minimum, one at min+1) | Returns 3 | :white_check_mark: |
+| Test Case 7 | Mock returns 4, 5 (one die at max-1, one at maximum) | Returns 11 | :white_check_mark: |
+| Test Case 8 | Mock expects `nextInt(6)` exactly twice (returns 0, 0); `verify()` is called after `roll()` | `nextInt` is called exactly 2 times per roll, each with bound 6 | :white_check_mark: |
+| Test Case 9 | Mock returns 0, 0, then 5, 5; `roll()` is called twice | First call returns 2, second call returns 12 (each roll uses new random values) | :white_check_mark: |
