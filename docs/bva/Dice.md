@@ -34,8 +34,8 @@ public class Dice {
 ### Method under test: `Dice(Random random)`
 |             | State of the System | Expected output | Implemented? |
 |-------------|---------------------|-----------------|--------------|
-| Test Case 1 | `random` is `null` | `NullPointerException` is thrown | :x: |
-| Test Case 2 | `random` is a valid `Random` object | A `Dice` object is created without exception | :x: |
+| Test Case 1 | `random` is `null` | `NullPointerException` is thrown | :white_check_mark: |
+| Test Case 2 | `random` is a valid `Random` object | A `Dice` object is created without exception | :white_check_mark: |
 
 ### Method under test: `roll()`
 |             | State of the System | Expected output | Implemented? |
