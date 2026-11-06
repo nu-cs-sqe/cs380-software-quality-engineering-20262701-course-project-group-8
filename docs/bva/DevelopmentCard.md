@@ -1,4 +1,4 @@
-# BVA Anlysis: `DevelopmentCard`
+# BVA Analysis: `DevelopmentCard`
 
 ## Design Under Test
 
@@ -66,7 +66,7 @@ public class DevelopmentCard {
 ### Method under test: `DevelopmentCard(DevelopmentCardType type, int turnPurchased)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 1  | `type = null`, `turnPurchased = 0` | `NullPointerException` | :x: |
+| Test Case 1  | `type = null`, `turnPurchased = 0` | `NullPointerException` | :white_check_mark: |
 | Test Case 2  | `type = KNIGHT`, `turnPurchased = -1` | `IllegalArgumentException` | :x: |
 | Test Case 3  | `type = KNIGHT`, `turnPurchased = 0` | Object created | :x: |
 | Test Case 4  | `type = KNIGHT`, `turnPurchased = 1` | Object created | :x: |
