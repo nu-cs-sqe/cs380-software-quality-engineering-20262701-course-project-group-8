@@ -67,4 +67,10 @@ public class DevelopmentCardTest {
         DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
         assertThrows(IllegalArgumentException.class, () -> card.canBePlayed(2));
     }
+
+    // TC11
+    public void canBePlayed_sameTurnAsPurchase_returnsFalse() {
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        assertFalse(card.canBePlayed(3));
+    }
 }

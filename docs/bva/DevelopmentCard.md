@@ -91,8 +91,8 @@ public class DevelopmentCard {
 ### Method under test: `canBePlayed(int currentTurn)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 10 | `KNIGHT` bought turn 3, `currentTurn = 2` | `IllegalArgumentException` | :x: |
-| Test Case 11 | `KNIGHT` bought turn 3, `currentTurn = 3` | `false` | :x: |
+| Test Case 10 | `KNIGHT` bought turn 3, `currentTurn = 2` | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 11 | `KNIGHT` bought turn 3, `currentTurn = 3` | `false` | :white_check_mark: |
 | Test Case 12 | `KNIGHT` bought turn 3, `currentTurn = 4` | `true` | :x: |
 | Test Case 13 | `KNIGHT` bought turn 3, already played on turn 4, `currentTurn = 5` | `false` | :x: |
 | Test Case 14 | `VICTORY_POINT` bought turn 3, `currentTurn = 4` | `false` | :x: |
