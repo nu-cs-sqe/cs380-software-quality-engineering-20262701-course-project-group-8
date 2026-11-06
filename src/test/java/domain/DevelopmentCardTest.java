@@ -38,4 +38,11 @@ public class DevelopmentCardTest {
         DevelopmentCard card = new DevelopmentCard(type, 0);
         assertEquals(type, card.getType());
     }
+
+    // TC6
+    @Test
+    public void isVictoryPointCard_returnsTrue() {
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.VICTORY_POINT, 0);
+        assertTrue(card.isVictoryPoint());
+    }
 }

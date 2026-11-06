@@ -69,17 +69,17 @@ public class DevelopmentCard {
 | Test Case 1  | `type = null`, `turnPurchased = 0` | `NullPointerException` | :white_check_mark: |
 | Test Case 2  | `type = KNIGHT`, `turnPurchased = -1` | `IllegalArgumentException` | :white_check_mark: |
 | Test Case 3  | `type = KNIGHT`, `turnPurchased = 0` | Object created | :white_check_mark: |
-| Test Case 4  | `type = KNIGHT`, `turnPurchased = 1` | Object created | :x: |
+| Test Case 4  | `type = KNIGHT`, `turnPurchased = 1` | Object created | :white_check_mark: |
 
 ### Method under test: `getType()`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 5  | Card created with each of the 5 types | Returns the same type | :x: |
+| Test Case 5  | Card created with each of the 5 types | Returns the same type | :white_check_mark: |
 
 ### Method under test: `isVictoryPoint()`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 6  | `type = VICTORY_POINT` | `true` | :x: |
+| Test Case 6  | `type = VICTORY_POINT` | `true` | :white_check_mark: |
 | Test Case 7  | `type` is each of the other 4 types | `false` | :x: |
 
 ### Method under test: `isPlayed()`

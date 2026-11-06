@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class DevelopmentCard {
     private final DevelopmentCardType type;
-    
+
     public DevelopmentCard(DevelopmentCardType type, int turnPurchased) {
         this.type = Objects.requireNonNull(type);
         if (turnPurchased < 0) {
@@ -14,5 +14,9 @@ public class DevelopmentCard {
 
     public DevelopmentCardType getType() {
         return type;
+    }
+
+    public boolean isVictoryPoint() {
+        return type == DevelopmentCardType.VICTORY_POINT;
     }
 }
