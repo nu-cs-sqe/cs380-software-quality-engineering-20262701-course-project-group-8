@@ -30,6 +30,6 @@ public class DevelopmentCard {
         if (currentTurn < turnPurchased) {
             throw new IllegalArgumentException("currentTurn must be >= turnPurchased");
         }
-        return false;
+        return currentTurn > turnPurchased;
     }
 }

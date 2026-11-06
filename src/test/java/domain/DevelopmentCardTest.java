@@ -73,4 +73,10 @@ public class DevelopmentCardTest {
         DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
         assertFalse(card.canBePlayed(3));
     }
+
+    // TC12
+    public void canBePlayed_turnAfterPurchase_returnsFalse() {
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        assertFalse(card.canBePlayed(4));
+    }
 }
