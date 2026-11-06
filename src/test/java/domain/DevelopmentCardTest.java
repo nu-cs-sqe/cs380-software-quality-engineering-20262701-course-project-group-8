@@ -17,4 +17,10 @@ public class DevelopmentCardTest {
         assertThrows(IllegalArgumentException.class, () -> new DevelopmentCard(DevelopmentCardType.KNIGHT, -1));
     }
 
+    // TC3
+    @Test
+    public void constructor_zeroTurnPurchased_createsCard() {
+        assertDoesNotThrow(() -> new DevelopmentCard(DevelopmentCardType.KNIGHT, 0));
+    }
+
 }
