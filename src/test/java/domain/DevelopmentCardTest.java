@@ -1,6 +1,8 @@
 package domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,5 +29,13 @@ public class DevelopmentCardTest {
     @Test
     public void constructor_positiveTurnPurchased_createsCard() {
         assertDoesNotThrow(() -> new DevelopmentCard(DevelopmentCardType.KNIGHT, 1));
+    }
+
+    // TC5
+    @ParameterizedTest 
+    @EnumSource(DevelopmentCardType.class)
+    public void getType_returnsTypeGivenInConstructor(DevelopmentCardType type) {
+        DevelopmentCard card = new DevelopmentCard(type, 0);
+        assertEquals(type, card.getType());
     }
 }
