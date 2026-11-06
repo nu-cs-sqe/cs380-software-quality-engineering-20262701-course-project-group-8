@@ -45,4 +45,12 @@ public class DevelopmentCardTest {
         DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.VICTORY_POINT, 0);
         assertTrue(card.isVictoryPoint());
     }
+
+    // TC7
+    @ParameterizedTest
+    @EnumSource(value = DevelopmentCardType.class, names = "VICTORY_POINT", mode = EnumSource.Mode.EXCLUDE)
+    public void isVictoryPoint_nonVictoryPointCard_returnsFalse(DevelopmentCardType type) {
+        DevelopmentCard card = new DevelopmentCard(type, 0);
+        assertFalse(card.isVictoryPoint());
+    }
 }

@@ -80,7 +80,7 @@ public class DevelopmentCard {
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
 | Test Case 6  | `type = VICTORY_POINT` | `true` | :white_check_mark: |
-| Test Case 7  | `type` is each of the other 4 types | `false` | :x: |
+| Test Case 7  | `type` is each of the other 4 types | `false` | :white_check_mark: |
 
 ### Method under test: `isPlayed()`
 |              | State of the System | Expected output | Implemented? |
