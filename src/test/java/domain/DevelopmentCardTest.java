@@ -23,4 +23,9 @@ public class DevelopmentCardTest {
         assertDoesNotThrow(() -> new DevelopmentCard(DevelopmentCardType.KNIGHT, 0));
     }
 
+    // TC4
+    @Test
+    public void constructor_positiveTurnPurchased_createsCard() {
+        assertDoesNotThrow(() -> new DevelopmentCard(DevelopmentCardType.KNIGHT, 1));
+    }
 }
