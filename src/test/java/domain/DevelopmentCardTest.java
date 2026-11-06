@@ -69,14 +69,31 @@ public class DevelopmentCardTest {
     }
 
     // TC11
+    @Test
     public void canBePlayed_sameTurnAsPurchase_returnsFalse() {
         DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
         assertFalse(card.canBePlayed(3));
     }
 
     // TC12
-    public void canBePlayed_turnAfterPurchase_returnsFalse() {
+    @Test
+    public void canBePlayed_turnAfterPurchase_returnsTrue() {
         DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        assertTrue(card.canBePlayed(4));
+    }
+
+    // TC14
+    @Test
+    public void canBePlayed_victoryPointCard_returnFalse() {
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.VICTORY_POINT, 3);
         assertFalse(card.canBePlayed(4));
+    }
+
+    // TC9, TC17
+    @Test 
+    public void isPlayed_afterPlayOnNextTurn_returnsTrue() {
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        assertDoesNotThrow(() -> card.play(4));
+        assertTrue(card.isPlayed());
     }
 }

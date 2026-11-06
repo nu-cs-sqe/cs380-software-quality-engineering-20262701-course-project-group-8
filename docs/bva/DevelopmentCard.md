@@ -86,7 +86,7 @@ public class DevelopmentCard {
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
 | Test Case 8  | New `KNIGHT` card, never played | `false` | :white_check_mark: |
-| Test Case 9  | `KNIGHT` bought turn 3, `play(4)` called | `true` | :x: |
+| Test Case 9  | `KNIGHT` bought turn 3, `play(4)` called | `true` | :white_check_mark: |
 
 ### Method under test: `canBePlayed(int currentTurn)`
 |              | State of the System | Expected output | Implemented? |
@@ -95,7 +95,7 @@ public class DevelopmentCard {
 | Test Case 11 | `KNIGHT` bought turn 3, `currentTurn = 3` | `false` | :white_check_mark: |
 | Test Case 12 | `KNIGHT` bought turn 3, `currentTurn = 4` | `true` | :white_check_mark: |
 | Test Case 13 | `KNIGHT` bought turn 3, already played on turn 4, `currentTurn = 5` | `false` | :x: |
-| Test Case 14 | `VICTORY_POINT` bought turn 3, `currentTurn = 4` | `false` | :x: |
+| Test Case 14 | `VICTORY_POINT` bought turn 3, `currentTurn = 4` | `false` | :white_check_mark: |
 
 ### Method under test: `play(int currentTurn)`
 |              | State of the System | Expected output | Implemented? |
