@@ -96,4 +96,12 @@ public class DevelopmentCardTest {
         assertDoesNotThrow(() -> card.play(4));
         assertTrue(card.isPlayed());
     }
+    
+    // TC13
+    @Test
+    public void canBePlayed_afterPlayed_returnsFalse() {
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        card.play(4);
+        assertFalse(card.canBePlayed(5));
+    }
 }

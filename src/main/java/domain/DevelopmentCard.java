@@ -31,10 +31,11 @@ public class DevelopmentCard {
         if (currentTurn < turnPurchased) {
             throw new IllegalArgumentException("currentTurn must be >= turnPurchased");
         }
-        return !isVictoryPoint() && currentTurn > turnPurchased;
+        return !played && !isVictoryPoint() && currentTurn > turnPurchased;
     }
 
     public void play(int currentTurn) {
+        canBePlayed(currentTurn); 
         played = true;
     }
 }
