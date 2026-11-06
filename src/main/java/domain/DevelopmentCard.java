@@ -19,4 +19,8 @@ public class DevelopmentCard {
     public boolean isVictoryPoint() {
         return type == DevelopmentCardType.VICTORY_POINT;
     }
+
+    public boolean isPlayed() {
+        return false;
+    }
 }

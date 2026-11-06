@@ -85,7 +85,7 @@ public class DevelopmentCard {
 ### Method under test: `isPlayed()`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 8  | New `KNIGHT` card, never played | `false` | :x: |
+| Test Case 8  | New `KNIGHT` card, never played | `false` | :white_check_mark: |
 | Test Case 9  | `KNIGHT` bought turn 3, `play(4)` called | `true` | :x: |
 
 ### Method under test: `canBePlayed(int currentTurn)`

@@ -53,4 +53,11 @@ public class DevelopmentCardTest {
         DevelopmentCard card = new DevelopmentCard(type, 0);
         assertFalse(card.isVictoryPoint());
     }
+
+    // TC8
+    @Test
+    public void isPlayed_newCard_returnsFalse() {
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 0);
+        assertFalse(card.isPlayed());
+    }
 }
