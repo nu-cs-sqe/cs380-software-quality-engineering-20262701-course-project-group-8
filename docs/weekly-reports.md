@@ -20,6 +20,7 @@
 1. [done] Jiadong Li: Implemented Dice class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/14]
 2. [done] Jiadong Li: Implemented DevelopmentCard class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/16]
 3. [not started] Jiadong Li: Implement ResourceHand class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/issues/17]
+4. [done] Stephi Lyou: Implemented Hex class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/20]
 
 # One section per week until the last week of class (the week before the Finals week)
 
