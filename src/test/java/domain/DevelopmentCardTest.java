@@ -113,10 +113,18 @@ public class DevelopmentCardTest {
     }
 
     // TC16
-    @Test 
-    public void play_sameTurnAsPurchase_throwsIllegalArgumentException() {
+    @Test
+    public void play_sameTurnAsPurchase_throwsIllegalStateException() {
         DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
-        assertThrows(IllegalArgumentException.class, () -> card.play(3));
+        assertThrows(IllegalStateException.class, () -> card.play(3));
         assertFalse(card.isPlayed());
+    }
+
+    // TC18
+    @Test
+    public void play_alreadyPlayed_throwsIllegalStateException() {
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        card.play(4);
+        assertThrows(IllegalStateException.class, () -> card.play(5));
     }
 }
