@@ -82,9 +82,9 @@ public class Bank {
 ### Method under test: `Bank()`, `Bank(Random random)`, `getResourceCount(ResourceType type)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 1  | New bank, `getResourceCount` called with each of the 5 types | `19` | :x: |
-| Test Case 2  | New bank, `getResourceCount(null)` | `NullPointerException` | :x: |
-| Test Case 3  | `new Bank(null)` | `NullPointerException` | :x: |
+| Test Case 1  | New bank, `getResourceCount` called with each of the 5 types | `19` | :white_check_mark: |
+| Test Case 2  | New bank, `getResourceCount(null)` | `NullPointerException` | :white_check_mark: |
+| Test Case 3  | `new Bank(null)` | `NullPointerException` | :white_check_mark: |
 
 ### Method under test: `hasResource(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |
