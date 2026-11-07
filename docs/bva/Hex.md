@@ -25,7 +25,7 @@ public class Hex {
 ### Method: `Hex(TerrainType terrainType, int numberDisc)`
 | | Description | Category | Boundary Values |
 |---|---|---|---|
-| Input | `terrainType` | Enum/Pointer | `null`, `DESERT`, `FOREST` |
+| Input | `terrainType` | Enum/Pointer | `null`, `DESERTS`, `FORESTS` |
 | Input | `numberDisc (desert)` | Integer | 0, -1, 1 |
 | Input | `numberDisc (non-desert)` | Interval | 1, 2, 6, 7, 8, 12, 13 |
 | Output | a new `Hex` object, or an exception | Cases | object created, `IllegalArgumentException` |
@@ -33,7 +33,7 @@ public class Hex {
 ### Method: `getTerrainType()`
 | | Description | Category | Boundary Values |
 |---|---|---|---|
-| Input | Hex object | Enum | `DESERT`, `FOREST` |
+| Input | Hex object | Enum | `DESERTS`, `FORESTS` |
 | Output | Terrain type | Cases | Correct terrain type returned |
 
 ### Method: `getNumberDisc()`
@@ -59,7 +59,7 @@ public class Hex {
 |---|---|---|---|
 | Input | diceRoll | Interval | 0, 2, 6, 7, 8, 12 |
 | Input | hasRobber | Boolean | `true`, `false` |
-| Input | `terrainType` | Enum | `DESERT`, `FOREST` |
+| Input | `terrainType` | Enum | `DESERTS`, `FORESTS` |
 | Output | Whether hex produces a resource | Cases | `true`, `false` |
 
 ## Step 4: Test Cases
@@ -83,7 +83,7 @@ public class Hex {
 | | State of the System | Expected output | Status |
 |---|---|---|---|
 | Test Case 12 | Hex is created with `DESERTS` terrain | Returns `DESERTS` | :white_check_mark: |
-| Test Case 13 | Hex is created with `FOREST` terrain | Returns `FOREST` | :white_check_mark: |
+| Test Case 13 | Hex is created with `FORESTS` terrain | Returns `FORESTS` | :white_check_mark: |
 
 ### Method under test: `getNumberDisc()`
 | | State of the System | Expected output | Status |
