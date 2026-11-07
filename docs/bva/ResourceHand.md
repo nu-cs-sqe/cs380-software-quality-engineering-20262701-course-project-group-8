@@ -66,14 +66,14 @@ public class ResourceHand {
 ### Method under test: `ResourceHand()`, `getCount(ResourceType type)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 1  | New hand, `getCount` called with each of the 5 types | `0` | :x: |
-| Test Case 2  | New hand, `getCount(null)` | `NullPointerException` | :x: |
+| Test Case 1  | New hand, `getCount` called with each of the 5 types | `0` | :white_check_mark: |
+| Test Case 2  | New hand, `getCount(null)` | `NullPointerException` | :white_check_mark: |
 
 ### Method under test: `getTotal()`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 3  | New hand | `0` | :x: |
-| Test Case 4  | Hand holds 2 `BRICK` and 3 `ORE` | `5` | :x: |
+| Test Case 3  | New hand | `0` | :white_check_mark: |
+| Test Case 4  | Hand holds 2 `BRICK` and 3 `ORE` | `5` | :white_check_mark: |
 
 ### Method under test: `add(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |
