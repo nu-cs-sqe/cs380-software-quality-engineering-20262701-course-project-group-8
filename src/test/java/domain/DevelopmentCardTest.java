@@ -127,4 +127,12 @@ public class DevelopmentCardTest {
         card.play(4);
         assertThrows(IllegalStateException.class, () -> card.play(5));
     }
+
+    // TC19
+    @Test
+    public void play_victoryPointCard_throwsIllegalStateException() {
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.VICTORY_POINT, 3);
+        assertThrows(IllegalStateException.class, () -> card.play(4));
+        assertFalse(card.isPlayed());
+    }
 }
