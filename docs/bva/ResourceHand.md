@@ -96,7 +96,7 @@ public class ResourceHand {
 ### Method under test: `has(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 15 | Hand holds 3 `BRICK`, `has(null, 1)` | `NullPointerException` | :x: |
-| Test Case 16 | Hand holds 3 `BRICK`, `has(BRICK, 0)` | `IllegalArgumentException` | :x: |
-| Test Case 17 | Hand holds 3 `BRICK`, `has(BRICK, 3)` | `true` | :x: |
-| Test Case 18 | Hand holds 3 `BRICK`, `has(BRICK, 4)` | `false` | :x: |
+| Test Case 15 | Hand holds 3 `BRICK`, `has(null, 1)` | `NullPointerException` | :white_check_mark: |
+| Test Case 16 | Hand holds 3 `BRICK`, `has(BRICK, 0)` | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 17 | Hand holds 3 `BRICK`, `has(BRICK, 3)` | `true` | :white_check_mark: |
+| Test Case 18 | Hand holds 3 `BRICK`, `has(BRICK, 4)` | `false` | :white_check_mark: |

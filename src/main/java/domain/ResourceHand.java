@@ -38,4 +38,12 @@ public class ResourceHand {
         }
         counts.put(type, current - amount);
     }
+
+    public boolean has(ResourceType type, int amount) {
+        Objects.requireNonNull(type);
+        if (amount < 1) {
+            throw new IllegalArgumentException("Amount must be at least 1");
+        }
+        return getCount(type) >= amount;
+    }
 }

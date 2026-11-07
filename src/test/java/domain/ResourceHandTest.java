@@ -122,4 +122,36 @@ public class ResourceHandTest {
         assertThrows(IllegalStateException.class, () -> resourceHand.remove(ResourceType.BRICK, 4));
         assertEquals(3, resourceHand.getCount(ResourceType.BRICK));
     }
+
+    // TC 15
+    @Test
+    public void has_nullType_throwsNullPointerException() {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 3);
+        assertThrows(NullPointerException.class, () -> resourceHand.has(null, 1));
+    }
+
+    // TC 16
+    @Test
+    public void has_zeroAmount_throwsIllegalArgumentException() {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 3);
+        assertThrows(IllegalArgumentException.class, () -> resourceHand.has(ResourceType.BRICK, 0));
+    }
+
+    // TC 17
+    @Test 
+    public void has_exactAmountHeld_returnsTrue() {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 3);
+        assertTrue(resourceHand.has(ResourceType.BRICK, 3));
+    }
+
+    // TC 18
+    @Test
+    public void has_moreThanHeld_returnsFalse() {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 3);
+        assertFalse(resourceHand.has(ResourceType.BRICK, 4));
+    }
 }
