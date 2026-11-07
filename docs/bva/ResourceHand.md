@@ -78,11 +78,11 @@ public class ResourceHand {
 ### Method under test: `add(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 5  | New hand, `add(null, 1)` | `NullPointerException` | :x: |
-| Test Case 6  | New hand, `add(BRICK, 0)` | `IllegalArgumentException`, `getCount(BRICK)` stays `0` | :x: |
-| Test Case 7  | New hand, `add(BRICK, 1)` | `getCount(BRICK)` is `1` | :x: |
-| Test Case 8  | Hand holds 2 `BRICK`, `add(BRICK, 3)` | `getCount(BRICK)` is `5` | :x: |
-| Test Case 9  | New hand, `add(BRICK, 2)` | `getCount` of the other 4 types is still `0` | :x: |
+| Test Case 5  | New hand, `add(null, 1)` | `NullPointerException` | :white_check_mark: |
+| Test Case 6  | New hand, `add(BRICK, 0)` | `IllegalArgumentException`, `getCount(BRICK)` stays `0` | :white_check_mark: |
+| Test Case 7  | New hand, `add(BRICK, 1)` | `getCount(BRICK)` is `1` | :white_check_mark: |
+| Test Case 8  | Hand holds 2 `BRICK`, `add(BRICK, 3)` | `getCount(BRICK)` is `5` | :white_check_mark: |
+| Test Case 9  | New hand, `add(BRICK, 2)` | `getCount` of the other 4 types is still `0` | :white_check_mark: |
 
 ### Method under test: `remove(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |

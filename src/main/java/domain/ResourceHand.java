@@ -20,6 +20,10 @@ public class ResourceHand {
     }
 
     public void add(ResourceType type, int amount) {
+        Objects.requireNonNull(type);
+        if (amount < 1) {
+            throw new IllegalArgumentException("Amount must be at least 1");
+        }
         counts.put(type, getCount(type) + amount);
     }
 }

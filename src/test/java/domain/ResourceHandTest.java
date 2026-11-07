@@ -37,4 +37,45 @@ public class ResourceHandTest {
         resourceHand.add(ResourceType.ORE, 3);
         assertEquals(5, resourceHand.getTotal());
     }
+
+    // TC 5
+    @Test
+    public void add_nullType_throwsNullPointerException() {
+        ResourceHand resourceHand = new ResourceHand();
+        assertThrows(NullPointerException.class, () -> resourceHand.add(null, 1));
+    }
+
+    // TC 6
+    @Test
+    public void add_zeroAmount_throwsIllegalArgumentException() {
+        ResourceHand resourceHand = new ResourceHand();
+        assertThrows(IllegalArgumentException.class, () -> resourceHand.add(ResourceType.BRICK, 0));
+        assertEquals(0, resourceHand.getCount(ResourceType.BRICK));
+    }
+
+    // TC 7
+    @Test
+    public void add_oneBrickToNewHand_countIsOne() {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 1);
+        assertEquals(1, resourceHand.getCount(ResourceType.BRICK));
+    }
+
+    // TC 8
+    @Test
+    public void add_threeBrickToHandWithTwoBrick_countIsFive() {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 2);
+        resourceHand.add(ResourceType.BRICK, 3);
+        assertEquals(5, resourceHand.getCount(ResourceType.BRICK));
+    }
+
+    // TC 9
+    @ParameterizedTest
+    @EnumSource(value=ResourceType.class, mode=EnumSource.Mode.EXCLUDE, names={"BRICK"})
+    public void add_twoBrick_otherTypesStayZero(ResourceType othertype) {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 2);
+        assertEquals(0, resourceHand.getCount(othertype));
+    }
 }
