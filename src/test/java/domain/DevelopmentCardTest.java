@@ -111,4 +111,12 @@ public class DevelopmentCardTest {
         DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
         assertThrows(IllegalArgumentException.class, () -> card.play(2));
     }
+
+    // TC16
+    @Test 
+    public void play_sameTurnAsPurchase_throwsIllegalArgumentException() {
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        assertThrows(IllegalArgumentException.class, () -> card.play(3));
+        assertFalse(card.isPlayed());
+    }
 }

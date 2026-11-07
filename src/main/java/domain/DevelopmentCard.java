@@ -35,7 +35,9 @@ public class DevelopmentCard {
     }
 
     public void play(int currentTurn) {
-        canBePlayed(currentTurn); 
+        if (!canBePlayed(currentTurn)) {
+            throw new IllegalStateException("Card cannot be played on this turn");
+        }
         played = true;
     }
 }
