@@ -87,11 +87,11 @@ public class ResourceHand {
 ### Method under test: `remove(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 10 | Hand holds 3 `BRICK`, `remove(null, 1)` | `NullPointerException` | :x: |
-| Test Case 11 | Hand holds 3 `BRICK`, `remove(BRICK, 0)` | `IllegalArgumentException`, `getCount(BRICK)` stays `3` | :x: |
-| Test Case 12 | Hand holds 3 `BRICK`, `remove(BRICK, 1)` | `getCount(BRICK)` is `2` | :x: |
-| Test Case 13 | Hand holds 3 `BRICK`, `remove(BRICK, 3)` | `getCount(BRICK)` is `0` | :x: |
-| Test Case 14 | Hand holds 3 `BRICK`, `remove(BRICK, 4)` | `IllegalStateException`, `getCount(BRICK)` stays `3` | :x: |
+| Test Case 10 | Hand holds 3 `BRICK`, `remove(null, 1)` | `NullPointerException` | :white_check_mark: |
+| Test Case 11 | Hand holds 3 `BRICK`, `remove(BRICK, 0)` | `IllegalArgumentException`, `getCount(BRICK)` stays `3` | :white_check_mark: |
+| Test Case 12 | Hand holds 3 `BRICK`, `remove(BRICK, 1)` | `getCount(BRICK)` is `2` | :white_check_mark: |
+| Test Case 13 | Hand holds 3 `BRICK`, `remove(BRICK, 3)` | `getCount(BRICK)` is `0` | :white_check_mark: |
+| Test Case 14 | Hand holds 3 `BRICK`, `remove(BRICK, 4)` | `IllegalStateException`, `getCount(BRICK)` stays `3` | :white_check_mark: |
 
 ### Method under test: `has(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |

@@ -78,4 +78,48 @@ public class ResourceHandTest {
         resourceHand.add(ResourceType.BRICK, 2);
         assertEquals(0, resourceHand.getCount(othertype));
     }
+
+    // TC 10
+    @Test
+    public void remove_nullType_throwsNullPointerException() {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 3);
+        assertThrows(NullPointerException.class, () -> resourceHand.remove(null, 1));
+    }
+
+    // TC 11
+    @Test
+    public void remove_zeroAmount_throwsIllegalArgumentException() {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 3);
+        assertThrows(IllegalArgumentException.class, () -> resourceHand.remove(ResourceType.BRICK, 0));
+        assertEquals(3, resourceHand.getCount(ResourceType.BRICK));
+    }
+
+    // TC 12
+    @Test
+    public void remove_oneBrickFromThree_countIsTwo() {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 3);
+        resourceHand.remove(ResourceType.BRICK, 1);
+        assertEquals(2, resourceHand.getCount(ResourceType.BRICK));
+    }
+
+    // TC 13
+    @Test
+    public void remove_allThreeBrick_countIsZero() {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 3);
+        resourceHand.remove(ResourceType.BRICK, 3);
+        assertEquals(0, resourceHand.getCount(ResourceType.BRICK));
+    }
+
+    // TC 14
+    @Test
+    public void remove_moreThanHeld_throwsIllegalStateException() {
+        ResourceHand resourceHand = new ResourceHand();
+        resourceHand.add(ResourceType.BRICK, 3);
+        assertThrows(IllegalStateException.class, () -> resourceHand.remove(ResourceType.BRICK, 4));
+        assertEquals(3, resourceHand.getCount(ResourceType.BRICK));
+    }
 }

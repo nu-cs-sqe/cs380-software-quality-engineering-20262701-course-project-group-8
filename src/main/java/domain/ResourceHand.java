@@ -26,4 +26,16 @@ public class ResourceHand {
         }
         counts.put(type, getCount(type) + amount);
     }
+
+    public void remove(ResourceType type, int amount) {
+        Objects.requireNonNull(type);
+        if (amount < 1) {
+            throw new IllegalArgumentException("Amount must be at least 1");
+        }
+        int current = getCount(type);
+        if (amount > current) {
+            throw new IllegalStateException("Not enough " + type + " to remove");
+        }
+        counts.put(type, current - amount);
+    }
 }
