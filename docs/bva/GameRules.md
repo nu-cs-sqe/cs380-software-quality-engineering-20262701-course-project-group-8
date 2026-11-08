@@ -190,10 +190,10 @@ Any object or enum argument must not be `null` -> `NullPointerException`.
 ### Method under test: `isValidPlayerCount(int playerCount)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 1  | `isValidPlayerCount(2)` | `false` | :x: |
-| Test Case 2  | `isValidPlayerCount(3)` | `true` | :x: |
-| Test Case 3  | `isValidPlayerCount(4)` | `true` | :x: |
-| Test Case 4  | `isValidPlayerCount(5)` | `false` | :x: |
+| Test Case 1  | `isValidPlayerCount(2)` | `false` | :white_check_mark: |
+| Test Case 2  | `isValidPlayerCount(3)` | `true` | :white_check_mark: |
+| Test Case 3  | `isValidPlayerCount(4)` | `true` | :white_check_mark: |
+| Test Case 4  | `isValidPlayerCount(5)` | `false` | :white_check_mark: |
 
 ### Method under test: `getDiscardCount(int handSize)`
 |              | State of the System | Expected output | Implemented? |
