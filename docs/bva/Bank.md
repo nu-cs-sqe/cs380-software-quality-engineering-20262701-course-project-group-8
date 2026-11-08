@@ -97,12 +97,12 @@ public class Bank {
 ### Method under test: `giveResource(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 8  | New bank, `giveResource(null, 1)` | `NullPointerException` | :x: |
-| Test Case 9  | New bank, `giveResource(BRICK, 0)` | `IllegalArgumentException`, `getResourceCount(BRICK)` stays `19` | :x: |
-| Test Case 10 | New bank, `giveResource(BRICK, 1)` | `getResourceCount(BRICK)` is `18` | :x: |
-| Test Case 11 | New bank, `giveResource(BRICK, 19)` | `getResourceCount(BRICK)` is `0` | :x: |
-| Test Case 12 | New bank, `giveResource(BRICK, 20)` | `IllegalStateException`, `getResourceCount(BRICK)` stays `19` | :x: |
-| Test Case 13 | New bank, `giveResource(BRICK, 2)` | `getResourceCount` of the other 4 types is still `19` | :x: |
+| Test Case 8  | New bank, `giveResource(null, 1)` | `NullPointerException` | :white_check_mark: |
+| Test Case 9  | New bank, `giveResource(BRICK, 0)` | `IllegalArgumentException`, `getResourceCount(BRICK)` stays `19` | :white_check_mark: |
+| Test Case 10 | New bank, `giveResource(BRICK, 1)` | `getResourceCount(BRICK)` is `18` | :white_check_mark: |
+| Test Case 11 | New bank, `giveResource(BRICK, 19)` | `getResourceCount(BRICK)` is `0` | :white_check_mark: |
+| Test Case 12 | New bank, `giveResource(BRICK, 20)` | `IllegalStateException`, `getResourceCount(BRICK)` stays `19` | :white_check_mark: |
+| Test Case 13 | New bank, `giveResource(BRICK, 2)` | `getResourceCount` of the other 4 types is still `19` | :white_check_mark: |
 
 ### Method under test: `receiveResource(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |

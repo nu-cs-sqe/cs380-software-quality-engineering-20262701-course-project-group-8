@@ -56,4 +56,54 @@ public class BankTest {
         Bank bank = new Bank();
         assertFalse(bank.hasResource(ResourceType.BRICK, 20));
     }
+
+    // TC 8
+    @Test
+    public void giveResource_nullType_throwsNullPointerException() {
+        Bank bank = new Bank();
+        assertThrows(NullPointerException.class, () -> bank.giveResource(null, 1));
+    }
+
+    // TC 9
+    @Test 
+    public void giveResource_zeroAmount_throwsIllegalArgumentException() {
+        Bank bank = new Bank();
+        assertThrows(IllegalArgumentException.class, () -> bank.giveResource(ResourceType.BRICK, 0));
+        assertEquals(19, bank.getResourceCount(ResourceType.BRICK));
+    }
+
+    // TC 10
+    @Test
+    public void giveResource_oneBrick_leavesEighteen() {
+        Bank bank = new Bank();
+        bank.giveResource(ResourceType.BRICK, 1);
+        assertEquals(18, bank.getResourceCount(ResourceType.BRICK));
+    }
+    
+    // TC 11
+    @Test
+    public void giveResource_allNineteenBrick_leavesZero() {
+        Bank bank = new Bank();
+        bank.giveResource(ResourceType.BRICK, 19);
+        assertEquals(0, bank.getResourceCount(ResourceType.BRICK));
+    }
+
+    // TC 12
+    @Test
+    public void giveResource_twentyBrick_throwsIllegalStateException() {
+        Bank bank = new Bank();
+        assertThrows(IllegalStateException.class, () -> bank.giveResource(ResourceType.BRICK, 20));
+        assertEquals(19, bank.getResourceCount(ResourceType.BRICK));
+    }
+
+    // TC 13
+    @Test
+    public void giveResource_twoBrick_otherTypesUnchanged() {
+        Bank bank = new Bank();
+        bank.giveResource(ResourceType.BRICK, 2);
+        assertEquals(19, bank.getResourceCount(ResourceType.LUMBER));
+        assertEquals(19, bank.getResourceCount(ResourceType.ORE));
+        assertEquals(19, bank.getResourceCount(ResourceType.GRAIN));
+        assertEquals(19, bank.getResourceCount(ResourceType.WOOL));
+    }
 }

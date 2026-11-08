@@ -33,4 +33,17 @@ public class Bank {
         }
         return getResourceCount(type) >= amount;
     }
+
+    public void giveResource(ResourceType type, int amount) {
+        Objects.requireNonNull(type);
+        if (amount < 1) {
+            throw new IllegalArgumentException("Amount must be at least 1");
+        }
+        int current = getResourceCount(type);
+        if (amount > current) {
+            throw new IllegalStateException("Bank does not have enough " + type);
+        }
+        resources.put(type, getResourceCount(type) - amount);
+    }
+
 }
