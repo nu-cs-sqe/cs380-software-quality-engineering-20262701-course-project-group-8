@@ -1,9 +1,20 @@
 package domain;
 
+import java.util.Map;
+import java.util.Objects;
+
 public class GameRules {
     public static final int MIN_PLAYERS = 3;
     public static final int MAX_PLAYERS = 4;
     public static final int DISCARD_THRESHOLD = 7;
+
+    private static final Map<BuildingType, Map<ResourceType, Integer>> COSTS = Map.of(
+            BuildingType.ROAD, Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1),
+            BuildingType.SETTLEMENT, Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1,
+                    ResourceType.WOOL, 1, ResourceType.GRAIN, 1),
+            BuildingType.CITY, Map.of(ResourceType.ORE, 3, ResourceType.GRAIN, 2),
+            BuildingType.DEVELOPMENT_CARD, Map.of(ResourceType.ORE, 1, ResourceType.WOOL, 1,
+                    ResourceType.GRAIN, 1));
 
     public boolean isValidPlayerCount(int playerCount) {
         return playerCount >= MIN_PLAYERS && playerCount <= MAX_PLAYERS;
@@ -17,5 +28,16 @@ public class GameRules {
             return 0;
         }
         return handSize / 2;
+    }
+
+    public boolean canAfford(ResourceHand hand, BuildingType type) {
+        Objects.requireNonNull(hand);
+        Objects.requireNonNull(type);
+        for (Map.Entry<ResourceType, Integer> entry : COSTS.get(type).entrySet()) {
+            if (hand.getCount(entry.getKey()) < entry.getValue()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

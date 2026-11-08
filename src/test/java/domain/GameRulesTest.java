@@ -66,4 +66,112 @@ public class GameRulesTest {
         GameRules rules = new GameRules();
         assertEquals(4, rules.getDiscardCount(9));
     }
+
+    // TC 10
+    @Test
+    public void canAfford_nullHand_throwsNullPointerException() {
+        GameRules rules = new GameRules();
+        assertThrows(NullPointerException.class, () -> rules.canAfford(null, BuildingType.ROAD));
+    }
+
+    // TC 11
+    @Test
+    public void canAfford_nullType_throwsNullPointerException() {
+        GameRules rules = new GameRules();
+        ResourceHand hand = new ResourceHand();
+        assertThrows(NullPointerException.class, () -> rules.canAfford(hand, null));
+    }
+
+    // TC 12
+    @Test
+    public void canAfford_roadExactCost_returnsTrue() {
+        GameRules rules = new GameRules();
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.BRICK, 1);
+        hand.add(ResourceType.LUMBER, 1);
+        assertTrue(rules.canAfford(hand, BuildingType.ROAD));
+    }
+
+    // TC 13
+    @Test
+    public void canAfford_roadMissingLumber_returnsFalse() {
+        GameRules rules = new GameRules();
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.BRICK, 1);
+        assertFalse(rules.canAfford(hand, BuildingType.ROAD));
+    }
+
+    // TC 14
+    @Test
+    public void canAfford_settlementExactCost_returnsTrue() {
+        GameRules rules = new GameRules();
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.BRICK, 1);
+        hand.add(ResourceType.LUMBER, 1);
+        hand.add(ResourceType.WOOL, 1);
+        hand.add(ResourceType.GRAIN, 1);
+        assertTrue(rules.canAfford(hand, BuildingType.SETTLEMENT));
+    }
+
+    // TC 15
+    @Test
+    public void canAfford_settlementMissingGrain_returnsFalse() {
+        GameRules rules = new GameRules();
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.BRICK, 1);
+        hand.add(ResourceType.LUMBER, 1);
+        hand.add(ResourceType.WOOL, 1);
+        assertFalse(rules.canAfford(hand, BuildingType.SETTLEMENT));
+    }
+
+    // TC 16
+    @Test
+    public void canAfford_cityExactCost_returnsTrue() {
+        GameRules rules = new GameRules();
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.ORE, 3);
+        hand.add(ResourceType.GRAIN, 2);
+        assertTrue(rules.canAfford(hand, BuildingType.CITY));
+    }
+
+    // TC 17
+    @Test
+    public void canAfford_cityOneOreShort_returnsFalse() {
+        GameRules rules = new GameRules();
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.ORE, 2);
+        hand.add(ResourceType.GRAIN, 2);
+        assertFalse(rules.canAfford(hand, BuildingType.CITY));
+    }
+
+    // TC 18
+    @Test
+    public void canAfford_cityOneGrainShort_returnsFalse() {
+        GameRules rules = new GameRules();
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.ORE, 3);
+        hand.add(ResourceType.GRAIN, 1);
+        assertFalse(rules.canAfford(hand, BuildingType.CITY));
+    }
+
+    // TC 19
+    @Test
+    public void canAfford_developmentCardExactCost_returnsTrue() {
+        GameRules rules = new GameRules();
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.ORE, 1);
+        hand.add(ResourceType.WOOL, 1);
+        hand.add(ResourceType.GRAIN, 1);
+        assertTrue(rules.canAfford(hand, BuildingType.DEVELOPMENT_CARD));
+    }
+
+    // TC 20
+    @Test
+    public void canAfford_developmentCardMissingWool_returnsFalse() {
+        GameRules rules = new GameRules();
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.ORE, 1);
+        hand.add(ResourceType.GRAIN, 1);
+        assertFalse(rules.canAfford(hand, BuildingType.DEVELOPMENT_CARD));
+    }
 }
