@@ -25,4 +25,12 @@ public class Bank {
         Objects.requireNonNull(type);
         return resources.get(type);
     }
+
+    public boolean hasResource(ResourceType type, int amount) {
+        Objects.requireNonNull(type);
+        if (amount < 1) {
+            throw new IllegalArgumentException("Amount must be at least 1");
+        }
+        return getResourceCount(type) >= amount;
+    }
 }

@@ -89,10 +89,10 @@ public class Bank {
 ### Method under test: `hasResource(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 4  | New bank, `hasResource(null, 1)` | `NullPointerException` | :x: |
-| Test Case 5  | New bank, `hasResource(BRICK, 0)` | `IllegalArgumentException` | :x: |
-| Test Case 6  | New bank, `hasResource(BRICK, 19)` | `true` | :x: |
-| Test Case 7  | New bank, `hasResource(BRICK, 20)` | `false` | :x: |
+| Test Case 4  | New bank, `hasResource(null, 1)` | `NullPointerException` | :white_check_mark: |
+| Test Case 5  | New bank, `hasResource(BRICK, 0)` | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 6  | New bank, `hasResource(BRICK, 19)` | `true` | :white_check_mark: |
+| Test Case 7  | New bank, `hasResource(BRICK, 20)` | `false` | :white_check_mark: |
 
 ### Method under test: `giveResource(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |

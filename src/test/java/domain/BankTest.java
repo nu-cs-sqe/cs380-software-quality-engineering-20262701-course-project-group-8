@@ -28,4 +28,32 @@ public class BankTest {
     public void constructor_nullRandom_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new Bank(null));
     }
+
+    // TC 4
+    @Test
+    public void hasResource_nullType_throwsNullPointerException() {
+        Bank bank = new Bank();
+        assertThrows(NullPointerException.class, ()->bank.hasResource(null, 1));
+    }
+
+    // TC 5
+    @Test 
+    public void hasResource_zeroAmount_throwsIllegalArgumentException() {
+        Bank bank = new Bank();
+        assertThrows(IllegalArgumentException.class, () -> bank.hasResource(ResourceType.BRICK, 0));
+    }
+
+    // TC 6
+    @Test 
+    public void hasResource_nineteenBrick_returnsTrue() {
+        Bank bank = new Bank();
+        assertTrue(bank.hasResource(ResourceType.BRICK, 19));
+    }
+
+    // TC 7
+    @Test
+    public void hasResource_twentyBrick_returnsFalse() {
+        Bank bank = new Bank();
+        assertFalse(bank.hasResource(ResourceType.BRICK, 20));
+    }
 }
