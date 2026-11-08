@@ -46,4 +46,15 @@ public class Bank {
         resources.put(type, getResourceCount(type) - amount);
     }
 
+    public void receiveResource(ResourceType type, int amount) {
+        Objects.requireNonNull(type);
+        if (amount < 1) {
+            throw new IllegalArgumentException("Amount must be at least 1");
+        }
+        int current = getResourceCount(type);
+        if (current + amount > RESOURCE_SUPPLY) {
+            throw new IllegalStateException("Bank cannot hold more than " + RESOURCE_SUPPLY + " " + type);
+        }
+        resources.put(type, current + amount);
+    }
 }

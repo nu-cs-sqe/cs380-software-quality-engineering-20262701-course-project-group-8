@@ -107,11 +107,11 @@ public class Bank {
 ### Method under test: `receiveResource(ResourceType type, int amount)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 14 | Bank holds 16 `BRICK`, `receiveResource(null, 1)` | `NullPointerException` | :x: |
-| Test Case 15 | Bank holds 16 `BRICK`, `receiveResource(BRICK, 0)` | `IllegalArgumentException`, `getResourceCount(BRICK)` stays `16` | :x: |
-| Test Case 16 | Bank holds 16 `BRICK`, `receiveResource(BRICK, 1)` | `getResourceCount(BRICK)` is `17` | :x: |
-| Test Case 17 | Bank holds 16 `BRICK`, `receiveResource(BRICK, 3)` | `getResourceCount(BRICK)` is `19` | :x: |
-| Test Case 18 | Bank holds 16 `BRICK`, `receiveResource(BRICK, 4)` | `IllegalStateException`, `getResourceCount(BRICK)` stays `16` | :x: |
+| Test Case 14 | Bank holds 16 `BRICK`, `receiveResource(null, 1)` | `NullPointerException` | :white_check_mark: |
+| Test Case 15 | Bank holds 16 `BRICK`, `receiveResource(BRICK, 0)` | `IllegalArgumentException`, `getResourceCount(BRICK)` stays `16` | :white_check_mark: |
+| Test Case 16 | Bank holds 16 `BRICK`, `receiveResource(BRICK, 1)` | `getResourceCount(BRICK)` is `17` | :white_check_mark: |
+| Test Case 17 | Bank holds 16 `BRICK`, `receiveResource(BRICK, 3)` | `getResourceCount(BRICK)` is `19` | :white_check_mark: |
+| Test Case 18 | Bank holds 16 `BRICK`, `receiveResource(BRICK, 4)` | `IllegalStateException`, `getResourceCount(BRICK)` stays `16` | :white_check_mark: |
 
 ### Method under test: `getDevelopmentCardCount()`, `drawDevelopmentCard(int currentTurn)`
 |              | State of the System | Expected output | Implemented? |
