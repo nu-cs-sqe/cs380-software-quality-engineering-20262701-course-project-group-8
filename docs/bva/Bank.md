@@ -116,9 +116,9 @@ public class Bank {
 ### Method under test: `getDevelopmentCardCount()`, `drawDevelopmentCard(int currentTurn)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 19 | New bank, `getDevelopmentCardCount()` | `25` | :x: |
-| Test Case 20 | New bank, `drawDevelopmentCard(0)` | returned card has `turnPurchased` `0` (`canBePlayed(0)` is `false`), `getDevelopmentCardCount()` is `24` | :x: |
-| Test Case 21 | New bank, `drawDevelopmentCard(-1)` | `IllegalArgumentException`, `getDevelopmentCardCount()` stays `25` | :x: |
-| Test Case 22 | New bank, draw all 25 cards | 14 `KNIGHT`, 5 `VICTORY_POINT`, 2 `ROAD_BUILDING`, 2 `YEAR_OF_PLENTY`, 2 `MONOPOLY`; `getDevelopmentCardCount()` is `0` | :x: |
-| Test Case 23 | Bank with empty deck, `drawDevelopmentCard(0)` | `IllegalStateException` | :x: |
-| Test Case 24 | Two banks built with `new Random(42)`, draw all 25 cards from each | Both banks return the same order of types | :x: |
+| Test Case 19 | New bank, `getDevelopmentCardCount()` | `25` | :white_check_mark: |
+| Test Case 20 | New bank, `drawDevelopmentCard(0)` | returned card has `turnPurchased` `0` (`canBePlayed(0)` is `false`), `getDevelopmentCardCount()` is `24` | :white_check_mark: |
+| Test Case 21 | New bank, `drawDevelopmentCard(-1)` | `IllegalArgumentException`, `getDevelopmentCardCount()` stays `25` | :white_check_mark: |
+| Test Case 22 | New bank, draw all 25 cards | 14 `KNIGHT`, 5 `VICTORY_POINT`, 2 `ROAD_BUILDING`, 2 `YEAR_OF_PLENTY`, 2 `MONOPOLY`; `getDevelopmentCardCount()` is `0` | :white_check_mark: |
+| Test Case 23 | Bank with empty deck, `drawDevelopmentCard(0)` | `IllegalStateException` | :white_check_mark: |
+| Test Case 24 | Two banks built with `new Random(42)`, draw all 25 cards from each | Both banks return the same order of types | :white_check_mark: |

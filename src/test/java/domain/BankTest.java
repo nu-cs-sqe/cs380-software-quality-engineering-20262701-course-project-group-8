@@ -1,10 +1,14 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 public class BankTest {
@@ -149,5 +153,70 @@ public class BankTest {
         bank.giveResource(ResourceType.BRICK, 3);
         assertThrows(IllegalStateException.class, () -> bank.receiveResource(ResourceType.BRICK, 4));
         assertEquals(16, bank.getResourceCount(ResourceType.BRICK));
+    }
+
+    // TC 19
+    @Test
+    public void getDevelopmentCardCount_newBank_returnsTwentyFive() {
+        Bank bank = new Bank();
+        assertEquals(25, bank.getDevelopmentCardCount());
+    }
+
+    // TC 20
+    @Test
+    public void drawDevelopmentCard_turnZero_returnsCardPurchasedOnTurnZero() {
+        Bank bank = new Bank();
+        DevelopmentCard card = bank.drawDevelopmentCard(0);
+        assertFalse(card.canBePlayed(0));
+        assertEquals(24, bank.getDevelopmentCardCount());
+    }
+
+    // TC 21
+    @Test
+    public void drawDevelopmentCard_negativeTurn_throwsIllegalArgumentException() {
+        Bank bank = new Bank();
+        assertThrows(IllegalArgumentException.class, ()->bank.drawDevelopmentCard(-1));
+        assertEquals(25, bank.getDevelopmentCardCount());
+    }
+
+    // TC 22
+    @Test
+    public void drawDevelopmentCard_drawAll_matchesDeckMix() {
+        Bank bank = new Bank();
+        Map<DevelopmentCardType, Integer> counts = new EnumMap<>(DevelopmentCardType.class);
+        for (int i = 0; i < 25; i++) {
+            DevelopmentCardType type = bank.drawDevelopmentCard(0).getType();
+            counts.put(type, counts.getOrDefault(type, 0) + 1);
+        }
+        assertEquals(14, counts.get(DevelopmentCardType.KNIGHT));
+        assertEquals(5, counts.get(DevelopmentCardType.VICTORY_POINT));
+        assertEquals(2, counts.get(DevelopmentCardType.ROAD_BUILDING));
+        assertEquals(2, counts.get(DevelopmentCardType.YEAR_OF_PLENTY));
+        assertEquals(2, counts.get(DevelopmentCardType.MONOPOLY));
+        assertEquals(0, bank.getDevelopmentCardCount());
+    }
+
+    // TC 23
+    @Test
+    public void drawDevelopmentCard_emptyDeck_throwsIllegalStateException() {
+        Bank bank = new Bank();
+        for (int i = 0; i < 25; i++) {
+            bank.drawDevelopmentCard(0);
+        }
+        assertThrows(IllegalStateException.class, () -> bank.drawDevelopmentCard(0));
+    }
+
+    // TC 24
+    @Test
+    public void drawDevelopmentCard_sameSeed_sameOrder() {
+        Bank first = new Bank(new Random(42));
+        Bank second = new Bank(new Random(42));
+        List<DevelopmentCardType> firstOrder = new ArrayList<>();
+        List<DevelopmentCardType> secondOrder = new ArrayList<>();
+        for (int i = 0; i < 25; i++) {
+            firstOrder.add(first.drawDevelopmentCard(0).getType());
+            secondOrder.add(second.drawDevelopmentCard(0).getType());
+        }
+        assertEquals(firstOrder, secondOrder);
     }
 }
