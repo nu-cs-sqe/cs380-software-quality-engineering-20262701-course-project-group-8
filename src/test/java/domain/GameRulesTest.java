@@ -247,4 +247,37 @@ public class GameRulesTest {
         assertEquals(18, bank.getResourceCount(ResourceType.LUMBER));
         assertEquals(18, bank.getResourceCount(ResourceType.WOOL));
     }
+
+    // TC 25
+    @Test
+    public void canMoveRobberTo_nullTarget_throwsNullPointerException() {
+        GameRules rules = new GameRules();
+        assertThrows(NullPointerException.class, () -> rules.canMoveRobberTo(null));
+    }
+
+    // TC 26
+    @Test
+    public void canMoveRobberTo_targetHoldsRobber_returnsFalse() {
+        GameRules rules = new GameRules();
+        Hex forest = new Hex(TerrainType.FORESTS, 5);
+        forest.setRobber(true);
+        assertFalse(rules.canMoveRobberTo(forest));
+    }
+
+    // TC 27
+    @Test
+    public void canMoveRobberTo_targetWithoutRobber_returnsTrue() {
+        GameRules rules = new GameRules();
+        Hex hills = new Hex(TerrainType.HILLS, 6);
+        assertTrue(rules.canMoveRobberTo(hills));
+    }
+
+    // TC 28
+    @Test
+    public void canMoveRobberTo_desertAfterRobberLeft_returnsTrue() {
+        GameRules rules = new GameRules();
+        Hex desert = new Hex(TerrainType.DESERTS, 0);
+        desert.setRobber(false);
+        assertTrue(rules.canMoveRobberTo(desert));
+    }
 }

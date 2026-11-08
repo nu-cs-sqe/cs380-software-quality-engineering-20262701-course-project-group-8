@@ -169,10 +169,10 @@ Rules are taken from the official CATAN base rules (2020), see `docs/requirement
 ### Method under test: `canMoveRobberTo(Hex target)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 25 | `canMoveRobberTo(null)` | `NullPointerException` | :x: |
-| Test Case 26 | Target is a `FORESTS` hex that holds the robber | `false` | :x: |
-| Test Case 27 | Target is a `HILLS` hex without the robber | `true` | :x: |
-| Test Case 28 | Target is the `DESERTS` hex after the robber left it | `true` | :x: |
+| Test Case 25 | `canMoveRobberTo(null)` | `NullPointerException` | :white_check_mark: |
+| Test Case 26 | Target is a `FORESTS` hex that holds the robber | `false` | :white_check_mark: |
+| Test Case 27 | Target is a `HILLS` hex without the robber | `true` | :white_check_mark: |
+| Test Case 28 | Target is the `DESERTS` hex after the robber left it | `true` | :white_check_mark: |
 
 ### Method under test: `canPlayDevelopmentCard(DevelopmentCard card, int currentTurn, int cardsPlayedThisTurn)`
 |              | State of the System | Expected output | Implemented? |

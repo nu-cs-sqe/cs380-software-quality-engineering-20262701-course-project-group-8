@@ -51,4 +51,9 @@ public class GameRules {
             bank.receiveResource(entry.getKey(), entry.getValue());
         }
     }
+
+    public boolean canMoveRobberTo(Hex target) {
+        Objects.requireNonNull(target);
+        return !target.hasRobber();
+    }
 }
