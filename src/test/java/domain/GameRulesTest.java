@@ -174,4 +174,77 @@ public class GameRulesTest {
         hand.add(ResourceType.GRAIN, 1);
         assertFalse(rules.canAfford(hand, BuildingType.DEVELOPMENT_CARD));
     }
+
+    // TC 21
+    @Test
+    public void payCost_nullArgument_throwsNullPointerException() {
+        GameRules rules = new GameRules();
+        ResourceHand hand = new ResourceHand();
+        Bank bank = new Bank();
+        assertThrows(NullPointerException.class, () -> rules.payCost(null, bank, BuildingType.ROAD));
+        assertThrows(NullPointerException.class, () -> rules.payCost(hand, null, BuildingType.ROAD));
+        assertThrows(NullPointerException.class, () -> rules.payCost(hand, bank, null));
+    }
+
+    // TC 22
+    @Test
+    public void payCost_cityExactCost_movesCostFromHandToBank() {
+        GameRules rules = new GameRules();
+        Bank bank = new Bank();
+        bank.giveResource(ResourceType.ORE, 3);
+        bank.giveResource(ResourceType.GRAIN, 2);
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.ORE, 3);
+        hand.add(ResourceType.GRAIN, 2);
+
+        rules.payCost(hand, bank, BuildingType.CITY);
+
+        assertEquals(0, hand.getCount(ResourceType.ORE));
+        assertEquals(0, hand.getCount(ResourceType.GRAIN));
+        assertEquals(19, bank.getResourceCount(ResourceType.ORE));
+        assertEquals(19, bank.getResourceCount(ResourceType.GRAIN));
+    }
+
+    // TC 23
+    @Test
+    public void payCost_roadWithExtraCards_removesOnlyCost() {
+        GameRules rules = new GameRules();
+        Bank bank = new Bank();
+        bank.giveResource(ResourceType.BRICK, 2);
+        bank.giveResource(ResourceType.LUMBER, 2);
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.BRICK, 2);
+        hand.add(ResourceType.LUMBER, 2);
+
+        rules.payCost(hand, bank, BuildingType.ROAD);
+
+        assertEquals(1, hand.getCount(ResourceType.BRICK));
+        assertEquals(1, hand.getCount(ResourceType.LUMBER));
+        assertEquals(18, bank.getResourceCount(ResourceType.BRICK));
+        assertEquals(18, bank.getResourceCount(ResourceType.LUMBER));
+    }
+
+    // TC 24
+    @Test
+    public void payCost_cannotAfford_throwsIllegalStateExceptionAndChangesNothing() {
+        GameRules rules = new GameRules();
+        Bank bank = new Bank();
+        bank.giveResource(ResourceType.BRICK, 1);
+        bank.giveResource(ResourceType.LUMBER, 1);
+        bank.giveResource(ResourceType.WOOL, 1);
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.BRICK, 1);
+        hand.add(ResourceType.LUMBER, 1);
+        hand.add(ResourceType.WOOL, 1);
+
+        assertThrows(IllegalStateException.class,
+                () -> rules.payCost(hand, bank, BuildingType.SETTLEMENT));
+
+        assertEquals(1, hand.getCount(ResourceType.BRICK));
+        assertEquals(1, hand.getCount(ResourceType.LUMBER));
+        assertEquals(1, hand.getCount(ResourceType.WOOL));
+        assertEquals(18, bank.getResourceCount(ResourceType.BRICK));
+        assertEquals(18, bank.getResourceCount(ResourceType.LUMBER));
+        assertEquals(18, bank.getResourceCount(ResourceType.WOOL));
+    }
 }

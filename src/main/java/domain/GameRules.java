@@ -40,4 +40,15 @@ public class GameRules {
         }
         return true;
     }
+
+    public void payCost(ResourceHand hand, Bank bank, BuildingType type) {
+        Objects.requireNonNull(bank);
+        if (!canAfford(hand, type)) {
+            throw new IllegalStateException("Hand cannot afford " + type);
+        }
+        for (Map.Entry<ResourceType, Integer> entry : COSTS.get(type).entrySet()) {
+            hand.remove(entry.getKey(), entry.getValue());
+            bank.receiveResource(entry.getKey(), entry.getValue());
+        }
+    }
 }

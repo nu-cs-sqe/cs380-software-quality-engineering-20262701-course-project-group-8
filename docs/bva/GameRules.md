@@ -161,10 +161,10 @@ Rules are taken from the official CATAN base rules (2020), see `docs/requirement
 ### Method under test: `payCost(ResourceHand hand, Bank bank, BuildingType type)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 21 | `payCost` called with `hand = null`, `bank = null`, or `type = null` (one at a time) | `NullPointerException` | :x: |
-| Test Case 22 | Bank gave out 3 `ORE` and 2 `GRAIN` (holds 16 `ORE`, 17 `GRAIN`); hand: 3 `ORE`, 2 `GRAIN`; `payCost(hand, bank, CITY)` | Hand has 0 `ORE`, 0 `GRAIN`; bank has 19 `ORE`, 19 `GRAIN` | :x: |
-| Test Case 23 | Bank gave out 2 `BRICK` and 2 `LUMBER`; hand: 2 `BRICK`, 2 `LUMBER`; `payCost(hand, bank, ROAD)` | Hand has 1 `BRICK`, 1 `LUMBER`; bank has 18 `BRICK`, 18 `LUMBER` | :x: |
-| Test Case 24 | Bank gave out 1 `BRICK`, 1 `LUMBER`, 1 `WOOL`; hand: 1 `BRICK`, 1 `LUMBER`, 1 `WOOL`; `payCost(hand, bank, SETTLEMENT)` | `IllegalStateException`; hand and bank counts do not change | :x: |
+| Test Case 21 | `payCost` called with `hand = null`, `bank = null`, or `type = null` (one at a time) | `NullPointerException` | :white_check_mark: |
+| Test Case 22 | Bank gave out 3 `ORE` and 2 `GRAIN` (holds 16 `ORE`, 17 `GRAIN`); hand: 3 `ORE`, 2 `GRAIN`; `payCost(hand, bank, CITY)` | Hand has 0 `ORE`, 0 `GRAIN`; bank has 19 `ORE`, 19 `GRAIN` | :white_check_mark: |
+| Test Case 23 | Bank gave out 2 `BRICK` and 2 `LUMBER`; hand: 2 `BRICK`, 2 `LUMBER`; `payCost(hand, bank, ROAD)` | Hand has 1 `BRICK`, 1 `LUMBER`; bank has 18 `BRICK`, 18 `LUMBER` | :white_check_mark: |
+| Test Case 24 | Bank gave out 1 `BRICK`, 1 `LUMBER`, 1 `WOOL`; hand: 1 `BRICK`, 1 `LUMBER`, 1 `WOOL`; `payCost(hand, bank, SETTLEMENT)` | `IllegalStateException`; hand and bank counts do not change | :white_check_mark: |
 
 ### Method under test: `canMoveRobberTo(Hex target)`
 |              | State of the System | Expected output | Implemented? |
