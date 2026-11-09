@@ -11,6 +11,7 @@ public class Game {
     public void advanceTurn()
     public void endGame(Player winner)
     public Player getWinner()
+    public void completeSetup()
 }
 ```
 
@@ -22,6 +23,7 @@ public class Game {
 - `endGame(Player winner)` ends the game and records the winning player. The winner must belong to the game. The game must already have started and must not already be finished.
 - `getWinner()` returns the winning player after the game ends. Before the game ends, it returns `null`.
 - `GamePhase` is an enum representing the lifecycle of the game: `NOT_STARTED`, `SETUP`, `PLAYING`, and `FINISHED`.
+- `completeSetup()` transitions between `GamePhase`.
 - Invalid lifecycle operations throw `IllegalStateException`. Invalid player arguments throw `IllegalArgumentException`.
 
 ## Step 1-3: Analysis
@@ -82,6 +84,13 @@ public class Game {
 |---|---|---|---|
 | Input | current game phase | Enum | `NOT_STARTED`, `SETUP`, `PLAYING`, `FINISHED` |
 | Output | winner | Pointer | `null`, valid winning player |
+
+### Method: `completeSetup()`
+
+| | Description | Category | Boundary Values |
+|---|---|---|---|
+| Input | current game phase | Enum | `NOT_STARTED`, `SETUP`, `PLAYING`, `FINISHED` |
+| Output | updated game phase | Enum | `PLAYING`, unchanged phase when exception is thrown |
 
 ## Step 4: Test Cases
 
@@ -156,3 +165,12 @@ public class Game {
 | Test Case 35 | Game is in `PLAYING` | Returns `null` | |
 | Test Case 36 | Game has ended with the first player as winner | Returns the first player | |
 | Test Case 37 | Game has ended with the last player as winner | Returns the last player | |
+
+### Method under test: `completeSetup()`
+
+| | State of the System | Expected output | Implemented? |
+|---|---|---|---|
+| Test Case 38 | Game has not been started (`NOT_STARTED`) | `IllegalStateException` is thrown; phase remains `NOT_STARTED` | |
+| Test Case 39 | Game is in the setup phase (`SETUP`) | Game phase changes to `PLAYING` | |
+| Test Case 40 | Game is already in the playing phase (`PLAYING`) | `IllegalStateException` is thrown; phase remains `PLAYING` | |
+| Test Case 41 | Game has finished (`FINISHED`) | `IllegalStateException` is thrown; phase remains `FINISHED` | |
