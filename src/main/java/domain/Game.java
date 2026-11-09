@@ -48,6 +48,10 @@ public class Game {
     }
 
     public void endGame(Player winner) {
+        if (winner == null || !players.contains(winner)) {
+            throw new IllegalArgumentException("Error: Winner cannot be null");
+        }
+
         if (phase == GamePhase.PLAYING) {
             this.phase = GamePhase.FINISHED;
         } else {
@@ -56,7 +60,11 @@ public class Game {
     }
 
     public Player getWinner() {
-        return null;
+        if (phase == GamePhase.FINISHED) {
+            return this.players.get(this.currentPlayerIndex);
+        } else {
+            throw new IllegalStateException("Error: Cannot get winner in current phase");
+        }
     }
 
     public void completeSetup() {
