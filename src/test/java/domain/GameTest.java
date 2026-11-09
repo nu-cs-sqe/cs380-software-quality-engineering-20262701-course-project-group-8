@@ -219,4 +219,94 @@ public class GameTest {
 
         assertSame(players.get(3), game.getCurrentPlayer());
     }
+
+    // TC20
+    @Test
+    public void advanceTurn_gameNotStarted_throwsIllegalStateException() {
+        Game game = createGame(2);
+
+        assertThrows(IllegalStateException.class,
+                game::advanceTurn);
+    }
+
+    // TC21
+    @Test
+    public void advanceTurn_gameInSetup_throwsIllegalStateException() {
+        Game game = createGame(2);
+        game.startGame();
+
+        assertThrows(IllegalStateException.class,
+                game::advanceTurn);
+    }
+
+    // TC22
+    @Test
+    public void advanceTurn_twoPlayers_firstPlayerAdvancesToSecond() {
+        List<Player> players = createPlayers(2);
+        Game game = createPlayingGame(players);
+
+        game.advanceTurn();
+
+        assertSame(players.get(1), game.getCurrentPlayer());
+    }
+
+    // TC23
+    @Test
+    public void advanceTurn_twoPlayers_lastPlayerWrapsToFirst() {
+        List<Player> players = createPlayers(2);
+        Game game = createPlayingGame(players);
+
+        game.advanceTurn();
+        game.advanceTurn();
+
+        assertSame(players.get(0), game.getCurrentPlayer());
+    }
+
+    // TC24
+    @Test
+    public void advanceTurn_threePlayers_firstPlayerAdvancesToSecond() {
+        List<Player> players = createPlayers(3);
+        Game game = createPlayingGame(players);
+
+        game.advanceTurn();
+
+        assertSame(players.get(1), game.getCurrentPlayer());
+    }
+
+    // TC25
+    @Test
+    public void advanceTurn_fourPlayers_secondPlayerAdvancesToThird() {
+        List<Player> players = createPlayers(4);
+        Game game = createPlayingGame(players);
+
+        game.advanceTurn();
+        game.advanceTurn();
+
+        assertSame(players.get(2), game.getCurrentPlayer());
+    }
+
+    // TC26
+    @Test
+    public void advanceTurn_fourPlayers_lastPlayerWrapsToFirst() {
+        List<Player> players = createPlayers(4);
+        Game game = createPlayingGame(players);
+
+        game.advanceTurn();
+        game.advanceTurn();
+        game.advanceTurn();
+        game.advanceTurn();
+
+        assertSame(players.get(0), game.getCurrentPlayer());
+    }
+
+    // TC27
+    @Test
+    public void advanceTurn_gameFinished_throwsIllegalStateException() {
+        List<Player> players = createPlayers(2);
+        Game game = createPlayingGame(players);
+        game.endGame(players.get(0));
+
+        assertThrows(IllegalStateException.class,
+                game::advanceTurn);
+    }
 }
