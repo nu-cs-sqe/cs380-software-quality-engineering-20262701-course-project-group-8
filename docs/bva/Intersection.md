@@ -40,7 +40,7 @@ public class Intersection {
 |             | State of the System | Expected output | Implemented? |
 |-------------|---------------------|-----------------|--------------|
 | Test Case 1 | `location` is null, `building' is a City | `NullPointerException` is thrown | :white_check_mark: |
-| Test Case 2 | `location` is a valid `Location` object, `building' is a City | a valid `Intersection` object is created without exception | :x: |
+| Test Case 2 | `location` is a valid `Location` object, `building' is a City | a valid `Intersection` object is created without exception | :white_check_mark: |
 | Test Case 3 | `location` is a valid `Location` object, `building' is null | an 'NullPointerException' is thrown | :x: |
 
 ### Method under test: `getBuilding(Location location)`
