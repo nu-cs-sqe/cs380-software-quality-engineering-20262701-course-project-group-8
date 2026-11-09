@@ -39,7 +39,7 @@ public class Hex {
     }
 
     public void setRobber(boolean hasRobber) {
-
+        this.hasRobber = hasRobber;
     }
 
     public boolean producesResource(int diceRoll) {

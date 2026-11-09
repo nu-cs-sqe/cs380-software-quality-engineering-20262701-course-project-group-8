@@ -95,9 +95,9 @@ public class Hex {
 ### Method under test: `hasRobber()` and `setRobber(boolean hasRobber)`
 | | State of the System | Expected output | Status |
 |---|---|---|---|
-| Test Case 17 | New desert hex is created | `hasRobber()` returns `true` | |
-| Test Case 18 | `setRobber(false)` is called on a desert hex | `hasRobber()` returns `false` | |
-| Test Case 19 | `setRobber(true)` is called on a non-desert hex | `hasRobber()` returns `true` | |
+| Test Case 17 | New desert hex is created | `hasRobber()` returns `true` |:white_check_mark:|
+| Test Case 18 | `setRobber(false)` is called on a desert hex | `hasRobber()` returns `false` |:white_check_mark:|
+| Test Case 19 | `setRobber(true)` is called on a non-desert hex | `hasRobber()` returns `true` |:white_check_mark:|
 
 ### Method under test: `producesResource(int diceRoll)`
 | | State of the System | Expected output | Status |
