@@ -160,4 +160,70 @@ public class HexTest {
 
         assertTrue(hex.hasRobber());
     }
+
+    // TC20
+    @Test
+    public void producesResource_desertRollZero_returnsFalse() {
+        Hex hex = new Hex(TerrainType.DESERTS, 0);
+
+        assertFalse(hex.producesResource(0));
+    }
+
+    // TC21
+    @Test
+    public void producesResource_nonDesertMatchingRoll_returnsTrue() {
+        Hex hex = new Hex(TerrainType.FORESTS, 2);
+
+        assertTrue(hex.producesResource(2));
+    }
+
+    // TC22
+    @Test
+    public void producesResource_nonDesertZeroRoll_returnsFalse() {
+        Hex hex = new Hex(TerrainType.FORESTS, 2);
+
+        assertFalse(hex.producesResource(0));
+    }
+
+    // TC23
+    @Test
+    public void producesResource_nonDesertSixRoll_returnsFalse() {
+        Hex hex = new Hex(TerrainType.FORESTS, 8);
+
+        assertFalse(hex.producesResource(6));
+    }
+
+    // TC24
+    @Test
+    public void producesResource_nonDesertSevenRoll_returnsFalse() {
+        Hex hex = new Hex(TerrainType.FORESTS, 8);
+
+        assertFalse(hex.producesResource(7));
+    }
+
+    // TC25
+    @Test
+    public void producesResource_nonDesertEightRoll_returnsTrue() {
+        Hex hex = new Hex(TerrainType.FORESTS, 8);
+
+        assertTrue(hex.producesResource(8));
+    }
+
+    // TC26
+    @Test
+    public void producesResource_robberPresent_returnsFalse() {
+        Hex hex = new Hex(TerrainType.FORESTS, 12);
+        hex.setRobber(true);
+
+        assertFalse(hex.producesResource(12));
+    }
+
+    // TC27
+    @Test
+    public void producesResource_robberAbsentMatchingRoll_returnsTrue() {
+        Hex hex = new Hex(TerrainType.FORESTS, 12);
+        hex.setRobber(false);
+
+        assertTrue(hex.producesResource(12));
+    }
 }
