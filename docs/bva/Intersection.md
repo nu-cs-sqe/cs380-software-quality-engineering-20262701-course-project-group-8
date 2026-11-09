@@ -44,7 +44,7 @@ public class Intersection {
 | Test Case 3 | `location` is a valid `Location` object, `building' is null | an 'NullPointerException' is thrown | :white_check_mark: |
 
 ### Method under test: `getBuilding(Location location)`
-| Test Case 4 | `location` is `null` | `NullPointerException` is thrown | :x: |
+| Test Case 4 | `location` is `null` | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 5 | `location` is a valid `Location` object | Building is returned without exception | :x: |
 
 ### Method under test: `getNeighboringHexes(Location location)`

@@ -26,7 +26,7 @@ public class IntersectionTest {
         Building building = Building.CITY;
 
         Intersection intersection = assertDoesNotThrow(() -> new Intersection(location, building));
-        assertNotNull(location);
+        assertNotNull(intersection);
     }
  
     // TC 3
@@ -37,6 +37,20 @@ public class IntersectionTest {
         
         NullPointerException exception = assertThrows(NullPointerException.class, () -> new Intersection(location, building));
         assertEquals("Error: Building cannot be a null value", exception.getMessage());
+    }
+
+    // TC 4
+    @Test
+    public void getBuilding_locationIsNull_throwsNullPointerException() {
+        Location location1 = EasyMock.createMock(Location.class);
+        Location location2 = null;
+        Building building = Building.CITY;
+        
+        Intersection intersection = assertDoesNotThrow(() -> new Intersection(location1, building));
+        assertNotNull(intersection); 
+
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> intersection.getBuilding(location2));
+        assertEquals("Error: Location cannot be a null value", exception.getMessage());
     }
 
 }
