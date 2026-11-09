@@ -36,5 +36,14 @@ public class LocationTests {
         int actual = location.getXPos();
         assertEquals(expected, actual);
     }
+
+    // TC 5
+    @Test
+    public void getXPos_xPosIsZero_returnsZero() {
+        Location location = new Location(1, 0);
+        int expected = 0;
+        int actual = location.getYPos();
+        assertEquals(expected, actual);
+    }
 }
 

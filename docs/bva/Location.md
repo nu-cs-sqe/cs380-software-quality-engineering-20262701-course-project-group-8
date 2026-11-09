@@ -47,4 +47,4 @@ public class Location {
 | Test Case 4 | xPos: 1, yPos: 0 | 1 | :white_check_mark: |
 
 ### Method under test: `getYPos()`
-| Test Case 5 | xPos: 0, yPos: 0 | 0 | :x: |
+| Test Case 5 | xPos: 0, yPos: 0 | 0 | :white_check_mark: |

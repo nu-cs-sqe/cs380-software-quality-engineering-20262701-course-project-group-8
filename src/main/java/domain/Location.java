@@ -17,4 +17,8 @@ public class Location {
     public int getXPos() {
         return xPos;
     }
+
+    public int getYPos() {
+        return yPos;
+    }
 }
