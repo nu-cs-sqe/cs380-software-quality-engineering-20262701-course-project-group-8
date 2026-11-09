@@ -53,4 +53,15 @@ public class IntersectionTest {
         assertEquals("Error: Location cannot be a null value", exception.getMessage());
     }
 
+    // TC 5
+    @Test
+    public void getBuilding_locationIsValid_ReturnsBuildingAtLocationObject() {
+        Location location = EasyMock.createMock(Location.class);
+        Building building = Building.ROAD;
+
+        Intersection intersection = new Intersection(location, building);
+        Building expected = building;
+        Building actual = intersection.getBuilding(location);
+        assertEquals(expected, actual);
+    }
 }
