@@ -5,16 +5,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Intersection {
+public class Intersections {
     Map<Location, Building> locationToBuilding;
-    public Intersection(Location location, Building building) {
+    Map<Location, Hex> locationToHex;
+
+    public Intersections() {
+        locationToBuilding = new HashMap<>();
+        locationToHex = new HashMap<>();
+    }
+
+    public void addIntersection(Location location, Building building) {
         if (location == null) {
             throw new NullPointerException("Error: Location cannot be a null value");
         }
         if (building == null) {
             throw new NullPointerException("Error: Building cannot be a null value");
         }
-        locationToBuilding = new HashMap<>();
         locationToBuilding.put(location, building);
     }
 
@@ -29,6 +35,9 @@ public class Intersection {
         if (location == null) {
             throw new NullPointerException("Error: Location cannot be a null value");
         }
+
         return new ArrayList<>();
     }
+
+
 }

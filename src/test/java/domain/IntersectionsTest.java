@@ -7,35 +7,34 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.easymock.EasyMock;
 
-public class IntersectionTest {
+public class IntersectionsTest {
 
     // TC 1
     @Test
-    public void constructor_locationIsNullBuildingIsACity_throwsNullPointerException() {
+    public void addIntersection_locationIsNullBuildingIsACity_throwsNullPointerException() {
         Location location = null;
         Building building = Building.CITY;
-        
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> new Intersection(location, building));
+        Intersections intersections = new Intersections();
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> intersections.addIntersection(location, building));
         assertEquals("Error: Location cannot be a null value", exception.getMessage());
     }
 
     // TC 2
     @Test
-    public void constructor_locationIsValidBuildingIsCity_constructsIntersection() {
+    public void addIntersections_locationIsValidBuildingIsCity_constructsIntersections() {
         Location location = EasyMock.createMock(Location.class);
         Building building = Building.CITY;
-
-        Intersection intersection = assertDoesNotThrow(() -> new Intersection(location, building));
-        assertNotNull(intersection);
+        Intersections intersections = new Intersections();
+        assertDoesNotThrow(() -> intersections.addIntersection(location, building));
     }
  
     // TC 3
     @Test
-    public void constructor_locationIsNullBuildingIsNull_throwsNullPointerException() {
+    public void addIntersections_locationIsNullBuildingIsNull_throwsNullPointerException() {
         Location location = EasyMock.createMock(Location.class);
         Building building = null;
-        
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> new Intersection(location, building));
+        Intersections intersections = new Intersections();
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> intersections.addIntersection(location, building));
         assertEquals("Error: Building cannot be a null value", exception.getMessage());
     }
 
@@ -46,7 +45,8 @@ public class IntersectionTest {
         Location location2 = null;
         Building building = Building.CITY;
         
-        Intersection intersection = assertDoesNotThrow(() -> new Intersection(location1, building));
+        Intersections intersection = new Intersections();
+        assertDoesNotThrow(() -> intersection.addIntersection(location1, building));
         assertNotNull(intersection); 
 
         NullPointerException exception = assertThrows(NullPointerException.class, () -> intersection.getBuilding(location2));
@@ -59,7 +59,8 @@ public class IntersectionTest {
         Location location = EasyMock.createMock(Location.class);
         Building building = Building.ROAD;
 
-        Intersection intersection = new Intersection(location, building);
+        Intersections intersection = new Intersections();
+        intersection.addIntersection(location, building);
         Building expected = building;
         Building actual = intersection.getBuilding(location);
         assertEquals(expected, actual);
@@ -72,10 +73,12 @@ public class IntersectionTest {
         Location location2 = null;
         Building building = Building.CITY;
         
-        Intersection intersection = assertDoesNotThrow(() -> new Intersection(location1, building));
-        assertNotNull(intersection); 
+        Intersections intersections = new Intersections();
+        assertDoesNotThrow(() -> intersections.addIntersection(location1, building));
+        assertNotNull(intersections); 
 
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> intersection.getNeighboringHexes(location2));
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> intersections.getNeighboringHexes(location2));
         assertEquals("Error: Location cannot be a null value", exception.getMessage());
     }
+
 }
