@@ -132,4 +132,32 @@ public class HexTest {
 
         assertEquals(12, forestHex.getNumberDisc());
     }
+
+    // TC17
+    @Test
+    public void desertHex_startsWithRobber() {
+        Hex hex = new Hex(TerrainType.DESERTS, 0);
+
+        assertTrue(hex.hasRobber());
+    }
+
+    // TC18
+    @Test
+    public void setRobber_false_updatesStatus() {
+        Hex hex = new Hex(TerrainType.DESERTS, 0);
+
+        hex.setRobber(false);
+
+        assertFalse(hex.hasRobber());
+    }
+
+    // TC19
+    @Test
+    public void setRobber_true_updatesStatus() {
+        Hex hex = new Hex(TerrainType.FORESTS, 6);
+
+        hex.setRobber(true);
+
+        assertTrue(hex.hasRobber());
+    }
 }
