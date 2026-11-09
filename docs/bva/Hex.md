@@ -82,8 +82,8 @@ public class Hex {
 ### Method under test: `getTerrainType()`
 | | State of the System | Expected output | Status |
 |---|---|---|---|
-| Test Case 12 | Hex is created with `DESERTS` terrain | Returns `DESERTS` | |
-| Test Case 13 | Hex is created with `FORESTS` terrain | Returns `FORESTS` | |
+| Test Case 12 | Hex is created with `DESERTS` terrain | Returns `DESERTS` |:white_check_mark:|
+| Test Case 13 | Hex is created with `FORESTS` terrain | Returns `FORESTS` |:white_check_mark:|
 
 ### Method under test: `getNumberDisc()`
 | | State of the System | Expected output | Status |

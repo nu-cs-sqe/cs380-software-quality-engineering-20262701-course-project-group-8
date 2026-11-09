@@ -92,4 +92,20 @@ public class HexTest {
     public void constructor_nonDesertThirteen_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> new Hex(TerrainType.FORESTS, 13));
     }
+
+    // TC12
+    @Test
+    public void getTerrainType_returnsAssignedTerrain_Desert() {
+        Hex desertHex = new Hex(TerrainType.DESERTS, 0);
+
+        assertEquals(TerrainType.DESERTS, desertHex.getTerrainType());
+    }
+
+    // TC13
+    @Test
+    public void getTerrainType_returnsAssignedTerrain_Forest() {
+        Hex forestHex = new Hex(TerrainType.FORESTS, 2);
+
+        assertEquals(TerrainType.FORESTS, forestHex.getTerrainType());
+    }
 }
