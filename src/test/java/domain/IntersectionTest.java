@@ -13,6 +13,6 @@ public class IntersectionTest {
     @Test
     public void constructor_validLocationNullBuilding_throwsNullPointerException() {
         Location location = EasyMock.createMock(Location.class);
-        // EasyMock.expect(location.getLocation()).andReturn(true).times(1);
+        // EasyMock.
     }
 }

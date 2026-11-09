@@ -1,8 +1,8 @@
 package domain;
 
 public class Location {
-    public final int xPos;
-    public final int yPos;
+    private final int xPos;
+    private final int yPos;
     public Location(int xPos, int yPos) {
         if (xPos < 0) {
             throw new IllegalArgumentException("Error: x-coordinate position cannot be negative");
