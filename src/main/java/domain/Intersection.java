@@ -6,5 +6,9 @@ public class Intersection {
         if (location == null) {
             throw new NullPointerException("Error: Location cannot be a null value");
         }
+        if (building == null) {
+            throw new NullPointerException("Error: Building cannot be a null value");
+        }
+
     }
 }
