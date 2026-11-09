@@ -20,5 +20,12 @@ public class LocationTests {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Location(1, -1));
         assertEquals("Error: y-coordinate position cannot be negative", exception.getMessage());
     }
+
+    // TC 3
+    @Test
+    public void constructor_zeroXPosZeroYPos_constructsLocationObject() {
+        Location location = assertDoesNotThrow(() -> new Location(0, 0));
+        assertNotNull(location);
+    }
 }
 
