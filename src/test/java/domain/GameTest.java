@@ -309,4 +309,68 @@ public class GameTest {
         assertThrows(IllegalStateException.class,
                 game::advanceTurn);
     }
+
+    // TC28
+    @Test
+    public void endGame_nullWinner_throwsIllegalArgumentException() {
+        Game game = createPlayingGame(createPlayers(2));
+
+        assertThrows(IllegalArgumentException.class,
+                () -> game.endGame(null));
+    }
+
+    // TC29
+    @Test
+    public void endGame_validWinner_changesPhaseAndRecordsWinner() {
+        List<Player> players = createPlayers(2);
+        Game game = createPlayingGame(players);
+
+        game.endGame(players.get(0));
+
+        assertEquals(GamePhase.FINISHED, game.getPhase());
+        assertSame(players.get(0), game.getWinner());
+    }
+
+    // TC30
+    @Test
+    public void endGame_externalWinner_throwsIllegalArgumentException() {
+        List<Player> players = createPlayers(2);
+        Game game = createPlayingGame(players);
+        Player externalPlayer = mock(Player.class);
+
+        assertThrows(IllegalArgumentException.class,
+                () -> game.endGame(externalPlayer));
+    }
+
+    // TC31
+    @Test
+    public void endGame_gameNotStarted_throwsIllegalStateException() {
+        List<Player> players = createPlayers(2);
+        Game game = new Game(players);
+
+        assertThrows(IllegalStateException.class,
+                () -> game.endGame(players.get(0)));
+    }
+
+    // TC32
+    @Test
+    public void endGame_gameInSetup_throwsIllegalStateException() {
+        List<Player> players = createPlayers(2);
+        Game game = new Game(players);
+        game.startGame();
+
+        assertThrows(IllegalStateException.class,
+                () -> game.endGame(players.get(0)));
+    }
+
+    // TC33
+    @Test
+    public void endGame_gameAlreadyFinished_throwsIllegalStateException() {
+        List<Player> players = createPlayers(2);
+        Game game = createPlayingGame(players);
+        game.endGame(players.get(0));
+
+        assertThrows(IllegalStateException.class,
+                () -> game.endGame(players.get(1)));
+    }
 }
