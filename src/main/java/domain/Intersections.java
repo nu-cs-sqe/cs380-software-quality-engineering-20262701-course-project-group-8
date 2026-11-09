@@ -6,15 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 public class Intersections {
-    Map<Location, Building> locationToBuilding;
-    Map<Location, Hex> locationToHex;
+    private static final Map<Location, Building> locationToBuilding = new HashMap<>();
+    private static final Map<Location, Hex> locationToHex = new HashMap<>();
 
-    public Intersections() {
-        locationToBuilding = new HashMap<>();
-        locationToHex = new HashMap<>();
+    public Intersections() {}
+
+    public static void addHex(Location location, Hex hex) {
+
     }
 
-    public void addBuilding(Location location, Building building) {
+    public static void addBuilding(Location location, Building building) {
         if (location == null) {
             throw new NullPointerException("Error: Location cannot be a null value");
         }
@@ -24,19 +25,21 @@ public class Intersections {
         locationToBuilding.put(location, building);
     }
 
-    public Building getBuilding(Location location) {
+    public static Building getBuilding(Location location) {
         if (location == null) {
             throw new NullPointerException("Error: Location cannot be a null value");
         }
         return locationToBuilding.get(location);
     }
 
-    public List<Hex> getNeighboringHexes(Location location) {
+    public static List<Hex> getNeighboringHexes(Location location) {
         if (location == null) {
             throw new NullPointerException("Error: Location cannot be a null value");
         }
 
         return new ArrayList<>();
     }
+
+
 
 }
