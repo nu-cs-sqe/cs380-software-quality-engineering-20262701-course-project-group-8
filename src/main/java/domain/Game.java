@@ -41,7 +41,11 @@ public class Game {
     }
 
     public void endGame(Player winner) {
-
+        if (phase == GamePhase.PLAYING) {
+            this.phase = GamePhase.FINISHED;
+        } else {
+            throw new IllegalStateException("Error: Cannot end game in current phase");
+        }
     }
 
     public Player getWinner() {
@@ -49,7 +53,11 @@ public class Game {
     }
 
     public void completeSetup() {
-
+        if (phase == GamePhase.SETUP) {
+            this.phase = GamePhase.PLAYING;
+        } else {
+            throw new IllegalStateException("Error: Cannot complete setup in current phase");
+        }
     }
 
 }
