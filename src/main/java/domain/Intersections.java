@@ -15,6 +15,9 @@ public class Intersections {
         if (location == null) {
             throw new NullPointerException("Error: Location cannot be a null value");
         }
+        if (hex == null) {
+            throw new NullPointerException("Error: Hex cannot be a null value");
+        }
     }
 
     public static void addBuilding(Location location, Building building) {

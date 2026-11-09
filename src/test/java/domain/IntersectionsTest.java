@@ -78,12 +78,23 @@ public class IntersectionsTest {
         assertEquals("Error: Location cannot be a null value", exception.getMessage()); 
     }
 
+    // TC 9
     @Test
     public void addHex_locationIsValidHexIsValid_addsHex() {
         Location location = EasyMock.createMock(Location.class);
         Hex hex = EasyMock.createMock(Hex.class);
 
         assertDoesNotThrow(() -> Intersections.addHex(location, hex));
+    }
+    
+    // TC 10
+    @Test
+    public void addHex_locationIsValidHexIsNull_throwsNullPointerException() {
+        Location location = EasyMock.createMock(Location.class);
+        Hex hex = null;
+
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> Intersections.addHex(location, hex));
+        assertEquals("Error: Hex cannot be a null value", exception.getMessage());
     }
 
 
