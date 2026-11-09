@@ -18,10 +18,18 @@ public class Game {
         this.players = players;
         this.phase = GamePhase.NOT_STARTED;
         this.currentPlayerIndex = 0;
-    }
+    } 
 
     public void startGame() {
 
+    }
+
+    public GamePhase getPhase() {
+
+    }
+
+    public Player getCurrentPlayer() {
+        
     }
 
     public void advanceTurn() {
@@ -29,6 +37,14 @@ public class Game {
     }
 
     public void endGame(Player winner) {
+
+    }
+
+    public Player getWinner() {
+
+    }
+
+    public void completeSetup() {
 
     }
 

@@ -26,6 +26,14 @@ public class GameTest {
         return new Game(createPlayers(count));
     }
 
+    // Helper method to start a game and complete setup
+    private Game createPlayingGame(List<Player> players) {
+        Game game = new Game(players);
+        game.startGame();
+        game.completeSetup();
+        return game;
+    }
+
     // TC1
     @Test
     public void constructor_nullPlayers_throwsIllegalArgumentException() {
@@ -79,5 +87,56 @@ public class GameTest {
 
         assertThrows(IllegalArgumentException.class,
                 () -> new Game(players));
+    }
+
+    // TC7
+    @Test
+    public void startGame_notStarted_changesPhaseToSetup() {
+        Game game = createGame(2);
+
+        game.startGame();
+
+        assertEquals(GamePhase.SETUP, game.getPhase());
+    }
+
+    // TC8
+    @Test
+    public void startGame_assignsFirstPlayerAsCurrentPlayer() {
+        List<Player> players = createPlayers(2);
+        Game game = new Game(players);
+
+        game.startGame();
+
+        assertSame(players.get(0), game.getCurrentPlayer());
+    }
+
+    // TC9
+    @Test
+    public void startGame_alreadyInSetup_throwsIllegalStateException() {
+        Game game = createGame(2);
+        game.startGame();
+
+        assertThrows(IllegalStateException.class,
+                game::startGame);
+    }
+
+    // TC10
+    @Test
+    public void startGame_alreadyPlaying_throwsIllegalStateException() {
+        Game game = createPlayingGame(createPlayers(2));
+
+        assertThrows(IllegalStateException.class,
+                game::startGame);
+    }
+
+    // TC11
+    @Test
+    public void startGame_alreadyFinished_throwsIllegalStateException() {
+        List<Player> players = createPlayers(2);
+        Game game = createPlayingGame(players);
+        game.endGame(players.get(0));
+
+        assertThrows(IllegalStateException.class,
+                game::startGame);
     }
 }
