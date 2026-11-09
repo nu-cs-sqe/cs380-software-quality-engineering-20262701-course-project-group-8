@@ -14,7 +14,7 @@ public class Intersections {
         locationToHex = new HashMap<>();
     }
 
-    public void addIntersection(Location location, Building building) {
+    public void addBuilding(Location location, Building building) {
         if (location == null) {
             throw new NullPointerException("Error: Location cannot be a null value");
         }
@@ -38,6 +38,5 @@ public class Intersections {
 
         return new ArrayList<>();
     }
-
 
 }
