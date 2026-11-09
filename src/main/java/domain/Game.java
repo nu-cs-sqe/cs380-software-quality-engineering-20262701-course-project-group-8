@@ -33,11 +33,18 @@ public class Game {
     }
 
     public Player getCurrentPlayer() {
+        if (phase == GamePhase.NOT_STARTED || phase == GamePhase.SETUP) {
+            return null;
+        }
         return this.players.get(this.currentPlayerIndex);
     }
 
     public void advanceTurn() {
-
+        if (phase == GamePhase.PLAYING) {
+            currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+        } else {
+            throw new IllegalStateException("Error: Cannot advance turn in current phase");
+        }
     }
 
     public void endGame(Player winner) {

@@ -106,7 +106,7 @@ public class GameTest {
         Game game = new Game(players);
 
         game.startGame();
-
+        game.completeSetup();
         assertSame(players.get(0), game.getCurrentPlayer());
     }
 
@@ -194,7 +194,7 @@ public class GameTest {
         Game game = new Game(players);
 
         game.startGame();
-
+        game.completeSetup();
         assertSame(players.get(0), game.getCurrentPlayer());
     }
 
@@ -203,7 +203,7 @@ public class GameTest {
     public void getCurrentPlayer_firstPlayersTurn_returnsFirstPlayer() {
         List<Player> players = createPlayers(2);
         Game game = createPlayingGame(players);
-
+    
         assertSame(players.get(0), game.getCurrentPlayer());
     }
 
