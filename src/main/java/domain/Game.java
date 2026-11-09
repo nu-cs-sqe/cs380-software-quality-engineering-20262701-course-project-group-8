@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Game {
 
-    private final List<Player> players;
-    private final GamePhase phase;
-    private final int currentPlayerIndex;
+    private List<Player> players;
+    private GamePhase phase;
+    private int currentPlayerIndex;
 
     public Game(List<Player> players) {
         if (players == null || players.size() < 2) {
@@ -21,15 +21,19 @@ public class Game {
     } 
 
     public void startGame() {
-
+        if (phase == GamePhase.NOT_STARTED) {
+            this.phase = GamePhase.SETUP;
+        } else {
+            throw new IllegalStateException("Error: Game has already started");
+        }
     }
 
     public GamePhase getPhase() {
-
+        return this.phase;
     }
 
     public Player getCurrentPlayer() {
-        
+        return this.players.get(this.currentPlayerIndex);
     }
 
     public void advanceTurn() {
@@ -41,7 +45,7 @@ public class Game {
     }
 
     public Player getWinner() {
-
+        return null;
     }
 
     public void completeSetup() {
