@@ -139,4 +139,43 @@ public class GameTest {
         assertThrows(IllegalStateException.class,
                 game::startGame);
     }
+
+    // TC12
+    @Test
+    public void getPhase_newGame_returnsNotStarted() {
+        Game game = createGame(2);
+
+        assertEquals(GamePhase.NOT_STARTED, game.getPhase());
+    }
+
+    // TC13
+    @Test
+    public void getPhase_afterStartGame_returnsSetup() {
+        Game game = createGame(2);
+        game.startGame();
+
+        assertEquals(GamePhase.SETUP, game.getPhase());
+    }
+
+    // TC14
+    @Test
+    public void getPhase_afterCompletingSetup_returnsPlaying() {
+        Game game = createGame(2);
+        game.startGame();
+
+        game.completeSetup();
+
+        assertEquals(GamePhase.PLAYING, game.getPhase());
+    }
+
+    // TC15
+    @Test
+    public void getPhase_afterEndingGame_returnsFinished() {
+        List<Player> players = createPlayers(2);
+        Game game = createPlayingGame(players);
+
+        game.endGame(players.get(0));
+
+        assertEquals(GamePhase.FINISHED, game.getPhase());
+    }
 }
