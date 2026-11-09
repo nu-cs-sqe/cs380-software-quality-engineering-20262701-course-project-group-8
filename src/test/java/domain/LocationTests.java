@@ -27,5 +27,6 @@ public class LocationTests {
         Location location = assertDoesNotThrow(() -> new Location(0, 0));
         assertNotNull(location);
     }
+
 }
 
