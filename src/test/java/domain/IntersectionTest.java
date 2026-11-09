@@ -11,8 +11,11 @@ public class IntersectionTest {
 
     // TC 1
     @Test
-    public void constructor_validLocationNullBuilding_throwsNullPointerException() {
+    public void constructor_validLocationInvalidBuilding_throwsIllegalArgumentException() 
         Location location = EasyMock.createMock(Location.class);
-        // EasyMock.
-    }
+        EasyMock.expect(location.getXPos()).andReturn(1).times(1);
+        EasyMock.expect(location.getYPos()).andReturn(1).times(1);
+        EasyMock.replay(location);
+
+    
 }

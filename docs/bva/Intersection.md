@@ -39,18 +39,16 @@ public class Intersection {
 ### Method under test: `Intersection(Location location, Building building)`
 |             | State of the System | Expected output | Implemented? |
 |-------------|---------------------|-----------------|--------------|
-| Test Case 1 | `location` is a valid `Location` object, `building' is -1 | `IllegalArgumentException` is thrown  | :x: |
-| Test Case 2 | `location` is null, `building' is a City | `NullPointerException` is thrown | :x: |
-| Test Case 3 | `location` is a valid `Location` object, `building' is a City | a valid `Intersection` object is created without exception | :x: |
-| Test Case 4 | `location` is a invalid `Location` object, `building' is a Road | an 'IllegalArgumentException' is thrown | :x: |
-| Test Case 5 | `location` is a valid `Location` object, `building' is -1 | an 'IllegalArgumentException' is thrown | :x: |
+| Test Case 1 | `location` is null, `building' is a City | `NullPointerException` is thrown | :x: |
+| Test Case 2 | `location` is a valid `Location` object, `building' is a City | a valid `Intersection` object is created without exception | :x: |
+| Test Case 3 | `location` is a invalid `Location` object, `building' is a Road | an 'IllegalArgumentException' is thrown | :x: |
 
 ### Method under test: `getBuilding(Location location)`
-| Test Case 6 | `location` is `null` | `NullPointerException` is thrown | :x: |
-| Test Case 7 | `location` is an invalid `Location` object | an 'IllegalArgumentException' is thrown | :x: |
-| Test Case 8 | `location` is a valid `Location` object | Building is returned without exception | :x: |
+| Test Case 4 | `location` is `null` | `NullPointerException` is thrown | :x: |
+| Test Case 5| `location` is an invalid `Location` object | an 'IllegalArgumentException' is thrown | :x: |
+| Test Case 6 | `location` is a valid `Location` object | Building is returned without exception | :x: |
 
 ### Method under test: `getNeighboringHexes(Location location)`
-| Test Case 9 | `location` is `null` | `NullPointerException` is thrown | :x: |
-| Test Case 10 | `location` is an invalid `Location` object | an 'IllegalArgumentException' is thrown | :x: |
-| Test Case 11 | `location` is a valid `Location` object | a List<Hex> is returned without exception | :x: |
+| Test Case 7 | `location` is `null` | `NullPointerException` is thrown | :x: |
+| Test Case 8 | `location` is an invalid `Location` object | an 'IllegalArgumentException' is thrown | :x: |
+| Test Case 9 | `location` is a valid `Location` object | a List<Hex> is returned without exception | :x: |
