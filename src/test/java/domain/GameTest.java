@@ -411,4 +411,45 @@ public class GameTest {
 
         assertSame(players.get(3), game.getWinner());
     }
+
+    // TC38
+    @Test
+    public void completeSetup_beforeStart_throwsIllegalStateException() {
+        Game game = createGame(2);
+
+        assertThrows(IllegalStateException.class, () -> game.completeSetup());
+        assertEquals(GamePhase.NOT_STARTED, game.getPhase());
+    }
+
+    // TC39
+    @Test
+    public void completeSetup_duringSetup_changesPhaseToPlaying() {
+        Game game = createGame(2);
+        game.startGame();
+
+        game.completeSetup();
+
+        assertEquals(GamePhase.PLAYING, game.getPhase());
+    }
+
+    // TC40
+    @Test
+    public void completeSetup_duringPlaying_throwsIllegalStateException() {
+        Game game = createPlayingGame(createPlayers(2));
+
+        assertThrows(IllegalStateException.class, () -> game.completeSetup());
+        assertEquals(GamePhase.PLAYING, game.getPhase());
+    }
+
+    // TC41
+    @Test
+    public void completeSetup_afterFinished_throwsIllegalStateException() {
+        List<Player> players = createPlayers(2);
+        Game game = createPlayingGame(players);
+
+        game.endGame(players.get(0));
+
+        assertThrows(IllegalStateException.class, () -> game.completeSetup());
+        assertEquals(GamePhase.FINISHED, game.getPhase());
+    }
 }
