@@ -88,9 +88,9 @@ public class Hex {
 ### Method under test: `getNumberDisc()`
 | | State of the System | Expected output | Status |
 |---|---|---|---|
-| Test Case 14 | Desert hex with `numberDisc = 0` | Returns `0` | |
-| Test Case 15 | Non-desert hex with `numberDisc = 2` | Returns `2` | |
-| Test Case 16 | Non-desert hex with `numberDisc = 12` | Returns `12` | |
+| Test Case 14 | Desert hex with `numberDisc = 0` | Returns `0` |:white_check_mark:|
+| Test Case 15 | Non-desert hex with `numberDisc = 2` | Returns `2` |:white_check_mark:|
+| Test Case 16 | Non-desert hex with `numberDisc = 12` | Returns `12` |:white_check_mark:|
 
 ### Method under test: `hasRobber()` and `setRobber(boolean hasRobber)`
 | | State of the System | Expected output | Status |

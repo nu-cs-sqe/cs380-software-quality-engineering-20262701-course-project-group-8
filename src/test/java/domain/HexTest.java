@@ -108,4 +108,28 @@ public class HexTest {
 
         assertEquals(TerrainType.FORESTS, forestHex.getTerrainType());
     }
+
+    // TC14
+    @Test
+    public void getNumberDisc_returnsAssignedToken() {
+        Hex desertHex = new Hex(TerrainType.DESERTS, 0);
+
+        assertEquals(0, desertHex.getNumberDisc());
+    }
+
+    // TC15
+    @Test
+    public void getNumberDisc_returnsAssignedToken_Forest_2() {
+        Hex forestHex = new Hex(TerrainType.FORESTS, 2);
+
+        assertEquals(2, forestHex.getNumberDisc());
+    }
+
+    // TC16
+    @Test
+    public void getNumberDisc_returnsAssignedToken_Forest_12() {
+        Hex forestHex = new Hex(TerrainType.FORESTS, 12);
+
+        assertEquals(12, forestHex.getNumberDisc());
+    }
 }
