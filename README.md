@@ -6,7 +6,6 @@
 - Sami Khan
 - Stephi Lyou
 - Jiadong Li
-- Daniel Murphy
 
 ## Dependencies
 - JDK 11
