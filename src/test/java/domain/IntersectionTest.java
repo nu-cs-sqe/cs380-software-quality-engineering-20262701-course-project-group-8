@@ -11,11 +11,13 @@ public class IntersectionTest {
 
     // TC 1
     @Test
-    public void constructor_validLocationInvalidBuilding_throwsIllegalArgumentException() 
-        Location location = EasyMock.createMock(Location.class);
-        EasyMock.expect(location.getXPos()).andReturn(1).times(1);
-        EasyMock.expect(location.getYPos()).andReturn(1).times(1);
-        EasyMock.replay(location);
+    public void constructor_locationIsNullBuildingIsACity_throwsNullPointerException() {
+        Location location = null;
+        Building building = Building.CITY;
+        
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> new Intersection(location, building));
+        assertEquals("Error: Location cannot be a null value", exception.getMessage());
+    }
 
-    
+  
 }
