@@ -107,76 +107,76 @@ public class Board {
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 1 | Default constructor called | Board created with exactly 19 hexes | Planned |
+| Test Case 1 | Default constructor called | Board created with exactly 19 hexes | :white_check_mark: |
 
 ### Method under test: `Board(Random random)`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 2 | `random = null` | `NullPointerException` | Planned |
-| Test Case 3 | Valid `Random` object supplied | Board created with exactly 19 hexes | Planned |
+| Test Case 2 | `random = null` | `NullPointerException` | :white_check_mark: |
+| Test Case 3 | Valid `Random` object supplied | Board created with exactly 19 hexes | :white_check_mark: |
 
 ### Method under test: `initializeBoard()` (private)
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 4 | Board initialized | Exactly 4 forests, 3 hills, 3 mountains, 4 fields, 4 pastures, and 1 desert | Planned |
-| Test Case 5 | Board initialized | Exactly 18 non-desert number discs and 1 desert number disc of 0 | Planned |
-| Test Case 6 | Board initialized | Every non-desert number disc is valid; no number disc is 7 | Planned |
-| Test Case 7 | Board initialized | Exactly one hex initially contains the robber, and it is the desert | Planned |
+| Test Case 4 | Board initialized | Exactly 4 forests, 3 hills, 3 mountains, 4 fields, 4 pastures, and 1 desert | :white_check_mark: |
+| Test Case 5 | Board initialized | Exactly 18 non-desert number discs and 1 desert number disc of 0 | :white_check_mark: |
+| Test Case 6 | Board initialized | Every non-desert number disc is valid; no number disc is 7 | :white_check_mark: |
+| Test Case 7 | Board initialized | Exactly one hex initially contains the robber, and it is the desert | :white_check_mark: |
 
 ### Method under test: `getHexes()`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 8 | `getHexes()` called on initialized board | Returns a list containing 19 hexes | Planned |
-| Test Case 9 | Attempt to add a hex to the returned list | `UnsupportedOperationException` | Planned |
-| Test Case 10 | Attempt to remove a hex from the returned list | `UnsupportedOperationException` | Planned |
+| Test Case 8 | `getHexes()` called on initialized board | Returns a list containing 19 hexes | :white_check_mark: |
+| Test Case 9 | Attempt to add a hex to the returned list | `UnsupportedOperationException` | :white_check_mark: |
+| Test Case 10 | Attempt to remove a hex from the returned list | `UnsupportedOperationException` | :white_check_mark: |
 
 ### Method under test: `getHex(int index)`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 11 | `index = -1` | `IndexOutOfBoundsException` | Planned |
-| Test Case 12 | `index = 0` | Returns first hex | Planned |
-| Test Case 13 | `index = 9` | Returns tenth hex | Planned |
-| Test Case 14 | `index = 18` | Returns nineteenth hex | Planned |
-| Test Case 15 | `index = 19` | `IndexOutOfBoundsException` | Planned |
+| Test Case 11 | `index = -1` | `IndexOutOfBoundsException` | :white_check_mark: |
+| Test Case 12 | `index = 0` | Returns first hex | :white_check_mark: |
+| Test Case 13 | `index = 9` | Returns tenth hex | :white_check_mark: |
+| Test Case 14 | `index = 18` | Returns nineteenth hex | :white_check_mark: |
+| Test Case 15 | `index = 19` | `IndexOutOfBoundsException` | :white_check_mark: |
 
 ### Method under test: `getNumberOfHexes()`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 16 | Board initialized | Returns `19` | Planned |
+| Test Case 16 | Board initialized | Returns `19` | :white_check_mark: |
 
 ### Method under test: `getRobberHex()`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 17 | Newly initialized board | Returns the desert hex | Planned |
-| Test Case 18 | Robber moved to a non-desert hex | Returns the new robber hex | Planned |
-| Test Case 19 | No hex currently contains the robber | `IllegalStateException` | Planned |
+| Test Case 17 | Newly initialized board | Returns the desert hex | :white_check_mark: |
+| Test Case 18 | Robber moved to a non-desert hex | Returns the new robber hex | :white_check_mark: |
+| Test Case 19 | No hex currently contains the robber | `IllegalStateException` | :white_check_mark: |
 
 ### Method under test: `moveRobber(Hex targetHex)`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 20 | `targetHex = null` | `IllegalArgumentException` | Planned |
-| Test Case 21 | Target hex belongs to another board | `IllegalArgumentException` | Planned |
-| Test Case 22 | Target hex is the current robber hex | `IllegalArgumentException` | Planned |
-| Test Case 23 | Target hex is a different hex on the same board | Robber removed from old hex and placed on target hex | Planned |
-| Test Case 24 | Robber currently occupies a non-desert hex and is moved to another hex | Old hex has no robber; target hex has robber | Planned |
+| Test Case 20 | `targetHex = null` | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 21 | Target hex belongs to another board | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 22 | Target hex is the current robber hex | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 23 | Target hex is a different hex on the same board | Robber removed from old hex and placed on target hex | :white_check_mark: |
+| Test Case 24 | Robber currently occupies a non-desert hex and is moved to another hex | Old hex has no robber; target hex has robber | :white_check_mark: |
 
 ### Method under test: `getHexesProducingResource(int diceRoll)`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 25 | `diceRoll = 2`, one non-desert hex has number disc 2 and no robber | Returns matching hex | Planned |
-| Test Case 26 | `diceRoll = 8`, multiple non-desert hexes have number disc 8 and no robber | Returns all matching hexes | Planned |
-| Test Case 27 | Matching hex has the robber | Does not include that hex | Planned |
-| Test Case 28 | Desert hex is checked | Does not include desert hex | Planned |
-| Test Case 29 | `diceRoll = 6` | Returns matching hex | Planned |
-| Test Case 30 | `diceRoll = 7` | Returns empty list | Planned |
-| Test Case 31 | `diceRoll = 1` | Returns empty list | Planned |
-| Test Case 32 | `diceRoll = 13` | Returns empty list | Planned |
-| Test Case 33 | Matching number discs exist, but all matching hexes have the robber | Returns empty list | Planned |
+| Test Case 25 | `diceRoll = 2`, one non-desert hex has number disc 2 and no robber | Returns matching hex | :white_check_mark: |
+| Test Case 26 | `diceRoll = 8`, multiple non-desert hexes have number disc 8 and no robber | Returns all matching hexes | :white_check_mark: |
+| Test Case 27 | Matching hex has the robber | Does not include that hex | :white_check_mark: |
+| Test Case 28 | Desert hex is checked | Does not include desert hex | :white_check_mark: |
+| Test Case 29 | `diceRoll = 6` | Returns matching hex | :white_check_mark: |
+| Test Case 30 | `diceRoll = 7` | Returns empty list | :white_check_mark: |
+| Test Case 31 | `diceRoll = 1` | Returns empty list | :white_check_mark: |
+| Test Case 32 | `diceRoll = 13` | Returns empty list | :white_check_mark: |
+| Test Case 33 | Matching number discs exist, but all matching hexes have the robber | Returns empty list | :white_check_mark: |
