@@ -64,18 +64,26 @@ public class Intersections {
 | Test Case 3 | `location` is a valid `Location` object, `building' is null | an 'NullPointerException' is thrown | :white_check_mark: |
 
 ### Method under test: `getBuilding(Location location)`
+|             | State of the System | Expected output | Implemented? |
+|-------------|---------------------|-----------------|--------------|
 | Test Case 4 | `location` is `null` | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 5 | `location` is a valid `Location` object | Building at location is returned without exception | :white_check_mark: |
 
 ### Method under test: `getNeighboringHexes(Location location)`
+|             | State of the System | Expected output | Implemented? |
+|-------------|---------------------|-----------------|--------------|
 | Test Case 6 | `location` is `null` | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 7 | `location` is a valid `Location` object | a List<Hex> is returned without exception | :white_check_mark: |
 
 ### Method under test: ` addHex(Location location, Hex hex);`
+|             | State of the System | Expected output | Implemented? |
+|-------------|---------------------|-----------------|--------------|
 | Test Case 8 | `location` is `null`, Hex is a non-null value | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 9 | `location` is a valid `Location` object, Hex is a valid Hex object| the Hex at the location is added without exception | :white_check_mark: |
 | Test Case 10 | `location` is a valid 'Location' object, Hex is a null value | `NullPointerException` is thrown | :white_check_mark: |
 
 ### Method under test: ` getHex(Location location);`
+|             | State of the System | Expected output | Implemented? |
+|-------------|---------------------|-----------------|--------------|
 | Test Case 11 | `location` is `null | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 12 | `location` is a valid `Location` object | the Hex at the location is returned without exception | :white_check_mark: |
