@@ -60,7 +60,7 @@ public class Intersections {
 
 ### Method under test: ` addHex(Location location, Hex hex);`
 | Test Case 8 | `location` is `null`, Hex is a non-null value | `NullPointerException` is thrown | :white_check_mark: |
-| Test Case 9 | `location` is a valid `Location` object, Hex is a valid Hex object| the Hex at the location is added without exception | :x: |
+| Test Case 9 | `location` is a valid `Location` object, Hex is a valid Hex object| the Hex at the location is added without exception | :white_check_mark: |
 | Test Case 10 | `location` is a valid 'Location' object, Hex is a null value | `NullPointerException` is thrown | :white_check_mark: |
 
 ### Method under test: ` getHexAtLocation(Location location);`
