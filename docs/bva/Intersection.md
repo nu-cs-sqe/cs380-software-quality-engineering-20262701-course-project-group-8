@@ -9,7 +9,7 @@ public class Intersections {
     public Hex addHex(Location location, Hex hex);
     public Building getBuilding(Location location);
     public List<Hex> getNeighboringHexes(Location location);
-    public Hex getHexAtLocation(Location location);
+    public Hex getHex(Location location);
 
 }
 ```
@@ -18,7 +18,7 @@ public class Intersections {
 - 'getBuilding(Location location) rejects 'null' location with 'NullPointerException'. The location must be a valid location on the game board, otherwise rejects invalid location with 'IllegalArgumentException'. Returns the Building, which is a Settlement or City.
 - 'getNeighboringHexes(Location location)' rejects 'null' location with 'NullPointerException'. The location must be a valid location on the game board, otherwise rejects invalid location with 'IllegalArgumentException'. Returns a List of neighboring hexes adjacent to the location or the empty list if no Hexes are adjacent to the location.
 - 'addHex(Location location, Hex hex)' rejects 'null' location with 'NullPointerException'. Rejects 'null' Hex with 'NullPointerException'. Maps the corresponding Hex to the Location.
-- 'getHexAtLocation(Location location)' rejects 'null' location with 'NullPointerException'. Returns the Hex at the corresponding location, or 'null' if no Hex is found.
+- 'getHex(Location location)' rejects 'null' location with 'NullPointerException'. Returns the Hex at the corresponding location, or 'null' if no Hex is found.
 
 ## Step 1-3: Analysis
 
@@ -27,19 +27,32 @@ public class Intersections {
 |---|---|---|---|
 | Input | `Location` | Pointer | `null`, valid non-null, invalid non-null |
 | Input | `Building` | Pointer | `null`, valid non-null, invalid non-null |
-| Output | a new 'Intersection' type or an exception | Cases | Intersection Object, `NullPointerException`, 'IllegalArgumentException' |
+| Output | a new entry into Location-Building mapping or an exception | Cases | Building added, `NullPointerException` |
+
+### Method: `addHex(Location location, Hex hex)`
+| | Description | Category | Boundary Values |
+|---|---|---|---|
+| Input | `Location` | Pointer | `null`, valid non-null, invalid non-null |
+| Input | `Hex` | Pointer | `null`, valid non-null, invalid non-null |
+| Output | added entry into Location-Hex mapping or an exception | Cases | Hex added, `NullPointerException`|
 
 ### Method: `getBuilding(Location location)`
 | | Description | Category | Boundary Values |
 |---|---|---|---|
 | Input | `Location` | Pointer | `null`, non-null |
-| Output | the Building at this intersection or an exception | Cases | Building object, `NullPointerException`, 'IllegalArgumentException' |
+| Output | the Building at this intersection or an exception | Cases | Building object, `NullPointerException`|
+
+### Method: `getHex(Location location)`
+| | Description | Category | Boundary Values |
+|---|---|---|---|
+| Input | `Location` | Pointer | `null`, non-null |
+| Output | the Hex at this intersection or an exception | Cases | Hex object, `NullPointerException`|
 
 ### Method: `getNeighboringHexes(Location location)`
 | | Description | Category | Boundary Values |
 |---|---|---|---|
 | Input | `Location` | Pointer | `null`, non-null |
-| Output | a List of neighboring Hex's or an exception | Cases | List<Hex>, `NullPointerException`, 'IllegalArgumentException' |
+| Output | a List of neighboring Hex's or an exception | Cases | List<Hex>, `NullPointerException` |
 
 ## Step 4: Test Cases
 
@@ -63,6 +76,6 @@ public class Intersections {
 | Test Case 9 | `location` is a valid `Location` object, Hex is a valid Hex object| the Hex at the location is added without exception | :white_check_mark: |
 | Test Case 10 | `location` is a valid 'Location' object, Hex is a null value | `NullPointerException` is thrown | :white_check_mark: |
 
-### Method under test: ` getHexAtLocation(Location location);`
+### Method under test: ` getHex(Location location);`
 | Test Case 11 | `location` is `null | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 12 | `location` is a valid `Location` object | the Hex at the location is returned without exception | :x: |

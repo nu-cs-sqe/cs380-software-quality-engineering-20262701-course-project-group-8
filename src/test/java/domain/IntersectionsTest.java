@@ -97,5 +97,14 @@ public class IntersectionsTest {
         assertEquals("Error: Hex cannot be a null value", exception.getMessage());
     }
 
+    // TC 11
+    @Test
+    public void getHex_locationIsNull_throwNullPointerException() {
+        Location location = null;
+
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> Intersections.getHex(location));
+        assertEquals("Error: Location cannot be a null value", exception.getMessage());  
+    }
+
 
 }
