@@ -102,11 +102,11 @@ public class Hex {
 ### Method under test: `producesResource(int diceRoll)`
 | | State of the System | Expected output | Status |
 |---|---|---|---|
-| Test Case 20 | `terrainType` is `DESERTS`, `numberDisc = 0`, and `diceRoll = 0` | Returns `false` | |
-| Test Case 21 | Non-desert hex with `numberDisc = 2`, robber absent, and `diceRoll = 2` | Returns `true` | |
-| Test Case 22 | Non-desert hex with `numberDisc = 2`, robber absent, and `diceRoll = 0` | Returns `false` | |
-| Test Case 23 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 6` | Returns `false` | |
-| Test Case 24 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 7` | Returns `false` | |
-| Test Case 25 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 8` | Returns `true` | |
-| Test Case 26 | Non-desert hex with `numberDisc = 12`, robber present, and `diceRoll = 12` | Returns `false` | |
-| Test Case 27 | Non-desert hex with `numberDisc = 12`, robber absent, and `diceRoll = 12` | Returns `true` | |
+| Test Case 20 | `terrainType` is `DESERTS`, `numberDisc = 0`, and `diceRoll = 0` | Returns `false` |:white_check_mark:|
+| Test Case 21 | Non-desert hex with `numberDisc = 2`, robber absent, and `diceRoll = 2` | Returns `true` |:white_check_mark:|
+| Test Case 22 | Non-desert hex with `numberDisc = 2`, robber absent, and `diceRoll = 0` | Returns `false` |:white_check_mark:|
+| Test Case 23 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 6` | Returns `false` |:white_check_mark:|
+| Test Case 24 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 7` | Returns `false` |:white_check_mark:|
+| Test Case 25 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 8` | Returns `true` |:white_check_mark:|
+| Test Case 26 | Non-desert hex with `numberDisc = 12`, robber present, and `diceRoll = 12` | Returns `false` |:white_check_mark:|
+| Test Case 27 | Non-desert hex with `numberDisc = 12`, robber absent, and `diceRoll = 12` | Returns `true` |:white_check_mark:|

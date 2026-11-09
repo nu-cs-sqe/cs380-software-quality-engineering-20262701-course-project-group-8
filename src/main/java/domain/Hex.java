@@ -43,6 +43,6 @@ public class Hex {
     }
 
     public boolean producesResource(int diceRoll) {
-        return false;
+        return !hasRobber && terrainType != TerrainType.DESERTS && numberDisc == diceRoll;
     }
 }
