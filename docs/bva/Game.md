@@ -98,79 +98,79 @@ public class Game {
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 1 | `players` is `null` | `IllegalArgumentException` is thrown | |
-| Test Case 2 | Player list contains 1 player | `IllegalArgumentException` is thrown | |
-| Test Case 3 | Player list contains 2 players | A `Game` object is created successfully | |
-| Test Case 4 | Player list contains 3 players | A `Game` object is created successfully | |
-| Test Case 5 | Player list contains 4 players | A `Game` object is created successfully | |
-| Test Case 6 | Player list contains 5 players | `IllegalArgumentException` is thrown | |
+| Test Case 1 | `players` is `null` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 2 | Player list contains 1 player | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 3 | Player list contains 2 players | A `Game` object is created successfully |:white_check_mark:|
+| Test Case 4 | Player list contains 3 players | A `Game` object is created successfully |:white_check_mark:|
+| Test Case 5 | Player list contains 4 players | A `Game` object is created successfully |:white_check_mark:|
+| Test Case 6 | Player list contains 5 players | `IllegalArgumentException` is thrown |:white_check_mark:|
 
 ### Method under test: `startGame()`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 7 | Game has been constructed but not started | Game phase changes to `SETUP` | |
-| Test Case 8 | Game has been constructed with 2 players | First player is assigned as the current player | |
-| Test Case 9 | Game has already entered `SETUP` | `IllegalStateException` is thrown | |
-| Test Case 10 | Game is already in `PLAYING` | `IllegalStateException` is thrown | |
-| Test Case 11 | Game is already `FINISHED` | `IllegalStateException` is thrown | |
+| Test Case 7 | Game has been constructed but not started | Game phase changes to `SETUP` |:white_check_mark:|
+| Test Case 8 | Game has been constructed with 2 players | First player is assigned as the current player |:white_check_mark:|
+| Test Case 9 | Game has already entered `SETUP` | `IllegalStateException` is thrown |:white_check_mark:|
+| Test Case 10 | Game is already in `PLAYING` | `IllegalStateException` is thrown |:white_check_mark:|
+| Test Case 11 | Game is already `FINISHED` | `IllegalStateException` is thrown |:white_check_mark:|
 
 ### Method under test: `getPhase()`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 12 | Game has just been constructed | Returns `NOT_STARTED` | |
-| Test Case 13 | `startGame()` has been called | Returns `SETUP` | |
-| Test Case 14 | Setup has been completed and game has entered active play | Returns `PLAYING` | |
-| Test Case 15 | `endGame()` has been called successfully | Returns `FINISHED` | |
+| Test Case 12 | Game has just been constructed | Returns `NOT_STARTED` |:white_check_mark:|
+| Test Case 13 | `startGame()` has been called | Returns `SETUP` |:white_check_mark:|
+| Test Case 14 | Setup has been completed and game has entered active play | Returns `PLAYING` |:white_check_mark:|
+| Test Case 15 | `endGame()` has been called successfully | Returns `FINISHED` |:white_check_mark:|
 
 ### Method under test: `getCurrentPlayer()`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 16 | Game has not started | Returns `null` | |
-| Test Case 17 | Game has started with 2 players | Returns the first player | |
-| Test Case 18 | Game is in `PLAYING` and current player is the first player | Returns the first player | |
-| Test Case 19 | Game is in `PLAYING` and current player is the last player | Returns the last player | |
+| Test Case 16 | Game has not started | Returns `null` |:white_check_mark:|
+| Test Case 17 | Game has started with 2 players | Returns the first player |:white_check_mark:|
+| Test Case 18 | Game is in `PLAYING` and current player is the first player | Returns the first player |:white_check_mark:|
+| Test Case 19 | Game is in `PLAYING` and current player is the last player | Returns the last player |:white_check_mark:|
 
 ### Method under test: `advanceTurn()`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 20 | Game has not started | `IllegalStateException` is thrown | |
-| Test Case 21 | Game is in `SETUP` | `IllegalStateException` is thrown | |
-| Test Case 22 | Game is in `PLAYING` with 2 players; first player is current | Current player changes to the second player | |
-| Test Case 23 | Game is in `PLAYING` with 2 players; second player is current | Current player wraps around to the first player | |
-| Test Case 24 | Game is in `PLAYING` with 3 players; first player is current | Current player changes to the second player | |
-| Test Case 25 | Game is in `PLAYING` with 4 players; second player is current | Current player changes to the third player | |
-| Test Case 26 | Game is in `PLAYING` with 4 players; last player is current | Current player wraps around to the first player | |
-| Test Case 27 | Game is `FINISHED` | `IllegalStateException` is thrown | |
+| Test Case 20 | Game has not started | `IllegalStateException` is thrown |:white_check_mark:|
+| Test Case 21 | Game is in `SETUP` | `IllegalStateException` is thrown |:white_check_mark:|
+| Test Case 22 | Game is in `PLAYING` with 2 players; first player is current | Current player changes to the second player |:white_check_mark:|
+| Test Case 23 | Game is in `PLAYING` with 2 players; second player is current | Current player wraps around to the first player |:white_check_mark:|
+| Test Case 24 | Game is in `PLAYING` with 3 players; first player is current | Current player changes to the second player |:white_check_mark:|
+| Test Case 25 | Game is in `PLAYING` with 4 players; second player is current | Current player changes to the third player |:white_check_mark:|
+| Test Case 26 | Game is in `PLAYING` with 4 players; last player is current | Current player wraps around to the first player |:white_check_mark:|
+| Test Case 27 | Game is `FINISHED` | `IllegalStateException` is thrown |:white_check_mark:|
 
 ### Method under test: `endGame(Player winner)`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 28 | `winner` is `null` | `IllegalArgumentException` is thrown | |
-| Test Case 29 | `winner` is a player belonging to the game, and game is in `PLAYING` | Game phase changes to `FINISHED` and winner is recorded | |
-| Test Case 30 | `winner` is a player not belonging to the game | `IllegalArgumentException` is thrown | |
-| Test Case 31 | Game has not started | `IllegalStateException` is thrown | |
-| Test Case 32 | Game is in `SETUP` | `IllegalStateException` is thrown | |
-| Test Case 33 | Game is already `FINISHED` | `IllegalStateException` is thrown | |
+| Test Case 28 | `winner` is `null` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 29 | `winner` is a player belonging to the game, and game is in `PLAYING` | Game phase changes to `FINISHED` and winner is recorded |:white_check_mark:|
+| Test Case 30 | `winner` is a player not belonging to the game | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 31 | Game has not started | `IllegalStateException` is thrown |:white_check_mark:|
+| Test Case 32 | Game is in `SETUP` | `IllegalStateException` is thrown |:white_check_mark:|
+| Test Case 33 | Game is already `FINISHED` | `IllegalStateException` is thrown |:white_check_mark:|
 
 ### Method under test: `getWinner()`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 34 | Game has not started | Returns `null` | |
-| Test Case 35 | Game is in `PLAYING` | Returns `null` | |
-| Test Case 36 | Game has ended with the first player as winner | Returns the first player | |
-| Test Case 37 | Game has ended with the last player as winner | Returns the last player | |
+| Test Case 34 | Game has not started | Returns `null` |:white_check_mark:|
+| Test Case 35 | Game is in `PLAYING` | Returns `null` |:white_check_mark:|
+| Test Case 36 | Game has ended with the first player as winner | Returns the first player |:white_check_mark:|
+| Test Case 37 | Game has ended with the last player as winner | Returns the last player |:white_check_mark:|
 
 ### Method under test: `completeSetup()`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 38 | Game has not been started (`NOT_STARTED`) | `IllegalStateException` is thrown; phase remains `NOT_STARTED` | |
-| Test Case 39 | Game is in the setup phase (`SETUP`) | Game phase changes to `PLAYING` | |
-| Test Case 40 | Game is already in the playing phase (`PLAYING`) | `IllegalStateException` is thrown; phase remains `PLAYING` | |
-| Test Case 41 | Game has finished (`FINISHED`) | `IllegalStateException` is thrown; phase remains `FINISHED` | |
+| Test Case 38 | Game has not been started (`NOT_STARTED`) | `IllegalStateException` is thrown; phase remains `NOT_STARTED` |:white_check_mark:|
+| Test Case 39 | Game is in the setup phase (`SETUP`) | Game phase changes to `PLAYING` |:white_check_mark:|
+| Test Case 40 | Game is already in the playing phase (`PLAYING`) | `IllegalStateException` is thrown; phase remains `PLAYING` |:white_check_mark:|
+| Test Case 41 | Game has finished (`FINISHED`) | `IllegalStateException` is thrown; phase remains `FINISHED` |:white_check_mark:|
