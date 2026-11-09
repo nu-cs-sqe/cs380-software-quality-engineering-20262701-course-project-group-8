@@ -43,13 +43,8 @@ public class IntersectionsTest {
     // TC 4
     @Test
     public void getBuilding_locationIsNull_throwsNullPointerException() {
-        Location location1 = EasyMock.createMock(Location.class);
-        Location location2 = null;
-        Building building = Building.CITY;
-        
-        assertDoesNotThrow(() -> Intersections.addBuilding(location1, building));
-
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> Intersections.getBuilding(location2));
+        Location location = null;
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> Intersections.getBuilding(location));
         assertEquals("Error: Location cannot be a null value", exception.getMessage());
     }
 
@@ -68,17 +63,21 @@ public class IntersectionsTest {
     // TC 6
     @Test
     public void getNeighboringHexes_locationIsNull_throwNullPointerException() {
-        Location location1 = EasyMock.createMock(Location.class);
-        Location location2 = null;
-        Building building = Building.CITY;
-        
-        assertDoesNotThrow(() -> Intersections.addBuilding(location1, building));
-
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> Intersections.getNeighboringHexes(location2));
+        Location location = null;
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> Intersections.getNeighboringHexes(location));
         assertEquals("Error: Location cannot be a null value", exception.getMessage());
     }
 
-   
+    // TC 8
+    @Test
+    public void addHex_locationIsNullHexIsValid_throwNullPointerException() {
+        Location location = null;
+        Hex hex = EasyMock.createMock(Hex.class);
+
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> Intersections.addHex(location, hex));
+        assertEquals("Error: Location cannot be a null value", exception.getMessage()); 
+        
+    }
 
 
 }

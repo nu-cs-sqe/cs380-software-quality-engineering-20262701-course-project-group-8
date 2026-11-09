@@ -12,7 +12,9 @@ public class Intersections {
     public Intersections() {}
 
     public static void addHex(Location location, Hex hex) {
-
+        if (location == null) {
+            throw new NullPointerException("Error: Location cannot be a null value");
+        }
     }
 
     public static void addBuilding(Location location, Building building) {
