@@ -175,7 +175,7 @@ public class Board {
 | Test Case 26 | `diceRoll = 8`, multiple non-desert hexes have number disc 8 and no robber | Returns all matching hexes | Planned |
 | Test Case 27 | Matching hex has the robber | Does not include that hex | Planned |
 | Test Case 28 | Desert hex is checked | Does not include desert hex | Planned |
-| Test Case 29 | `diceRoll = 6`, no hex has number disc 6 | Returns empty list | Planned |
+| Test Case 29 | `diceRoll = 6` | Returns matching hex | Planned |
 | Test Case 30 | `diceRoll = 7` | Returns empty list | Planned |
 | Test Case 31 | `diceRoll = 1` | Returns empty list | Planned |
 | Test Case 32 | `diceRoll = 13` | Returns empty list | Planned |
