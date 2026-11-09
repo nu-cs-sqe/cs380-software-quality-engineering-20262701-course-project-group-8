@@ -51,7 +51,29 @@ public class Intersections {
             throw new NullPointerException("Error: Location cannot be a null value");
         }
 
-        return new ArrayList<>();
+        int x = location.getXPos();
+        int y = location.getYPos();
+
+        List<Hex> neighboringHexes = new ArrayList<>();
+        for (int dx = -1; dx <= 1; ++dx) {
+            for (int dy = -1; dy <= 1; ++dy) if (dx != 0 || dy != 0) {
+                int nx = x + dx;
+                int ny = y + dy;
+                if (nx >= 0 && ny >= 0) {
+                    Location adjacentLocation = new Location(nx, ny);
+                    Hex adjacentHex = locationToHex.get(adjacentLocation);
+                    if (adjacentHex != null) {
+                        neighboringHexes.add(adjacentHex);
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < neighboringHexes.size(); ++i) {
+            System.out.println(neighboringHexes.get(i));
+        }
+
+        return neighboringHexes;
     }
 
 

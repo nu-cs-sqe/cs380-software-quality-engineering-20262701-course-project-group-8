@@ -68,6 +68,35 @@ public class IntersectionsTest {
         assertEquals("Error: Location cannot be a null value", exception.getMessage());
     }
 
+    // TC 7
+    @Test
+    public void getNeighboringHexes_locationIsValid_returnsHexList() {
+        Location center = EasyMock.createMock(Location.class);
+        EasyMock.expect(center.getXPos()).andStubReturn(1);
+        EasyMock.expect(center.getYPos()).andStubReturn(1);
+
+        EasyMock.replay(center);
+
+        Hex hexLeft = EasyMock.createMock(Hex.class);
+        Hex hexRight = EasyMock.createMock(Hex.class);
+        Hex hexUp = EasyMock.createMock(Hex.class);
+        Hex hexDown = EasyMock.createMock(Hex.class);
+        Intersections.addHex(new Location(0, 1), hexLeft);
+        Intersections.addHex(new Location(2, 1), hexRight);
+        Intersections.addHex(new Location(1, 0), hexDown);
+        Intersections.addHex(new Location(1, 2), hexUp);
+
+        List<Hex> actual = Intersections.getNeighboringHexes(center);
+
+        int expectedSize = 4;
+        int actualSize = actual.size();
+        assertEquals(expectedSize, actualSize);
+        assertTrue(actual.contains(hexLeft));
+        assertTrue(actual.contains(hexRight));
+        assertTrue(actual.contains(hexDown));
+        assertTrue(actual.contains(hexUp));
+    }
+
     // TC 8
     @Test
     public void addHex_locationIsNullHexIsValid_throwNullPointerException() {

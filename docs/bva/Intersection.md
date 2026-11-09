@@ -69,7 +69,7 @@ public class Intersections {
 
 ### Method under test: `getNeighboringHexes(Location location)`
 | Test Case 6 | `location` is `null` | `NullPointerException` is thrown | :white_check_mark: |
-| Test Case 7 | `location` is a valid `Location` object | a List<Hex> is returned without exception | :x: |
+| Test Case 7 | `location` is a valid `Location` object | a List<Hex> is returned without exception | :white_check_mark: |
 
 ### Method under test: ` addHex(Location location, Hex hex);`
 | Test Case 8 | `location` is `null`, Hex is a non-null value | `NullPointerException` is thrown | :white_check_mark: |
