@@ -373,4 +373,42 @@ public class GameTest {
         assertThrows(IllegalStateException.class,
                 () -> game.endGame(players.get(1)));
     }
+
+    // TC34
+    @Test
+    public void getWinner_gameNotStarted_returnsNull() {
+        Game game = createGame(2);
+
+        assertNull(game.getWinner());
+    }
+
+    // TC35
+    @Test
+    public void getWinner_gameInProgress_returnsNull() {
+        Game game = createPlayingGame(createPlayers(2));
+
+        assertNull(game.getWinner());
+    }
+
+    // TC36
+    @Test
+    public void getWinner_firstPlayerWins_returnsFirstPlayer() {
+        List<Player> players = createPlayers(2);
+        Game game = createPlayingGame(players);
+
+        game.endGame(players.get(0));
+
+        assertSame(players.get(0), game.getWinner());
+    }
+
+    // TC37
+    @Test
+    public void getWinner_lastPlayerWins_returnsLastPlayer() {
+        List<Player> players = createPlayers(4);
+        Game game = createPlayingGame(players);
+
+        game.endGame(players.get(3));
+
+        assertSame(players.get(3), game.getWinner());
+    }
 }
