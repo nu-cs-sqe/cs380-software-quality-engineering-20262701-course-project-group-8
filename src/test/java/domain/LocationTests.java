@@ -28,5 +28,13 @@ public class LocationTests {
         assertNotNull(location);
     }
 
+    // TC 4
+    @Test
+    public void getXPos_xPosIsOne_returnsOne() {
+        Location location = new Location(1, 0);
+        int expected = 1;
+        int actual = location.getXPos();
+        assertEquals(expected, actual);
+    }
 }
 

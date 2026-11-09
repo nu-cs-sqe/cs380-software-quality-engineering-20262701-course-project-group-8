@@ -44,7 +44,7 @@ public class Location {
 | Test Case 3 | xPos: 0, yPos: 0 | `IllegalArgumentException` is thrown  | :white_check_mark: |
 
 ### Method under test: `getXPos()`
-| Test Case 4 | xPos: 1, yPos: 0 | 1 | :x: |
+| Test Case 4 | xPos: 1, yPos: 0 | 1 | :white_check_mark: |
 
 ### Method under test: `getYPos()`
 | Test Case 5 | xPos: 0, yPos: 0 | 0 | :x: |

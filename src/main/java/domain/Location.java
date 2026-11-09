@@ -13,4 +13,8 @@ public class Location {
         this.xPos = xPos;
         this.yPos = yPos;
     }
+
+    public int getXPos() {
+        return xPos;
+    }
 }
