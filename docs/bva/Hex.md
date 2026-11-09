@@ -67,17 +67,17 @@ public class Hex {
 ### Method under test: `Hex(TerrainType terrainType, int numberDisc)`
 | | State of the System | Expected output | Status |
 |---|---|---|---|
-| Test Case 1 | `terrainType` is `null` | `IllegalArgumentException` is thrown | |
-| Test Case 2 | `terrainType` is `DESERTS` and `numberDisc` is `0` | A valid `Hex` is created; desert robber starts on the hex | |
-| Test Case 3 | `terrainType` is `DESERTS` and `numberDisc` is `-1` | `IllegalArgumentException` is thrown | |
-| Test Case 4 | `terrainType` is `DESERTS` and `numberDisc` is `1` | `IllegalArgumentException` is thrown | |
-| Test Case 5 | `terrainType` is non-desert and `numberDisc` is `1` | `IllegalArgumentException` is thrown | |
-| Test Case 6 | `terrainType` is non-desert and `numberDisc` is `2` | A valid `Hex` is created | |
-| Test Case 7 | `terrainType` is non-desert and `numberDisc` is `6` | A valid `Hex` is created | |
-| Test Case 8 | `terrainType` is non-desert and `numberDisc` is `7` | `IllegalArgumentException` is thrown | |
-| Test Case 9 | `terrainType` is non-desert and `numberDisc` is `8` | A valid `Hex` is created | |
-| Test Case 10 | `terrainType` is non-desert and `numberDisc` is `12` | A valid `Hex` is created | |
-| Test Case 11 | `terrainType` is non-desert and `numberDisc` is `13` | `IllegalArgumentException` is thrown | |
+| Test Case 1 | `terrainType` is `null` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 2 | `terrainType` is `DESERTS` and `numberDisc` is `0` | A valid `Hex` is created; desert robber starts on the hex |:white_check_mark:|
+| Test Case 3 | `terrainType` is `DESERTS` and `numberDisc` is `-1` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 4 | `terrainType` is `DESERTS` and `numberDisc` is `1` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 5 | `terrainType` is non-desert and `numberDisc` is `1` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 6 | `terrainType` is non-desert and `numberDisc` is `2` | A valid `Hex` is created |:white_check_mark:|
+| Test Case 7 | `terrainType` is non-desert and `numberDisc` is `6` | A valid `Hex` is created |:white_check_mark:|
+| Test Case 8 | `terrainType` is non-desert and `numberDisc` is `7` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 9 | `terrainType` is non-desert and `numberDisc` is `8` | A valid `Hex` is created |:white_check_mark:|
+| Test Case 10 | `terrainType` is non-desert and `numberDisc` is `12` | A valid `Hex` is created |:white_check_mark:|
+| Test Case 11 | `terrainType` is non-desert and `numberDisc` is `13` | `IllegalArgumentException` is thrown |:white_check_mark:|
 
 ### Method under test: `getTerrainType()`
 | | State of the System | Expected output | Status |
