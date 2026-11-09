@@ -1,6 +1,8 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Intersection {
@@ -12,7 +14,7 @@ public class Intersection {
         if (building == null) {
             throw new NullPointerException("Error: Building cannot be a null value");
         }
-        locationToBuilding = new HashMap();
+        locationToBuilding = new HashMap<>();
         locationToBuilding.put(location, building);
     }
 
@@ -21,5 +23,12 @@ public class Intersection {
             throw new NullPointerException("Error: Location cannot be a null value");
         }
         return locationToBuilding.get(location);
+    }
+
+    public List<Hex> getNeighboringHexes(Location location) {
+        if (location == null) {
+            throw new NullPointerException("Error: Location cannot be a null value");
+        }
+        return new ArrayList<>();
     }
 }
