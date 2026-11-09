@@ -78,4 +78,4 @@ public class Intersections {
 
 ### Method under test: ` getHex(Location location);`
 | Test Case 11 | `location` is `null | `NullPointerException` is thrown | :white_check_mark: |
-| Test Case 12 | `location` is a valid `Location` object | the Hex at the location is returned without exception | :x: |
+| Test Case 12 | `location` is a valid `Location` object | the Hex at the location is returned without exception | :white_check_mark: |

@@ -106,5 +106,16 @@ public class IntersectionsTest {
         assertEquals("Error: Location cannot be a null value", exception.getMessage());  
     }
 
+    // TC 12
+    @Test
+    public void getHex_locationIsValid_returnsHex() {
+        Location location = EasyMock.createMock(Location.class);
+        Hex hex = EasyMock.createMock(Hex.class);
+        Intersections.addHex(location, hex);
+
+        Hex expected = hex;
+        Hex actual = Intersections.getHex(location);
+        assertEquals(expected, actual);
+    }
 
 }

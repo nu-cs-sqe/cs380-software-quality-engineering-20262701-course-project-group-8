@@ -18,6 +18,8 @@ public class Intersections {
         if (hex == null) {
             throw new NullPointerException("Error: Hex cannot be a null value");
         }
+
+        locationToHex.put(location, hex);
     }
 
     public static void addBuilding(Location location, Building building) {
@@ -41,7 +43,7 @@ public class Intersections {
         if (location == null) {
             throw new NullPointerException("Error: Location cannot be a null value");
         }
-        return null;
+        return locationToHex.get(location);
     }
 
     public static List<Hex> getNeighboringHexes(Location location) {
