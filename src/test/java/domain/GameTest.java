@@ -178,4 +178,45 @@ public class GameTest {
 
         assertEquals(GamePhase.FINISHED, game.getPhase());
     }
+
+    // TC16
+    @Test
+    public void getCurrentPlayer_gameNotStarted_returnsNull() {
+        Game game = createGame(2);
+
+        assertNull(game.getCurrentPlayer());
+    }
+
+    // TC17
+    @Test
+    public void getCurrentPlayer_gameStarted_returnsFirstPlayer() {
+        List<Player> players = createPlayers(2);
+        Game game = new Game(players);
+
+        game.startGame();
+
+        assertSame(players.get(0), game.getCurrentPlayer());
+    }
+
+    // TC18
+    @Test
+    public void getCurrentPlayer_firstPlayersTurn_returnsFirstPlayer() {
+        List<Player> players = createPlayers(2);
+        Game game = createPlayingGame(players);
+
+        assertSame(players.get(0), game.getCurrentPlayer());
+    }
+
+    // TC19
+    @Test
+    public void getCurrentPlayer_lastPlayersTurn_returnsLastPlayer() {
+        List<Player> players = createPlayers(4);
+        Game game = createPlayingGame(players);
+
+        game.advanceTurn();
+        game.advanceTurn();
+        game.advanceTurn();
+
+        assertSame(players.get(3), game.getCurrentPlayer());
+    }
 }
