@@ -39,11 +39,11 @@ public class Intersection {
 ### Method under test: `Intersection(Location location, Building building)`
 |             | State of the System | Expected output | Implemented? |
 |-------------|---------------------|-----------------|--------------|
-| Test Case 1 | `location` is a valid `Location` object, `building' is `null` | `NullPointerException` is thrown  | :x: |
-| Test Case 2 | `location` is null, `building' is a valid `Building` object | `NullPointerException` is thrown | :x: |
-| Test Case 3 | `location` is a valid `Location` object, `building' is a valid `Building` object | a valid `Intersection` object is created without exception | :x: |
-| Test Case 4 | `location` is a invalid `Location` object, `building' is a valid `Building` object | an 'IllegalArgumentException' is thrown | :x: |
-| Test Case 5 | `location` is a valid `Location` object, `building' is an invalid `Building` object | an 'IllegalArgumentException' is thrown | :x: |
+| Test Case 1 | `location` is a valid `Location` object, `building' is -1 | `IllegalArgumentException` is thrown  | :x: |
+| Test Case 2 | `location` is null, `building' is a City | `NullPointerException` is thrown | :x: |
+| Test Case 3 | `location` is a valid `Location` object, `building' is a City | a valid `Intersection` object is created without exception | :x: |
+| Test Case 4 | `location` is a invalid `Location` object, `building' is a Road | an 'IllegalArgumentException' is thrown | :x: |
+| Test Case 5 | `location` is a valid `Location` object, `building' is -1 | an 'IllegalArgumentException' is thrown | :x: |
 
 ### Method under test: `getBuilding(Location location)`
 | Test Case 6 | `location` is `null` | `NullPointerException` is thrown | :x: |
