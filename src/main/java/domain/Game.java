@@ -54,6 +54,7 @@ public class Game {
 
         if (phase == GamePhase.PLAYING) {
             this.phase = GamePhase.FINISHED;
+            this.currentPlayerIndex = players.indexOf(winner);
         } else {
             throw new IllegalStateException("Error: Cannot end game in current phase");
         }
@@ -63,7 +64,7 @@ public class Game {
         if (phase == GamePhase.FINISHED) {
             return this.players.get(this.currentPlayerIndex);
         } else {
-            throw new IllegalStateException("Error: Cannot get winner in current phase");
+            return null;
         }
     }
 
