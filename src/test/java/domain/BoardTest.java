@@ -136,4 +136,36 @@ public class BoardTest {
                 board.getRobberHex().getTerrainType());
         verify(randomMock);
     }
+
+    // TC8
+    @Test
+    public void getHexes_returnsAllNineteenHexes() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        assertEquals(19, board.getHexes().size());
+        verify(randomMock);
+    }
+
+    // TC9
+    @Test
+    public void getHexes_addToList_throwsUnsupportedOperationException() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        assertThrows(UnsupportedOperationException.class,
+                () -> board.getHexes().add(
+                        new Hex(TerrainType.FORESTS, 2)
+                ));
+        verify(randomMock);
+    }
+
+    // TC10
+    @Test
+    public void getHexes_removeFromList_throwsUnsupportedOperationException() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        assertThrows(UnsupportedOperationException.class,
+                () -> board.getHexes().remove(0));
+        verify(randomMock);
+    }
 }

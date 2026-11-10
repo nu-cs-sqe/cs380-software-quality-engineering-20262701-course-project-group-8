@@ -129,9 +129,9 @@ public class Board {
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 8 | `getHexes()` called on initialized board | Returns a list containing 19 hexes |  |
-| Test Case 9 | Attempt to add a hex to the returned list | `UnsupportedOperationException` |  |
-| Test Case 10 | Attempt to remove a hex from the returned list | `UnsupportedOperationException` |  |
+| Test Case 8 | `getHexes()` called on initialized board | Returns a list containing 19 hexes |:white_check_mark:|
+| Test Case 9 | Attempt to add a hex to the returned list | `UnsupportedOperationException` |:white_check_mark:|
+| Test Case 10 | Attempt to remove a hex from the returned list | `UnsupportedOperationException` |:white_check_mark:|
 
 ### Method under test: `getHex(int index)`
 
