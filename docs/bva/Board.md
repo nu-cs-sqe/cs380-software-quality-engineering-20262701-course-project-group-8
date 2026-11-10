@@ -171,12 +171,12 @@ public class Board {
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 25 | `diceRoll = 2`, one non-desert hex has number disc 2 and no robber | Returns matching hex |  |
-| Test Case 26 | `diceRoll = 8`, multiple non-desert hexes have number disc 8 and no robber | Returns all matching hexes |  |
-| Test Case 27 | Matching hex has the robber | Does not include that hex |  |
-| Test Case 28 | Desert hex is checked | Does not include desert hex |  |
-| Test Case 29 | `diceRoll = 6` | Returns matching hex |  |
-| Test Case 30 | `diceRoll = 7` | Returns empty list |  |
-| Test Case 31 | `diceRoll = 1` | Returns empty list |  |
-| Test Case 32 | `diceRoll = 13` | Returns empty list |  |
-| Test Case 33 | Matching number discs exist, but all matching hexes have the robber | Returns empty list |  |
+| Test Case 25 | `diceRoll = 2`, one non-desert hex has number disc 2 and no robber | Returns matching hex |:white_check_mark:|
+| Test Case 26 | `diceRoll = 8`, multiple non-desert hexes have number disc 8 and no robber | Returns all matching hexes |:white_check_mark:|
+| Test Case 27 | Matching hex has the robber | Does not include that hex |:white_check_mark:|
+| Test Case 28 | Desert hex is checked | Does not include desert hex |:white_check_mark:|
+| Test Case 29 | `diceRoll = 6` | Returns matching hex |:white_check_mark:|
+| Test Case 30 | `diceRoll = 7` | Returns empty list |:white_check_mark:|
+| Test Case 31 | `diceRoll = 1` | Returns empty list |:white_check_mark:|
+| Test Case 32 | `diceRoll = 13` | Returns empty list |:white_check_mark:|
+| Test Case 33 | Matching number discs exist, but all matching hexes have the robber | Returns empty list |:white_check_mark:|

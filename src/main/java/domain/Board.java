@@ -122,6 +122,14 @@ public class Board {
     }
 
     public List<Hex> getHexesProducingResource(int diceRoll) {
-        return null;
+        List<Hex> producingHexes = new ArrayList<>();
+
+        for (Hex hex : hexes) {
+            if (hex.producesResource(diceRoll)) {
+                producingHexes.add(hex);
+            }
+        }
+
+        return Collections.unmodifiableList(producingHexes);
     }
 }
