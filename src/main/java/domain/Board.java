@@ -81,11 +81,11 @@ public class Board {
     }
 
     public List<Hex> getHexes() {
-        return null;
+        return Collections.unmodifiableList(hexes);
     }
 
     public Hex getHex(int index) {
-        return null;
+        return hexes.get(index);
     }
 
     public int getNumberOfHexes() {
@@ -93,7 +93,13 @@ public class Board {
     }
 
     public Hex getRobberHex() {
-        return null;
+        for (Hex hex : hexes) {
+            if (hex.hasRobber()) {
+                return hex;
+            }
+        }
+
+        throw new IllegalStateException("Error: No hex currently has the robber");
     }
 
     public void moveRobber(Hex targetHex) {

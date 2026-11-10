@@ -120,10 +120,10 @@ public class Board {
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 4 | Board initialized | Exactly 4 forests, 3 hills, 3 mountains, 4 fields, 4 pastures, and 1 desert |  |
-| Test Case 5 | Board initialized | Exactly 18 non-desert number discs and 1 desert number disc of 0 |  |
-| Test Case 6 | Board initialized | Every non-desert number disc is valid; no number disc is 7 |  |
-| Test Case 7 | Board initialized | Exactly one hex initially contains the robber, and it is the desert |  |
+| Test Case 4 | Board initialized | Exactly 4 forests, 3 hills, 3 mountains, 4 fields, 4 pastures, and 1 desert |:white_check_mark:|
+| Test Case 5 | Board initialized | Exactly 18 non-desert number discs and 1 desert number disc of 0 |:white_check_mark:|
+| Test Case 6 | Board initialized | Every non-desert number disc is valid; no number disc is 7 |:white_check_mark:|
+| Test Case 7 | Board initialized | Exactly one hex initially contains the robber, and it is the desert |:white_check_mark:|
 
 ### Method under test: `getHexes()`
 
