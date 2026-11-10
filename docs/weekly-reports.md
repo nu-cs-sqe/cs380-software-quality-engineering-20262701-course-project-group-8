@@ -22,6 +22,9 @@
 3. [done] Jiadong Li: Implement ResourceHand class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/issues/17]
 4. [done] Jiadong Li: Implemented Bank class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/26]
 5. [done] Stephi Lyou: Implemented Game class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/28]
+6. [done] Sami Khan: Implemented Intersection class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/30]
+7. [done] Sami Khan: Implemented Location class (needed for the Intersection class functionality) with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/30]
+8. [done] Sami Khan: Implemented Building class (needed for the Intersection class functionality), currently an enumeration for current needs (will add on in the future if needed) [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/30]
 
 # One section per week until the last week of class (the week before the Finals week)
 
