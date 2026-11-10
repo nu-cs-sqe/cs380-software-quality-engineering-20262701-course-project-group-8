@@ -223,4 +223,14 @@ public class BoardTest {
                 () -> board.getHex(19));
         verify(randomMock);
     }
+
+    // TC16
+    @Test
+    public void getNumberOfHexes_returnsNineteen() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        assertEquals(19, board.getNumberOfHexes());
+        verify(randomMock);
+    }
 }

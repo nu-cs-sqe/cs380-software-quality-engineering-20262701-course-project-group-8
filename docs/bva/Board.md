@@ -147,7 +147,7 @@ public class Board {
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 16 | Board initialized | Returns `19` |  |
+| Test Case 16 | Board initialized | Returns `19` |:white_check_mark:|
 
 ### Method under test: `getRobberHex()`
 
