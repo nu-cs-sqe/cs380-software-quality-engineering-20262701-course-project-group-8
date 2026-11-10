@@ -137,11 +137,11 @@ public class Board {
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 11 | `index = -1` | `IndexOutOfBoundsException` |  |
-| Test Case 12 | `index = 0` | Returns first hex |  |
-| Test Case 13 | `index = 9` | Returns tenth hex |  |
-| Test Case 14 | `index = 18` | Returns nineteenth hex |  |
-| Test Case 15 | `index = 19` | `IndexOutOfBoundsException` |  |
+| Test Case 11 | `index = -1` | `IndexOutOfBoundsException` |:white_check_mark:|
+| Test Case 12 | `index = 0` | Returns first hex |:white_check_mark:|
+| Test Case 13 | `index = 9` | Returns tenth hex |:white_check_mark:|
+| Test Case 14 | `index = 18` | Returns nineteenth hex |:white_check_mark:|
+| Test Case 15 | `index = 19` | `IndexOutOfBoundsException` |:white_check_mark:|
 
 ### Method under test: `getNumberOfHexes()`
 

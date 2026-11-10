@@ -168,4 +168,59 @@ public class BoardTest {
                 () -> board.getHexes().remove(0));
         verify(randomMock);
     }
+
+    // TC11
+    @Test
+    public void getHex_negativeIndex_throwsIndexOutOfBoundsException() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        assertThrows(IndexOutOfBoundsException.class,
+                () -> board.getHex(-1));
+        verify(randomMock);
+    }
+
+    // TC12
+    @Test
+    public void getHex_zeroIndex_returnsFirstHex() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        assertNotNull(board.getHex(0));
+        assertSame(board.getHexes().get(0), board.getHex(0));
+        verify(randomMock);
+    }
+
+    // TC13
+    @Test
+    public void getHex_middleIndex_returnsTenthHex() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        assertNotNull(board.getHex(9));
+        assertSame(board.getHexes().get(9), board.getHex(9));
+        verify(randomMock);
+    }
+
+    // TC14
+    @Test
+    public void getHex_lastValidIndex_returnsNineteenthHex() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        assertNotNull(board.getHex(18));
+        assertSame(board.getHexes().get(18), board.getHex(18));
+        verify(randomMock);
+    }
+
+    // TC15
+    @Test
+    public void getHex_indexNineteen_throwsIndexOutOfBoundsException() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        assertThrows(IndexOutOfBoundsException.class,
+                () -> board.getHex(19));
+        verify(randomMock);
+    }
 }
