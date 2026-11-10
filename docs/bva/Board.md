@@ -107,14 +107,14 @@ public class Board {
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 1 | Default constructor called | Board created with exactly 19 hexes |  |
+| Test Case 1 | Default constructor called | Board created with exactly 19 hexes |:white_check_mark:|
 
 ### Method under test: `Board(Random random)`
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 2 | `random = null` | `NullPointerException` |  |
-| Test Case 3 | Valid `Random` object supplied | Board created with exactly 19 hexes |  |
+| Test Case 2 | `random = null` | `NullPointerException` |:white_check_mark:|
+| Test Case 3 | Valid `Random` object supplied | Board created with exactly 19 hexes |:white_check_mark:|
 
 ### Method under test: `initializeBoard()` (private)
 

@@ -1,16 +1,83 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class Board {
 
-    public Board() {
+    private static final List<TerrainType> TERRAIN = Arrays.asList(
+        TerrainType.FORESTS,
+        TerrainType.FORESTS,
+        TerrainType.FORESTS,
+        TerrainType.FORESTS,
 
+        TerrainType.HILLS,
+        TerrainType.HILLS,
+        TerrainType.HILLS,
+
+        TerrainType.MOUNTAINS,
+        TerrainType.MOUNTAINS,
+        TerrainType.MOUNTAINS,
+
+        TerrainType.FIELDS,
+        TerrainType.FIELDS,
+        TerrainType.FIELDS,
+        TerrainType.FIELDS,
+
+        TerrainType.PASTURES,
+        TerrainType.PASTURES,
+        TerrainType.PASTURES,
+        TerrainType.PASTURES,
+
+        TerrainType.DESERTS
+    );
+
+    private static final List<Integer> NUMBER_DISCS = Arrays.asList(
+        2, 3, 3, 4, 4, 5, 5, 6, 6,
+        8, 8, 9, 9, 10, 10, 11, 11, 12
+    );
+
+    private final List<Hex> hexes;
+    private final Random random;
+
+    public Board() {
+        this(new Random());
     }
 
     public Board(Random random) {
+        this.random = Objects.requireNonNull(random);
+        this.hexes = new ArrayList<>();
 
+        initializeBoard();
+    }
+
+    private void initializeBoard() {
+        List<TerrainType> terrains = new ArrayList<>(TERRAIN);
+        List<Integer> numberDiscs = new ArrayList<>(NUMBER_DISCS);
+
+        Collections.shuffle(terrains, random);
+        Collections.shuffle(numberDiscs, random);
+
+        int numberIndex = 0;
+
+        for (TerrainType terrain : terrains) {
+
+            int numberDisc;
+
+            if (terrain == TerrainType.DESERTS) {
+                numberDisc = 0;
+            } else {
+                numberDisc = numberDiscs.get(numberIndex);
+                numberIndex++;
+            }
+
+            Hex hex = new Hex(terrain, numberDisc);
+            hexes.add(hex);
+        }
     }
 
     public List<Hex> getHexes() {
@@ -22,7 +89,7 @@ public class Board {
     }
 
     public int getNumberOfHexes() {
-        return 0;
+        return hexes.size();
     }
 
     public Hex getRobberHex() {
