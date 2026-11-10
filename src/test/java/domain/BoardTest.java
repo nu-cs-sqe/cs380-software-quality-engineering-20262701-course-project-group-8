@@ -358,4 +358,134 @@ public class BoardTest {
         assertSame(secondTarget, board.getRobberHex());
         verify(randomMock);
     }
+
+    // TC25
+    @Test
+    public void getHexesProducingResource_rollTwo_returnsMatchingHex() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        List<Hex> producingHexes = board.getHexesProducingResource(2);
+
+        assertEquals(1, producingHexes.size());
+        assertEquals(2, producingHexes.get(0).getNumberDisc());
+        assertFalse(producingHexes.get(0).hasRobber());
+        verify(randomMock);
+    }
+
+    // TC26
+    @Test
+    public void getHexesProducingResource_rollEight_returnsAllEligibleHexes() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        List<Hex> expectedHexes = board.getHexes().stream()
+                .filter(hex -> hex.getNumberDisc() == 8)
+                .filter(hex -> !hex.hasRobber())
+                .collect(Collectors.toList());
+
+        List<Hex> producingHexes = board.getHexesProducingResource(8);
+
+        assertEquals(expectedHexes, producingHexes);
+        assertTrue(producingHexes.size() >= 1);
+        assertTrue(producingHexes.size() <= 2);
+        verify(randomMock);
+    }
+
+    // TC27
+    @Test
+    public void getHexesProducingResource_robberOnMatchingHex_excludesThatHex() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        Hex targetHex = board.getHexes().stream()
+                .filter(hex -> hex.getNumberDisc() == 8)
+                .findFirst()
+                .orElseThrow();
+
+        board.moveRobber(targetHex);
+
+        List<Hex> producingHexes = board.getHexesProducingResource(8);
+
+        assertFalse(producingHexes.contains(targetHex));
+        verify(randomMock);
+    }
+
+    // TC28
+    @Test
+    public void getHexesProducingResource_desertHex_doesNotProduceResource() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        List<Hex> producingHexes = board.getHexesProducingResource(0);
+
+        assertTrue(producingHexes.isEmpty());
+        verify(randomMock);
+    }
+
+    // TC29
+    @Test
+    public void getHexesProducingResource_rollSix_returnsMatchingHexesWithoutRobber() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        List<Hex> producingHexes = board.getHexesProducingResource(6);
+
+        assertTrue(producingHexes.size() >= 1);
+        assertTrue(producingHexes.size() <= 2);
+
+        for (Hex hex : producingHexes) {
+            assertEquals(6, hex.getNumberDisc());
+            assertFalse(hex.hasRobber());
+        }
+        verify(randomMock);
+    }
+
+    // TC30
+    @Test
+    public void getHexesProducingResource_rollSeven_returnsEmptyList() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        List<Hex> producingHexes = board.getHexesProducingResource(7);
+
+        assertTrue(producingHexes.isEmpty());
+        verify(randomMock);
+    }
+
+    // TC31
+    @Test
+    public void getHexesProducingResource_rollOne_returnsEmptyList() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        List<Hex> producingHexes = board.getHexesProducingResource(1);
+
+        assertTrue(producingHexes.isEmpty());
+        verify(randomMock);
+    }
+
+    // TC32
+    @Test
+    public void getHexesProducingResource_rollThirteen_returnsEmptyList() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        List<Hex> producingHexes = board.getHexesProducingResource(13);
+
+        assertTrue(producingHexes.isEmpty());
+        verify(randomMock);
+    }
+
+    // TC33
+    @Test
+    public void getHexesProducingResource_robberOnOnlyMatchingHex_returnsEmptyList() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        Hex twoHex = board.getHexes().stream()
+                .filter(hex -> hex.getNumberDisc() == 2)
+                .findFirst()
+                .orElseThrow();
+
+        board.moveRobber(twoHex);
+
+        List<Hex> producingHexes = board.getHexesProducingResource(2);
+
+        assertTrue(producingHexes.isEmpty());
+        verify(randomMock);
+    }
 }
