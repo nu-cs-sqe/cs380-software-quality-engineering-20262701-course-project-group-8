@@ -161,11 +161,11 @@ public class Board {
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 20 | `targetHex = null` | `IllegalArgumentException` |  |
-| Test Case 21 | Target hex belongs to another board | `IllegalArgumentException` |  |
-| Test Case 22 | Target hex is the current robber hex | `IllegalArgumentException` |  |
-| Test Case 23 | Target hex is a different hex on the same board | Robber removed from old hex and placed on target hex |  |
-| Test Case 24 | Robber currently occupies a non-desert hex and is moved to another hex | Old hex has no robber; target hex has robber |  |
+| Test Case 20 | `targetHex = null` | `IllegalArgumentException` |:white_check_mark:|
+| Test Case 21 | Target hex belongs to another board | `IllegalArgumentException` |:white_check_mark:|
+| Test Case 22 | Target hex is the current robber hex | `IllegalArgumentException` |:white_check_mark:|
+| Test Case 23 | Target hex is a different hex on the same board | Robber removed from old hex and placed on target hex |:white_check_mark:|
+| Test Case 24 | Robber currently occupies a non-desert hex and is moved to another hex | Old hex has no robber; target hex has robber |:white_check_mark:|
 
 ### Method under test: `getHexesProducingResource(int diceRoll)`
 

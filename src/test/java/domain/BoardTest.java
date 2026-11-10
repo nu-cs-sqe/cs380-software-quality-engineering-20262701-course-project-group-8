@@ -278,4 +278,84 @@ public class BoardTest {
                 board::getRobberHex);
         verify(randomMock);
     }
+
+    // TC20
+    @Test
+    public void moveRobber_nullTarget_throwsIllegalArgumentException() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        assertThrows(IllegalArgumentException.class,
+                () -> board.moveRobber(null));
+        verify(randomMock);
+    }
+
+    // TC21
+    @Test
+    public void moveRobber_externalHex_throwsIllegalArgumentException() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        Hex externalHex = new Hex(TerrainType.FORESTS, 8);
+
+        assertThrows(IllegalArgumentException.class,
+                () -> board.moveRobber(externalHex));
+        verify(randomMock);
+    }
+
+    // TC22
+    @Test
+    public void moveRobber_sameHex_throwsIllegalArgumentException() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        Hex currentHex = board.getRobberHex();
+
+        assertThrows(IllegalArgumentException.class,
+                () -> board.moveRobber(currentHex));
+        verify(randomMock);
+    }
+
+    // TC23
+    @Test
+    public void moveRobber_differentHex_movesRobberSuccessfully() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        Hex originalHex = board.getRobberHex();
+        Hex targetHex = board.getHexes().stream()
+                .filter(hex -> hex != originalHex)
+                .findFirst()
+                .orElseThrow();
+
+        board.moveRobber(targetHex);
+
+        assertFalse(originalHex.hasRobber());
+        assertTrue(targetHex.hasRobber());
+        assertSame(targetHex, board.getRobberHex());
+        verify(randomMock);
+    }
+
+    // TC24
+    @Test
+    public void moveRobber_fromNonDesertToAnotherHex_updatesRobberPosition() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        Hex firstTarget = board.getHexes().stream()
+                .filter(hex -> hex.getTerrainType() != TerrainType.DESERTS)
+                .findFirst()
+                .orElseThrow();
+
+        board.moveRobber(firstTarget);
+
+        Hex secondTarget = board.getHexes().stream()
+                .filter(hex -> hex != firstTarget)
+                .findFirst()
+                .orElseThrow();
+
+        board.moveRobber(secondTarget);
+
+        assertFalse(firstTarget.hasRobber());
+        assertTrue(secondTarget.hasRobber());
+        assertSame(secondTarget, board.getRobberHex());
+        verify(randomMock);
+    }
 }
