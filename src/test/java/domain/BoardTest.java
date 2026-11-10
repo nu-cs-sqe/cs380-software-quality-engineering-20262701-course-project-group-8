@@ -233,4 +233,49 @@ public class BoardTest {
         assertEquals(19, board.getNumberOfHexes());
         verify(randomMock);
     }
+
+    // TC17
+    @Test
+    public void getRobberHex_initiallyReturnsDesertHex() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        Hex robberHex = board.getRobberHex();
+
+        assertNotNull(robberHex);
+        assertEquals(TerrainType.DESERTS, robberHex.getTerrainType());
+        assertTrue(robberHex.hasRobber());
+        verify(randomMock);
+    }
+
+    // TC18
+    @Test
+    public void getRobberHex_afterMovingRobber_returnsNewHex() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+        Hex originalHex = board.getRobberHex();
+        Hex targetHex = board.getHexes().stream()
+                .filter(hex -> hex.getTerrainType() != TerrainType.DESERTS)
+                .findFirst()
+                .orElseThrow();
+
+        board.moveRobber(targetHex);
+
+        assertFalse(originalHex.hasRobber());
+        assertTrue(targetHex.hasRobber());
+        assertSame(targetHex, board.getRobberHex());
+        verify(randomMock);
+    }
+
+    // TC19
+    @Test
+    public void getRobberHex_noRobber_throwsIllegalStateException() {
+        Random randomMock = createRandomMock();
+        Board board = new Board(randomMock);
+
+        board.getRobberHex().setRobber(false);
+
+        assertThrows(IllegalStateException.class,
+                board::getRobberHex);
+        verify(randomMock);
+    }
 }
