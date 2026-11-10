@@ -103,7 +103,22 @@ public class Board {
     }
 
     public void moveRobber(Hex targetHex) {
+        if (targetHex == null) {
+            throw new IllegalArgumentException("Error: Target hex cannot be null");
+        }
 
+        if (!hexes.contains(targetHex)) {
+            throw new IllegalArgumentException("Error: Target hex does not belong to this board");
+        }
+
+        Hex currentHex = getRobberHex();
+
+        if (currentHex == targetHex) {
+            throw new IllegalArgumentException("Error: Robber must move to a different hex");
+        }
+
+        currentHex.setRobber(false);
+        targetHex.setRobber(true);
     }
 
     public List<Hex> getHexesProducingResource(int diceRoll) {

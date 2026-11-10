@@ -153,9 +153,9 @@ public class Board {
 
 | | State of the System | Expected output | Implemented? |
 |---|---|---|---|
-| Test Case 17 | Newly initialized board | Returns the desert hex |  |
-| Test Case 18 | Robber moved to a non-desert hex | Returns the new robber hex |  |
-| Test Case 19 | No hex currently contains the robber | `IllegalStateException` |  |
+| Test Case 17 | Newly initialized board | Returns the desert hex |:white_check_mark:|
+| Test Case 18 | Robber moved to a non-desert hex | Returns the new robber hex |:white_check_mark:|
+| Test Case 19 | No hex currently contains the robber | `IllegalStateException` |:white_check_mark:|
 
 ### Method under test: `moveRobber(Hex targetHex)`
 
