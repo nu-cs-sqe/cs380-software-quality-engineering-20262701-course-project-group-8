@@ -196,12 +196,12 @@ Rules are taken from the official CATAN base rules (2020), see `docs/requirement
 ### Method under test: `qualifiesForLargestArmy(int knightCount, int holderKnightCount)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 40 | `qualifiesForLargestArmy(-1, 0)` | `IllegalArgumentException` | :x: |
-| Test Case 41 | `qualifiesForLargestArmy(3, -1)` | `IllegalArgumentException` | :x: |
-| Test Case 42 | `qualifiesForLargestArmy(2, 0)` | `false` | :x: |
-| Test Case 43 | `qualifiesForLargestArmy(3, 0)` | `true` | :x: |
-| Test Case 44 | `qualifiesForLargestArmy(3, 3)` (tie with holder) | `false` | :x: |
-| Test Case 45 | `qualifiesForLargestArmy(4, 3)` | `true` | :x: |
+| Test Case 40 | `qualifiesForLargestArmy(-1, 0)` | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 41 | `qualifiesForLargestArmy(3, -1)` | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 42 | `qualifiesForLargestArmy(2, 0)` | `false` | :white_check_mark: |
+| Test Case 43 | `qualifiesForLargestArmy(3, 0)` | `true` | :white_check_mark: |
+| Test Case 44 | `qualifiesForLargestArmy(3, 3)` (tie with holder) | `false` | :white_check_mark: |
+| Test Case 45 | `qualifiesForLargestArmy(4, 3)` | `true` | :white_check_mark: |
 
 ### Method under test: `isWinner(int victoryPoints)`
 |              | State of the System | Expected output | Implemented? |

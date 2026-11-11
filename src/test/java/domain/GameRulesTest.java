@@ -326,7 +326,7 @@ public class GameRulesTest {
         GameRules rules = new GameRules();
         assertThrows(IllegalArgumentException.class, () -> rules.qualifiesForLongestRoad(-1, 0));
     }
-    
+
     // TC 35
     @Test
     public void qualifiesForLongestRoad_negativeHolderRoadLength_throwsIllegalArgumentException() {
@@ -360,5 +360,47 @@ public class GameRulesTest {
     public void qualifiesForLongestRoad_longerThanHolder_returnsTrue() {
         GameRules rules = new GameRules();
         assertTrue(rules.qualifiesForLongestRoad(6, 5));
+    }
+
+     // TC 40
+    @Test
+    public void qualifiesForLargestArmy_negativeKnightCount_throwsIllegalArgumentException() {
+        GameRules rules = new GameRules();
+        assertThrows(IllegalArgumentException.class, () -> rules.qualifiesForLargestArmy(-1, 0));
+    }
+
+    // TC 41
+    @Test
+    public void qualifiesForLargestArmy_negativeHolderKnightCount_throwsIllegalArgumentException() {
+        GameRules rules = new GameRules();
+        assertThrows(IllegalArgumentException.class, () -> rules.qualifiesForLargestArmy(3, -1));
+    }
+
+    // TC 42
+    @Test
+    public void qualifiesForLargestArmy_twoKnightsNoHolder_returnsFalse() {
+        GameRules rules = new GameRules();
+        assertFalse(rules.qualifiesForLargestArmy(2, 0));
+    }
+
+    // TC 43
+    @Test
+    public void qualifiesForLargestArmy_threeKnightsNoHolder_returnsTrue() {
+        GameRules rules = new GameRules();
+        assertTrue(rules.qualifiesForLargestArmy(3, 0));
+    }
+
+    // TC 44
+    @Test
+    public void qualifiesForLargestArmy_tieWithHolder_returnsFalse() {
+        GameRules rules = new GameRules();
+        assertFalse(rules.qualifiesForLargestArmy(3, 3));
+    }
+
+    // TC 45
+    @Test
+    public void qualifiesForLargestArmy_moreThanHolder_returnsTrue() {
+        GameRules rules = new GameRules();
+        assertTrue(rules.qualifiesForLargestArmy(4, 3));
     }
 }
