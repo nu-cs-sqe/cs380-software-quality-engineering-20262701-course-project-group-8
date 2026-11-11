@@ -10,7 +10,7 @@ public class GameRules {
     public static final int MAX_DEVELOPMENT_CARDS_PER_TURN = 1;
     public static final int MIN_LONGEST_ROAD = 5;
     public static final int MIN_LARGEST_ARMY = 3;
-
+    public static final int WINNING_POINTS = 10;
 
     private static final Map<BuildingType, Map<ResourceType, Integer>> COSTS = Map.of(
             BuildingType.ROAD, 
@@ -75,13 +75,21 @@ public class GameRules {
     public boolean qualifiesForLongestRoad(int roadLength, int holderRoadLength) {
         if (roadLength < 0 || holderRoadLength < 0) {
             throw new IllegalArgumentException("road lengths must be >= 0");
-        } 
+        }
         return roadLength >= MIN_LONGEST_ROAD && roadLength > holderRoadLength;
     }
+
     public boolean qualifiesForLargestArmy(int knightCount, int holderKnightCount) {
         if (knightCount < 0 || holderKnightCount < 0) {
             throw new IllegalArgumentException("knight counts must be >= 0");
         }
         return knightCount >= MIN_LARGEST_ARMY && knightCount > holderKnightCount;
+    }
+
+    public boolean isWinner(int victoryPoints) {
+        if (victoryPoints < 0) {
+            throw new IllegalArgumentException("victoryPoints must be >= 0");
+        }
+        return victoryPoints >= WINNING_POINTS;
     }
 }

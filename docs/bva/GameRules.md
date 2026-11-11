@@ -206,6 +206,6 @@ Rules are taken from the official CATAN base rules (2020), see `docs/requirement
 ### Method under test: `isWinner(int victoryPoints)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 46 | `isWinner(-1)` | `IllegalArgumentException` | :x: |
-| Test Case 47 | `isWinner(9)` | `false` | :x: |
-| Test Case 48 | `isWinner(10)` | `true` | :x: |
+| Test Case 46 | `isWinner(-1)` | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 47 | `isWinner(9)` | `false` | :white_check_mark: |
+| Test Case 48 | `isWinner(10)` | `true` | :white_check_mark: |

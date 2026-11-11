@@ -403,4 +403,25 @@ public class GameRulesTest {
         GameRules rules = new GameRules();
         assertTrue(rules.qualifiesForLargestArmy(4, 3));
     }
+
+    // TC 46
+    @Test
+    public void isWinner_negativeVictoryPoints_throwsIllegalArgumentException() {
+        GameRules rules = new GameRules();
+        assertThrows(IllegalArgumentException.class, () -> rules.isWinner(-1));
+    }
+
+    // TC 47
+    @Test
+    public void isWinner_nineVictoryPoints_returnsFalse() {
+        GameRules rules = new GameRules();
+        assertFalse(rules.isWinner(9));
+    }
+
+    // TC 48
+    @Test
+    public void isWinner_tenVictoryPoints_returnsTrue() {
+        GameRules rules = new GameRules();
+        assertTrue(rules.isWinner(10));
+    }
 }
