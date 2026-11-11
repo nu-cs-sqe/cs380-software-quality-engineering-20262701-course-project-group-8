@@ -12,14 +12,14 @@ public class GameRules {
     public static final int MIN_LARGEST_ARMY = 3;
     public static final int WINNING_POINTS = 10;
 
-    private static final Map<BuildingType, Map<ResourceType, Integer>> COSTS = Map.of(
-            BuildingType.ROAD, 
+    private static final Map<PurchaseType, Map<ResourceType, Integer>> COSTS = Map.of(
+            PurchaseType.ROAD, 
             Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1),
-            BuildingType.SETTLEMENT, 
+            PurchaseType.SETTLEMENT, 
             Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1,
                     ResourceType.WOOL, 1, ResourceType.GRAIN, 1),
-            BuildingType.CITY, Map.of(ResourceType.ORE, 3, ResourceType.GRAIN, 2),
-            BuildingType.DEVELOPMENT_CARD, 
+            PurchaseType.CITY, Map.of(ResourceType.ORE, 3, ResourceType.GRAIN, 2),
+            PurchaseType.DEVELOPMENT_CARD, 
             Map.of(ResourceType.ORE, 1, ResourceType.WOOL, 1,
                     ResourceType.GRAIN, 1));
 
@@ -37,7 +37,7 @@ public class GameRules {
         return handSize / 2;
     }
 
-    public boolean canAfford(ResourceHand hand, BuildingType type) {
+    public boolean canAfford(ResourceHand hand, PurchaseType type) {
         Objects.requireNonNull(hand);
         Objects.requireNonNull(type);
         for (Map.Entry<ResourceType, Integer> entry : COSTS.get(type).entrySet()) {
@@ -48,7 +48,7 @@ public class GameRules {
         return true;
     }
 
-    public void payCost(ResourceHand hand, Bank bank, BuildingType type) {
+    public void payCost(ResourceHand hand, Bank bank, PurchaseType type) {
         Objects.requireNonNull(bank);
         if (!canAfford(hand, type)) {
             throw new IllegalStateException("Hand cannot afford " + type);

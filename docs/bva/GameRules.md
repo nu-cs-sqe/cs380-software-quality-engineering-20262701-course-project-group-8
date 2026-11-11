@@ -3,7 +3,7 @@
 ## Design Under Test
 
 ```java
-public enum BuildingType {
+public enum PurchaseType {
     ROAD,
     SETTLEMENT,
     CITY,
@@ -23,8 +23,8 @@ public class GameRules {
 
     public boolean isValidPlayerCount(int playerCount)
     public int getDiscardCount(int handSize)
-    public boolean canAfford(ResourceHand hand, BuildingType type)
-    public void payCost(ResourceHand hand, Bank bank, BuildingType type)
+    public boolean canAfford(ResourceHand hand, PurchaseType type)
+    public void payCost(ResourceHand hand, Bank bank, PurchaseType type)
     public boolean canMoveRobberTo(Hex target)
     public boolean canPlayDevelopmentCard(DevelopmentCard card, int currentTurn, int cardsPlayedThisTurn)
     public boolean qualifiesForLongestRoad(int roadLength, int holderRoadLength)
@@ -67,7 +67,7 @@ Rules are taken from the official CATAN base rules (2020), see `docs/requirement
 | Input | `handSize` | Cases | even, odd (8, 9) |
 | Output | number of cards to discard | Interval [0, ∞) / exception | 0, 4, `IllegalArgumentException` |
 
-### Method: `canAfford(ResourceHand hand, BuildingType type)`
+### Method: `canAfford(ResourceHand hand, PurchaseType type)`
 | | Description | Category | Boundary Values |
 |---|---|---|---|
 | Input | `hand` | Pointer | `null`, non-null |
@@ -76,7 +76,7 @@ Rules are taken from the official CATAN base rules (2020), see `docs/requirement
 | Input | count of each required resource | Interval [cost, ∞) | cost - 1, cost |
 | Output | | Boolean / exception | `true`, `false`, `NullPointerException` |
 
-### Method: `payCost(ResourceHand hand, Bank bank, BuildingType type)`
+### Method: `payCost(ResourceHand hand, Bank bank, PurchaseType type)`
 | | Description | Category | Boundary Values |
 |---|---|---|---|
 | Input | `hand`, `bank`, `type` | Pointer | `null`, non-null |
@@ -143,7 +143,7 @@ Rules are taken from the official CATAN base rules (2020), see `docs/requirement
 | Test Case 8  | `getDiscardCount(8)` | `4` | :white_check_mark: |
 | Test Case 9  | `getDiscardCount(9)` | `4` (rounded down) | :white_check_mark: |
 
-### Method under test: `canAfford(ResourceHand hand, BuildingType type)`
+### Method under test: `canAfford(ResourceHand hand, PurchaseType type)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
 | Test Case 10 | `canAfford(null, ROAD)` | `NullPointerException` | :white_check_mark: |
@@ -158,7 +158,7 @@ Rules are taken from the official CATAN base rules (2020), see `docs/requirement
 | Test Case 19 | Hand: 1 `ORE`, 1 `WOOL`, 1 `GRAIN`; `canAfford(hand, DEVELOPMENT_CARD)` | `true` | :white_check_mark: |
 | Test Case 20 | Hand: 1 `ORE`, 1 `GRAIN`; `canAfford(hand, DEVELOPMENT_CARD)` | `false` | :white_check_mark: |
 
-### Method under test: `payCost(ResourceHand hand, Bank bank, BuildingType type)`
+### Method under test: `payCost(ResourceHand hand, Bank bank, PurchaseType type)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
 | Test Case 21 | `payCost` called with `hand = null`, `bank = null`, or `type = null` (one at a time) | `NullPointerException` | :white_check_mark: |

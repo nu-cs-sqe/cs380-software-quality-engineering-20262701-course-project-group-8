@@ -1,6 +1,6 @@
 package domain;
 
-public enum BuildingType {
+public enum PurchaseType {
     ROAD,
     SETTLEMENT,
     CITY,

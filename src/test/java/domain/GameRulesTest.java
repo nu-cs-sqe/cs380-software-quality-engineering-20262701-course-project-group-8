@@ -71,7 +71,7 @@ public class GameRulesTest {
     @Test
     public void canAfford_nullHand_throwsNullPointerException() {
         GameRules rules = new GameRules();
-        assertThrows(NullPointerException.class, () -> rules.canAfford(null, BuildingType.ROAD));
+        assertThrows(NullPointerException.class, () -> rules.canAfford(null, PurchaseType.ROAD));
     }
 
     // TC 11
@@ -89,7 +89,7 @@ public class GameRulesTest {
         ResourceHand hand = new ResourceHand();
         hand.add(ResourceType.BRICK, 1);
         hand.add(ResourceType.LUMBER, 1);
-        assertTrue(rules.canAfford(hand, BuildingType.ROAD));
+        assertTrue(rules.canAfford(hand, PurchaseType.ROAD));
     }
 
     // TC 13
@@ -98,7 +98,7 @@ public class GameRulesTest {
         GameRules rules = new GameRules();
         ResourceHand hand = new ResourceHand();
         hand.add(ResourceType.BRICK, 1);
-        assertFalse(rules.canAfford(hand, BuildingType.ROAD));
+        assertFalse(rules.canAfford(hand, PurchaseType.ROAD));
     }
 
     // TC 14
@@ -110,7 +110,7 @@ public class GameRulesTest {
         hand.add(ResourceType.LUMBER, 1);
         hand.add(ResourceType.WOOL, 1);
         hand.add(ResourceType.GRAIN, 1);
-        assertTrue(rules.canAfford(hand, BuildingType.SETTLEMENT));
+        assertTrue(rules.canAfford(hand, PurchaseType.SETTLEMENT));
     }
 
     // TC 15
@@ -121,7 +121,7 @@ public class GameRulesTest {
         hand.add(ResourceType.BRICK, 1);
         hand.add(ResourceType.LUMBER, 1);
         hand.add(ResourceType.WOOL, 1);
-        assertFalse(rules.canAfford(hand, BuildingType.SETTLEMENT));
+        assertFalse(rules.canAfford(hand, PurchaseType.SETTLEMENT));
     }
 
     // TC 16
@@ -131,7 +131,7 @@ public class GameRulesTest {
         ResourceHand hand = new ResourceHand();
         hand.add(ResourceType.ORE, 3);
         hand.add(ResourceType.GRAIN, 2);
-        assertTrue(rules.canAfford(hand, BuildingType.CITY));
+        assertTrue(rules.canAfford(hand, PurchaseType.CITY));
     }
 
     // TC 17
@@ -141,7 +141,7 @@ public class GameRulesTest {
         ResourceHand hand = new ResourceHand();
         hand.add(ResourceType.ORE, 2);
         hand.add(ResourceType.GRAIN, 2);
-        assertFalse(rules.canAfford(hand, BuildingType.CITY));
+        assertFalse(rules.canAfford(hand, PurchaseType.CITY));
     }
 
     // TC 18
@@ -151,7 +151,7 @@ public class GameRulesTest {
         ResourceHand hand = new ResourceHand();
         hand.add(ResourceType.ORE, 3);
         hand.add(ResourceType.GRAIN, 1);
-        assertFalse(rules.canAfford(hand, BuildingType.CITY));
+        assertFalse(rules.canAfford(hand, PurchaseType.CITY));
     }
 
     // TC 19
@@ -162,7 +162,7 @@ public class GameRulesTest {
         hand.add(ResourceType.ORE, 1);
         hand.add(ResourceType.WOOL, 1);
         hand.add(ResourceType.GRAIN, 1);
-        assertTrue(rules.canAfford(hand, BuildingType.DEVELOPMENT_CARD));
+        assertTrue(rules.canAfford(hand, PurchaseType.DEVELOPMENT_CARD));
     }
 
     // TC 20
@@ -172,7 +172,7 @@ public class GameRulesTest {
         ResourceHand hand = new ResourceHand();
         hand.add(ResourceType.ORE, 1);
         hand.add(ResourceType.GRAIN, 1);
-        assertFalse(rules.canAfford(hand, BuildingType.DEVELOPMENT_CARD));
+        assertFalse(rules.canAfford(hand, PurchaseType.DEVELOPMENT_CARD));
     }
 
     // TC 21
@@ -181,8 +181,8 @@ public class GameRulesTest {
         GameRules rules = new GameRules();
         ResourceHand hand = new ResourceHand();
         Bank bank = new Bank();
-        assertThrows(NullPointerException.class, () -> rules.payCost(null, bank, BuildingType.ROAD));
-        assertThrows(NullPointerException.class, () -> rules.payCost(hand, null, BuildingType.ROAD));
+        assertThrows(NullPointerException.class, () -> rules.payCost(null, bank, PurchaseType.ROAD));
+        assertThrows(NullPointerException.class, () -> rules.payCost(hand, null, PurchaseType.ROAD));
         assertThrows(NullPointerException.class, () -> rules.payCost(hand, bank, null));
     }
 
@@ -197,7 +197,7 @@ public class GameRulesTest {
         hand.add(ResourceType.ORE, 3);
         hand.add(ResourceType.GRAIN, 2);
 
-        rules.payCost(hand, bank, BuildingType.CITY);
+        rules.payCost(hand, bank, PurchaseType.CITY);
 
         assertEquals(0, hand.getCount(ResourceType.ORE));
         assertEquals(0, hand.getCount(ResourceType.GRAIN));
@@ -216,7 +216,7 @@ public class GameRulesTest {
         hand.add(ResourceType.BRICK, 2);
         hand.add(ResourceType.LUMBER, 2);
 
-        rules.payCost(hand, bank, BuildingType.ROAD);
+        rules.payCost(hand, bank, PurchaseType.ROAD);
 
         assertEquals(1, hand.getCount(ResourceType.BRICK));
         assertEquals(1, hand.getCount(ResourceType.LUMBER));
@@ -238,7 +238,7 @@ public class GameRulesTest {
         hand.add(ResourceType.WOOL, 1);
 
         assertThrows(IllegalStateException.class,
-                () -> rules.payCost(hand, bank, BuildingType.SETTLEMENT));
+                () -> rules.payCost(hand, bank, PurchaseType.SETTLEMENT));
 
         assertEquals(1, hand.getCount(ResourceType.BRICK));
         assertEquals(1, hand.getCount(ResourceType.LUMBER));
