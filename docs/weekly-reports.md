@@ -15,6 +15,17 @@
 2. [done] Stephi: Added Catan game rules [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/8]
 3. [done] Jiadong Li: Added the Game Setup user story and use case to the GitHub Project board [https://github.com/orgs/nu-cs-sqe/projects/105]
 
+# Week 6 (11/02/2026-11/08/2026)
+**Planning and Progress Tracking**:
+1. [done] Jiadong Li: Implemented Dice class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/14]
+2. [done] Jiadong Li: Implemented DevelopmentCard class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/16]
+3. [done] Jiadong Li: Implement ResourceHand class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/issues/17]
+4. [done] Jiadong Li: Implemented Bank class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/26]
+5. [done] Stephi Lyou: Implemented Game class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/28]
+6. [done] Sami Khan: Implemented Intersection class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/30]
+7. [done] Sami Khan: Implemented Location class (needed for the Intersection class functionality) with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/30]
+8. [done] Sami Khan: Implemented Building class (needed for the Intersection class functionality), currently an enumeration for current needs (will add on in the future if needed) [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/30]
+
 # One section per week until the last week of class (the week before the Finals week)
 
 

@@ -67,46 +67,46 @@ public class Hex {
 ### Method under test: `Hex(TerrainType terrainType, int numberDisc)`
 | | State of the System | Expected output | Status |
 |---|---|---|---|
-| Test Case 1 | `terrainType` is `null` | `IllegalArgumentException` is thrown | :white_check_mark: |
-| Test Case 2 | `terrainType` is `DESERTS` and `numberDisc` is `0` | A valid `Hex` is created; desert robber starts on the hex | :white_check_mark: |
-| Test Case 3 | `terrainType` is `DESERTS` and `numberDisc` is `-1` | `IllegalArgumentException` is thrown | :white_check_mark: |
-| Test Case 4 | `terrainType` is `DESERTS` and `numberDisc` is `1` | `IllegalArgumentException` is thrown | :white_check_mark: |
-| Test Case 5 | `terrainType` is non-desert and `numberDisc` is `1` | `IllegalArgumentException` is thrown | :white_check_mark: |
-| Test Case 6 | `terrainType` is non-desert and `numberDisc` is `2` | A valid `Hex` is created | :white_check_mark: |
-| Test Case 7 | `terrainType` is non-desert and `numberDisc` is `6` | A valid `Hex` is created | :white_check_mark: |
-| Test Case 8 | `terrainType` is non-desert and `numberDisc` is `7` | `IllegalArgumentException` is thrown | :white_check_mark: |
-| Test Case 9 | `terrainType` is non-desert and `numberDisc` is `8` | A valid `Hex` is created | :white_check_mark: |
-| Test Case 10 | `terrainType` is non-desert and `numberDisc` is `12` | A valid `Hex` is created | :white_check_mark: |
-| Test Case 11 | `terrainType` is non-desert and `numberDisc` is `13` | `IllegalArgumentException` is thrown | :white_check_mark: |
+| Test Case 1 | `terrainType` is `null` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 2 | `terrainType` is `DESERTS` and `numberDisc` is `0` | A valid `Hex` is created; desert robber starts on the hex |:white_check_mark:|
+| Test Case 3 | `terrainType` is `DESERTS` and `numberDisc` is `-1` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 4 | `terrainType` is `DESERTS` and `numberDisc` is `1` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 5 | `terrainType` is non-desert and `numberDisc` is `1` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 6 | `terrainType` is non-desert and `numberDisc` is `2` | A valid `Hex` is created |:white_check_mark:|
+| Test Case 7 | `terrainType` is non-desert and `numberDisc` is `6` | A valid `Hex` is created |:white_check_mark:|
+| Test Case 8 | `terrainType` is non-desert and `numberDisc` is `7` | `IllegalArgumentException` is thrown |:white_check_mark:|
+| Test Case 9 | `terrainType` is non-desert and `numberDisc` is `8` | A valid `Hex` is created |:white_check_mark:|
+| Test Case 10 | `terrainType` is non-desert and `numberDisc` is `12` | A valid `Hex` is created |:white_check_mark:|
+| Test Case 11 | `terrainType` is non-desert and `numberDisc` is `13` | `IllegalArgumentException` is thrown |:white_check_mark:|
 
 ### Method under test: `getTerrainType()`
 | | State of the System | Expected output | Status |
 |---|---|---|---|
-| Test Case 12 | Hex is created with `DESERTS` terrain | Returns `DESERTS` | :white_check_mark: |
-| Test Case 13 | Hex is created with `FORESTS` terrain | Returns `FORESTS` | :white_check_mark: |
+| Test Case 12 | Hex is created with `DESERTS` terrain | Returns `DESERTS` |:white_check_mark:|
+| Test Case 13 | Hex is created with `FORESTS` terrain | Returns `FORESTS` |:white_check_mark:|
 
 ### Method under test: `getNumberDisc()`
 | | State of the System | Expected output | Status |
 |---|---|---|---|
-| Test Case 14 | Desert hex with `numberDisc = 0` | Returns `0` | :white_check_mark: |
-| Test Case 15 | Non-desert hex with `numberDisc = 2` | Returns `2` | :white_check_mark: |
-| Test Case 16 | Non-desert hex with `numberDisc = 12` | Returns `12` | :white_check_mark: |
+| Test Case 14 | Desert hex with `numberDisc = 0` | Returns `0` |:white_check_mark:|
+| Test Case 15 | Non-desert hex with `numberDisc = 2` | Returns `2` |:white_check_mark:|
+| Test Case 16 | Non-desert hex with `numberDisc = 12` | Returns `12` |:white_check_mark:|
 
 ### Method under test: `hasRobber()` and `setRobber(boolean hasRobber)`
 | | State of the System | Expected output | Status |
 |---|---|---|---|
-| Test Case 17 | New desert hex is created | `hasRobber()` returns `true` | :white_check_mark: |
-| Test Case 18 | `setRobber(false)` is called on a desert hex | `hasRobber()` returns `false` | :white_check_mark: |
-| Test Case 19 | `setRobber(true)` is called on a non-desert hex | `hasRobber()` returns `true` | :white_check_mark: |
+| Test Case 17 | New desert hex is created | `hasRobber()` returns `true` |:white_check_mark:|
+| Test Case 18 | `setRobber(false)` is called on a desert hex | `hasRobber()` returns `false` |:white_check_mark:|
+| Test Case 19 | `setRobber(true)` is called on a non-desert hex | `hasRobber()` returns `true` |:white_check_mark:|
 
 ### Method under test: `producesResource(int diceRoll)`
 | | State of the System | Expected output | Status |
 |---|---|---|---|
-| Test Case 20 | `terrainType` is `DESERTS`, `numberDisc = 0`, and `diceRoll = 0` | Returns `false` | :white_check_mark: |
-| Test Case 21 | Non-desert hex with `numberDisc = 2`, robber absent, and `diceRoll = 2` | Returns `true` | :white_check_mark: |
-| Test Case 22 | Non-desert hex with `numberDisc = 2`, robber absent, and `diceRoll = 0` | Returns `false` | :white_check_mark: |
-| Test Case 23 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 6` | Returns `false` | :white_check_mark: |
-| Test Case 24 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 7` | Returns `false` | :white_check_mark: |
-| Test Case 25 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 8` | Returns `true` | :white_check_mark: |
-| Test Case 26 | Non-desert hex with `numberDisc = 12`, robber present, and `diceRoll = 12` | Returns `false` | :white_check_mark: |
-| Test Case 27 | Non-desert hex with `numberDisc = 12`, robber absent, and `diceRoll = 12` | Returns `true` | :white_check_mark: |
+| Test Case 20 | `terrainType` is `DESERTS`, `numberDisc = 0`, and `diceRoll = 0` | Returns `false` |:white_check_mark:|
+| Test Case 21 | Non-desert hex with `numberDisc = 2`, robber absent, and `diceRoll = 2` | Returns `true` |:white_check_mark:|
+| Test Case 22 | Non-desert hex with `numberDisc = 2`, robber absent, and `diceRoll = 0` | Returns `false` |:white_check_mark:|
+| Test Case 23 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 6` | Returns `false` |:white_check_mark:|
+| Test Case 24 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 7` | Returns `false` |:white_check_mark:|
+| Test Case 25 | Non-desert hex with `numberDisc = 8`, robber absent, and `diceRoll = 8` | Returns `true` |:white_check_mark:|
+| Test Case 26 | Non-desert hex with `numberDisc = 12`, robber present, and `diceRoll = 12` | Returns `false` |:white_check_mark:|
+| Test Case 27 | Non-desert hex with `numberDisc = 12`, robber absent, and `diceRoll = 12` | Returns `true` |:white_check_mark:|
