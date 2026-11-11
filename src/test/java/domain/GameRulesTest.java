@@ -280,4 +280,43 @@ public class GameRulesTest {
         desert.setRobber(false);
         assertTrue(rules.canMoveRobberTo(desert));
     }
+
+    // TC 29
+    @Test
+    public void canPlayDevelopmentCard_nullCard_throwsNullPointerException() {
+        GameRules rules = new GameRules();
+        assertThrows(NullPointerException.class, () -> rules.canPlayDevelopmentCard(null, 4, 0));
+    }
+
+    // TC 30
+    @Test
+    public void canPlayDevelopmentCard_negativeCardsPlayed_throwsIllegalArgumentException() {
+        GameRules rules = new GameRules();
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        assertThrows(IllegalArgumentException.class, () -> rules.canPlayDevelopmentCard(card, 4, -1));
+    }
+
+    // TC 31
+    @Test
+    public void canPlayDevelopmentCard_noCardPlayedThisTurn_returnsTrue() {
+        GameRules rules = new GameRules();
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        assertTrue(rules.canPlayDevelopmentCard(card, 4, 0));
+    }
+
+    // TC 32
+    @Test
+    public void canPlayDevelopmentCard_oneCardPlayedThisTurn_returnsFalse() {
+        GameRules rules = new GameRules();
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        assertFalse(rules.canPlayDevelopmentCard(card, 4, 1));
+    }
+
+    // TC 33
+    @Test
+    public void canPlayDevelopmentCard_cardBoughtThisTurn_returnsFalse() {
+        GameRules rules = new GameRules();
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        assertFalse(rules.canPlayDevelopmentCard(card, 3, 0));
+    }
 }

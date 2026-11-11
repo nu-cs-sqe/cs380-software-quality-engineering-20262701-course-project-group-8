@@ -177,11 +177,11 @@ Rules are taken from the official CATAN base rules (2020), see `docs/requirement
 ### Method under test: `canPlayDevelopmentCard(DevelopmentCard card, int currentTurn, int cardsPlayedThisTurn)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 29 | `canPlayDevelopmentCard(null, 4, 0)` | `NullPointerException` | :x: |
-| Test Case 30 | `KNIGHT` bought on turn 3; `canPlayDevelopmentCard(card, 4, -1)` | `IllegalArgumentException` | :x: |
-| Test Case 31 | `KNIGHT` bought on turn 3; `canPlayDevelopmentCard(card, 4, 0)` | `true` | :x: |
-| Test Case 32 | `KNIGHT` bought on turn 3; `canPlayDevelopmentCard(card, 4, 1)` | `false` | :x: |
-| Test Case 33 | `KNIGHT` bought on turn 3; `canPlayDevelopmentCard(card, 3, 0)` (card bought this turn) | `false` | :x: |
+| Test Case 29 | `canPlayDevelopmentCard(null, 4, 0)` | `NullPointerException` | :white_check_mark: |
+| Test Case 30 | `KNIGHT` bought on turn 3; `canPlayDevelopmentCard(card, 4, -1)` | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 31 | `KNIGHT` bought on turn 3; `canPlayDevelopmentCard(card, 4, 0)` | `true` | :white_check_mark: |
+| Test Case 32 | `KNIGHT` bought on turn 3; `canPlayDevelopmentCard(card, 4, 1)` | `false` | :white_check_mark: |
+| Test Case 33 | `KNIGHT` bought on turn 3; `canPlayDevelopmentCard(card, 3, 0)` (card bought this turn) | `false` | :white_check_mark: |
 
 ### Method under test: `qualifiesForLongestRoad(int roadLength, int holderRoadLength)`
 |              | State of the System | Expected output | Implemented? |

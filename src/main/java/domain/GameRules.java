@@ -7,6 +7,7 @@ public class GameRules {
     public static final int MIN_PLAYERS = 3;
     public static final int MAX_PLAYERS = 4;
     public static final int DISCARD_THRESHOLD = 7;
+    public static final int MAX_DEVELOPMENT_CARDS_PER_TURN = 1;
 
     private static final Map<BuildingType, Map<ResourceType, Integer>> COSTS = Map.of(
             BuildingType.ROAD, Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1),
@@ -55,5 +56,13 @@ public class GameRules {
     public boolean canMoveRobberTo(Hex target) {
         Objects.requireNonNull(target);
         return !target.hasRobber();
+    }
+
+    public boolean canPlayDevelopmentCard(DevelopmentCard card, int currentTurn, int cardsPlayedThisTurn) {
+        Objects.requireNonNull(card);
+        if (cardsPlayedThisTurn < 0) {
+            throw new IllegalArgumentException("cardsPlayedThisTurn must be >= 0");
+        }
+        return cardsPlayedThisTurn < MAX_DEVELOPMENT_CARDS_PER_TURN && card.canBePlayed(currentTurn);
     }
 }
