@@ -8,13 +8,17 @@ public class GameRules {
     public static final int MAX_PLAYERS = 4;
     public static final int DISCARD_THRESHOLD = 7;
     public static final int MAX_DEVELOPMENT_CARDS_PER_TURN = 1;
+    public static final int MIN_LONGEST_ROAD = 5;
 
     private static final Map<BuildingType, Map<ResourceType, Integer>> COSTS = Map.of(
-            BuildingType.ROAD, Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1),
-            BuildingType.SETTLEMENT, Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1,
+            BuildingType.ROAD, 
+            Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1),
+            BuildingType.SETTLEMENT, 
+            Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1,
                     ResourceType.WOOL, 1, ResourceType.GRAIN, 1),
             BuildingType.CITY, Map.of(ResourceType.ORE, 3, ResourceType.GRAIN, 2),
-            BuildingType.DEVELOPMENT_CARD, Map.of(ResourceType.ORE, 1, ResourceType.WOOL, 1,
+            BuildingType.DEVELOPMENT_CARD, 
+            Map.of(ResourceType.ORE, 1, ResourceType.WOOL, 1,
                     ResourceType.GRAIN, 1));
 
     public boolean isValidPlayerCount(int playerCount) {
@@ -64,5 +68,12 @@ public class GameRules {
             throw new IllegalArgumentException("cardsPlayedThisTurn must be >= 0");
         }
         return cardsPlayedThisTurn < MAX_DEVELOPMENT_CARDS_PER_TURN && card.canBePlayed(currentTurn);
+    }
+
+    public boolean qualifiesForLongestRoad(int roadLength, int holderRoadLength){
+        if (roadLength < 0 || holderRoadLength < 0) {
+            throw new IllegalArgumentException("road lengths must be >= 0");
+        } 
+        return roadLength >= MIN_LONGEST_ROAD && roadLength > holderRoadLength;
     }
 }

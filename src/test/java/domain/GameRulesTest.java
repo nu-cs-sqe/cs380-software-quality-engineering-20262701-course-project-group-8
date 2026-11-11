@@ -319,4 +319,46 @@ public class GameRulesTest {
         DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
         assertFalse(rules.canPlayDevelopmentCard(card, 3, 0));
     }
+
+    // TC 34
+    @Test
+    public void qualifiesForLongestRoad_negativeRoadLength_throwsIllegalArgumentException() {
+        GameRules rules = new GameRules();
+        assertThrows(IllegalArgumentException.class, () -> rules.qualifiesForLongestRoad(-1, 0));
+    }
+    
+    // TC 35
+    @Test
+    public void qualifiesForLongestRoad_negativeHolderRoadLength_throwsIllegalArgumentException() {
+        GameRules rules = new GameRules();
+        assertThrows(IllegalArgumentException.class, () -> rules.qualifiesForLongestRoad(5, -1));
+    }
+
+    // TC 36
+    @Test
+    public void qualifiesForLongestRoad_fourRoadsNoHolder_returnsFalse() {
+        GameRules rules = new GameRules();
+        assertFalse(rules.qualifiesForLongestRoad(4, 0));
+    }
+
+    // TC 37
+    @Test
+    public void qualifiesForLongestRoad_fiveRoadsNoHolder_returnsTrue() {
+        GameRules rules = new GameRules();
+        assertTrue(rules.qualifiesForLongestRoad(5, 0));
+    }
+
+    // TC 38
+    @Test
+    public void qualifiesForLongestRoad_tieWithHolder_returnsFalse() {
+        GameRules rules = new GameRules();
+        assertFalse(rules.qualifiesForLongestRoad(5, 5));
+    }
+
+    // TC 39
+    @Test
+    public void qualifiesForLongestRoad_longerThanHolder_returnsTrue() {
+        GameRules rules = new GameRules();
+        assertTrue(rules.qualifiesForLongestRoad(6, 5));
+    }
 }

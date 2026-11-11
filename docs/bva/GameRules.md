@@ -186,12 +186,12 @@ Rules are taken from the official CATAN base rules (2020), see `docs/requirement
 ### Method under test: `qualifiesForLongestRoad(int roadLength, int holderRoadLength)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 34 | `qualifiesForLongestRoad(-1, 0)` | `IllegalArgumentException` | :x: |
-| Test Case 35 | `qualifiesForLongestRoad(5, -1)` | `IllegalArgumentException` | :x: |
-| Test Case 36 | `qualifiesForLongestRoad(4, 0)` | `false` | :x: |
-| Test Case 37 | `qualifiesForLongestRoad(5, 0)` | `true` | :x: |
-| Test Case 38 | `qualifiesForLongestRoad(5, 5)` (tie with holder) | `false` | :x: |
-| Test Case 39 | `qualifiesForLongestRoad(6, 5)` | `true` | :x: |
+| Test Case 34 | `qualifiesForLongestRoad(-1, 0)` | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 35 | `qualifiesForLongestRoad(5, -1)` | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 36 | `qualifiesForLongestRoad(4, 0)` | `false` | :white_check_mark: |
+| Test Case 37 | `qualifiesForLongestRoad(5, 0)` | `true` | :white_check_mark: |
+| Test Case 38 | `qualifiesForLongestRoad(5, 5)` (tie with holder) | `false` | :white_check_mark: |
+| Test Case 39 | `qualifiesForLongestRoad(6, 5)` | `true` | :white_check_mark: |
 
 ### Method under test: `qualifiesForLargestArmy(int knightCount, int holderKnightCount)`
 |              | State of the System | Expected output | Implemented? |
