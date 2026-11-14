@@ -1,0 +1,95 @@
+package domain;
+
+import java.util.Map;
+import java.util.Objects;
+
+public class GameRules {
+    public static final int MIN_PLAYERS = 3;
+    public static final int MAX_PLAYERS = 4;
+    public static final int DISCARD_THRESHOLD = 7;
+    public static final int MAX_DEVELOPMENT_CARDS_PER_TURN = 1;
+    public static final int MIN_LONGEST_ROAD = 5;
+    public static final int MIN_LARGEST_ARMY = 3;
+    public static final int WINNING_POINTS = 10;
+
+    private static final Map<PurchaseType, Map<ResourceType, Integer>> COSTS = Map.of(
+            PurchaseType.ROAD, 
+            Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1),
+            PurchaseType.SETTLEMENT, 
+            Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1,
+                    ResourceType.WOOL, 1, ResourceType.GRAIN, 1),
+            PurchaseType.CITY, Map.of(ResourceType.ORE, 3, ResourceType.GRAIN, 2),
+            PurchaseType.DEVELOPMENT_CARD, 
+            Map.of(ResourceType.ORE, 1, ResourceType.WOOL, 1,
+                    ResourceType.GRAIN, 1));
+
+    public boolean isValidPlayerCount(int playerCount) {
+        return playerCount >= MIN_PLAYERS && playerCount <= MAX_PLAYERS;
+    }
+
+    public int getDiscardCount(int handSize) {
+        if (handSize < 0) {
+            throw new IllegalArgumentException("handSize must be >= 0");
+        }
+        if (handSize <= DISCARD_THRESHOLD) {
+            return 0;
+        }
+        return handSize / 2;
+    }
+
+    public boolean canAfford(ResourceHand hand, PurchaseType type) {
+        Objects.requireNonNull(hand);
+        Objects.requireNonNull(type);
+        for (Map.Entry<ResourceType, Integer> entry : COSTS.get(type).entrySet()) {
+            if (hand.getCount(entry.getKey()) < entry.getValue()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void payCost(ResourceHand hand, Bank bank, PurchaseType type) {
+        Objects.requireNonNull(bank);
+        if (!canAfford(hand, type)) {
+            throw new IllegalStateException("Hand cannot afford " + type);
+        }
+        for (Map.Entry<ResourceType, Integer> entry : COSTS.get(type).entrySet()) {
+            hand.remove(entry.getKey(), entry.getValue());
+            bank.receiveResource(entry.getKey(), entry.getValue());
+        }
+    }
+
+    public boolean canMoveRobberTo(Hex target) {
+        Objects.requireNonNull(target);
+        return !target.hasRobber();
+    }
+
+    public boolean canPlayDevelopmentCard(DevelopmentCard card, int currentTurn, int cardsPlayedThisTurn) {
+        Objects.requireNonNull(card);
+        if (cardsPlayedThisTurn < 0) {
+            throw new IllegalArgumentException("cardsPlayedThisTurn must be >= 0");
+        }
+        return cardsPlayedThisTurn < MAX_DEVELOPMENT_CARDS_PER_TURN && card.canBePlayed(currentTurn);
+    }
+
+    public boolean qualifiesForLongestRoad(int roadLength, int holderRoadLength) {
+        if (roadLength < 0 || holderRoadLength < 0) {
+            throw new IllegalArgumentException("road lengths must be >= 0");
+        }
+        return roadLength >= MIN_LONGEST_ROAD && roadLength > holderRoadLength;
+    }
+
+    public boolean qualifiesForLargestArmy(int knightCount, int holderKnightCount) {
+        if (knightCount < 0 || holderKnightCount < 0) {
+            throw new IllegalArgumentException("knight counts must be >= 0");
+        }
+        return knightCount >= MIN_LARGEST_ARMY && knightCount > holderKnightCount;
+    }
+
+    public boolean isWinner(int victoryPoints) {
+        if (victoryPoints < 0) {
+            throw new IllegalArgumentException("victoryPoints must be >= 0");
+        }
+        return victoryPoints >= WINNING_POINTS;
+    }
+}
