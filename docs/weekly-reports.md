@@ -26,7 +26,8 @@
 7. [done] Sami Khan: Implemented Location class (needed for the Intersection class functionality) with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/30]
 8. [done] Sami Khan: Implemented Building class (needed for the Intersection class functionality), currently an enumeration for current needs (will add on in the future if needed) [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/30]
 
-# One section per week until the last week of class (the week before the Finals week)
+# Week 7 (11/09/2026-11/15/2026)
+**Planning and Progress Tracking**:
 1. [done] Stephi Lyou: Implemented Hex class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/37]
 2. [done] Stephi Lyou: Implemented Board class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/38]
 3. [done] Stephi Lyou: Set up checkstyle and spotbug linters. CI build will fail until team members refactor their files in their branches [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/46]
