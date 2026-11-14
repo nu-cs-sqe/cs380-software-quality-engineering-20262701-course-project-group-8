@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    checkstyle
 }
 
 group = "nu.csse.sqe"
@@ -18,6 +19,19 @@ dependencies {
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+checkstyle {
+    toolVersion = "10.21.1"
+    isIgnoreFailures = false
+}
+
+tasks.withType<Checkstyle>().configureEach {
+    reports {
+        xml.required = false
+        html.required = true
+        html.stylesheet = resources.text.fromFile("config/xsl/checkstyle-noframes-severity-sorted.xsl")
     }
 }
 
