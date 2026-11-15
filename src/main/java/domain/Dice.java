@@ -1,7 +1,7 @@
 package domain;
 
-import java.util.Random;
 import java.util.Objects;
+import java.util.Random;
 
 public class Dice {
     private static final int SIDES = 6;
