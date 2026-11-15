@@ -1,21 +1,26 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Bank {
     public static final int RESOURCE_SUPPLY = 19;
-    
+
     public static final int DEVELOPMENT_CARD_SUPPLY = 25;
+    private static final int KNIGHT_CARDS = 14;
+    private static final int VICTORY_POINT_CARDS = 5;
+    private static final int PROGRESS_CARDS_PER_TYPE = 2;
+    private static final String INVALID_AMOUNT_MESSAGE = "Amount must be at least 1";
+
     private final List<DevelopmentCardType> developmentCards = new ArrayList<>();
     private final Map<ResourceType, Integer> resources = new EnumMap<>(ResourceType.class);
 
-     public Bank() {
+    public Bank() {
         this(new Random());
     }
 
@@ -24,11 +29,11 @@ public class Bank {
         for (ResourceType type : ResourceType.values()) {
             resources.put(type, RESOURCE_SUPPLY);
         }
-        addDevelopmentCards(DevelopmentCardType.KNIGHT, 14);
-        addDevelopmentCards(DevelopmentCardType.VICTORY_POINT, 5);
-        addDevelopmentCards(DevelopmentCardType.ROAD_BUILDING, 2);
-        addDevelopmentCards(DevelopmentCardType.YEAR_OF_PLENTY, 2);
-        addDevelopmentCards(DevelopmentCardType.MONOPOLY, 2);
+        addDevelopmentCards(DevelopmentCardType.KNIGHT, KNIGHT_CARDS);
+        addDevelopmentCards(DevelopmentCardType.VICTORY_POINT, VICTORY_POINT_CARDS);
+        addDevelopmentCards(DevelopmentCardType.ROAD_BUILDING, PROGRESS_CARDS_PER_TYPE);
+        addDevelopmentCards(DevelopmentCardType.YEAR_OF_PLENTY, PROGRESS_CARDS_PER_TYPE);
+        addDevelopmentCards(DevelopmentCardType.MONOPOLY, PROGRESS_CARDS_PER_TYPE);
         Collections.shuffle(developmentCards, random);
     }
 
@@ -46,7 +51,7 @@ public class Bank {
     public boolean hasResource(ResourceType type, int amount) {
         Objects.requireNonNull(type);
         if (amount < 1) {
-            throw new IllegalArgumentException("Amount must be at least 1");
+            throw new IllegalArgumentException(INVALID_AMOUNT_MESSAGE);
         }
         return getResourceCount(type) >= amount;
     }
@@ -54,7 +59,7 @@ public class Bank {
     public void giveResource(ResourceType type, int amount) {
         Objects.requireNonNull(type);
         if (amount < 1) {
-            throw new IllegalArgumentException("Amount must be at least 1");
+            throw new IllegalArgumentException(INVALID_AMOUNT_MESSAGE);
         }
         int current = getResourceCount(type);
         if (amount > current) {
@@ -66,11 +71,12 @@ public class Bank {
     public void receiveResource(ResourceType type, int amount) {
         Objects.requireNonNull(type);
         if (amount < 1) {
-            throw new IllegalArgumentException("Amount must be at least 1");
+            throw new IllegalArgumentException(INVALID_AMOUNT_MESSAGE);
         }
         int current = getResourceCount(type);
         if (current + amount > RESOURCE_SUPPLY) {
-            throw new IllegalStateException("Bank cannot hold more than " + RESOURCE_SUPPLY + " " + type);
+            throw new IllegalStateException(
+                    "Bank cannot hold more than " + RESOURCE_SUPPLY + " " + type);
         }
         resources.put(type, current + amount);
     }
