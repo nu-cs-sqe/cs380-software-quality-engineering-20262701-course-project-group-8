@@ -1,6 +1,7 @@
 package domain;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class GameRulesTest {
@@ -104,23 +105,23 @@ public class GameRulesTest {
     // TC 14
     @Test
     public void canAfford_settlementExactCost_returnsTrue() {
-        GameRules rules = new GameRules();
         ResourceHand hand = new ResourceHand();
         hand.add(ResourceType.BRICK, 1);
         hand.add(ResourceType.LUMBER, 1);
         hand.add(ResourceType.WOOL, 1);
         hand.add(ResourceType.GRAIN, 1);
+        GameRules rules = new GameRules();
         assertTrue(rules.canAfford(hand, PurchaseType.SETTLEMENT));
     }
 
     // TC 15
     @Test
     public void canAfford_settlementMissingGrain_returnsFalse() {
-        GameRules rules = new GameRules();
         ResourceHand hand = new ResourceHand();
         hand.add(ResourceType.BRICK, 1);
         hand.add(ResourceType.LUMBER, 1);
         hand.add(ResourceType.WOOL, 1);
+        GameRules rules = new GameRules();
         assertFalse(rules.canAfford(hand, PurchaseType.SETTLEMENT));
     }
 
@@ -157,11 +158,11 @@ public class GameRulesTest {
     // TC 19
     @Test
     public void canAfford_developmentCardExactCost_returnsTrue() {
-        GameRules rules = new GameRules();
         ResourceHand hand = new ResourceHand();
         hand.add(ResourceType.ORE, 1);
         hand.add(ResourceType.WOOL, 1);
         hand.add(ResourceType.GRAIN, 1);
+        GameRules rules = new GameRules();
         assertTrue(rules.canAfford(hand, PurchaseType.DEVELOPMENT_CARD));
     }
 
@@ -181,21 +182,23 @@ public class GameRulesTest {
         GameRules rules = new GameRules();
         ResourceHand hand = new ResourceHand();
         Bank bank = new Bank();
-        assertThrows(NullPointerException.class, () -> rules.payCost(null, bank, PurchaseType.ROAD));
-        assertThrows(NullPointerException.class, () -> rules.payCost(hand, null, PurchaseType.ROAD));
+        assertThrows(NullPointerException.class,
+                () -> rules.payCost(null, bank, PurchaseType.ROAD));
+        assertThrows(NullPointerException.class,
+                () -> rules.payCost(hand, null, PurchaseType.ROAD));
         assertThrows(NullPointerException.class, () -> rules.payCost(hand, bank, null));
     }
 
     // TC 22
     @Test
     public void payCost_cityExactCost_movesCostFromHandToBank() {
-        GameRules rules = new GameRules();
         Bank bank = new Bank();
         bank.giveResource(ResourceType.ORE, 3);
         bank.giveResource(ResourceType.GRAIN, 2);
         ResourceHand hand = new ResourceHand();
         hand.add(ResourceType.ORE, 3);
         hand.add(ResourceType.GRAIN, 2);
+        GameRules rules = new GameRules();
 
         rules.payCost(hand, bank, PurchaseType.CITY);
 
@@ -208,13 +211,13 @@ public class GameRulesTest {
     // TC 23
     @Test
     public void payCost_roadWithExtraCards_removesOnlyCost() {
-        GameRules rules = new GameRules();
         Bank bank = new Bank();
         bank.giveResource(ResourceType.BRICK, 2);
         bank.giveResource(ResourceType.LUMBER, 2);
         ResourceHand hand = new ResourceHand();
         hand.add(ResourceType.BRICK, 2);
         hand.add(ResourceType.LUMBER, 2);
+        GameRules rules = new GameRules();
 
         rules.payCost(hand, bank, PurchaseType.ROAD);
 
@@ -227,7 +230,6 @@ public class GameRulesTest {
     // TC 24
     @Test
     public void payCost_cannotAfford_throwsIllegalStateExceptionAndChangesNothing() {
-        GameRules rules = new GameRules();
         Bank bank = new Bank();
         bank.giveResource(ResourceType.BRICK, 1);
         bank.giveResource(ResourceType.LUMBER, 1);
@@ -236,6 +238,7 @@ public class GameRulesTest {
         hand.add(ResourceType.BRICK, 1);
         hand.add(ResourceType.LUMBER, 1);
         hand.add(ResourceType.WOOL, 1);
+        GameRules rules = new GameRules();
 
         assertThrows(IllegalStateException.class,
                 () -> rules.payCost(hand, bank, PurchaseType.SETTLEMENT));
@@ -293,7 +296,8 @@ public class GameRulesTest {
     public void canPlayDevelopmentCard_negativeCardsPlayed_throwsIllegalArgumentException() {
         GameRules rules = new GameRules();
         DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
-        assertThrows(IllegalArgumentException.class, () -> rules.canPlayDevelopmentCard(card, 4, -1));
+        assertThrows(IllegalArgumentException.class,
+                () -> rules.canPlayDevelopmentCard(card, 4, -1));
     }
 
     // TC 31
@@ -362,7 +366,7 @@ public class GameRulesTest {
         assertTrue(rules.qualifiesForLongestRoad(6, 5));
     }
 
-     // TC 40
+    // TC 40
     @Test
     public void qualifiesForLargestArmy_negativeKnightCount_throwsIllegalArgumentException() {
         GameRules rules = new GameRules();
