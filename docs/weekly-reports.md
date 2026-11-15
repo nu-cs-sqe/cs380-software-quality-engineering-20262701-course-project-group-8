@@ -31,6 +31,7 @@
 1. [done] Stephi Lyou: Implemented Hex class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/37]
 2. [done] Stephi Lyou: Implemented Board class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/38]
 3. [done] Stephi Lyou: Set up checkstyle and spotbug linters. CI build will fail until team members refactor their files in their branches [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/46]
+4. [done] Stephi Lyou: Set up jacoco and pitest linters. Also updated suppressions for src/test [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/46]
 
 # Week X (XX/XX/2026-XX/XX/2026) TEMPLATE (You can change the format to whatever the team likes better)
 **Planning and Progress Tracking**:
