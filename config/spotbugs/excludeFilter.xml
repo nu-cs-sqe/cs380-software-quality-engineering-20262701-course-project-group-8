@@ -32,4 +32,14 @@
     </Or>
   </Match>
 
+  <!--
+      Domain: Dice takes an injected Random so tests can pass a mock or
+      seeded Random. Storing the caller's Random is intentional.
+  -->
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+    <Field name="random"/>
+    <Class name="domain.Dice"/>
+  </Match>
+
 </FindBugsFilter>
