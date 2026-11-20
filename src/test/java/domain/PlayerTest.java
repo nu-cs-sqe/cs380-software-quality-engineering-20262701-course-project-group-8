@@ -414,4 +414,11 @@ public class PlayerTest {
 
         assertEquals(expected, actual);
     }
+
+    // TC43
+    @Test
+    public void getRoadLocations_playerHasZeroRoads_returnEmptyList() {
+        List<Location> actual = player.getRoadLocations();
+        assertTrue(actual.isEmpty());
+    }
 }

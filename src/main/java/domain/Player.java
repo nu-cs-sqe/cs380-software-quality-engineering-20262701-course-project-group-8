@@ -98,4 +98,8 @@ public class Player {
     public int getRoadCount() {
         return intersections.getBuildingCount(Building.ROAD);
     }
+
+    public List<Location> getRoadLocations() {
+        return intersections.getBuildingLocations(Building.ROAD);
+    }
 }
