@@ -92,4 +92,11 @@ public class Intersections {
         }
         return (buildingToLocations.getOrDefault(building, new ArrayList<Location>())).size();
     }
+
+    public List<Location> getBuildingLocations(Building building) {
+        if (building == null) {
+            throw new NullPointerException("Error: Building cannot be a null value");
+        }
+        return null;
+    }
 }
