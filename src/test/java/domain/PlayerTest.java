@@ -19,4 +19,11 @@ public class PlayerTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Player("", PlayerColor.RED));
         assertEquals("Error: Name cannot be an empty value", exception.getMessage());  
     }
+
+    // TC3
+    @Test
+    public void constructor_nameIsBlankColorIsValid_throwsIllegalArgumentException() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Player(" ", PlayerColor.RED));
+        assertEquals("Error: Name cannot be an empty value", exception.getMessage());  
+    }
 }
