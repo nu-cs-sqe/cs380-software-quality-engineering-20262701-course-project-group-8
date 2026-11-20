@@ -106,7 +106,7 @@ public class Intersections {
 ### Method under test: ` getBuildingCount(Building building);`
 |             | State of the System | Expected output | Implemented? |
 |-------------|---------------------|-----------------|--------------|
-| Test Case 13 | `building` is `null` | `NullPointerException` is thrown | :x: |
+| Test Case 13 | `building` is `null` | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 14 | `building` = ROAD | the number of buildings of this type ROAD is returned without exception | :x: |
 
 ### Method under test: ` getBuildingLocation(Building building);`

@@ -190,4 +190,11 @@ public class IntersectionsTest {
 
         assertEquals(expected, actual);
     }
+
+    // TC 13
+    @Test
+    public void getBuildingCount_buildingIsNull_throwNullPointerException() {
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> intersections.getBuildingCount(null));
+        assertEquals("Error: Building cannot be a null value", exception.getMessage());
+    }
 }

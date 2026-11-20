@@ -80,4 +80,11 @@ public class Intersections {
 
         return neighboringHexes;
     }
+
+    public int getBuildingCount(Building building) {
+        if (building == null) {
+            throw new NullPointerException("Error: Building cannot be a null value");
+        }
+        return 0;
+    }
 }
