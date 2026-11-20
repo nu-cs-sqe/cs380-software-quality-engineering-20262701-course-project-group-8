@@ -10,5 +10,9 @@ public class Player {
         } else if (name.isEmpty() || name.isBlank()) {
             throw new IllegalArgumentException("Error: Name cannot be an empty value");
         }
+
+        if (color == null) {
+            throw new NullPointerException("Error: Color cannot be a null value");
+        }
     }
 }
