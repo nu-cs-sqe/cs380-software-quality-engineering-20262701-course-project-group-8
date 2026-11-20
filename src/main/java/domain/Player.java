@@ -54,5 +54,7 @@ public class Player {
         if (amount <= 0) {
             throw new IllegalArgumentException("Error: Amount cannot be a non-positive value");
         }
+
+        resourceHand.remove(resource, amount);
     }
 }

@@ -129,6 +129,17 @@ public class PlayerTest {
         assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage()); 
     }
 
+    // TC16
+    @Test
+    public void removeResource_resourceIsWoolAmountIsOne_playerHasTwoWoolInSupply_returnPlayerHasOneWoolInSupply() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        player.addResource(ResourceType.WOOL, 2); 
+        player.removeResource(ResourceType.WOOL, 1);
+        int expected = 1;
+        int actual = player.getResourceCount(ResourceType.WOOL);
+        assertEquals(expected, actual);
+    }
+
     // TC19
     @Test
     public void getResourceCount_resourceIsNull_throwsNullPointerException() {
