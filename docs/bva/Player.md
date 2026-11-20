@@ -175,7 +175,7 @@ public class Player {
 
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
-| Test Case 8 | `resource = null`, `amount = 1` | `NullPointerException` | :x: |
+| Test Case 8 | `resource = null`, `amount = 1` | `NullPointerException` | :white_check_mark: |
 | Test Case 9 | `resource = WOOD`, `amount = -1` | `IllegalArgumentException` | :x: |
 | Test Case 10 | `resource = WOOD`, `amount = 0` | `IllegalArgumentException` | :x: |
 | Test Case 11 | Player has 0 wood, add 1 wood | Wood quantity becomes 1 | :x: |

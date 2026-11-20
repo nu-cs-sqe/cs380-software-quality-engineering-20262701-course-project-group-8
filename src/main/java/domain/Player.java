@@ -34,4 +34,10 @@ public class Player {
         }
         return resourceHand.getCount(resource);
     }
+
+    public void addResource(ResourceType resourceType, int amount) {
+        if (resourceType == null) {
+            throw new NullPointerException("Error: Resource cannot be a null value");
+        }
+    }
 }
