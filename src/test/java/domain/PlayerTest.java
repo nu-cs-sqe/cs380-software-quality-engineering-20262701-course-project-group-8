@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.easymock.EasyMock;
@@ -272,4 +273,13 @@ public class PlayerTest {
         assertTrue(actual.isEmpty());
     }
     
+    // TC32
+    @Test
+    public void getCityLocations_playerHasOneCity_returnListConsistingOfOneCity() {
+        Location location = EasyMock.createMock(Location.class);
+        player.intersections.addBuilding(location, Building.CITY);
+        List<Location> expected = new ArrayList<>(List.of(location));
+        List<Location> actual = player.getCityLocations();
+        assertEquals(expected, actual);
+    }
 }
