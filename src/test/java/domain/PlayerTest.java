@@ -38,4 +38,12 @@ public class PlayerTest {
     public void constructor_nameIsValidColorIsValid_returnsPlayerObject() {
         assertDoesNotThrow(() -> new Player("Alice",  PlayerColor.RED));
     }
+
+    // TC6
+    public void getName_nameIsValid_returnsName() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        String expected = "Alice";
+        String actual = player.getName();
+        assertEquals(expected, actual);
+    }
 }

@@ -163,7 +163,7 @@ public class Player {
 
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
-| Test Case 6 | Player constructed with name `"Alice"` | `"Alice"` | :x: |
+| Test Case 6 | Player constructed with name `"Alice"` | `"Alice"` | :white_check_mark: |
 
 ### Method under test: `getColor()`
 
