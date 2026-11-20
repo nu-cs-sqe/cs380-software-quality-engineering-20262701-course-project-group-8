@@ -68,6 +68,8 @@ public class Player {
         if (points <= 0) {
             throw new IllegalArgumentException("Error: Points cannot be a non-positive value");
         }
+
+        victoryPoints += points;
     }
 
     public int getVictoryPoints() {

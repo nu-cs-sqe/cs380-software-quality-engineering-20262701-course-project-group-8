@@ -202,6 +202,16 @@ public class PlayerTest {
         assertEquals("Error: Points cannot be a non-positive value", exception.getMessage());
     }
 
+    // TC24
+    @Test
+    public void addVictoryPoints_pointsIs1_playerHasZeroVictoryPoints_returnPlayerVictoryPointsIsOne() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        player.addVictoryPoints(1);
+        int expected = 1;
+        int actual = player.getVictoryPoints();
+        assertEquals(expected, actual);
+    }
+
     // TC26
     @Test
     public void getVictoryPoints_playerHasZeroVictoryPoints_returnZero() {
