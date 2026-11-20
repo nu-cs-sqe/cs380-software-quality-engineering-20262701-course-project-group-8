@@ -190,7 +190,7 @@ public class Player {
 | Test Case 15 | resource = WOOL, amount = 0, Player has 2 wool| `IllegalArgumentException` | :white_check_mark: |
 | Test Case 16 | resource = WOOL, amount = 1, Player has 2 wool | Wool quantity becomes 1 | :white_check_mark: |
 | Test Case 17 | resource = WOOL, amount = 2, Player has 2 wool| Wool quantity becomes 0 | :white_check_mark: |
-| Test Case 18 | resource = WOOL, amount = 3, Player has 2 wool| `IllegalStateException` | :x: |
+| Test Case 18 | resource = WOOL, amount = 3, Player has 2 wool| `IllegalStateException` | :white_check_mark: |
 
 ### Method under test: `getResourceCount(Resource resource)`
 

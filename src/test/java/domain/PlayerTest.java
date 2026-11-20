@@ -151,6 +151,15 @@ public class PlayerTest {
         assertEquals(expected, actual);       
     }
 
+    // TC18 
+    @Test
+    public void removeResource_resourceIsWoolAmountIsThree_playerHasTwoWoolInSupply_throwIllegalStateException() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        player.addResource(ResourceType.WOOL, 2);
+        IllegalStateException exception = assertThrows(IllegalStateException.class, () -> player.removeResource(ResourceType.WOOL, 3));
+        assertEquals("Not enough " + ResourceType.WOOL + " to remove", exception.getMessage());
+    }
+
     // TC19
     @Test
     public void getResourceCount_resourceIsNull_throwsNullPointerException() {

@@ -54,7 +54,10 @@ public class Player {
         if (amount <= 0) {
             throw new IllegalArgumentException("Error: Amount cannot be a non-positive value");
         }
-
+        
+        if (amount > getResourceCount(resource)) {
+            throw new IllegalStateException("Not enough " + ResourceType.WOOL + " to remove");
+        }
         resourceHand.remove(resource, amount);
     }
 }
