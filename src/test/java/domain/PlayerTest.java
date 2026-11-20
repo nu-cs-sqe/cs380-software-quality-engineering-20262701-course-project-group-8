@@ -380,4 +380,38 @@ public class PlayerTest {
         int actual = player.getRoadCount();
         assertEquals(expected, actual);
     }
+
+    // TC42
+    @Test
+    public void getRoadCount_playerHas15Roads_return15() {
+        Location location1 = EasyMock.createMock(Location.class);
+        Location location2 = EasyMock.createMock(Location.class);
+        Location location3 = EasyMock.createMock(Location.class);
+        Location location4 = EasyMock.createMock(Location.class);
+        Location location5 = EasyMock.createMock(Location.class);
+        Location location6 = EasyMock.createMock(Location.class);
+        Location location7 = EasyMock.createMock(Location.class);
+        Location location8 = EasyMock.createMock(Location.class);
+        Location location9 = EasyMock.createMock(Location.class);
+        Location location10 = EasyMock.createMock(Location.class);
+        Location location11 = EasyMock.createMock(Location.class);
+        Location location12 = EasyMock.createMock(Location.class);
+        Location location13 = EasyMock.createMock(Location.class);
+        Location location14 = EasyMock.createMock(Location.class);
+        Location location15 = EasyMock.createMock(Location.class);
+        List<Location> roadLocations = List.of(
+        location1, location2, location3, location4, location5,
+        location6, location7, location8, location9, location10,
+        location11, location12, location13, location14, location15
+        );
+
+        for (Location location : roadLocations) {
+            player.intersections.addBuilding(location, Building.ROAD);
+        }
+
+        int expected = 15;
+        int actual = player.getRoadCount();
+
+        assertEquals(expected, actual);
+    }
 }
