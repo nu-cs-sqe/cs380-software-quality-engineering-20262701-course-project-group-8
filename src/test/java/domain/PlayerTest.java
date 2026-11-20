@@ -3,6 +3,9 @@ package domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
 import org.easymock.EasyMock;
 
 public class PlayerTest {
@@ -262,6 +265,11 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
-    
+    // TC31
+    @Test
+    public void getCityLocations_playerHasZeroCities_returnEmptyList() {
+        List<Location> actual = player.getCityLocations();
+        assertTrue(actual.isEmpty());
+    }
     
 }

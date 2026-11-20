@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 public class Player {
     String name;
     PlayerColor color;
@@ -79,5 +81,9 @@ public class Player {
     
     public int getCityCount() {
         return intersections.getBuildingCount(Building.CITY);
+    }
+
+    public List<Location> getCityLocations() {
+        return intersections.getBuildingLocations(Building.CITY);
     }
 }
