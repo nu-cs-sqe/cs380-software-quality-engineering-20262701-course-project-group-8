@@ -186,6 +186,14 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
+    // TC22
+    @Test
+    public void addVictoryPoints_pointsIsNegative_playerHasZeroVictoryPoints_throwIllegalArgumentException() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addVictoryPoints(-1));
+        assertEquals("Error: Points cannot be a non-positive value", exception.getMessage());
+    }
+
     // TC26
     @Test
     public void getVictoryPoints_playerHasZeroVictoryPoints_returnZero() {

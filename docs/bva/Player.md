@@ -204,7 +204,7 @@ public class Player {
 
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
-| Test Case 22 | `points = -1`, current points = 0 | `IllegalArgumentException` | :x: |
+| Test Case 22 | `points = -1`, current points = 0 | `IllegalArgumentException` | :white_check_mark: |
 | Test Case 23 | `points = 0`, current points = 0 | `IllegalArgumentException` | :x: |
 | Test Case 24 | `points = 1`, current points = 0 | Victory points become 1 | :x: |
 | Test Case 25 | `points = 1`, current points = 9 | Victory points become 10 | :x: |

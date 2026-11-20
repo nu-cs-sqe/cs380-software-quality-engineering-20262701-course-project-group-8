@@ -64,6 +64,12 @@ public class Player {
         resourceHand.remove(resource, amount);
     }
 
+    public void addVictoryPoints(int points) {
+        if (points <= 0) {
+            throw new IllegalArgumentException("Error: Points cannot be a non-positive value");
+        }
+    }
+
     public int getVictoryPoints() {
         return victoryPoints;
     }
