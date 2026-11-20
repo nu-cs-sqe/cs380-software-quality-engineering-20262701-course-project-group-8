@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.easymock.EasyMock;
@@ -221,5 +222,13 @@ public class IntersectionsTest {
     public void getBuildingLocations_buildingIsNull_throwNullPointerException() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> intersections.getBuildingLocations(null));
         assertEquals("Error: Building cannot be a null value", exception.getMessage());
+    }
+
+    // TC 17
+    @Test
+    public void getBuildingLocations_buildingIsAValidTypeRoad_playerHasZeroRoadBuildings_returnEmptyListOfLocations() {
+        List<Location> expected = new ArrayList<>();
+        List<Location> actual = intersections.getBuildingLocations(Building.ROAD);
+        assertEquals(expected, actual);
     }
 }

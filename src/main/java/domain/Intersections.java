@@ -97,6 +97,6 @@ public class Intersections {
         if (building == null) {
             throw new NullPointerException("Error: Building cannot be a null value");
         }
-        return null;
+        return buildingToLocations.getOrDefault(building, new ArrayList<Location>());
     }
 }
