@@ -75,6 +75,7 @@ public class PlayerTest {
     }
 
     // TC10
+    @Test
     public void addResource_resourceIsValidAmountIsZero_throwIllegalArgumentException() {
         Player player = new Player("Alice", PlayerColor.RED);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addResource(ResourceType.WOOL, 0));
@@ -82,6 +83,7 @@ public class PlayerTest {
     }
 
     // TC11
+    @Test
     public void addResource_resourceIsValidAmountIsOne_addToZeroCurrentSupply_returnPlayerHasOneOfThisResourceType() {
         Player player = new Player("Alice", PlayerColor.RED);
         player.addResource(ResourceType.WOOL, 1);
