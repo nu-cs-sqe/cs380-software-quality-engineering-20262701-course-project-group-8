@@ -243,4 +243,24 @@ public class PlayerTest {
         int actual = player.getCityCount();
         assertEquals(expected, actual);
     }
+
+    // TC30
+    @Test
+    public void getCityCount_playerHasFourCities_returnFour() {
+        Location location1 = EasyMock.createMock(Location.class);
+        Location location2 = EasyMock.createMock(Location.class);
+        Location location3 = EasyMock.createMock(Location.class);
+        Location location4 = EasyMock.createMock(Location.class);
+
+        player.intersections.addBuilding(location1, Building.CITY);
+        player.intersections.addBuilding(location2, Building.CITY);
+        player.intersections.addBuilding(location3, Building.CITY);
+        player.intersections.addBuilding(location4, Building.CITY);
+
+        int expected = 4;
+        int actual = player.getCityCount();
+        assertEquals(expected, actual);
+    }
+
+    
 }
