@@ -197,4 +197,12 @@ public class IntersectionsTest {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> intersections.getBuildingCount(null));
         assertEquals("Error: Building cannot be a null value", exception.getMessage());
     }
+
+    // TC 14
+    @Test
+    public void getBuildingCount_buildingIsAValidRoatType_playerHasZeroRoadBuildings_returnNumberOfBuildingsOfRoadType() {
+        int expected = 0;
+        int actual = intersections.getBuildingCount(Building.ROAD);
+        assertEquals(expected, actual);
+    }
 }
