@@ -1,11 +1,16 @@
 package domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.easymock.EasyMock;
 
 public class PlayerTest {
-
+    private Player player;
+    @BeforeEach
+    public void setUp() {
+        player = new Player("Alice", PlayerColor.RED);
+    }
     // TC1
     @Test
     public void constructor_nameISNullColorIsValid_throwsNullPointerException() {
@@ -43,7 +48,6 @@ public class PlayerTest {
     // TC6
     @Test
     public void getName_nameIsValid_returnsName() {
-        Player player = new Player("Alice", PlayerColor.RED);
         String expected = "Alice";
         String actual = player.getName();
         assertEquals(expected, actual);
@@ -52,7 +56,6 @@ public class PlayerTest {
     // TC7
     @Test
     public void getColor_colorIsValid_returnsColor() {
-        Player player = new Player("Alice", PlayerColor.RED);
         PlayerColor expected = PlayerColor.RED;
         PlayerColor actual = player.getColor();
         assertEquals(expected, actual);
@@ -61,7 +64,6 @@ public class PlayerTest {
     // TC8
     @Test
     public void addResource_resourceIsNullAmountIsValid_throwNullPointerException() {
-        Player player = new Player("Alice", PlayerColor.RED);
         NullPointerException exception = assertThrows(NullPointerException.class, () -> player.addResource(null, 1));
         assertEquals("Error: Resource cannot be a null value", exception.getMessage());
     }
@@ -69,7 +71,6 @@ public class PlayerTest {
     // TC9
     @Test
     public void addResource_resourceIsValidAmountIsNegative_throwIllegalArgumentException() {
-        Player player = new Player("Alice", PlayerColor.RED);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addResource(ResourceType.WOOL, -1));
         assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage());
     }
@@ -85,7 +86,6 @@ public class PlayerTest {
     // TC11
     @Test
     public void addResource_resourceIsValidAmountIsOne_addToZeroCurrentSupplyOfZero_returnPlayerHasOneOfThisResourceType() {
-        Player player = new Player("Alice", PlayerColor.RED);
         player.addResource(ResourceType.WOOL, 1);
         int expected = 1;
         int actual = player.getResourceCount(ResourceType.WOOL);
@@ -95,7 +95,6 @@ public class PlayerTest {
     // TC12
     @Test
     public void addResource_resourceIsValidAmountIsOne_addOneToCurrentSupplyOfOne_returnPlayerHasTwoOfThisResourceType() {
-        Player player = new Player("Alice", PlayerColor.RED);
         player.addResource(ResourceType.WOOL, 1);
         player.addResource(ResourceType.WOOL, 1);
         int expected = 2;
@@ -106,7 +105,6 @@ public class PlayerTest {
     // TC13
     @Test
     public void removeResource_resourceIsNullAmountIsValid_throwNullPointerException() {
-        Player player = new Player("Alice", PlayerColor.RED);
         NullPointerException exception = assertThrows(NullPointerException.class, () -> player.removeResource(null, 1));
         assertEquals("Error: Resource cannot be a null value", exception.getMessage());
     }
@@ -114,7 +112,6 @@ public class PlayerTest {
     // TC14
     @Test
     public void removeResource_resourceIsValidAmountIsNegative_playerHasTwoWoolInSupply_throwIllegalArgumentException() {
-        Player player = new Player("Alice", PlayerColor.RED);
         player.addResource(ResourceType.WOOL, 2);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.removeResource(ResourceType.WOOL, -1));
         assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage());
@@ -123,7 +120,6 @@ public class PlayerTest {
     // TC15
     @Test
     public void removeResource_resourceIsValidAmountIsZero_playerHasTwoWoolInSupply_throwIllegalArgumentException() {
-        Player player = new Player("Alice", PlayerColor.RED);
         player.addResource(ResourceType.WOOL, 2);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.removeResource(ResourceType.WOOL, 0));
         assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage()); 
@@ -132,7 +128,6 @@ public class PlayerTest {
     // TC16
     @Test
     public void removeResource_resourceIsWoolAmountIsOne_playerHasTwoWoolInSupply_returnPlayerHasOneWoolInSupply() {
-        Player player = new Player("Alice", PlayerColor.RED);
         player.addResource(ResourceType.WOOL, 2); 
         player.removeResource(ResourceType.WOOL, 1);
         int expected = 1;
@@ -143,7 +138,6 @@ public class PlayerTest {
     // TC17
     @Test
     public void removeResource_resourceIsWoolAmountIsTwo_playerHasTwoWoolInSupply_returnPlayerHasZeroSupply() {
-        Player player = new Player("Alice", PlayerColor.RED);
         player.addResource(ResourceType.WOOL, 2); 
         player.removeResource(ResourceType.WOOL, 2);
         int expected = 0;
@@ -154,7 +148,6 @@ public class PlayerTest {
     // TC18 
     @Test
     public void removeResource_resourceIsWoolAmountIsThree_playerHasTwoWoolInSupply_throwIllegalStateException() {
-        Player player = new Player("Alice", PlayerColor.RED);
         player.addResource(ResourceType.WOOL, 2);
         IllegalStateException exception = assertThrows(IllegalStateException.class, () -> player.removeResource(ResourceType.WOOL, 3));
         assertEquals("Not enough " + ResourceType.WOOL + " to remove", exception.getMessage());
@@ -163,7 +156,6 @@ public class PlayerTest {
     // TC19
     @Test
     public void getResourceCount_resourceIsNull_throwsNullPointerException() {
-        Player player = new Player("Alice", PlayerColor.RED);
         NullPointerException exception = assertThrows(NullPointerException.class, () -> player.getResourceCount(null));
         assertEquals("Error: Resource cannot be a null value", exception.getMessage());
     }
@@ -171,7 +163,6 @@ public class PlayerTest {
     // TC20
     @Test
     public void getResourceCount_resourceIsBrickPlayerHasNoBrick_returnZero() {
-        Player player = new Player("Alice", PlayerColor.RED);
         int expected = 0;
         int actual = player.getResourceCount(ResourceType.BRICK);
         assertEquals(expected, actual);
@@ -180,7 +171,6 @@ public class PlayerTest {
     // TC21
     @Test
     public void getResourceCount_resourceIsBrick_playerHasZeroBrickInSupply_returnZero() {
-        Player player = new Player("Alice", PlayerColor.RED);
         int expected = 0;
         int actual = player.getResourceCount(ResourceType.BRICK);
         assertEquals(expected, actual);
@@ -189,7 +179,6 @@ public class PlayerTest {
     // TC22
     @Test
     public void addVictoryPoints_pointsIsNegative_playerHasZeroVictoryPoints_throwIllegalArgumentException() {
-        Player player = new Player("Alice", PlayerColor.RED);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addVictoryPoints(-1));
         assertEquals("Error: Points cannot be a non-positive value", exception.getMessage());
     }
@@ -197,7 +186,6 @@ public class PlayerTest {
     // TC23
     @Test
     public void addVictoryPoints_pointsIsZero_playerHasZeroVictoryPoints_throwIllegalArgumentException() {
-        Player player = new Player("Alice", PlayerColor.RED);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addVictoryPoints(0));
         assertEquals("Error: Points cannot be a non-positive value", exception.getMessage());
     }
@@ -205,7 +193,6 @@ public class PlayerTest {
     // TC24
     @Test
     public void addVictoryPoints_pointsIs1_playerHasZeroVictoryPoints_returnPlayerVictoryPointsIsOne() {
-        Player player = new Player("Alice", PlayerColor.RED);
         player.addVictoryPoints(1);
         int expected = 1;
         int actual = player.getVictoryPoints();
@@ -215,7 +202,6 @@ public class PlayerTest {
     // TC25
     @Test
     public void addVictoryPoints_pointsIs1_playerHas9VictoryPoints_returnPlayerHas10VictoryPoints() {
-        Player player = new Player("Alice", PlayerColor.RED);
         player.addVictoryPoints(9);
         player.addVictoryPoints(1);
         int expected = 10;
@@ -226,7 +212,6 @@ public class PlayerTest {
     // TC26
     @Test
     public void getVictoryPoints_playerHasZeroVictoryPoints_returnZero() {
-        Player player = new Player("Alice", PlayerColor.RED);
         int expected = 0;
         int actual = player.getVictoryPoints();
         assertEquals(expected, actual);
@@ -235,12 +220,11 @@ public class PlayerTest {
     // TC27
     @Test
     public void getVictoryPoints_playerHas10VictoryPoints_return10() {
-        Player player = new Player("Alice", PlayerColor.RED);
         player.addVictoryPoints(10);
         int expected = 10;
         int actual = player.getVictoryPoints();
         assertEquals(expected, actual);
     }
 
-  
+    
 }

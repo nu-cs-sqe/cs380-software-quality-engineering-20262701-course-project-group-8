@@ -77,5 +77,7 @@ public class Player {
         return victoryPoints;
     }
     
-
+    public int getCityCount() {
+        return intersections.getBuildingCount(Building.CITY);
+    }
 }
