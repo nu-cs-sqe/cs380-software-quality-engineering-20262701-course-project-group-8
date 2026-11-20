@@ -90,4 +90,8 @@ public class Player {
     public int getSettlementCounts() {
         return intersections.getBuildingCount(Building.SETTLEMENT);
     }
+
+    public List<Location> getSettlementLocations() {
+        return intersections.getBuildingLocations(Building.SETTLEMENT);
+    }
 }

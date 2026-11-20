@@ -332,4 +332,11 @@ public class PlayerTest {
         int actual = player.getSettlementCounts();
         assertEquals(expected, actual);
     }
+
+    // TC37
+    @Test
+    public void getSettlementLocations_playerHasZeroSettlements_returnZero() {
+        List<Location> actual = player.getSettlementLocations();
+        assertTrue(actual.isEmpty());
+    }
 }
