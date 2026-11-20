@@ -153,7 +153,7 @@ public class Player {
 
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
-| Test Case 1 | `name = null`, `color = RED` | `NullPointerException` | :x: |
+| Test Case 1 | `name = null`, `color = RED` | `NullPointerException` | :white_check_mark: |
 | Test Case 2 | `name = ""`, `color = RED` | `IllegalArgumentException` | :x: |
 | Test Case 3 | `name = " "`, `color = RED` | `IllegalArgumentException` | :x: |
 | Test Case 4 | `name = "Alice"`, `color = null` | `NullPointerException` | :x: |
