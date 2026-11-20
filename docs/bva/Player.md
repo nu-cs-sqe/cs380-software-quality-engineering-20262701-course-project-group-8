@@ -229,7 +229,7 @@ public class Player {
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
 | Test Case 31 | Player owns 0 cities | Empty `Location[]` | :white_check_mark: |
-| Test Case 32 | Player owns 1 city at (0, 0) | Array containing location (0, 0) | :white_check_mark: |
+| Test Case 32 | Player owns 1 city | Array containing one location | :white_check_mark: |
 | Test Case 33 | Player owns 2 cities | Array containing both locations | :white_check_mark: |
 
 ### Method under test: `getSettlementCount()`
@@ -245,7 +245,7 @@ public class Player {
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
 | Test Case 37 | Player owns 0 settlements | Empty `Location[]` | :white_check_mark: |
-| Test Case 38 | Player owns 1 settlement | Array containing location (0, 0) | :x: |
+| Test Case 38 | Player owns 1 settlement | Array containing one location | :white_check_mark: |
 | Test Case 39 | Player owns 2 settlements| Array containing both locations | :x: |
 
 ### Method under test: `getRoadCount()`

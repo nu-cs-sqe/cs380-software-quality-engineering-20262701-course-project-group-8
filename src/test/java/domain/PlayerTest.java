@@ -335,8 +335,19 @@ public class PlayerTest {
 
     // TC37
     @Test
-    public void getSettlementLocations_playerHasZeroSettlements_returnZero() {
+    public void getSettlementLocations_playerHasZeroSettlements_returnEmptyList() {
         List<Location> actual = player.getSettlementLocations();
         assertTrue(actual.isEmpty());
+    }
+
+    //TC38
+    @Test
+    public void getSettlementLocations_playerHasOneSettlement_returnListOfOneLocation() {
+        Location location = EasyMock.createMock(Location.class);
+        player.intersections.addBuilding(location, Building.SETTLEMENT);
+        List<Location> expected = new ArrayList<>(List.of(location));
+        List<Location> actual = player.getSettlementLocations();
+        assertEquals(expected, actual);
+        
     }
 }

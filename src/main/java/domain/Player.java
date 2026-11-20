@@ -94,4 +94,5 @@ public class Player {
     public List<Location> getSettlementLocations() {
         return intersections.getBuildingLocations(Building.SETTLEMENT);
     }
+
 }
