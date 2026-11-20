@@ -177,4 +177,13 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
+    // TC21
+    @Test
+    public void getResourceCount_resourceIsBrick_playerHasZeroBrickInSupply_returnZero() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        int expected = 0;
+        int actual = player.getResourceCount(ResourceType.BRICK);
+        assertEquals(expected, actual);
+    }
+
 }

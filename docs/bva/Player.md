@@ -197,8 +197,8 @@ public class Player {
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
 | Test Case 19 | `resource = null` | `NullPointerException` | :white_check_mark: |
-| Test Case 20 | Player has 0 brick | 0 | :white_check_mark: |
-| Test Case 21 | Player has 1 brick | 1 | :x: |
+| Test Case 20 | resource = BRICK, Player has 0 brick | 0 | :white_check_mark: |
+| Test Case 21 | resource = BRICK, Player has 1 brick | 1 | :white_check_mark: |
 
 ### Method under test: `addVictoryPoints(int points)`
 
