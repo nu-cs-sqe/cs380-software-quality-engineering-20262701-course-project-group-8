@@ -233,4 +233,14 @@ public class PlayerTest {
         int actual = player.getCityCount();
         assertEquals(expected, actual);
     }
+
+    // TC29
+    @Test
+    public void getCityCount_playerHasOneCity_returnOne() {
+        Location location = EasyMock.createMock(Location.class);
+        player.intersections.addBuilding(location, Building.CITY);
+        int expected = 1;
+        int actual = player.getCityCount();
+        assertEquals(expected, actual);
+    }
 }
