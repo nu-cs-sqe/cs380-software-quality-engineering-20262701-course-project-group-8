@@ -71,7 +71,14 @@ public class PlayerTest {
     public void addResource_resourceIsValidAmountIsNegative_throwIllegalArgumentException() {
         Player player = new Player("Alice", PlayerColor.RED);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addResource(ResourceType.WOOL, -1));
-        assertEquals("Error: Amount cannot be a negative value", exception.getMessage());
+        assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage());
+    }
+
+    // TC10
+    public void addResource_resourceIsValidAmountIsZero_throwIllegalArgumentException() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addResource(ResourceType.WOOL, 0));
+        assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage()); 
     }
 
     // TC19
