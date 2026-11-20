@@ -214,7 +214,7 @@ public class Player {
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
 | Test Case 26 | Newly constructed player | 0 | :white_check_mark: |
-| Test Case 27 | Player has 10 victory points | 10 | :x: |
+| Test Case 27 | Player has 10 victory points | 10 | :white_check_mark: |
 
 ### Method under test: `getCityCount()`
 

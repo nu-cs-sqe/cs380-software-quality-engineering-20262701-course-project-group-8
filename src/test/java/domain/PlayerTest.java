@@ -231,4 +231,14 @@ public class PlayerTest {
         int actual = player.getVictoryPoints();
         assertEquals(expected, actual);
     }
+
+    // TC27
+    @Test
+    public void getVictoryPoints_playerHas10VictoryPoints_return10() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        player.addVictoryPoints(10);
+        int expected = 10;
+        int actual = player.getVictoryPoints();
+        assertEquals(expected, actual);
+    }
 }
