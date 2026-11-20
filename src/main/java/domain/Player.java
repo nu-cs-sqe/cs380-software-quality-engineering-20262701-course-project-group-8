@@ -45,4 +45,10 @@ public class Player {
 
         resourceHand.add(resourceType, amount);
     }
+
+    public void removeResource(ResourceType resource, int amount) {
+        if (resource == null) {
+            throw new NullPointerException("Error: Resource cannot be a null value");
+        }
+    }
 }

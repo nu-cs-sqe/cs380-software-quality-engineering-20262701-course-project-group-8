@@ -103,6 +103,14 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
+    // TC13
+    @Test
+    public void removeResource_resourceIsNullAmountIsValid_throwNullPointerException() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> player.removeResource(null, 1));
+        assertEquals("Error: Resource cannot be a null value", exception.getMessage());
+    }
+
     // TC19
     @Test
     public void getResourceCount_resourceIsNull_throwsNullPointerException() {
