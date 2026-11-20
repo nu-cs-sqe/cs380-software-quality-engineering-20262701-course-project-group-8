@@ -157,7 +157,7 @@ public class Player {
 | Test Case 2 | `name = ""`, `color = RED` | `IllegalArgumentException` | :white_check_mark: |
 | Test Case 3 | `name = " "`, `color = RED` | `IllegalArgumentException` | :white_check_mark: |
 | Test Case 4 | `name = "Alice"`, `color = null` | `NullPointerException` | :white_check_mark: |
-| Test Case 5 | `name = "Alice"`, `color = RED` | Player created successfully | :x: |
+| Test Case 5 | `name = "Alice"`, `color = RED` | Player created successfully | :white_check_mark: |
 
 ### Method under test: `getName()`
 

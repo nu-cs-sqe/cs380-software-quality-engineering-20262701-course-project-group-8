@@ -14,5 +14,8 @@ public class Player {
         if (color == null) {
             throw new NullPointerException("Error: Color cannot be a null value");
         }
+
+        this.name = name;
+        this.color = color;
     }
 }

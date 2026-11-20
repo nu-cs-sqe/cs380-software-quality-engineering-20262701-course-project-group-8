@@ -33,4 +33,9 @@ public class PlayerTest {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> new Player("Alice", null));
         assertEquals("Error: Color cannot be a null value", exception.getMessage());  
     }
+
+    // TC5
+    public void constructor_nameIsValidColorIsValid_returnsPlayerObject() {
+        assertDoesNotThrow(() -> new Player("Alice",  PlayerColor.RED));
+    }
 }
