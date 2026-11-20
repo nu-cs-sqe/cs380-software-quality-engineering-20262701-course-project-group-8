@@ -3,7 +3,7 @@ package domain;
 public class Player {
     String name;
     PlayerColor color;
-
+    ResourceHand resourceHand;
     public Player(String name, PlayerColor color) {
         if (name == null) {
             throw new NullPointerException("Error: Name cannot be a null value");
@@ -17,6 +17,7 @@ public class Player {
 
         this.name = name;
         this.color = color;
+        this.resourceHand = new ResourceHand();
     }
 
     public String getName() {
@@ -25,5 +26,12 @@ public class Player {
     
     public PlayerColor getColor() {
         return color;
+    }
+
+    public ResourceType getResource(ResourceType resource) {
+        if (resource == null) {
+            throw new NullPointerException("Error: Resource cannot be a null value");
+        }
+        return null;
     }
 }

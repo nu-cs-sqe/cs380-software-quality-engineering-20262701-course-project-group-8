@@ -196,7 +196,7 @@ public class Player {
 
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
-| Test Case 19 | `resource = null` | `NullPointerException` | :x: |
+| Test Case 19 | `resource = null` | `NullPointerException` | :white_check_mark: |
 | Test Case 20 | Player has 0 brick | 0 | :x: |
 | Test Case 21 | Player has 1 brick | 1 | :x: |
 

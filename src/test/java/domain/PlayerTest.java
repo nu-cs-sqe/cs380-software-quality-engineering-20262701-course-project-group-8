@@ -57,4 +57,12 @@ public class PlayerTest {
         PlayerColor actual = player.getColor();
         assertEquals(expected, actual);
     }
+
+    // TC19
+    @Test
+    public void getResourceCount_resourceIsNull_throwsNullPointerException() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> player.getResource(null));
+        assertEquals("Error: Resource cannot be a null value", exception.getMessage());
+    }
 }
