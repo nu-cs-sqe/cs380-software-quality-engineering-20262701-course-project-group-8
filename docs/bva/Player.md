@@ -179,7 +179,7 @@ public class Player {
 | Test Case 9 | `resource = WOOL`, `amount = -1` | `IllegalArgumentException` | :white_check_mark: |
 | Test Case 10 | `resource = WOOL`, `amount = 0` | `IllegalArgumentException` | :white_check_mark: |
 | Test Case 11 | resource = WOOL, amount = 1, Player has 0 wool | Wool quantity becomes 1 | :white_check_mark: |
-| Test Case 12 | resource = WOOL, amount = 1, Player has 1 wool | Wool quantity becomes 2 | :x: |
+| Test Case 12 | resource = WOOL, amount = 1, Player has 1 wool | Wool quantity becomes 2 | :white_check_mark: |
 
 ### Method under test: `removeResource(Resource resource, int amount)`
 

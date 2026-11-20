@@ -84,10 +84,21 @@ public class PlayerTest {
 
     // TC11
     @Test
-    public void addResource_resourceIsValidAmountIsOne_addToZeroCurrentSupply_returnPlayerHasOneOfThisResourceType() {
+    public void addResource_resourceIsValidAmountIsOne_addToZeroCurrentSupplyOfZero_returnPlayerHasOneOfThisResourceType() {
         Player player = new Player("Alice", PlayerColor.RED);
         player.addResource(ResourceType.WOOL, 1);
         int expected = 1;
+        int actual = player.getResourceCount(ResourceType.WOOL);
+        assertEquals(expected, actual);
+    }
+
+    // TC12
+    @Test
+    public void addResource_resourceIsValidAmountIsOne_addOneToCurrentSupplyOfOne_returnPlayerHasTwoOfThisResourceType() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        player.addResource(ResourceType.WOOL, 1);
+        player.addResource(ResourceType.WOOL, 1);
+        int expected = 2;
         int actual = player.getResourceCount(ResourceType.WOOL);
         assertEquals(expected, actual);
     }
