@@ -4,15 +4,18 @@ import java.util.List;
 
 public class Game {
 
+    private static final int MIN_PLAYERS = 2;
+    private static final int MAX_PLAYERS = 4;
+
     private List<Player> players;
     private GamePhase phase;
     private int currentPlayerIndex;
 
     public Game(List<Player> players) {
-        if (players == null || players.size() < 2) {
+        if (players == null || players.size() < MIN_PLAYERS) {
             throw new IllegalArgumentException("Error: Game must have at least 2 players");
         }
-        if (players.size() > 4) {
+        if (players.size() > MAX_PLAYERS) {
             throw new IllegalArgumentException("Error: Game cannot have more than 4 players");
         }
         this.players = players;
