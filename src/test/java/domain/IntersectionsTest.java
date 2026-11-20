@@ -231,4 +231,14 @@ public class IntersectionsTest {
         List<Location> actual = intersections.getBuildingLocations(Building.ROAD);
         assertEquals(expected, actual);
     }
+
+    // TC 18
+    @Test
+    public void getBuildingLocations_buildingIsAValidTypeRoad_playerHasOneRoadBuilding_returnListContainingOneLocation() {
+        Location location = EasyMock.createMock(Location.class);
+        intersections.addBuilding(location, Building.ROAD);
+        List<Location> expected = new ArrayList<>(List.of(location));
+        List<Location> actual = intersections.getBuildingLocations(Building.ROAD);
+        assertEquals(expected, actual);
+    }
 }

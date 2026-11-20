@@ -115,4 +115,4 @@ public class Intersections {
 |-------------|---------------------|-----------------|--------------|
 | Test Case 16 | `building` is `null` | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 17 | `building` = ROAD, Player has 0 ROAD buildings | an empty List<Location> is returned without exception | :white_check_mark: |
-| Test Case 18 | `building` = ROAD, Player has 1 ROAD buildings | a List<Location> consisting of one Location object is returned without exception | :x: |
+| Test Case 18 | `building` = ROAD, Player has 1 ROAD buildings | a List<Location> consisting of one Location object is returned without exception | :white_check_mark: |
