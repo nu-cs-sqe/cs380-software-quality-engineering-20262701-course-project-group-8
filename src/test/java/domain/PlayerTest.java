@@ -65,4 +65,13 @@ public class PlayerTest {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> player.getResourceCount(null));
         assertEquals("Error: Resource cannot be a null value", exception.getMessage());
     }
+
+    // TC20
+    @Test
+    public void getResourceCount_resourceIsBrickPlayerHasNoBrick_returnZero() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        int expected = 0;
+        int actual = player.getResourceCount(ResourceType.BRICK);
+        assertEquals(expected, actual);
+    }
 }

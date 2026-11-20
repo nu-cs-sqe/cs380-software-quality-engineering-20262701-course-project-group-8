@@ -28,10 +28,10 @@ public class Player {
         return color;
     }
 
-    public ResourceType getResourceCount(ResourceType resource) {
+    public int getResourceCount(ResourceType resource) {
         if (resource == null) {
             throw new NullPointerException("Error: Resource cannot be a null value");
         }
-        return null;
+        return resourceHand.getCount(resource);
     }
 }
