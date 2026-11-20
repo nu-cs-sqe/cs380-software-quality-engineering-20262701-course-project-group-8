@@ -226,5 +226,11 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
-    
+    // TC28
+    @Test
+    public void getCityCount_playerHasZeroCities_returnZero() {
+        int expected = 0;
+        int actual = player.getCityCount();
+        assertEquals(expected, actual);
+    }
 }
