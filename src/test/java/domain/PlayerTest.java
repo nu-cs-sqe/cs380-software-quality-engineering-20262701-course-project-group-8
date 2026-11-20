@@ -62,7 +62,7 @@ public class PlayerTest {
     @Test
     public void getResourceCount_resourceIsNull_throwsNullPointerException() {
         Player player = new Player("Alice", PlayerColor.RED);
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> player.getResource(null));
+        NullPointerException exception = assertThrows(NullPointerException.class, () -> player.getResourceCount(null));
         assertEquals("Error: Resource cannot be a null value", exception.getMessage());
     }
 }

@@ -28,7 +28,7 @@ public class Player {
         return color;
     }
 
-    public ResourceType getResource(ResourceType resource) {
+    public ResourceType getResourceCount(ResourceType resource) {
         if (resource == null) {
             throw new NullPointerException("Error: Resource cannot be a null value");
         }
