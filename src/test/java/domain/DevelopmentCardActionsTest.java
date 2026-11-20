@@ -103,8 +103,32 @@ public class DevelopmentCardActionsTest {
 
     }
     
+    // TC7
+    @Test
+    public void buyDevelopmentCard_lastCardInDeck_returnsCardAndEmptiesDeck() {
+        Bank bank = new Bank();
+        drawFromBank(bank, Bank.DEVELOPMENT_CARD_SUPPLY - 1);
+        ResourceHand hand = new ResourceHand();
+        moveFromBank(bank, hand, ResourceType.ORE, 1);
+        moveFromBank(bank, hand, ResourceType.GRAIN, 1);
+        moveFromBank(bank, hand, ResourceType.WOOL, 1);
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), bank);
+
+        DevelopmentCard card = actions.buyDevelopmentCard(hand, 0);
+
+        assertNotNull(card);
+        assertEquals(0, hand.getTotal());
+        assertEquals(0, bank.getDevelopmentCardCount());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
+    }
+
+    private static void drawFromBank(Bank bank, int count) {
+        for (int i = 0; i < count; i++) {
+            bank.drawDevelopmentCard(0);
+        }
     }
 }
