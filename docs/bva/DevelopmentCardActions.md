@@ -66,13 +66,13 @@ public class DevelopmentCardActions {
 ### Method under test: `DevelopmentCardActions(GameRules rules, Bank bank)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 1  | `rules = null` or `bank = null` | `NullPointerException` | :x: |
+| Test Case 1  | `rules = null` or `bank = null` | `NullPointerException` | :white_check_mark: |
 
 ### Method under test: `buyDevelopmentCard(ResourceHand hand, int currentTurn)` (the Bank first gives the hand its resources, so the Bank never holds more than 19 of a type)
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 2  | `hand = null`, `currentTurn = 0` | `NullPointerException` | :x: |
-| Test Case 3  | Hand has 1 ORE, 1 GRAIN, 1 WOOL, `currentTurn = -1` | `IllegalArgumentException`, hand and deck unchanged | :x: |
+| Test Case 2  | `hand = null`, `currentTurn = 0` | `NullPointerException` | :white_check_mark: |
+| Test Case 3  | Hand has 1 ORE, 1 GRAIN, 1 WOOL, `currentTurn = -1` | `IllegalArgumentException`, hand and deck unchanged | :white_check_mark: |
 | Test Case 4  | Hand has 1 ORE, 1 GRAIN, 0 WOOL, `currentTurn = 0` | `IllegalStateException`, hand unchanged, deck still 25 | :x: |
 | Test Case 5  | Hand has 1 ORE, 1 GRAIN, 1 WOOL, `currentTurn = 0` | Returns a card with `turnPurchased = 0`; hand empty; Bank back to 19 of each; deck 24 | :x: |
 | Test Case 6  | Hand has 2 ORE, 2 GRAIN, 2 WOOL, `currentTurn = 0` | Hand left with 1 ORE, 1 GRAIN, 1 WOOL | :x: |

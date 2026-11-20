@@ -11,6 +11,9 @@ public final class DevelopmentCardActions {
 
     public DevelopmentCard buyDevelopmentCard(ResourceHand hand, int currentTurn) {
         Objects.requireNonNull(hand);
+        if (currentTurn < 0) {
+            throw new IllegalArgumentException("currentTurn must be >= 0");
+        }
         return null;
     }
 }
