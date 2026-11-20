@@ -111,7 +111,14 @@ public class PlayerTest {
         assertEquals("Error: Resource cannot be a null value", exception.getMessage());
     }
 
-
+    // TC14
+    @Test
+    public void removeResource_resourceIsValidAmountIsNegative_playerHasTwoWoolInSupply_throwIllegalArgumentException() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        player.addResource(ResourceType.WOOL, 2);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.removeResource(ResourceType.WOOL, -1));
+        assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage());
+    }
 
     // TC19
     @Test
