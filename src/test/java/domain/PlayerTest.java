@@ -282,4 +282,18 @@ public class PlayerTest {
         List<Location> actual = player.getCityLocations();
         assertEquals(expected, actual);
     }
+
+    // TC33
+    @Test
+    public void getCityLocations_playerHasTwoCities_returnListOfTwoElements() {
+        Location location1 = EasyMock.createMock(Location.class);
+        Location location2 = EasyMock.createMock(Location.class);
+
+        player.intersections.addBuilding(location1, Building.CITY);
+        player.intersections.addBuilding(location2, Building.CITY);
+
+        List<Location> expected = new ArrayList<>(List.of(location1, location2));
+        List<Location> actual = player.getCityLocations();
+        assertEquals(expected, actual);
+    }
 }
