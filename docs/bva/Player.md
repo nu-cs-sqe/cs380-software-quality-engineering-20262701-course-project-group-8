@@ -207,7 +207,7 @@ public class Player {
 | Test Case 22 | `points = -1`, current points = 0 | `IllegalArgumentException` | :white_check_mark: |
 | Test Case 23 | `points = 0`, current points = 0 | `IllegalArgumentException` | :white_check_mark: |
 | Test Case 24 | `points = 1`, Player has 0 victory points| Victory points become 1 | :white_check_mark: |
-| Test Case 25 | `points = 1`, current points = 9 | Victory points become 10 | :x: |
+| Test Case 25 | `points = 1`, current points = 9 | Victory points become 10 | :white_check_mark: |
 
 ### Method under test: `getVictoryPoints()`
 
