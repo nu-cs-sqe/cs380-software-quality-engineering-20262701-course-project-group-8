@@ -23,5 +23,7 @@ public class Player {
         return name;
     }
     
-    
+    public PlayerColor getColor() {
+        return color;
+    }
 }

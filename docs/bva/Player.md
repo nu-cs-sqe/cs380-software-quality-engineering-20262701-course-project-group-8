@@ -169,7 +169,7 @@ public class Player {
 
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
-| Test Case 7 | Player constructed with color `RED` | `PlayerColor.RED` | :x: |
+| Test Case 7 | Player constructed with color `RED` | `PlayerColor.RED` | :white_check_mark: |
 
 ### Method under test: `addResource(Resource resource, int amount)`
 

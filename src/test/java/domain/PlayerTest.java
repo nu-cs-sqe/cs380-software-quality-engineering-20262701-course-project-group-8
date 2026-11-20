@@ -48,4 +48,13 @@ public class PlayerTest {
         String actual = player.getName();
         assertEquals(expected, actual);
     }
+
+    // TC7
+    @Test
+    public void getColor_colorIsValid_returnsColor() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        PlayerColor expected = PlayerColor.RED;
+        PlayerColor actual = player.getColor();
+        assertEquals(expected, actual);
+    }
 }
