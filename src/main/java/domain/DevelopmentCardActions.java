@@ -8,4 +8,9 @@ public final class DevelopmentCardActions {
         Objects.requireNonNull(rules);
         Objects.requireNonNull(bank);
     }
+
+    public DevelopmentCard buyDevelopmentCard(ResourceHand hand, int currentTurn) {
+        Objects.requireNonNull(hand);
+        return null;
+    }
 }

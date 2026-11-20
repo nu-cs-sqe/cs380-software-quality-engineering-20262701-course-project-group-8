@@ -13,4 +13,11 @@ public class DevelopmentCardActionsTest {
         assertThrows(NullPointerException.class, 
             () -> new DevelopmentCardActions(new GameRules(), null));
     }
+
+    // TC2
+    @Test
+    public void buyDevelopmentCard_nullHand_throwsNullPointerException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        assertThrows(NullPointerException.class, () -> actions.buyDevelopmentCard(null, 0));
+    }
 }
