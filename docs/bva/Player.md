@@ -246,7 +246,7 @@ public class Player {
 |---|---|---|---|
 | Test Case 37 | Player owns 0 settlements | Empty `Location[]` | :white_check_mark: |
 | Test Case 38 | Player owns 1 settlement | Array containing one location | :white_check_mark: |
-| Test Case 39 | Player owns 2 settlements| Array containing both locations | :x: |
+| Test Case 39 | Player owns 2 settlements| Array containing both locations | :white_check_mark: |
 
 ### Method under test: `getRoadCount()`
 
