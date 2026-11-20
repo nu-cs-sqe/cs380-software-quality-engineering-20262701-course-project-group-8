@@ -370,4 +370,14 @@ public class PlayerTest {
         int actual = player.getRoadCount();
         assertEquals(expected, actual);
     }
+
+    // TC41
+    @Test
+    public void getRoadCount_playerHasOneRoad_returnOne() {
+        Location location = EasyMock.createMock(Location.class);
+        player.intersections.addBuilding(location, Building.ROAD);
+        int expected = 1;
+        int actual = player.getRoadCount();
+        assertEquals(expected, actual);
+    }
 }
