@@ -187,7 +187,7 @@ public class Player {
 |---|---|---|---|
 | Test Case 13 | `resource = null`, `amount = 1` | `NullPointerException` | :white_check_mark: |
 | Test Case 14 | resource = WOOL, amount = -1, Player has 2 wool | `IllegalArgumentException` | :white_check_mark: |
-| Test Case 15 | resource = WOOL, amount = 0, Player has 2 wool| `IllegalArgumentException` | :x: |
+| Test Case 15 | resource = WOOL, amount = 0, Player has 2 wool| `IllegalArgumentException` | :white_check_mark: |
 | Test Case 16 | resource = WOOL, amount = 1, Player has 2 wool | Wool quantity becomes 1 | :x: |
 | Test Case 17 | resource = WOOL, amount = 2, Player has 2 wool| Wool quantity becomes 0 | :x: |
 | Test Case 18 | resource = WOOL, amount = 3, Player has 2 wool| `IllegalStateException` | :x: |
