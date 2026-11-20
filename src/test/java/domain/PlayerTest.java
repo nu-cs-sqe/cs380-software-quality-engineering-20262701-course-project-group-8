@@ -304,4 +304,14 @@ public class PlayerTest {
         int actual = player.getSettlementCounts();
         assertEquals(expected, actual);
     }
+
+    // TC35
+    @Test
+    public void getSettlementCount_playerHasOneSettlement_returnOne() {
+        Location location = EasyMock.createMock(Location.class);
+        player.intersections.addBuilding(location, Building.SETTLEMENT);
+        int expected = 1;
+        int actual = player.getSettlementCounts();
+        assertEquals(expected, actual);
+    }
 }

@@ -237,7 +237,7 @@ public class Player {
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
 | Test Case 34 | Player owns 0 settlements | 0 | :white_check_mark: |
-| Test Case 35 | Player owns 1 settlement | 1 | :x: |
+| Test Case 35 | Player owns 1 settlement | 1 | :white_check_mark: |
 | Test Case 36 | Player owns 5 settlements | 5 | :x: |
 
 ### Method under test: `getSettlementLocations()`
