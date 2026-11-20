@@ -40,7 +40,7 @@ public class Player {
 
 - Each player has a name and a color.
 - `PlayerColor` is an enum representing available player colors.
-- `Resource` is an enum containing `BRICK`, `WOOD`, `SHEEP`, `WHEAT`, and `ORE`.
+- `Resource` is an enum containing `BRICK`, `LUMBER`, `ORE`, `GRAIN`, and `WOOL`.
 - Players initially have 0 resources and 0 victory points.
 - Players initially own 0 cities, settlements, and roads.
 - Resource quantities, victory points, and building counts cannot be negative.
@@ -186,11 +186,11 @@ public class Player {
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
 | Test Case 13 | `resource = null`, `amount = 1` | `NullPointerException` | :white_check_mark: |
-| Test Case 14 | Player has 2 wood, remove -1 | `IllegalArgumentException` | :x: |
-| Test Case 15 | Player has 2 wood, remove 0 | `IllegalArgumentException` | :x: |
-| Test Case 16 | Player has 2 wood, remove 1 | Wood quantity becomes 1 | :x: |
-| Test Case 17 | Player has 2 wood, remove 2 | Wood quantity becomes 0 | :x: |
-| Test Case 18 | Player has 2 wood, remove 3 | `IllegalStateException` | :x: |
+| Test Case 14 | resource = WOOL, amount = -1, Player has 2 wool | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 15 | resource = WOOL, amount = 0, Player has 2 wool| `IllegalArgumentException` | :x: |
+| Test Case 16 | resource = WOOL, amount = 1, Player has 2 wool | Wool quantity becomes 1 | :x: |
+| Test Case 17 | resource = WOOL, amount = 2, Player has 2 wool| Wool quantity becomes 0 | :x: |
+| Test Case 18 | resource = WOOL, amount = 3, Player has 2 wool| `IllegalStateException` | :x: |
 
 ### Method under test: `getResourceCount(Resource resource)`
 
