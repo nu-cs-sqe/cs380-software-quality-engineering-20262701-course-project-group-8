@@ -241,4 +241,6 @@ public class PlayerTest {
         int actual = player.getVictoryPoints();
         assertEquals(expected, actual);
     }
+
+  
 }

@@ -10,7 +10,8 @@ public class Intersections {
     public Building getBuilding(Location location);
     public List<Hex> getNeighboringHexes(Location location);
     public Hex getHex(Location location);
-
+    public int getBuildingCount(Building building);
+    public int getBuildingLocation(Building building);
 }
 ```
 - Intersections() constructor for the class
@@ -19,6 +20,8 @@ public class Intersections {
 - 'getNeighboringHexes(Location location)' rejects 'null' location with 'NullPointerException'. The location must be a valid location on the game board, otherwise rejects invalid location with 'IllegalArgumentException'. Returns a List of neighboring hexes adjacent to the location or the empty list if no Hexes are adjacent to the location.
 - 'addHex(Location location, Hex hex)' rejects 'null' location with 'NullPointerException'. Rejects 'null' Hex with 'NullPointerException'. Maps the corresponding Hex to the Location.
 - 'getHex(Location location)' rejects 'null' location with 'NullPointerException'. Returns the Hex at the corresponding location, or 'null' if no Hex is found.
+- 'getBuildingCount(Building building)' rejects 'null' building with 'NullPointerException'. Returns the number of buildings of type Building.
+- 'getBuildingLocation(Building building)' rejects 'null' building with 'NullPointerException'. Returns the locations of buildings as a list of Locations.
 
 ## Step 1-3: Analysis
 
@@ -54,6 +57,18 @@ public class Intersections {
 | Input | `Location` | Pointer | `null`, non-null |
 | Output | a List of neighboring Hex's or an exception | Cases | List<Hex>, `NullPointerException` |
 
+### Method: `getBuildingCount(Building building)`
+| | Description | Category | Boundary Values |
+|---|---|---|---|
+| Input | `Building` | Pointer | `null`, non-null |
+| Output | an integer of number of Buildings of building type, or an exception| Cases | List<Hex>, `NullPointerException` |
+
+### Method: `getBuildingLocation(Building building)`
+| | Description | Category | Boundary Values |
+|---|---|---|---|
+| Input | `Building` | Pointer | `null`, non-null |
+| Output | a list of locations that have building type, or an exception| Cases | List<Location>, `NullPointerException` |
+
 ## Step 4: Test Cases
 
 ### Method under test: `addBuilding(Location location, Building building)`
@@ -87,3 +102,15 @@ public class Intersections {
 |-------------|---------------------|-----------------|--------------|
 | Test Case 11 | `location` is `null | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 12 | `location` is a valid `Location` object | the Hex at the location is returned without exception | :white_check_mark: |
+
+### Method under test: ` getBuildingCount(Building building);`
+|             | State of the System | Expected output | Implemented? |
+|-------------|---------------------|-----------------|--------------|
+| Test Case 11 | `building` is `null` | `NullPointerException` is thrown | :x: |
+| Test Case 12 | `building` = ROAD | the number of buildings of this type ROAD is returned without exception | :x: |
+
+### Method under test: ` getBuildingLocation(Building building);`
+|             | State of the System | Expected output | Implemented? |
+|-------------|---------------------|-----------------|--------------|
+| Test Case 11 | `building` is `null` | `NullPointerException` is thrown | :x: |
+| Test Case 12 | `building` = ROAD | a List<Location> is returned consisting of the locations of with ROAD building type without exception | :white_check_mark: |

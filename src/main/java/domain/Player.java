@@ -5,7 +5,7 @@ public class Player {
     PlayerColor color;
     ResourceHand resourceHand;
     int victoryPoints;
-
+    Intersections intersections;
     public Player(String name, PlayerColor color) {
         if (name == null) {
             throw new NullPointerException("Error: Name cannot be a null value");
@@ -21,6 +21,7 @@ public class Player {
         this.color = color;
         this.resourceHand = new ResourceHand();
         this.victoryPoints = 0;
+        this.intersections = new Intersections();
     }
 
     public String getName() {
@@ -75,4 +76,6 @@ public class Player {
     public int getVictoryPoints() {
         return victoryPoints;
     }
+    
+
 }
