@@ -253,7 +253,7 @@ public class Player {
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
 | Test Case 40 | Player owns 0 roads | 0 | :white_check_mark: |
-| Test Case 41 | Player owns 1 road | 1 | :x: |
+| Test Case 41 | Player owns 1 road | 1 | :white_check_mark: |
 | Test Case 42 | Player owns 15 roads | 15 | :x: |
 
 ### Method under test: `getRoadLocations()`
