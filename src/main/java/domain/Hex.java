@@ -2,6 +2,10 @@ package domain;
 
 public class Hex {
 
+    private static final int MIN_NUMBER = 2;
+    private static final int MAX_NUMBER = 12;
+    private static final int ROBBER_NUMBER = 7;
+
     private final TerrainType terrainType;
     private final int numberDisc;
     private boolean hasRobber;
@@ -16,7 +20,7 @@ public class Hex {
                 throw new IllegalArgumentException("Error: Desert hex cannot have a number token");
             }
         } else {
-            if (numberDisc < 2 || numberDisc > 12 || numberDisc == 7) {
+            if (numberDisc < MIN_NUMBER || numberDisc > MAX_NUMBER || numberDisc == ROBBER_NUMBER) {
                 throw new IllegalArgumentException("Error: Invalid number token");
             }
         }
@@ -38,8 +42,8 @@ public class Hex {
         return hasRobber;
     }
 
-    public void setRobber(boolean hasRobber) {
-        this.hasRobber = hasRobber;
+    public void setRobber(boolean robberStatus) {
+        this.hasRobber = robberStatus;
     }
 
     public boolean producesResource(int diceRoll) {
