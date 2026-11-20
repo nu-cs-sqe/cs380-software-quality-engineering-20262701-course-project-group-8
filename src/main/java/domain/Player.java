@@ -87,7 +87,7 @@ public class Player {
         return intersections.getBuildingLocations(Building.CITY);
     }
 
-    public int getSettlementCounts() {
+    public int getSettlementCount() {
         return intersections.getBuildingCount(Building.SETTLEMENT);
     }
 
@@ -95,4 +95,7 @@ public class Player {
         return intersections.getBuildingLocations(Building.SETTLEMENT);
     }
 
+    public int getRoadCount() {
+        return intersections.getBuildingCount(Building.ROAD);
+    }
 }

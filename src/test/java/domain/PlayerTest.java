@@ -301,7 +301,7 @@ public class PlayerTest {
     @Test
     public void getSettlementCount_playerHasZeroSettlements_returnZero() {
         int expected = 0;
-        int actual = player.getSettlementCounts();
+        int actual = player.getSettlementCount();
         assertEquals(expected, actual);
     }
 
@@ -311,7 +311,7 @@ public class PlayerTest {
         Location location = EasyMock.createMock(Location.class);
         player.intersections.addBuilding(location, Building.SETTLEMENT);
         int expected = 1;
-        int actual = player.getSettlementCounts();
+        int actual = player.getSettlementCount();
         assertEquals(expected, actual);
     }
 
@@ -329,7 +329,7 @@ public class PlayerTest {
         player.intersections.addBuilding(location4, Building.SETTLEMENT);
         player.intersections.addBuilding(location5, Building.SETTLEMENT);
         int expected = 5;
-        int actual = player.getSettlementCounts();
+        int actual = player.getSettlementCount();
         assertEquals(expected, actual);
     }
 
@@ -360,6 +360,14 @@ public class PlayerTest {
         player.intersections.addBuilding(location2, Building.SETTLEMENT);
         List<Location> expected = new ArrayList<>(List.of(location1, location2));
         List<Location> actual = player.getSettlementLocations();
+        assertEquals(expected, actual);
+    }
+
+    // TC40
+    @Test
+    public void getRoadCount_playerHasZeroRoads_returnZero() {
+        int expected = 0;
+        int actual = player.getRoadCount();
         assertEquals(expected, actual);
     }
 }
