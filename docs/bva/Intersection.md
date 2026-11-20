@@ -113,4 +113,4 @@ public class Intersections {
 |             | State of the System | Expected output | Implemented? |
 |-------------|---------------------|-----------------|--------------|
 | Test Case 15 | `building` is `null` | `NullPointerException` is thrown | :x: |
-| Test Case 16 | `building` = ROAD | a List<Location> is returned consisting of the locations of with ROAD building type without exception | :white_check_mark: |
+| Test Case 16 | `building` = ROAD | a List<Location> is returned consisting of the locations of with ROAD building type without exception | :x: |
