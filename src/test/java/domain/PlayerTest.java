@@ -140,6 +140,17 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
+    // TC17
+    @Test
+    public void removeResource_resourceIsWoolAmountIsTwo_playerHasTwoWoolInSupply_returnPlayerHasZeroSupply() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        player.addResource(ResourceType.WOOL, 2); 
+        player.removeResource(ResourceType.WOOL, 2);
+        int expected = 0;
+        int actual = player.getResourceCount(ResourceType.WOOL);
+        assertEquals(expected, actual);       
+    }
+
     // TC19
     @Test
     public void getResourceCount_resourceIsNull_throwsNullPointerException() {
