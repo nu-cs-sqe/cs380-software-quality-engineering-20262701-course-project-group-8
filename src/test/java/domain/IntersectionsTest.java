@@ -205,4 +205,14 @@ public class IntersectionsTest {
         int actual = intersections.getBuildingCount(Building.ROAD);
         assertEquals(expected, actual);
     }
+
+    // TC 15
+    @Test
+    public void getBuildingCount_buildingIsAValidRoadType_playerHasOneRoadBuilding_returnOne() {
+        Location location = EasyMock.createMock(Location.class);
+        intersections.addBuilding(location, Building.ROAD);
+        int expected = 1;
+        int actual = intersections.getBuildingCount(Building.ROAD);
+        assertEquals(expected, actual);
+    }
 }

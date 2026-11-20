@@ -107,10 +107,11 @@ public class Intersections {
 |             | State of the System | Expected output | Implemented? |
 |-------------|---------------------|-----------------|--------------|
 | Test Case 13 | `building` is `null` | `NullPointerException` is thrown | :white_check_mark: |
-| Test Case 14 | `building` = ROAD | the number of buildings of this type ROAD is returned without exception | :x: |
-
+| Test Case 14 | `building` = ROAD, Player has 0 ROAD buildings | 0 is returned without exception | :white_check_mark: |
+| Test Case 15 | `building` = ROAD, Player has 1 ROAD buildings | 1 is returned without exception | :white_check_mark: |
 ### Method under test: ` getBuildingLocation(Building building);`
 |             | State of the System | Expected output | Implemented? |
 |-------------|---------------------|-----------------|--------------|
-| Test Case 15 | `building` is `null` | `NullPointerException` is thrown | :x: |
-| Test Case 16 | `building` = ROAD | a List<Location> is returned consisting of the locations of with ROAD building type without exception | :x: |
+| Test Case 16 | `building` is `null` | `NullPointerException` is thrown | :x: |
+| Test Case 17 | `building` = ROAD, Player has 0 ROAD buildings | an empty List<Location> is returned without exception | :x: |
+| Test Case 18 | `building` = ROAD, Player has 1 ROAD buildings | a List<Location> consisting of one Location object is returned without exception | :x: |
