@@ -421,4 +421,15 @@ public class PlayerTest {
         List<Location> actual = player.getRoadLocations();
         assertTrue(actual.isEmpty());
     }
+
+    // TC44
+    @Test
+    public void getRoadLocations_playerHasOneRoad_returnListOfOneLocation() {
+        Location location = EasyMock.createMock(Location.class);
+        player.intersections.addBuilding(location, Building.ROAD);
+        List<Location> expected = new ArrayList<>(List.of(location));
+        List<Location> actual = player.getRoadLocations();
+        assertEquals(expected, actual);
+        
+    }
 }
