@@ -4,10 +4,11 @@ import java.util.Objects;
 
 public final class DevelopmentCardActions {
     private final GameRules rules;
-    
+    private final Bank bank;
+
     public DevelopmentCardActions(GameRules rules, Bank bank) {
         this.rules = Objects.requireNonNull(rules);
-        Objects.requireNonNull(bank);
+        this.bank = Objects.requireNonNull(bank);
     }
 
     public DevelopmentCard buyDevelopmentCard(ResourceHand hand, int currentTurn) {
@@ -15,9 +16,7 @@ public final class DevelopmentCardActions {
         if (currentTurn < 0) {
             throw new IllegalArgumentException("currentTurn must be >= 0");
         }
-        if (!rules.canAfford(hand, PurchaseType.DEVELOPMENT_CARD)) {
-            throw new IllegalStateException("Hand cannot afford a development card");
-        }
-        return null;
+        rules.payCost(hand, bank, PurchaseType.DEVELOPMENT_CARD);
+        return bank.drawDevelopmentCard(currentTurn);
     }
 }

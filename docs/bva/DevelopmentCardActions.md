@@ -74,7 +74,7 @@ public class DevelopmentCardActions {
 | Test Case 2  | `hand = null`, `currentTurn = 0` | `NullPointerException` | :white_check_mark: |
 | Test Case 3  | Hand has 1 ORE, 1 GRAIN, 1 WOOL, `currentTurn = -1` | `IllegalArgumentException`, hand and deck unchanged | :white_check_mark: |
 | Test Case 4  | Hand has 1 ORE, 1 GRAIN, 0 WOOL, `currentTurn = 0` | `IllegalStateException`, hand unchanged, deck still 25 | :white_check_mark: |
-| Test Case 5  | Hand has 1 ORE, 1 GRAIN, 1 WOOL, `currentTurn = 0` | Returns a card with `turnPurchased = 0`; hand empty; Bank back to 19 of each; deck 24 | :x: |
+| Test Case 5  | Hand has 1 ORE, 1 GRAIN, 1 WOOL, `currentTurn = 0` | Returns a card with `turnPurchased = 0`; hand empty; Bank back to 19 of each; deck 24 | :white_check_mark: |
 | Test Case 6  | Hand has 2 ORE, 2 GRAIN, 2 WOOL, `currentTurn = 0` | Hand left with 1 ORE, 1 GRAIN, 1 WOOL | :x: |
 | Test Case 7  | Deck has 1 card, hand has 1 ORE, 1 GRAIN, 1 WOOL | Returns a card, deck 0 | :x: |
 | Test Case 8  | Deck empty, hand has 1 ORE, 1 GRAIN, 1 WOOL | `IllegalStateException`, hand unchanged | :x: |
