@@ -262,4 +262,4 @@ public class Player {
 |---|---|---|---|
 | Test Case 43 | Player owns 0 roads | Empty `Location[]` | :white_check_mark: |
 | Test Case 44 | Player owns 1 road at a valid location | Array containing one location | :white_check_mark: |
-| Test Case 45 | Player owns 2 roads at different valid locations | Array containing both locations | :x: |
+| Test Case 45 | Player owns 2 roads at valid locations | Array containing both locations | :white_check_mark: |
