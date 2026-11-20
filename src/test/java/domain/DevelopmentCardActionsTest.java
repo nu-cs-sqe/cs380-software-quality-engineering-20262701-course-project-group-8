@@ -79,6 +79,29 @@ public class DevelopmentCardActionsTest {
         assertEquals(Bank.RESOURCE_SUPPLY, bank.getResourceCount(ResourceType.WOOL));
         assertEquals(Bank.DEVELOPMENT_CARD_SUPPLY - 1, bank.getDevelopmentCardCount());
     }
+
+    // TC 6
+    @Test 
+    public void buyDevelopmentCard_moreThanCost_paysOnlyCost() {
+        Bank bank = new Bank();
+        ResourceHand hand = new ResourceHand();
+        moveFromBank(bank, hand, ResourceType.ORE, 2);
+        moveFromBank(bank, hand, ResourceType.GRAIN, 2);
+        moveFromBank(bank, hand, ResourceType.WOOL, 2);
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), bank);
+
+        DevelopmentCard card = actions.buyDevelopmentCard(hand, 0);
+
+        assertNotNull(card);
+        assertEquals(1, hand.getCount(ResourceType.ORE));
+        assertEquals(1, hand.getCount(ResourceType.GRAIN));
+        assertEquals(1, hand.getCount(ResourceType.WOOL));
+        assertEquals(Bank.RESOURCE_SUPPLY - 1, bank.getResourceCount(ResourceType.ORE));
+        assertEquals(Bank.RESOURCE_SUPPLY - 1, bank.getResourceCount(ResourceType.GRAIN));
+        assertEquals(Bank.RESOURCE_SUPPLY - 1, bank.getResourceCount(ResourceType.WOOL));
+        assertEquals(Bank.DEVELOPMENT_CARD_SUPPLY - 1, bank.getDevelopmentCardCount());
+
+    }
     
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
