@@ -176,10 +176,10 @@ public class Player {
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
 | Test Case 8 | `resource = null`, `amount = 1` | `NullPointerException` | :white_check_mark: |
-| Test Case 9 | `resource = WOOD`, `amount = -1` | `IllegalArgumentException` | :x: |
-| Test Case 10 | `resource = WOOD`, `amount = 0` | `IllegalArgumentException` | :x: |
-| Test Case 11 | Player has 0 wood, add 1 wood | Wood quantity becomes 1 | :x: |
-| Test Case 12 | Player has 1 wood, add 1 wood | Wood quantity becomes 2 | :x: |
+| Test Case 9 | `resource = WOOL`, `amount = -1` | `IllegalArgumentException` | :white_check_mark: |
+| Test Case 10 | `resource = WOOL`, `amount = 0` | `IllegalArgumentException` | :x: |
+| Test Case 11 | Player has 0 wool, add 1 wool | Wool quantity becomes 1 | :x: |
+| Test Case 12 | Player has 1 wool, add 1 wool | Wool quantity becomes 2 | :x: |
 
 ### Method under test: `removeResource(Resource resource, int amount)`
 

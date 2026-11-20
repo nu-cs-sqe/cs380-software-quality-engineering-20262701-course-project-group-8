@@ -39,5 +39,8 @@ public class Player {
         if (resourceType == null) {
             throw new NullPointerException("Error: Resource cannot be a null value");
         }
+        if (amount < 0) {
+            throw new IllegalArgumentException("Error: Amount cannot be a negative value");
+        }
     }
 }
