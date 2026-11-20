@@ -186,4 +186,12 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
+    // TC26
+    @Test
+    public void getVictoryPoints_playerHasZeroVictoryPoints_returnZero() {
+        Player player = new Player("Alice", PlayerColor.RED);
+        int expected = 0;
+        int actual = player.getVictoryPoints();
+        assertEquals(expected, actual);
+    }
 }

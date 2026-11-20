@@ -4,6 +4,8 @@ public class Player {
     String name;
     PlayerColor color;
     ResourceHand resourceHand;
+    int victoryPoints;
+
     public Player(String name, PlayerColor color) {
         if (name == null) {
             throw new NullPointerException("Error: Name cannot be a null value");
@@ -18,6 +20,7 @@ public class Player {
         this.name = name;
         this.color = color;
         this.resourceHand = new ResourceHand();
+        this.victoryPoints = 0;
     }
 
     public String getName() {
@@ -59,5 +62,9 @@ public class Player {
             throw new IllegalStateException("Not enough " + ResourceType.WOOL + " to remove");
         }
         resourceHand.remove(resource, amount);
+    }
+
+    public int getVictoryPoints() {
+        return victoryPoints;
     }
 }
