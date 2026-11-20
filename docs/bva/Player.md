@@ -222,7 +222,7 @@ public class Player {
 |---|---|---|---|
 | Test Case 28 | Player owns 0 cities | 0 | :white_check_mark: |
 | Test Case 29 | Player owns 1 city | 1 | :white_check_mark: |
-| Test Case 30 | Player owns 4 cities | 4 | :x: |
+| Test Case 30 | Player owns 4 cities | 4 | :white_check_mark: |
 
 ### Method under test: `getCityLocations()`
 
