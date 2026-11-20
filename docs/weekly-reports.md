@@ -35,8 +35,6 @@
 5. [done] Jiadong Li: Implemented GameRules class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/40]
 6. [done] Jiadong Li: Fixed checkstyle issues in Bank, ResourceHand, Dice, DevelopmentCard and GameRules (and their tests) [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/49]
 
-# Week X (XX/XX/2026-XX/XX/2026) TEMPLATE (You can change the format to whatever the team likes better)
+# Week 8 (11/16/2026-11/22/2026)
 **Planning and Progress Tracking**:
-1. [done] Person: Task (Links to PR)
-2. [not started] Person: Task (Links to PR)
-3. [80% done] Person: Task (Links to PR)
+1. [done] Stephi Lyou: Fixed checkstyle issues in Hex, Board, and Game [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/52]
