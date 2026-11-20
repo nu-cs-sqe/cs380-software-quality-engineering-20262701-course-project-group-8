@@ -296,4 +296,12 @@ public class PlayerTest {
         List<Location> actual = player.getCityLocations();
         assertEquals(expected, actual);
     }
+
+    // TC34
+    @Test
+    public void getSettlementCount_playerHasZeroSettlements_returnZero() {
+        int expected = 0;
+        int actual = player.getSettlementCounts();
+        assertEquals(expected, actual);
+    }
 }
