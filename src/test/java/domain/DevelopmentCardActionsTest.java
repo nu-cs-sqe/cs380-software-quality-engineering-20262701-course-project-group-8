@@ -2,6 +2,9 @@ package domain;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -180,8 +183,7 @@ public class DevelopmentCardActionsTest {
         ResourceHand hand = new ResourceHand();
 
         assertThrows(IllegalStateException.class,
-            () -> actions.playYearOfPlenty(card, 3, hand, ResourceType.BRICK, ResourceType.ORE)
-        );
+            () -> actions.playYearOfPlenty(card, 3, hand, ResourceType.BRICK, ResourceType.ORE));
         assertEquals(0, hand.getTotal());
         assertEquals(Bank.RESOURCE_SUPPLY, bank.getResourceCount(ResourceType.BRICK));
         assertEquals(Bank.RESOURCE_SUPPLY, bank.getResourceCount(ResourceType.ORE));
@@ -271,7 +273,25 @@ public class DevelopmentCardActionsTest {
         assertEquals(0, bank.getResourceCount(ResourceType.ORE));
         assertFalse(card.isPlayed());
     }
-    
+
+    // TC17
+    @Test
+    public void playMonopoly_nullArgument_throwsNullPointerException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.MONOPOLY, 3);
+        ResourceHand hand = new ResourceHand();
+        List<ResourceHand> otherHands = List.of(new ResourceHand());
+
+        assertThrows(NullPointerException.class,
+            () -> actions.playMonopoly(null, 4, hand, otherHands, ResourceType.WOOL));
+        assertThrows(NullPointerException.class,
+            () -> actions.playMonopoly(card, 4, null, otherHands, ResourceType.WOOL));
+        assertThrows(NullPointerException.class,
+            () -> actions.playMonopoly(card, 4, hand, null, ResourceType.WOOL));
+        assertThrows(NullPointerException.class,
+            () -> actions.playMonopoly(card, 4, hand, otherHands, null));
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);

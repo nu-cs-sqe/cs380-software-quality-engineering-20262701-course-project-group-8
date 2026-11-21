@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.List;
 import java.util.Objects;
 
 public final class DevelopmentCardActions {
@@ -45,5 +46,13 @@ public final class DevelopmentCardActions {
         bank.giveResource(second, 1);
         hand.add(second, 1);
         card.play(currentTurn);
+    }
+
+    public int playMonopoly(DevelopmentCard card, int currentTurn, ResourceHand hand, List<ResourceHand> otherHands, ResourceType type) {
+        Objects.requireNonNull(card);
+        Objects.requireNonNull(hand);
+        Objects.requireNonNull(otherHands);
+        Objects.requireNonNull(type);
+        return 0;
     }
 }
