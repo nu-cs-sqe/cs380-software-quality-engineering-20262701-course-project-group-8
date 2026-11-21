@@ -389,6 +389,34 @@ public class DevelopmentCardActionsTest {
         assertTrue(card.isPlayed());
     }
     
+    // TC24
+    @Test
+    public void playMonopoly_manyOtherHands_takesAllOfTypeAndReturnsTotal() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.MONOPOLY, 3);
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.WOOL, 1);
+
+        ResourceHand otherA = new ResourceHand();
+        otherA.add(ResourceType.BRICK, 1);
+        ResourceHand otherB = new ResourceHand();
+        otherB.add(ResourceType.WOOL, 2);
+        otherB.add(ResourceType.BRICK, 1);
+        ResourceHand otherC = new ResourceHand();
+        otherC.add(ResourceType.WOOL, 5);
+        otherC.add(ResourceType.BRICK, 1);
+
+        int taken = actions.playMonopoly(card, 4, hand, List.of(otherA, otherB, otherC), ResourceType.WOOL);
+
+        assertEquals(7, taken);
+        assertEquals(8, hand.getCount(ResourceType.WOOL));
+        for (ResourceHand other : List.of(otherA, otherB, otherC)) {
+            assertEquals(0, other.getCount(ResourceType.WOOL));
+            assertEquals(1, other.getCount(ResourceType.BRICK));
+        }
+        assertTrue(card.isPlayed());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
