@@ -221,7 +221,24 @@ public class DevelopmentCardActionsTest {
         assertEquals(Bank.RESOURCE_SUPPLY - 2, bank.getResourceCount(ResourceType.BRICK));
         assertTrue(card.isPlayed());
     }
-    
+
+    // TC14
+    @Test
+    public void playYearOfPlenty_bankHasExactlyTwo_givesBothAndEmptiesBank() {
+        Bank bank = new Bank();
+        bank.giveResource(ResourceType.BRICK, Bank.RESOURCE_SUPPLY - 2);
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), bank);
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.YEAR_OF_PLENTY, 3);
+        ResourceHand hand = new ResourceHand();
+
+        actions.playYearOfPlenty(card, 4, hand, ResourceType.BRICK, ResourceType.BRICK);
+
+        assertEquals(2, hand.getCount(ResourceType.BRICK));
+        assertEquals(2, hand.getTotal());
+        assertEquals(0, bank.getResourceCount(ResourceType.BRICK));
+        assertTrue(card.isPlayed());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
