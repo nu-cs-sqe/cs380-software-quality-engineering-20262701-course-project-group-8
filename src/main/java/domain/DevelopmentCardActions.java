@@ -63,7 +63,16 @@ public final class DevelopmentCardActions {
             throw new IllegalArgumentException("otherHands must not contain hand");
         }
 
+        int total = 0;
+        for (ResourceHand other : otherHands) {
+            int count = other.getCount(type);
+            if (count > 0) {
+                other.remove(type, count);
+                hand.add(type, count);
+                total += count;
+            }
+        }
         card.play(currentTurn);
-        return 0;
+        return total;
     }
 }
