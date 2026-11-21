@@ -3,6 +3,7 @@ package domain;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -152,6 +153,23 @@ public class DevelopmentCardActionsTest {
         assertThrows(NullPointerException.class,
             () -> actions.playYearOfPlenty(card, 4, hand, ResourceType.BRICK, null));
     }
+
+    // TC10
+    @Test
+    public void playYearOfPlenty_wrongCardType_throwsIllegalArgumentException() {
+        Bank bank = new Bank();
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), bank);
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.MONOPOLY, 3);
+        ResourceHand hand = new ResourceHand();
+
+        assertThrows(IllegalArgumentException.class,
+            () -> actions.playYearOfPlenty(card, 4, hand, ResourceType.BRICK, ResourceType.ORE));
+        assertEquals(0, hand.getTotal());
+        assertEquals(Bank.RESOURCE_SUPPLY, bank.getResourceCount(ResourceType.BRICK));
+        assertEquals(Bank.RESOURCE_SUPPLY, bank.getResourceCount(ResourceType.ORE));
+        assertFalse(card.isPlayed());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);

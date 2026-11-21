@@ -83,7 +83,7 @@ public class DevelopmentCardActions {
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
 | Test Case 9  | Any one of `card`, `hand`, `first`, `second` is `null` | `NullPointerException` | :white_check_mark: |
-| Test Case 10 | `card` is `MONOPOLY` | `IllegalArgumentException`, nothing changes | :x: |
+| Test Case 10 | `card` is `MONOPOLY` | `IllegalArgumentException`, nothing changes | :white_check_mark: |
 | Test Case 11 | `YEAR_OF_PLENTY`, `currentTurn = 3` | `IllegalStateException`, nothing changes, card not played | :x: |
 | Test Case 12 | `YEAR_OF_PLENTY`, `BRICK` + `ORE` | Hand 1 BRICK, 1 ORE; Bank 18 BRICK, 18 ORE; card played | :x: |
 | Test Case 13 | `YEAR_OF_PLENTY`, `BRICK` + `BRICK` | Hand 2 BRICK; Bank 17 BRICK; card played | :x: |

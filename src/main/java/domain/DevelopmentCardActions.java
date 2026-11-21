@@ -28,5 +28,8 @@ public final class DevelopmentCardActions {
         Objects.requireNonNull(hand);
         Objects.requireNonNull(first);
         Objects.requireNonNull(second);
+        if (card.getType() != DevelopmentCardType.YEAR_OF_PLENTY) {
+            throw new IllegalArgumentException("Card is not YEAR_OF_PLENTY");
+        }
     }
 }
