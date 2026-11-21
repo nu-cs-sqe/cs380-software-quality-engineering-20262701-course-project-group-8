@@ -353,6 +353,24 @@ public class DevelopmentCardActionsTest {
         assertEquals(0, hand.getTotal());
         assertTrue(card.isPlayed());
     }
+
+    // TC22
+    @Test 
+    public void playMonopoly_otherHandHasNone_returnsZeroAndPlayCard() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.MONOPOLY, 3);
+        ResourceHand hand = new ResourceHand();
+        ResourceHand other = new ResourceHand();
+        other.add(ResourceType.BRICK, 1);
+
+        int taken = actions.playMonopoly(card, 4, hand, List.of(other), ResourceType.WOOL);
+
+        assertEquals(0, taken);
+        assertEquals(0, hand.getTotal());
+        assertEquals(0, other.getCount(ResourceType.WOOL));
+        assertEquals(1, other.getCount(ResourceType.BRICK));
+        assertTrue(card.isPlayed());
+    }
     
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
