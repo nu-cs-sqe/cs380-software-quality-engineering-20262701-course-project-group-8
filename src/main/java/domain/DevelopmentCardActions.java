@@ -28,12 +28,17 @@ public final class DevelopmentCardActions {
         Objects.requireNonNull(hand);
         Objects.requireNonNull(first);
         Objects.requireNonNull(second);
+
         if (card.getType() != DevelopmentCardType.YEAR_OF_PLENTY) {
             throw new IllegalArgumentException("Card is not YEAR_OF_PLENTY");
         }
         if (!card.canBePlayed(currentTurn)) {
             throw new IllegalStateException("Card cannot be played this turn");
         }
+        if (first == second && !bank.hasResource(first, 2)) {
+            throw new IllegalStateException("Bank does not have enough " + first);
+        }
+
         bank.giveResource(first, 1);
         hand.add(first, 1);
         bank.giveResource(second, 1);
