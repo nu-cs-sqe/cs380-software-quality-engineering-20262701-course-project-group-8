@@ -41,3 +41,4 @@
 1. [done] Stephi Lyou: Fixed checkstyle issues in Hex, Board, and Game [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/52]
 2. [done] Sami Khan: Implemented Player class and PlayerColor enum: [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/47]
 3. [done] Sami Khan: Updated Intersection class functionality to model actual player usage: [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/47] 
+4. [done] Jiadong Li: Implemented DevelopmentCardActions class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/51]
