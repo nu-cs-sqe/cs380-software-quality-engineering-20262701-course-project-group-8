@@ -59,6 +59,9 @@ public final class DevelopmentCardActions {
         if (!card.canBePlayed(currentTurn)) {
             throw new IllegalStateException("Card cannot be played this turn");
         }
+        if (otherHands.contains(hand)) {
+            throw new IllegalArgumentException("otherHands must not contain hand");
+        }
         
         return 0;
     }

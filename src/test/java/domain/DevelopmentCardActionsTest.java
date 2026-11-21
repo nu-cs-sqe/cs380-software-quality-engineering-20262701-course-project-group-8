@@ -324,6 +324,22 @@ public class DevelopmentCardActionsTest {
         assertFalse(card.isPlayed());
     }
 
+    // TC20
+    @Test public void playMonopoly_otherHandsContainsOwnHand_throwsIllegalArgumentException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.MONOPOLY, 3);
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.WOOL, 1);
+        ResourceHand other = new ResourceHand();
+        other.add(ResourceType.WOOL, 2);
+
+        assertThrows(IllegalArgumentException.class,
+            () -> actions.playMonopoly(card, 4, hand, List.of(other, hand), ResourceType.WOOL));
+        assertEquals(1, hand.getCount(ResourceType.WOOL));
+        assertEquals(2, other.getCount(ResourceType.WOOL));
+        assertFalse(card.isPlayed());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
