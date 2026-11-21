@@ -308,6 +308,22 @@ public class DevelopmentCardActionsTest {
         assertFalse(card.isPlayed());
     }
 
+    // TC19
+    @Test 
+    public void playMonopoly_sameTurnAsPurchase_throwsIllegalStateException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.MONOPOLY, 3);
+        ResourceHand hand = new ResourceHand();
+        ResourceHand other = new ResourceHand();
+        other.add(ResourceType.WOOL, 2);
+
+        assertThrows(IllegalStateException.class,
+            () -> actions.playMonopoly(card, 3, hand, List.of(other), ResourceType.WOOL));
+        assertEquals(0, hand.getTotal());
+        assertEquals(2, other.getCount(ResourceType.WOOL));
+        assertFalse(card.isPlayed());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);

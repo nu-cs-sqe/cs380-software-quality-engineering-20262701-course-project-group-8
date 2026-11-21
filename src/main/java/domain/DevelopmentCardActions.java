@@ -56,6 +56,9 @@ public final class DevelopmentCardActions {
         if (card.getType() != DevelopmentCardType.MONOPOLY) {
             throw new IllegalArgumentException("Card is not MONOPOLY");
         }
+        if (!card.canBePlayed(currentTurn)) {
+            throw new IllegalStateException("Card cannot be played this turn");
+        }
         
         return 0;
     }
