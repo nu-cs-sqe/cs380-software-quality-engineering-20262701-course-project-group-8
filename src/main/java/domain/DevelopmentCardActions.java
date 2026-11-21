@@ -31,5 +31,8 @@ public final class DevelopmentCardActions {
         if (card.getType() != DevelopmentCardType.YEAR_OF_PLENTY) {
             throw new IllegalArgumentException("Card is not YEAR_OF_PLENTY");
         }
+        if (!card.canBePlayed(currentTurn)) {
+            throw new IllegalStateException("Card cannot be played this turn");
+        }
     }
 }

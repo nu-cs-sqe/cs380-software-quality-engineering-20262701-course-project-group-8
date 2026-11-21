@@ -170,6 +170,23 @@ public class DevelopmentCardActionsTest {
         assertFalse(card.isPlayed());
     }
 
+    // TC11
+    @Test
+    public void playYearOfPlenty_sameTurnAsPurchase_throwsIllegalStateException() {
+        Bank bank = new Bank();
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), bank);
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.YEAR_OF_PLENTY, 3);
+        ResourceHand hand = new ResourceHand();
+
+        assertThrows(IllegalStateException.class,
+            () -> actions.playYearOfPlenty(card, 3, hand, ResourceType.BRICK, ResourceType.ORE)
+        );
+        assertEquals(0, hand.getTotal());
+        assertEquals(Bank.RESOURCE_SUPPLY, bank.getResourceCount(ResourceType.BRICK));
+        assertEquals(Bank.RESOURCE_SUPPLY, bank.getResourceCount(ResourceType.ORE));
+        assertFalse(card.isPlayed());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
