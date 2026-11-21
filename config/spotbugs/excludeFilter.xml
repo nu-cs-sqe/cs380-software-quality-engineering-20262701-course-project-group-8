@@ -45,4 +45,14 @@
     </Or>
   </Match>
 
+  <!--
+      Domain: DevelopmentCardActions shares the game's Bank with the rest of
+      the game, so storing the caller's Bank is intentional.
+  -->
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+    <Class name="domain.DevelopmentCardActions"/>
+    <Field name="bank"/>
+  </Match>
+
 </FindBugsFilter>
