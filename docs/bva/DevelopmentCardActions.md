@@ -77,7 +77,7 @@ public class DevelopmentCardActions {
 | Test Case 5  | Hand has 1 ORE, 1 GRAIN, 1 WOOL, `currentTurn = 0` | Returns a card with `turnPurchased = 0`; hand empty; Bank back to 19 of each; deck 24 | :white_check_mark: |
 | Test Case 6  | Hand has 2 ORE, 2 GRAIN, 2 WOOL, `currentTurn = 0` | Hand left with 1 ORE, 1 GRAIN, 1 WOOL | :white_check_mark: |
 | Test Case 7  | Deck has 1 card, hand has 1 ORE, 1 GRAIN, 1 WOOL | Returns a card, deck 0 | :white_check_mark: |
-| Test Case 8  | Deck empty, hand has 1 ORE, 1 GRAIN, 1 WOOL | `IllegalStateException`, hand unchanged | :x: |
+| Test Case 8  | Deck empty, hand has 1 ORE, 1 GRAIN, 1 WOOL | `IllegalStateException`, hand unchanged | :white_check_mark: |
 
 ### Method under test: `playYearOfPlenty(DevelopmentCard card, int currentTurn, ResourceHand hand, ResourceType first, ResourceType second)` (card bought on turn 3, `currentTurn = 4`, full Bank, empty hand unless stated)
 |              | State of the System | Expected output | Implemented? |

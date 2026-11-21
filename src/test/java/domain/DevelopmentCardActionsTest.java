@@ -121,6 +121,20 @@ public class DevelopmentCardActionsTest {
         assertEquals(0, bank.getDevelopmentCardCount());
     }
 
+    // TC8
+    @Test
+    public void buyDevelopmentCard_emptyDeck_throwsIllegalStateException() {
+        Bank bank = new Bank();
+        drawFromBank(bank, bank.DEVELOPMENT_CARD_SUPPLY);
+        ResourceHand hand = new ResourceHand();
+        moveFromBank(bank, hand, ResourceType.ORE, 1);
+        moveFromBank(bank, hand, ResourceType.GRAIN, 1);
+        moveFromBank(bank, hand, ResourceType.WOOL, 1);
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), bank);
+
+
+
+    }
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);

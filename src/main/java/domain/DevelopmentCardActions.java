@@ -16,6 +16,9 @@ public final class DevelopmentCardActions {
         if (currentTurn < 0) {
             throw new IllegalArgumentException("currentTurn must be >= 0");
         }
+        if (bank.getDevelopmentCardCount() == 0) {
+            throw new IllegalStateException("No development cards left");
+        }
         rules.payCost(hand, bank, PurchaseType.DEVELOPMENT_CARD);
         return bank.drawDevelopmentCard(currentTurn);
     }
