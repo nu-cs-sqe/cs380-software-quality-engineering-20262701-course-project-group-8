@@ -135,6 +135,23 @@ public class DevelopmentCardActionsTest {
 
 
     }
+
+    // TC9
+    @Test
+    public void playYearOfPlenty_nullArgument_throwsNullPointerException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.YEAR_OF_PLENTY, 3);
+        ResourceHand hand = new ResourceHand();
+
+        assertThrows(NullPointerException.class,
+            () -> actions.playYearOfPlenty(null, 4, hand, ResourceType.BRICK, ResourceType.ORE));
+        assertThrows(NullPointerException.class,
+            () -> actions.playYearOfPlenty(card, 4, null, ResourceType.BRICK, ResourceType.ORE));
+        assertThrows(NullPointerException.class,
+            () -> actions.playYearOfPlenty(card, 4, hand, null, ResourceType.ORE));
+        assertThrows(NullPointerException.class,
+            () -> actions.playYearOfPlenty(card, 4, hand, ResourceType.BRICK, null));
+    }
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);

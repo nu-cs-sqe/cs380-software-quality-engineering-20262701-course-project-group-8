@@ -82,7 +82,7 @@ public class DevelopmentCardActions {
 ### Method under test: `playYearOfPlenty(DevelopmentCard card, int currentTurn, ResourceHand hand, ResourceType first, ResourceType second)` (card bought on turn 3, `currentTurn = 4`, full Bank, empty hand unless stated)
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 9  | Any one of `card`, `hand`, `first`, `second` is `null` | `NullPointerException` | :x: |
+| Test Case 9  | Any one of `card`, `hand`, `first`, `second` is `null` | `NullPointerException` | :white_check_mark: |
 | Test Case 10 | `card` is `MONOPOLY` | `IllegalArgumentException`, nothing changes | :x: |
 | Test Case 11 | `YEAR_OF_PLENTY`, `currentTurn = 3` | `IllegalStateException`, nothing changes, card not played | :x: |
 | Test Case 12 | `YEAR_OF_PLENTY`, `BRICK` + `ORE` | Hand 1 BRICK, 1 ORE; Bank 18 BRICK, 18 ORE; card played | :x: |

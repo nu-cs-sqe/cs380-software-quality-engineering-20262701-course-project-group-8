@@ -22,4 +22,11 @@ public final class DevelopmentCardActions {
         rules.payCost(hand, bank, PurchaseType.DEVELOPMENT_CARD);
         return bank.drawDevelopmentCard(currentTurn);
     }
+
+    public void playYearOfPlenty(DevelopmentCard card, int currentTurn, ResourceHand hand, ResourceType first, ResourceType second) {
+        Objects.requireNonNull(card);
+        Objects.requireNonNull(hand);
+        Objects.requireNonNull(first);
+        Objects.requireNonNull(second);
+    }
 }
