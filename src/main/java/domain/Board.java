@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +8,9 @@ import java.util.Random;
 
 public class Board {
 
-    private static final List<TerrainType> TERRAIN = Arrays.asList(
+    private static final int DESERT_NUMBER_DISC = 0;
+
+    private static final List<TerrainType> TERRAIN = List.of(
         TerrainType.FORESTS,
         TerrainType.FORESTS,
         TerrainType.FORESTS,
@@ -36,7 +37,7 @@ public class Board {
         TerrainType.DESERTS
     );
 
-    private static final List<Integer> NUMBER_DISCS = Arrays.asList(
+    private static final List<Integer> NUMBER_DISCS = List.of(
         2, 3, 3, 4, 4, 5, 5, 6, 6,
         8, 8, 9, 9, 10, 10, 11, 11, 12
     );
@@ -65,11 +66,10 @@ public class Board {
         int numberIndex = 0;
 
         for (TerrainType terrain : terrains) {
-
             int numberDisc;
 
             if (terrain == TerrainType.DESERTS) {
-                numberDisc = 0;
+                numberDisc = DESERT_NUMBER_DISC;
             } else {
                 numberDisc = numberDiscs.get(numberIndex);
                 numberIndex++;

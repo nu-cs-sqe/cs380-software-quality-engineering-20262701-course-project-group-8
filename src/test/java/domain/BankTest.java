@@ -1,15 +1,15 @@
 package domain;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
 
 public class BankTest {
     // TC 1
@@ -37,7 +37,7 @@ public class BankTest {
     @Test
     public void hasResource_nullType_throwsNullPointerException() {
         Bank bank = new Bank();
-        assertThrows(NullPointerException.class, ()->bank.hasResource(null, 1));
+        assertThrows(NullPointerException.class, () -> bank.hasResource(null, 1));
     }
 
     // TC 5
@@ -72,7 +72,8 @@ public class BankTest {
     @Test 
     public void giveResource_zeroAmount_throwsIllegalArgumentException() {
         Bank bank = new Bank();
-        assertThrows(IllegalArgumentException.class, () -> bank.giveResource(ResourceType.BRICK, 0));
+        assertThrows(IllegalArgumentException.class,
+                () -> bank.giveResource(ResourceType.BRICK, 0));
         assertEquals(19, bank.getResourceCount(ResourceType.BRICK));
     }
 
@@ -124,7 +125,8 @@ public class BankTest {
     public void receiveResource_zeroAmount_throwsIllegalArgumentException() {
         Bank bank = new Bank();
         bank.giveResource(ResourceType.BRICK, 3);
-        assertThrows(IllegalArgumentException.class, () -> bank.receiveResource(ResourceType.BRICK, 0));
+        assertThrows(IllegalArgumentException.class,
+                () -> bank.receiveResource(ResourceType.BRICK, 0));
         assertEquals(16, bank.getResourceCount(ResourceType.BRICK));
     }
 
@@ -151,7 +153,8 @@ public class BankTest {
     public void receiveResource_fourBrick_throwsIllegalStateException() {
         Bank bank = new Bank();
         bank.giveResource(ResourceType.BRICK, 3);
-        assertThrows(IllegalStateException.class, () -> bank.receiveResource(ResourceType.BRICK, 4));
+        assertThrows(IllegalStateException.class,
+                () -> bank.receiveResource(ResourceType.BRICK, 4));
         assertEquals(16, bank.getResourceCount(ResourceType.BRICK));
     }
 
@@ -175,7 +178,7 @@ public class BankTest {
     @Test
     public void drawDevelopmentCard_negativeTurn_throwsIllegalArgumentException() {
         Bank bank = new Bank();
-        assertThrows(IllegalArgumentException.class, ()->bank.drawDevelopmentCard(-1));
+        assertThrows(IllegalArgumentException.class, () -> bank.drawDevelopmentCard(-1));
         assertEquals(25, bank.getDevelopmentCardCount());
     }
 
