@@ -34,5 +34,10 @@ public final class DevelopmentCardActions {
         if (!card.canBePlayed(currentTurn)) {
             throw new IllegalStateException("Card cannot be played this turn");
         }
+        bank.giveResource(first, 1);
+        hand.add(first, 1);
+        bank.giveResource(second, 1);
+        hand.add(second, 1);
+        card.play(currentTurn);
     }
 }

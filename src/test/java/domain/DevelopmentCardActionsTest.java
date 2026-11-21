@@ -1,6 +1,7 @@
 package domain;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -185,6 +186,24 @@ public class DevelopmentCardActionsTest {
         assertEquals(Bank.RESOURCE_SUPPLY, bank.getResourceCount(ResourceType.BRICK));
         assertEquals(Bank.RESOURCE_SUPPLY, bank.getResourceCount(ResourceType.ORE));
         assertFalse(card.isPlayed());
+    }
+
+    // TC 12
+    @Test
+    public void playYearOfPlenty_twoDifferentTypes_givesBothAndPlaysCard() {
+        Bank bank = new Bank();
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), bank);
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.YEAR_OF_PLENTY, 3);
+        ResourceHand hand = new ResourceHand();
+
+        actions.playYearOfPlenty(card, 4, hand, ResourceType.BRICK, ResourceType.ORE);
+
+        assertEquals(1, hand.getCount(ResourceType.BRICK));
+        assertEquals(1, hand.getCount(ResourceType.ORE));
+        assertEquals(2, hand.getTotal());
+        assertEquals(Bank.RESOURCE_SUPPLY - 1, bank.getResourceCount(ResourceType.BRICK));
+        assertEquals(Bank.RESOURCE_SUPPLY - 1, bank.getResourceCount(ResourceType.ORE));
+        assertTrue(card.isPlayed());
     }
 
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
