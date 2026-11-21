@@ -292,6 +292,22 @@ public class DevelopmentCardActionsTest {
             () -> actions.playMonopoly(card, 4, hand, otherHands, null));
     }
 
+    // TC18
+    @Test
+    public void playMonopoly_wrongCardType_throwsIllegalArgumentException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.YEAR_OF_PLENTY, 3);
+        ResourceHand hand = new ResourceHand();
+        ResourceHand other = new ResourceHand();
+        other.add(ResourceType.WOOL, 2);
+
+        assertThrows(IllegalArgumentException.class,
+            () -> actions.playMonopoly(card, 4, hand, List.of(other), ResourceType.WOOL));
+        assertEquals(0, hand.getTotal());
+        assertEquals(2, other.getCount(ResourceType.WOOL));
+        assertFalse(card.isPlayed());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);

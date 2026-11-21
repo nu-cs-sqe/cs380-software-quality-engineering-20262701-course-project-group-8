@@ -53,6 +53,10 @@ public final class DevelopmentCardActions {
         Objects.requireNonNull(hand);
         Objects.requireNonNull(otherHands);
         Objects.requireNonNull(type);
+        if (card.getType() != DevelopmentCardType.MONOPOLY) {
+            throw new IllegalArgumentException("Card is not MONOPOLY");
+        }
+        
         return 0;
     }
 }
