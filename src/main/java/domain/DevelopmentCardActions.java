@@ -24,7 +24,8 @@ public final class DevelopmentCardActions {
         return bank.drawDevelopmentCard(currentTurn);
     }
 
-    public void playYearOfPlenty(DevelopmentCard card, int currentTurn, ResourceHand hand, ResourceType first, ResourceType second) {
+    public void playYearOfPlenty(DevelopmentCard card, int currentTurn, ResourceHand hand, 
+        ResourceType first, ResourceType second) {
         Objects.requireNonNull(card);
         Objects.requireNonNull(hand);
         Objects.requireNonNull(first);
@@ -48,7 +49,8 @@ public final class DevelopmentCardActions {
         card.play(currentTurn);
     }
 
-    public int playMonopoly(DevelopmentCard card, int currentTurn, ResourceHand hand, List<ResourceHand> otherHands, ResourceType type) {
+    public int playMonopoly(DevelopmentCard card, int currentTurn, ResourceHand hand, 
+        List<ResourceHand> otherHands, ResourceType type) {
         Objects.requireNonNull(card);
         Objects.requireNonNull(hand);
         Objects.requireNonNull(otherHands);
