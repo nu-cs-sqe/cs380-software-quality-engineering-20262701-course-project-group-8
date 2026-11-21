@@ -89,7 +89,7 @@ public class DevelopmentCardActions {
 | Test Case 13 | `YEAR_OF_PLENTY`, `BRICK` + `BRICK` | Hand 2 BRICK; Bank 17 BRICK; card played | :white_check_mark: |
 | Test Case 14 | `YEAR_OF_PLENTY`, Bank has exactly 2 BRICK, `BRICK` + `BRICK` | Hand 2 BRICK; Bank 0 BRICK; card played | :white_check_mark: |
 | Test Case 15 | `YEAR_OF_PLENTY`, Bank has 1 BRICK, `BRICK` + `BRICK` | `IllegalStateException`, nothing changes, card not played | :white_check_mark: |
-| Test Case 16 | `YEAR_OF_PLENTY`, Bank has 0 ORE, `BRICK` + `ORE` | `IllegalStateException`, no BRICK given either, card not played | :x: |
+| Test Case 16 | `YEAR_OF_PLENTY`, Bank has 0 ORE, `BRICK` + `ORE` | `IllegalStateException`, no BRICK given either, card not played | :white_check_mark: |
 
 ### Method under test: `playMonopoly(DevelopmentCard card, int currentTurn, ResourceHand hand, List<ResourceHand> otherHands, ResourceType type)` (card bought on turn 3, `currentTurn = 4`, `type = WOOL`, empty hand unless stated)
 |              | State of the System | Expected output | Implemented? |

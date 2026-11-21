@@ -35,8 +35,9 @@ public final class DevelopmentCardActions {
         if (!card.canBePlayed(currentTurn)) {
             throw new IllegalStateException("Card cannot be played this turn");
         }
-        if (first == second && !bank.hasResource(first, 2)) {
-            throw new IllegalStateException("Bank does not have enough " + first);
+        int firstNeeded = first == second ? 2 : 1;
+        if (!bank.hasResource(first, firstNeeded) || !bank.hasResource(second, 1)) {
+            throw new IllegalStateException("Bank does not have enough resources");
         }
 
         bank.giveResource(first, 1);
