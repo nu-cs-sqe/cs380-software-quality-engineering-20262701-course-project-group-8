@@ -62,7 +62,8 @@ public final class DevelopmentCardActions {
         if (otherHands.contains(hand)) {
             throw new IllegalArgumentException("otherHands must not contain hand");
         }
-        
+
+        card.play(currentTurn);
         return 0;
     }
 }

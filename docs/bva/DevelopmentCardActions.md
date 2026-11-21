@@ -98,7 +98,7 @@ public class DevelopmentCardActions {
 | Test Case 18 | `card` is `YEAR_OF_PLENTY` | `IllegalArgumentException`, nothing moves | :white_check_mark: |
 | Test Case 19 | `MONOPOLY`, `currentTurn = 3` | `IllegalStateException`, nothing moves, card not played | :white_check_mark: |
 | Test Case 20 | `MONOPOLY`, `otherHands` contains `hand` | `IllegalArgumentException`, nothing moves, card not played | :white_check_mark: |
-| Test Case 21 | `MONOPOLY`, `otherHands` empty | Returns 0, card played | :x: |
+| Test Case 21 | `MONOPOLY`, `otherHands` empty | Returns 0, card played | :white_check_mark: |
 | Test Case 22 | `MONOPOLY`, 1 other hand with 0 WOOL | Returns 0, hand unchanged, card played | :x: |
 | Test Case 23 | `MONOPOLY`, 1 other hand with 1 WOOL | Returns 1; other hand 0 WOOL; hand 1 WOOL; card played | :x: |
 | Test Case 24 | `MONOPOLY`, hand has 1 WOOL, 3 other hands with 0, 2, 5 WOOL and 1 BRICK each | Returns 7; other hands 0 WOOL and still 1 BRICK; hand 8 WOOL; card played | :x: |

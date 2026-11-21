@@ -340,6 +340,20 @@ public class DevelopmentCardActionsTest {
         assertFalse(card.isPlayed());
     }
 
+    // TC21
+    @Test
+    public void playMonopoly_noOtherHands_returnsZeroAndPlaysCard() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.MONOPOLY, 3);
+        ResourceHand hand = new ResourceHand();
+
+        int taken = actions.playMonopoly(card, 4, hand, List.of(), ResourceType.WOOL);
+
+        assertEquals(0, taken);
+        assertEquals(0, hand.getTotal());
+        assertTrue(card.isPlayed());
+    }
+    
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
