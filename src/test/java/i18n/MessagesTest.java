@@ -160,4 +160,11 @@ public class MessagesTest {
         Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
         assertEquals("Alice rolled 8", messages.format("roll", "Alice", 8, "extra"));
     }
+
+    // TC21
+    @Test
+    public void format_escapedQuote_returnsSingleQuote() {
+        Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
+        assertEquals("It's Alice", messages.format("quote", "Alice"));
+    }
 }
