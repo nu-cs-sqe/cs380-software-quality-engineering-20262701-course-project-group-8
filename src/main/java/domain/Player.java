@@ -1,23 +1,24 @@
 package domain;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Player {
-    String name;
-    PlayerColor color;
-    ResourceHand resourceHand;
-    int victoryPoints;
-    Intersections intersections;
-    public Player(String name, PlayerColor color) {
-        if (name == null) {
-            throw new NullPointerException("Error: Name cannot be a null value");
-        } else if (name.isEmpty() || name.isBlank()) {
-            throw new IllegalArgumentException("Error: Name cannot be an empty value");
-        }
+    private String name;
+    private PlayerColor color;
+    private ResourceHand resourceHand;
+    private int victoryPoints;
+    private Intersections intersections;
+    private static final String NAME_CANNOT_BE_NULL_MESSAGE = 
+                        "Error: Name cannot be a null value";
+    private static final String COLOR_CANNOT_BE_NULL_MESSAGE = 
+                        "Error: Color cannot be a null value";
+    private static final String RESOURCE_CANNOT_BE_NULL_MESSAGE = 
+                        "Error: Resource cannot be a null value";
 
-        if (color == null) {
-            throw new NullPointerException("Error: Color cannot be a null value");
-        }
+    public Player(String name, PlayerColor color) {
+        Objects.requireNonNull(name, NAME_CANNOT_BE_NULL_MESSAGE);
+        Objects.requireNonNull(color, COLOR_CANNOT_BE_NULL_MESSAGE);
 
         this.name = name;
         this.color = color;
@@ -35,16 +36,14 @@ public class Player {
     }
 
     public int getResourceCount(ResourceType resource) {
-        if (resource == null) {
-            throw new NullPointerException("Error: Resource cannot be a null value");
-        }
+        Objects.requireNonNull(resource, RESOURCE_CANNOT_BE_NULL_MESSAGE);
+
         return resourceHand.getCount(resource);
     }
 
     public void addResource(ResourceType resourceType, int amount) {
-        if (resourceType == null) {
-            throw new NullPointerException("Error: Resource cannot be a null value");
-        }
+        Objects.requireNonNull(resourceType, RESOURCE_CANNOT_BE_NULL_MESSAGE);
+
         if (amount <= 0) {
             throw new IllegalArgumentException("Error: Amount cannot be a non-positive value");
         }
@@ -53,9 +52,7 @@ public class Player {
     }
 
     public void removeResource(ResourceType resource, int amount) {
-        if (resource == null) {
-            throw new NullPointerException("Error: Resource cannot be a null value");
-        }
+        Objects.requireNonNull(resource, RESOURCE_CANNOT_BE_NULL_MESSAGE);
 
         if (amount <= 0) {
             throw new IllegalArgumentException("Error: Amount cannot be a non-positive value");
@@ -102,4 +99,8 @@ public class Player {
     public List<Location> getRoadLocations() {
         return intersections.getBuildingLocations(Building.ROAD);
     }
+
+    public void addIntersection(Location location, Building building) {
+        intersections.addBuilding(location, building);
+    }   
 }

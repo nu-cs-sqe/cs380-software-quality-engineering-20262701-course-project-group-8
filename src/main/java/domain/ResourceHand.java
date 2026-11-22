@@ -1,11 +1,14 @@
 package domain;
 
-import java.util.Map;
 import java.util.EnumMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class ResourceHand {
+    private static final String INVALID_AMOUNT_MESSAGE = "Amount must be at least 1";
+
     private final Map<ResourceType, Integer> counts = new EnumMap<>(ResourceType.class);
+
     public int getCount(ResourceType type) {
         Objects.requireNonNull(type);
         return counts.getOrDefault(type, 0);
@@ -13,7 +16,7 @@ public class ResourceHand {
 
     public int getTotal() {
         int total = 0;
-        for (int count: counts.values()) {
+        for (int count : counts.values()) {
             total += count;
         }
         return total;
@@ -22,7 +25,7 @@ public class ResourceHand {
     public void add(ResourceType type, int amount) {
         Objects.requireNonNull(type);
         if (amount < 1) {
-            throw new IllegalArgumentException("Amount must be at least 1");
+            throw new IllegalArgumentException(INVALID_AMOUNT_MESSAGE);
         }
         counts.put(type, getCount(type) + amount);
     }
@@ -30,7 +33,7 @@ public class ResourceHand {
     public void remove(ResourceType type, int amount) {
         Objects.requireNonNull(type);
         if (amount < 1) {
-            throw new IllegalArgumentException("Amount must be at least 1");
+            throw new IllegalArgumentException(INVALID_AMOUNT_MESSAGE);
         }
         int current = getCount(type);
         if (amount > current) {
@@ -42,7 +45,7 @@ public class ResourceHand {
     public boolean has(ResourceType type, int amount) {
         Objects.requireNonNull(type);
         if (amount < 1) {
-            throw new IllegalArgumentException("Amount must be at least 1");
+            throw new IllegalArgumentException(INVALID_AMOUNT_MESSAGE);
         }
         return getCount(type) >= amount;
     }

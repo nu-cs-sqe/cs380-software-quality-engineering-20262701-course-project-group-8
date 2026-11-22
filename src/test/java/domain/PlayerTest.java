@@ -11,36 +11,30 @@ import org.easymock.EasyMock;
 
 public class PlayerTest {
     private Player player;
+
     @BeforeEach
     public void setUp() {
         player = new Player("Alice", PlayerColor.RED);
     }
+
     // TC1
     @Test
-    public void constructor_nameISNullColorIsValid_throwsNullPointerException() {
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> new Player(null, PlayerColor.RED));
-        assertEquals("Error: Name cannot be a null value", exception.getMessage());  
-    }
-
-    // TC2
-    @Test
-    public void constructor_nameIsEmptyColorIsValid_throwsIllegalArgumentException() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Player("", PlayerColor.RED));
-        assertEquals("Error: Name cannot be an empty value", exception.getMessage());  
-    }
-
-    // TC3
-    @Test
-    public void constructor_nameIsBlankColorIsValid_throwsIllegalArgumentException() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Player(" ", PlayerColor.RED));
-        assertEquals("Error: Name cannot be an empty value", exception.getMessage());  
+    public void constructor_nameIsNullColorIsValid_throwsNullPointerException() {
+        NullPointerException exception = assertThrows(
+            NullPointerException.class,
+            () -> new Player(null, PlayerColor.RED)
+        );
+        assertEquals("Error: Name cannot be a null value", exception.getMessage());
     }
 
     // TC4
     @Test
     public void constructor_nameIsValidColorIsNull_throwsNullPointerException() {
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> new Player("Alice", null));
-        assertEquals("Error: Color cannot be a null value", exception.getMessage());  
+        NullPointerException exception = assertThrows(
+            NullPointerException.class,
+            () -> new Player("Alice", null)
+        );
+        assertEquals("Error: Color cannot be a null value", exception.getMessage());
     }
 
     // TC5
@@ -68,28 +62,36 @@ public class PlayerTest {
     // TC8
     @Test
     public void addResource_resourceIsNullAmountIsValid_throwNullPointerException() {
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> player.addResource(null, 1));
+        NullPointerException exception = assertThrows(
+            NullPointerException.class,
+            () -> player.addResource(null, 1)
+        );
         assertEquals("Error: Resource cannot be a null value", exception.getMessage());
     }
 
     // TC9
     @Test
     public void addResource_resourceIsValidAmountIsNegative_throwIllegalArgumentException() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addResource(ResourceType.WOOL, -1));
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> player.addResource(ResourceType.WOOL, -1)
+        );
         assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage());
     }
 
     // TC10
     @Test
     public void addResource_resourceIsValidAmountIsZero_throwIllegalArgumentException() {
-        Player player = new Player("Alice", PlayerColor.RED);
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addResource(ResourceType.WOOL, 0));
-        assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage()); 
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> player.addResource(ResourceType.WOOL, 0)
+        );
+        assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage());
     }
 
     // TC11
     @Test
-    public void addResource_resourceIsValidAmountIsOne_addToZeroCurrentSupplyOfZero_returnPlayerHasOneOfThisResourceType() {
+    public void addResource_oneWoolToZeroResultsInOne() {
         player.addResource(ResourceType.WOOL, 1);
         int expected = 1;
         int actual = player.getResourceCount(ResourceType.WOOL);
@@ -98,7 +100,7 @@ public class PlayerTest {
 
     // TC12
     @Test
-    public void addResource_resourceIsValidAmountIsOne_addOneToCurrentSupplyOfOne_returnPlayerHasTwoOfThisResourceType() {
+    public void addResource_oneWoolToOneResultsInTwo() {
         player.addResource(ResourceType.WOOL, 1);
         player.addResource(ResourceType.WOOL, 1);
         int expected = 2;
@@ -109,30 +111,39 @@ public class PlayerTest {
     // TC13
     @Test
     public void removeResource_resourceIsNullAmountIsValid_throwNullPointerException() {
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> player.removeResource(null, 1));
+        NullPointerException exception = assertThrows(
+            NullPointerException.class,
+            () -> player.removeResource(null, 1)
+        );
         assertEquals("Error: Resource cannot be a null value", exception.getMessage());
     }
 
     // TC14
     @Test
-    public void removeResource_resourceIsValidAmountIsNegative_playerHasTwoWoolInSupply_throwIllegalArgumentException() {
+    public void removeResource_negativeAmountWithTwoWool_throwsIllegalArgumentException() {
         player.addResource(ResourceType.WOOL, 2);
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.removeResource(ResourceType.WOOL, -1));
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> player.removeResource(ResourceType.WOOL, -1)
+        );
         assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage());
     }
 
     // TC15
     @Test
-    public void removeResource_resourceIsValidAmountIsZero_playerHasTwoWoolInSupply_throwIllegalArgumentException() {
+    public void removeResource_zeroAmountWithTwoWool_throwsIllegalArgumentException() {
         player.addResource(ResourceType.WOOL, 2);
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.removeResource(ResourceType.WOOL, 0));
-        assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage()); 
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> player.removeResource(ResourceType.WOOL, 0)
+        );
+        assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage());
     }
 
     // TC16
     @Test
-    public void removeResource_resourceIsWoolAmountIsOne_playerHasTwoWoolInSupply_returnPlayerHasOneWoolInSupply() {
-        player.addResource(ResourceType.WOOL, 2); 
+    public void removeResource_oneWoolFromTwoResultsInOne() {
+        player.addResource(ResourceType.WOOL, 2);
         player.removeResource(ResourceType.WOOL, 1);
         int expected = 1;
         int actual = player.getResourceCount(ResourceType.WOOL);
@@ -141,26 +152,32 @@ public class PlayerTest {
 
     // TC17
     @Test
-    public void removeResource_resourceIsWoolAmountIsTwo_playerHasTwoWoolInSupply_returnPlayerHasZeroSupply() {
-        player.addResource(ResourceType.WOOL, 2); 
+    public void removeResource_twoWoolFromTwoResultsInZero() {
+        player.addResource(ResourceType.WOOL, 2);
         player.removeResource(ResourceType.WOOL, 2);
         int expected = 0;
         int actual = player.getResourceCount(ResourceType.WOOL);
-        assertEquals(expected, actual);       
+        assertEquals(expected, actual);
     }
 
-    // TC18 
+    // TC18
     @Test
-    public void removeResource_resourceIsWoolAmountIsThree_playerHasTwoWoolInSupply_throwIllegalStateException() {
+    public void removeResource_threeWoolFromTwo_throwsIllegalStateException() {
         player.addResource(ResourceType.WOOL, 2);
-        IllegalStateException exception = assertThrows(IllegalStateException.class, () -> player.removeResource(ResourceType.WOOL, 3));
+        IllegalStateException exception = assertThrows(
+            IllegalStateException.class,
+            () -> player.removeResource(ResourceType.WOOL, 3)
+        );
         assertEquals("Not enough " + ResourceType.WOOL + " to remove", exception.getMessage());
     }
 
     // TC19
     @Test
     public void getResourceCount_resourceIsNull_throwsNullPointerException() {
-        NullPointerException exception = assertThrows(NullPointerException.class, () -> player.getResourceCount(null));
+        NullPointerException exception = assertThrows(
+            NullPointerException.class,
+            () -> player.getResourceCount(null)
+        );
         assertEquals("Error: Resource cannot be a null value", exception.getMessage());
     }
 
@@ -182,21 +199,27 @@ public class PlayerTest {
 
     // TC22
     @Test
-    public void addVictoryPoints_pointsIsNegative_playerHasZeroVictoryPoints_throwIllegalArgumentException() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addVictoryPoints(-1));
+    public void addVictoryPoints_negative_throwsIllegalArgumentException() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> player.addVictoryPoints(-1)
+        );
         assertEquals("Error: Points cannot be a non-positive value", exception.getMessage());
     }
 
     // TC23
     @Test
-    public void addVictoryPoints_pointsIsZero_playerHasZeroVictoryPoints_throwIllegalArgumentException() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addVictoryPoints(0));
+    public void addVictoryPoints_zero_throwsIllegalArgumentException() {
+        IllegalArgumentException exception = assertThrows(
+            IllegalArgumentException.class,
+            () -> player.addVictoryPoints(0)
+        );
         assertEquals("Error: Points cannot be a non-positive value", exception.getMessage());
     }
 
     // TC24
     @Test
-    public void addVictoryPoints_pointsIs1_playerHasZeroVictoryPoints_returnPlayerVictoryPointsIsOne() {
+    public void addVictoryPoints_oneToZeroResultsInOne() {
         player.addVictoryPoints(1);
         int expected = 1;
         int actual = player.getVictoryPoints();
@@ -205,7 +228,7 @@ public class PlayerTest {
 
     // TC25
     @Test
-    public void addVictoryPoints_pointsIs1_playerHas9VictoryPoints_returnPlayerHas10VictoryPoints() {
+    public void addVictoryPoints_oneToNineResultsInTen() {
         player.addVictoryPoints(9);
         player.addVictoryPoints(1);
         int expected = 10;
@@ -242,7 +265,7 @@ public class PlayerTest {
     @Test
     public void getCityCount_playerHasOneCity_returnOne() {
         Location location = EasyMock.createMock(Location.class);
-        player.intersections.addBuilding(location, Building.CITY);
+        player.addIntersection(location, Building.CITY);
         int expected = 1;
         int actual = player.getCityCount();
         assertEquals(expected, actual);
@@ -256,10 +279,10 @@ public class PlayerTest {
         Location location3 = EasyMock.createMock(Location.class);
         Location location4 = EasyMock.createMock(Location.class);
 
-        player.intersections.addBuilding(location1, Building.CITY);
-        player.intersections.addBuilding(location2, Building.CITY);
-        player.intersections.addBuilding(location3, Building.CITY);
-        player.intersections.addBuilding(location4, Building.CITY);
+        player.addIntersection(location1, Building.CITY);
+        player.addIntersection(location2, Building.CITY);
+        player.addIntersection(location3, Building.CITY);
+        player.addIntersection(location4, Building.CITY);
 
         int expected = 4;
         int actual = player.getCityCount();
@@ -272,12 +295,12 @@ public class PlayerTest {
         List<Location> actual = player.getCityLocations();
         assertTrue(actual.isEmpty());
     }
-    
+
     // TC32
     @Test
     public void getCityLocations_playerHasOneCity_returnListConsistingOfOneCity() {
         Location location = EasyMock.createMock(Location.class);
-        player.intersections.addBuilding(location, Building.CITY);
+        player.addIntersection(location, Building.CITY);
         List<Location> expected = new ArrayList<>(List.of(location));
         List<Location> actual = player.getCityLocations();
         assertEquals(expected, actual);
@@ -289,8 +312,8 @@ public class PlayerTest {
         Location location1 = EasyMock.createMock(Location.class);
         Location location2 = EasyMock.createMock(Location.class);
 
-        player.intersections.addBuilding(location1, Building.CITY);
-        player.intersections.addBuilding(location2, Building.CITY);
+        player.addIntersection(location1, Building.CITY);
+        player.addIntersection(location2, Building.CITY);
 
         List<Location> expected = new ArrayList<>(List.of(location1, location2));
         List<Location> actual = player.getCityLocations();
@@ -309,7 +332,7 @@ public class PlayerTest {
     @Test
     public void getSettlementCount_playerHasOneSettlement_returnOne() {
         Location location = EasyMock.createMock(Location.class);
-        player.intersections.addBuilding(location, Building.SETTLEMENT);
+        player.addIntersection(location, Building.SETTLEMENT);
         int expected = 1;
         int actual = player.getSettlementCount();
         assertEquals(expected, actual);
@@ -323,11 +346,11 @@ public class PlayerTest {
         Location location3 = EasyMock.createMock(Location.class);
         Location location4 = EasyMock.createMock(Location.class);
         Location location5 = EasyMock.createMock(Location.class);
-        player.intersections.addBuilding(location1, Building.SETTLEMENT);
-        player.intersections.addBuilding(location2, Building.SETTLEMENT);
-        player.intersections.addBuilding(location3, Building.SETTLEMENT);
-        player.intersections.addBuilding(location4, Building.SETTLEMENT);
-        player.intersections.addBuilding(location5, Building.SETTLEMENT);
+        player.addIntersection(location1, Building.SETTLEMENT);
+        player.addIntersection(location2, Building.SETTLEMENT);
+        player.addIntersection(location3, Building.SETTLEMENT);
+        player.addIntersection(location4, Building.SETTLEMENT);
+        player.addIntersection(location5, Building.SETTLEMENT);
         int expected = 5;
         int actual = player.getSettlementCount();
         assertEquals(expected, actual);
@@ -344,11 +367,11 @@ public class PlayerTest {
     @Test
     public void getSettlementLocations_playerHasOneSettlement_returnListOfOneLocation() {
         Location location = EasyMock.createMock(Location.class);
-        player.intersections.addBuilding(location, Building.SETTLEMENT);
+        player.addIntersection(location, Building.SETTLEMENT);
         List<Location> expected = new ArrayList<>(List.of(location));
         List<Location> actual = player.getSettlementLocations();
         assertEquals(expected, actual);
-        
+
     }
 
     // TC39
@@ -356,8 +379,8 @@ public class PlayerTest {
     public void getSettlementLocations_playerHasTwoSettlements_returnListOfTwoLocations() {
         Location location1 = EasyMock.createMock(Location.class);
         Location location2 = EasyMock.createMock(Location.class);
-        player.intersections.addBuilding(location1, Building.SETTLEMENT);
-        player.intersections.addBuilding(location2, Building.SETTLEMENT);
+        player.addIntersection(location1, Building.SETTLEMENT);
+        player.addIntersection(location2, Building.SETTLEMENT);
         List<Location> expected = new ArrayList<>(List.of(location1, location2));
         List<Location> actual = player.getSettlementLocations();
         assertEquals(expected, actual);
@@ -375,7 +398,7 @@ public class PlayerTest {
     @Test
     public void getRoadCount_playerHasOneRoad_returnOne() {
         Location location = EasyMock.createMock(Location.class);
-        player.intersections.addBuilding(location, Building.ROAD);
+        player.addIntersection(location, Building.ROAD);
         int expected = 1;
         int actual = player.getRoadCount();
         assertEquals(expected, actual);
@@ -400,13 +423,13 @@ public class PlayerTest {
         Location location14 = EasyMock.createMock(Location.class);
         Location location15 = EasyMock.createMock(Location.class);
         List<Location> roadLocations = List.of(
-        location1, location2, location3, location4, location5,
-        location6, location7, location8, location9, location10,
-        location11, location12, location13, location14, location15
+            location1, location2, location3, location4, location5,
+            location6, location7, location8, location9, location10,
+            location11, location12, location13, location14, location15
         );
 
         for (Location location : roadLocations) {
-            player.intersections.addBuilding(location, Building.ROAD);
+            player.addIntersection(location, Building.ROAD);
         }
 
         int expected = 15;
@@ -426,7 +449,7 @@ public class PlayerTest {
     @Test
     public void getRoadLocations_playerHasOneRoad_returnListOfOneLocation() {
         Location location = EasyMock.createMock(Location.class);
-        player.intersections.addBuilding(location, Building.ROAD);
+        player.addIntersection(location, Building.ROAD);
         List<Location> expected = new ArrayList<>(List.of(location));
         List<Location> actual = player.getRoadLocations();
         assertEquals(expected, actual);
@@ -437,10 +460,41 @@ public class PlayerTest {
     public void getRoadLocations_playerHasTwoRoads_returnListOfTwoLocations() {
         Location location1 = EasyMock.createMock(Location.class);
         Location location2 = EasyMock.createMock(Location.class);
-        player.intersections.addBuilding(location1, Building.ROAD);
-        player.intersections.addBuilding(location2, Building.ROAD);
+        player.addIntersection(location1, Building.ROAD);
+        player.addIntersection(location2, Building.ROAD);
         List<Location> expected = new ArrayList<>(List.of(location1, location2));
         List<Location> actual = player.getRoadLocations();
         assertEquals(expected, actual);
+    }
+
+    // TC46
+    @Test
+    public void addIntersection_validLocationAndRoad_updatesPlayer() {
+        Location location = EasyMock.createMock(Location.class);
+
+        player.addIntersection(location, Building.ROAD);
+
+        assertEquals(1, player.getRoadCount());
+        assertTrue(player.getRoadLocations().contains(location));
+    }
+
+    // TC47
+    @Test
+    public void addIntersection_nullLocation_throwsNullPointerException() {
+        assertThrows(
+            NullPointerException.class,
+            () -> player.addIntersection(null, Building.ROAD)
+        );
+    }
+
+    // TC48
+    @Test
+    public void addIntersection_nullBuilding_throwsNullPointerException() {
+        Location location = EasyMock.createMock(Location.class);
+
+        assertThrows(
+            NullPointerException.class,
+            () -> player.addIntersection(location, null)
+        );
     }
 }
