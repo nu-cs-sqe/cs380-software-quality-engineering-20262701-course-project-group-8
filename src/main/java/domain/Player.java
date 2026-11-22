@@ -103,4 +103,8 @@ public class Player {
     public List<Location> getRoadLocations() {
         return intersections.getBuildingLocations(Building.ROAD);
     }
+
+    public void addIntersection(Location location, Building building) {
+        intersections.addBuilding(location, building);
+    }   
 }
