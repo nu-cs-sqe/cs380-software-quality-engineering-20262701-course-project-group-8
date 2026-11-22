@@ -72,7 +72,7 @@ Rules:
 ### Method under test: `LanguageCatalog(String configResource)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 1  | `configResource` is `null` | `NullPointerException` is thrown | :x: |
+| Test Case 1  | `configResource` is `null` | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 2  | `configResource` is `"i18n/does_not_exist.properties"` | `IllegalArgumentException` is thrown | :x: |
 | Test Case 3  | `configResource` is `"i18n/languages_no_key.properties"` (no `languages` key) | `IllegalStateException` is thrown | :x: |
 | Test Case 4  | `configResource` is `"i18n/languages_blank.properties"` (0 codes) | `IllegalStateException` is thrown | :x: |
