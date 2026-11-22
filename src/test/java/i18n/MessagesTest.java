@@ -28,4 +28,12 @@ public class MessagesTest {
         assertThrows(IllegalArgumentException.class,
             () -> new Messages("i18n/does_not_exist", Locale.ENGLISH));
     }
+
+    // TC4
+    @Test
+    public void constructor_existingBundle_createsMessages() {
+        Messages messages = assertDoesNotThrow(
+            () -> new Messages("i18n/test_messages", Locale.ENGLISH));
+        assertNotNull(messages);
+    }
 }

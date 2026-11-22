@@ -82,7 +82,7 @@ Test resource files (so tests do not depend on the real game text):
 | Test Case 1  | `baseName` is `null`, `locale` is `ENGLISH` | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 2  | `baseName` is `"i18n/test_messages"`, `locale` is `null` | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 3  | `baseName` is `"i18n/does_not_exist"`, `locale` is `ENGLISH` | `IllegalArgumentException` is thrown | :white_check_mark: |
-| Test Case 4  | `baseName` is `"i18n/test_messages"`, `locale` is `ENGLISH` | A `Messages` object is created without exception | :x: |
+| Test Case 4  | `baseName` is `"i18n/test_messages"`, `locale` is `ENGLISH` | A `Messages` object is created without exception | :white_check_mark: |
 
 ### Method under test: `getLocale()`
 |              | State of the System | Expected output | Implemented? |
