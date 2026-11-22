@@ -43,3 +43,5 @@
 3. [done] Sami Khan: Updated Intersection class functionality to model actual player usage: [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/47] 
 4. [done] Jiadong Li: Implemented DevelopmentCardActions class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/51]
 5. [done] Stephi Lyou: Fixed spotbug issues in Hex, Board, and Game [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/57]
+6. [done] Sami Khan: Fixed spotbug issues in Player, Location, and Intersection [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/46]
+7. [done] Sami Khan: Fixed checkstyle issues in Board and Game [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/46]
