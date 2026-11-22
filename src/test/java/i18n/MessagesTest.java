@@ -3,6 +3,7 @@ package i18n;
 import org.junit.jupiter.api.Test;
 
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,7 +61,7 @@ public class MessagesTest {
 
     // TC8
     @Test
-    public void get_englishKey_returnsTest() {
+    public void get_englishKey_returnsText() {
         Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
         assertEquals("Hello", messages.get("greeting"));
     }
@@ -76,6 +77,20 @@ public class MessagesTest {
     @Test
     public void get_localeWithoutBundle_fallsBackToDefaultBundle() {
         Messages messages = new Messages("i18n/test_messages", Locale.FRENCH);
-        assertEquals("Hello", messages.get("greetings"));
+        assertEquals("Hello", messages.get("greeting"));
+    }
+
+    // TC11
+    @Test
+    public void get_jvmDefaultIsJapanese_doesNotFallBackToJvmDefault() {
+        Locale original = Locale.getDefault();
+        try {
+            Locale.setDefault(Locale.JAPANESE);
+            ResourceBundle.clearCache();
+            Messages messages = new Messages("i18n/test_messages", Locale.FRENCH);
+            assertEquals("Hello", messages.get("greeting"));
+        } finally {
+            Locale.setDefault(original);
+        }
     }
 }
