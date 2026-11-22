@@ -167,4 +167,12 @@ public class MessagesTest {
         Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
         assertEquals("It's Alice", messages.format("quote", "Alice"));
     }
+
+    // TC22
+    @Test
+    public void format_missingKey_throwsMissingResourceException() {
+        Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
+        assertThrows(MissingResourceException.class, 
+            () -> messages.format("missing", "Alice"));
+    }
 }
