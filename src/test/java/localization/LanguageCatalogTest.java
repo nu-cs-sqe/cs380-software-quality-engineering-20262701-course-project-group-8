@@ -12,4 +12,11 @@ public class LanguageCatalogTest {
         assertThrows(NullPointerException.class, 
             () -> new LanguageCatalog(null));
     }
+
+    // TC2
+    @Test 
+    public void constructor_missingConfigResource_throwsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, 
+            () -> new LanguageCatalog("i18n/does_not_exist.properties"));
+    } 
 }
