@@ -36,4 +36,11 @@ public class MessagesTest {
             () -> new Messages("i18n/test_messages", Locale.ENGLISH));
         assertNotNull(messages);
     }
+
+    // TC5
+    @Test
+    public void getLocale_localeWithBundle_returnsThatLocale() {
+        Messages messages = new Messages("i18n/test_messages", Locale.JAPANESE);
+        assertEquals(Locale.JAPANESE, messages.getLocale());
+    }
 }

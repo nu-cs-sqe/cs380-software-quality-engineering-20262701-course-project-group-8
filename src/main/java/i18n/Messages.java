@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 
 public class Messages {
     
+    private final Locale locale;
+
     private static final ResourceBundle.Control NO_FALLBACK = 
         ResourceBundle.Control.getNoFallbackControl(
             ResourceBundle.Control.FORMAT_PROPERTIES);
@@ -20,5 +22,10 @@ public class Messages {
             throw new IllegalArgumentException(
                 "No resource  bundle found for " + baseName, e);
         }
+        this.locale = locale;
+    }
+
+    public Locale getLocale() {
+        return locale;
     }
 }
