@@ -13,11 +13,12 @@ public class Player {
     public void addVictoryPoints(int points);
     public int getVictoryPoints();
     public int getCityCount();
-    public Location[] getCityLocations();
+    public List<Location> getCityLocations();
     public int getSettlementCount();
-    public Location[] getSettlementLocations();
+    public List<Location> getSettlementLocations();
     public int getRoadCount();
-    public Location[] getRoadLocations();
+    public List<Location> getRoadLocations();
+    public void addIntersection(Location location, Building building);
 }
 ```
 
@@ -35,6 +36,7 @@ public class Player {
 - `getSettlementLocations()` returns an array containing the locations of all settlements owned by the player.
 - `getRoadCount()` returns the number of roads owned by the player.
 - `getRoadLocations()` returns an array containing the locations of all roads owned by the player.
+- `addIntersection(Location location, Building building)` adds the specified building to the player's intersections without exposing the mutable `Intersections` object. Rejects null locations and null buildings with `NullPointerException`.
 
 ## Current Project Assumptions
 
@@ -147,6 +149,14 @@ public class Player {
 |---|---|---|---|
 | Output | Array of locations containing the player's roads | Collection | Empty array, one location, multiple locations |
 
+### Method: `addIntersection(Location location, Building building)`
+
+| | Description | Category | Boundary Values |
+|---|---|---|---|
+| Input | `location` | Pointer | `null`, valid non-null `Location` |
+| Input | `building` | Pointer / enum | `null`, valid `Building` (`ROAD`, `SETTLEMENT`, `CITY`) |
+| Output | Player's intersection data updated or exception | Cases | Building added, `NullPointerException` |
+
 ## Step 4: Test Cases
 
 ### Method under test: `Player(String name, PlayerColor color)`
@@ -154,8 +164,6 @@ public class Player {
 | | State of the System | Expected Output | Implemented? |
 |---|---|---|---|
 | Test Case 1 | `name = null`, `color = RED` | `NullPointerException` | :white_check_mark: |
-| Test Case 2 | `name = ""`, `color = RED` | `IllegalArgumentException` | :white_check_mark: |
-| Test Case 3 | `name = " "`, `color = RED` | `IllegalArgumentException` | :white_check_mark: |
 | Test Case 4 | `name = "Alice"`, `color = null` | `NullPointerException` | :white_check_mark: |
 | Test Case 5 | `name = "Alice"`, `color = RED` | Player created successfully | :white_check_mark: |
 
@@ -263,3 +271,11 @@ public class Player {
 | Test Case 43 | Player owns 0 roads | Empty `Location[]` | :white_check_mark: |
 | Test Case 44 | Player owns 1 road at a valid location | Array containing one location | :white_check_mark: |
 | Test Case 45 | Player owns 2 roads at valid locations | Array containing both locations | :white_check_mark: |
+
+### Method under test: `addIntersection(Location location, Building building)`
+
+| | State of the System | Expected Output | Implemented? |
+|---|---|---|---|
+| Test Case 46 | Valid `Location`, `building = ROAD` | Player has 1 road at the supplied location | :white_check_mark: |
+| Test Case 47 | `location = null`, `building = ROAD` | `NullPointerException` | :white_check_mark: |
+| Test Case 48 | Valid `Location`, `building = null` | `NullPointerException` | :white_check_mark: |

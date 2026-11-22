@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    SpotBugs exclusion filter for the CS 380 Catan project.
+-->
+<FindBugsFilter>
+
+  <!--
+      Test sources: JUnit / EasyMock / BVA fixtures generate noise
+      (mocks, unused helpers, deliberate exception paths, seeded Random).
+      Covers *Test and *Tests (e.g. LocationTests).
+  -->
+  <Match>
+    <Class name="~.*\..*Tests?"/>
+  </Match>
+
+  <!-- Empty / early UI entry point; exclude until the console UI is fleshed out -->
+  <Match>
+    <Class name="ui.Main"/>
+  </Match>
+
+  <!--
+      Domain: default Random() in Board/Bank/Dice is intentional for gameplay.
+      Tests inject seeded Random for determinism. SpotBugs flags insecure RNG
+      (PREDICTABLE_RANDOM) which does not apply to a local board-game sim.
+  -->
+  <Match>
+    <Bug pattern="PREDICTABLE_RANDOM"/>
+    <Or>
+      <Class name="domain.Board"/>
+      <Class name="domain.Bank"/>
+      <Class name="domain.Dice"/>
+    </Or>
+  </Match>
+
+  <!--
+      Domain: Dice and Board take an injected Random so tests can pass a mock
+      or seeded Random. Storing the caller's Random is intentional.
+  -->
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+    <Field name="random"/>
+    <Or>
+      <Class name="domain.Dice"/>
+      <Class name="domain.Board"/>
+    </Or>
+  </Match>
+
+  <!--
+      Domain: DevelopmentCardActions shares the game's Bank with the rest of
+      the game, so storing the caller's Bank is intentional.
+  -->
+  <Match>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+    <Class name="domain.DevelopmentCardActions"/>
+    <Field name="bank"/>
+  </Match>
+
+</FindBugsFilter>

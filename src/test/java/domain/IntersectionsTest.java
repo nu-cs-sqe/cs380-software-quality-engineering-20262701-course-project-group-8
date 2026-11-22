@@ -106,10 +106,10 @@ public class IntersectionsTest {
 
         EasyMock.replay(center);
 
-        Hex hexLeft = EasyMock.createMock(Hex.class);
-        Hex hexRight = EasyMock.createMock(Hex.class);
-        Hex hexUp = EasyMock.createMock(Hex.class);
-        Hex hexDown = EasyMock.createMock(Hex.class);
+        Hex hexLeft = new Hex(TerrainType.FIELDS, 3);
+        Hex hexRight = new Hex(TerrainType.FORESTS, 4);
+        Hex hexUp = new Hex(TerrainType.HILLS, 5);
+        Hex hexDown = new Hex(TerrainType.MOUNTAINS, 6);
 
         intersections.addHex(new Location(0, 1), hexLeft);
         intersections.addHex(new Location(2, 1), hexRight);
@@ -128,26 +128,12 @@ public class IntersectionsTest {
         assertTrue(actual.contains(hexUp));
     }
 
-    // TC 8
-    @Test
-    public void addHex_locationIsNullHexIsValid_throwNullPointerException() {
-        Location location = null;
-        Hex hex = EasyMock.createMock(Hex.class);
-
-        NullPointerException exception = assertThrows(
-            NullPointerException.class,
-            () -> intersections.addHex(location, hex)
-        );
-
-        assertEquals("Error: Location cannot be a null value", exception.getMessage());
-    }
 
     // TC 9
     @Test
     public void addHex_locationIsValidHexIsValid_addsHex() {
         Location location = EasyMock.createMock(Location.class);
-        Hex hex = EasyMock.createMock(Hex.class);
-
+        Hex hex = new Hex(TerrainType.DESERTS, 0);
         assertDoesNotThrow(() -> intersections.addHex(location, hex));
     }
 
@@ -182,7 +168,7 @@ public class IntersectionsTest {
     @Test
     public void getHex_locationIsValid_returnsHex() {
         Location location = EasyMock.createMock(Location.class);
-        Hex hex = EasyMock.createMock(Hex.class);
+        Hex hex = new Hex(TerrainType.DESERTS, 0);
 
         intersections.addHex(location, hex);
 

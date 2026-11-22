@@ -36,8 +36,8 @@ public class GameTest {
 
     // TC1
     @Test
-    public void constructor_nullPlayers_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class,
+    public void constructor_nullPlayers_throwsNullPointerException() {
+        assertThrows(NullPointerException.class,
                 () -> new Game(null));
     }
 
@@ -312,10 +312,10 @@ public class GameTest {
 
     // TC28
     @Test
-    public void endGame_nullWinner_throwsIllegalArgumentException() {
+    public void endGame_nullWinner_throwsNullPointerException() {
         Game game = createPlayingGame(createPlayers(2));
 
-        assertThrows(IllegalArgumentException.class,
+        assertThrows(NullPointerException.class,
                 () -> game.endGame(null));
     }
 
