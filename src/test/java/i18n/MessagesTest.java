@@ -3,6 +3,7 @@ package i18n;
 import org.junit.jupiter.api.Test;
 
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -99,5 +100,13 @@ public class MessagesTest {
     public void get_keyOnlyInDefaultBundle_fallsBackForThatKey() {
         Messages messages = new Messages("i18n/test_messages", Locale.JAPANESE);
         assertEquals("Goodbye", messages.get("farewell"));
+    }
+
+    // TC13
+    @Test
+    public void get_keyInNoBundle_throwsMissingResourceException() {
+        Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
+        assertThrows(MissingResourceException.class, 
+            () -> messages.get("missing"));
     }
 }

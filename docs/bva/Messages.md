@@ -99,7 +99,7 @@ Test resource files (so tests do not depend on the real game text):
 | Test Case 10 | `locale` is `fr` (no bundle), `key` is `"greeting"` | Returns `"Hello"` (falls back to the default bundle) | :white_check_mark: |
 | Test Case 11 | JVM default locale is set to `ja` for this test only (restored after the test); `locale` is `fr`, `key` is `"greeting"` | Returns `"Hello"`, not `"こんにちは"` (no fallback to the JVM default locale) | :white_check_mark: |
 | Test Case 12 | `locale` is `ja`, `key` is `"farewell"` (only in the default bundle) | Returns `"Goodbye"` | :white_check_mark: |
-| Test Case 13 | `key` is `"missing"` (in no bundle) | `MissingResourceException` is thrown | :x: |
+| Test Case 13 | `key` is `"missing"` (in no bundle) | `MissingResourceException` is thrown | :white_check_mark: |
 | Test Case 14 | `key` is `""` | `MissingResourceException` is thrown | :x: |
 | Test Case 15 | `key` is `null` | `NullPointerException` is thrown | :x: |
 
