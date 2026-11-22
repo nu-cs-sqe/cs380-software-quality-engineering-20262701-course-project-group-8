@@ -1,10 +1,10 @@
 package domain;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class DevelopmentCardTest {
     // TC1
@@ -16,7 +16,8 @@ public class DevelopmentCardTest {
     // TC2
     @Test
     public void constructor_negativeTurnPurchased_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> new DevelopmentCard(DevelopmentCardType.KNIGHT, -1));
+        assertThrows(IllegalArgumentException.class,
+                () -> new DevelopmentCard(DevelopmentCardType.KNIGHT, -1));
     }
 
     // TC3
@@ -48,7 +49,8 @@ public class DevelopmentCardTest {
 
     // TC7
     @ParameterizedTest
-    @EnumSource(value = DevelopmentCardType.class, names = "VICTORY_POINT", mode = EnumSource.Mode.EXCLUDE)
+    @EnumSource(value = DevelopmentCardType.class, names = "VICTORY_POINT",
+            mode = EnumSource.Mode.EXCLUDE)
     public void isVictoryPoint_nonVictoryPointCard_returnsFalse(DevelopmentCardType type) {
         DevelopmentCard card = new DevelopmentCard(type, 0);
         assertFalse(card.isVictoryPoint());

@@ -1,10 +1,10 @@
 package domain;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ResourceHandTest {
     // TC 1
@@ -72,7 +72,7 @@ public class ResourceHandTest {
 
     // TC 9
     @ParameterizedTest
-    @EnumSource(value=ResourceType.class, mode=EnumSource.Mode.EXCLUDE, names={"BRICK"})
+    @EnumSource(value = ResourceType.class, mode = EnumSource.Mode.EXCLUDE, names = {"BRICK"})
     public void add_twoBrick_otherTypesStayZero(ResourceType othertype) {
         ResourceHand resourceHand = new ResourceHand();
         resourceHand.add(ResourceType.BRICK, 2);
@@ -92,7 +92,8 @@ public class ResourceHandTest {
     public void remove_zeroAmount_throwsIllegalArgumentException() {
         ResourceHand resourceHand = new ResourceHand();
         resourceHand.add(ResourceType.BRICK, 3);
-        assertThrows(IllegalArgumentException.class, () -> resourceHand.remove(ResourceType.BRICK, 0));
+        assertThrows(IllegalArgumentException.class,
+                () -> resourceHand.remove(ResourceType.BRICK, 0));
         assertEquals(3, resourceHand.getCount(ResourceType.BRICK));
     }
 

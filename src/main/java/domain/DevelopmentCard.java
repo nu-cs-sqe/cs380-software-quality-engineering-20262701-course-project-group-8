@@ -2,7 +2,7 @@ package domain;
 
 import java.util.Objects;
 
-public class DevelopmentCard {
+public final class DevelopmentCard {
     private final DevelopmentCardType type;
     private final int turnPurchased;
     private boolean played;

@@ -8,8 +8,8 @@ public class HexTest {
 
     // TC1
     @Test
-    public void constructor_nullTerrain_throwsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> new Hex(null, 0));
+    public void constructor_nullTerrain_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new Hex(null, 0));
     }
 
     // TC2
