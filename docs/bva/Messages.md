@@ -3,7 +3,7 @@
 ## Design Under Test
 
 ```java
-package i18n;
+package localization;
 
 public class Messages {
     public static final Locale DEFAULT_LOCALE = Locale.ENGLISH;

@@ -1,4 +1,4 @@
-package i18n;
+package localization;
 
 import org.junit.jupiter.api.Test;
 

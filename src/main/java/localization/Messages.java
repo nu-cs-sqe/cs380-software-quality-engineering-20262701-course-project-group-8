@@ -1,4 +1,4 @@
-package i18n;
+package localization;
 
 import java.text.MessageFormat;
 import java.util.Locale;

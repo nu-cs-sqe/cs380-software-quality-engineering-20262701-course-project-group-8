@@ -3,7 +3,7 @@
 ## Design Under Test
 
 ```java
-package i18n;
+package localization;
 
 public class LanguageCatalog {
     public static final String LANGUAGES_KEY = "languages";
