@@ -175,4 +175,12 @@ public class MessagesTest {
         assertThrows(MissingResourceException.class, 
             () -> messages.format("missing", "Alice"));
     }
+
+    // TC23
+    @Test
+    public void format_nullKey_throwsNullPointerException() {
+        Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
+        assertThrows(NullPointerException.class, 
+            () -> messages.format(null, "Alice"));
+    }
 }
