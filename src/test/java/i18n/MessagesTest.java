@@ -93,4 +93,11 @@ public class MessagesTest {
             Locale.setDefault(original);
         }
     }
+
+    // TC12
+    @Test
+    public void get_keyOnlyInDefaultBundle_fallsBackForThatKey() {
+        Messages messages = new Messages("i18n/test_messages", Locale.JAPANESE);
+        assertEquals("Goodbye", messages.get("farewell"));
+    }
 }
