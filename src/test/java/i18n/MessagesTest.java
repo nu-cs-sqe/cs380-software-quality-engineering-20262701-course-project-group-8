@@ -117,4 +117,12 @@ public class MessagesTest {
         assertThrows(MissingResourceException.class, 
             () -> messages.get(""));
     }
+
+    // TC15
+    @Test
+    public void get_nullKey_throwsNullPointerException() {
+        Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
+        assertThrows(NullPointerException.class,
+            () -> messages.get(null));
+    }
 }

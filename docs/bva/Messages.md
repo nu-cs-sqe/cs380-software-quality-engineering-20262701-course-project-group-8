@@ -101,7 +101,7 @@ Test resource files (so tests do not depend on the real game text):
 | Test Case 12 | `locale` is `ja`, `key` is `"farewell"` (only in the default bundle) | Returns `"Goodbye"` | :white_check_mark: |
 | Test Case 13 | `key` is `"missing"` (in no bundle) | `MissingResourceException` is thrown | :white_check_mark: |
 | Test Case 14 | `key` is `""` | `MissingResourceException` is thrown | :white_check_mark: |
-| Test Case 15 | `key` is `null` | `NullPointerException` is thrown | :x: |
+| Test Case 15 | `key` is `null` | `NullPointerException` is thrown | :white_check_mark: |
 
 ### Method under test: `format(String key, Object... args)`
 |              | State of the System | Expected output | Implemented? |
