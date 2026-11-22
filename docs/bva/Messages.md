@@ -88,8 +88,8 @@ Test resource files (so tests do not depend on the real game text):
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
 | Test Case 5  | Created with `locale` `ja` (bundle exists) | Returns `ja` | :white_check_mark: |
-| Test Case 6  | Created with `locale` `ENGLISH` (the default bundle) | Returns `ENGLISH` | :x: |
-| Test Case 7  | Created with `locale` `fr` (no bundle) | Returns `DEFAULT_LOCALE` (`ENGLISH`) | :x: |
+| Test Case 6  | Created with `locale` `ENGLISH` (the default bundle) | Returns `ENGLISH` | :white_check_mark: |
+| Test Case 7  | Created with `locale` `fr` (no bundle) | Returns `DEFAULT_LOCALE` (`ENGLISH`) | :white_check_mark: |
 
 ### Method under test: `get(String key)`
 |              | State of the System | Expected output | Implemented? |

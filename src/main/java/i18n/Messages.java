@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 
 public class Messages {
     
+    public static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
+
     private final Locale locale;
 
     private static final ResourceBundle.Control NO_FALLBACK = 
@@ -16,16 +18,27 @@ public class Messages {
     public Messages(String baseName, Locale locale) {
         Objects.requireNonNull(baseName, "baseName must not be null");
         Objects.requireNonNull(locale, "locale must not be null");
-        try {
-            ResourceBundle.getBundle(baseName, locale, NO_FALLBACK);
-        } catch (MissingResourceException e) {
-            throw new IllegalArgumentException(
-                "No resource  bundle found for " + baseName, e);
-        }
-        this.locale = locale;
+        ResourceBundle bundle = loadBundle(baseName, locale);
+        this.locale = resolveLocale(bundle);
     }
 
     public Locale getLocale() {
         return locale;
+    }
+
+    private static ResourceBundle loadBundle(String baseName, Locale locale) {
+        try {
+            return ResourceBundle.getBundle(baseName, locale, NO_FALLBACK);
+        } catch (MissingResourceException e) {
+            throw new IllegalArgumentException("No resource bundle found for " + baseName, e);
+        }
+    }
+
+    private static Locale resolveLocale(ResourceBundle bundle) {
+        Locale loaded = bundle.getLocale();
+        if (Locale.ROOT.equals(loaded)) {
+            return DEFAULT_LOCALE;
+        }
+        return loaded;
     }
 }

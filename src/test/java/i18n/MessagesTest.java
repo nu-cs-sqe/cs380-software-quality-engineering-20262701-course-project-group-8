@@ -43,4 +43,18 @@ public class MessagesTest {
         Messages messages = new Messages("i18n/test_messages", Locale.JAPANESE);
         assertEquals(Locale.JAPANESE, messages.getLocale());
     }
+
+    // TC6
+    @Test
+    public void getLocale_defaultLanguage_returnsEnglish() {
+        Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
+        assertEquals(Locale.ENGLISH, messages.getLocale());
+    }
+
+    // TC7
+    @Test
+    public void getLocale_localeWithoutBundle_returnsDefaultLocale() {
+        Messages messages = new Messages("i18n/test_messages", Locale.FRENCH);
+        assertEquals(Messages.DEFAULT_LOCALE, messages.getLocale());
+    }
 }
