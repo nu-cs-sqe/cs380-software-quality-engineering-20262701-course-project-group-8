@@ -17,7 +17,7 @@ public class PlayerTest {
     }
     // TC1
     @Test
-    public void constructor_nameISNullColorIsValid_throwsNullPointerException() {
+    public void constructor_nameIsNullColorIsValid_throwsNullPointerException() {
         NullPointerException exception = assertThrows(NullPointerException.class, () -> new Player(null, PlayerColor.RED));
         assertEquals("Error: Name cannot be a null value", exception.getMessage());  
     }
@@ -82,7 +82,6 @@ public class PlayerTest {
     // TC10
     @Test
     public void addResource_resourceIsValidAmountIsZero_throwIllegalArgumentException() {
-        Player player = new Player("Alice", PlayerColor.RED);
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> player.addResource(ResourceType.WOOL, 0));
         assertEquals("Error: Amount cannot be a non-positive value", exception.getMessage()); 
     }
@@ -400,9 +399,9 @@ public class PlayerTest {
         Location location14 = EasyMock.createMock(Location.class);
         Location location15 = EasyMock.createMock(Location.class);
         List<Location> roadLocations = List.of(
-        location1, location2, location3, location4, location5,
-        location6, location7, location8, location9, location10,
-        location11, location12, location13, location14, location15
+            location1, location2, location3, location4, location5,
+            location6, location7, location8, location9, location10,
+            location11, location12, location13, location14, location15
         );
 
         for (Location location : roadLocations) {

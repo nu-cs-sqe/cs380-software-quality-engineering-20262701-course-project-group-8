@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Intersections {
     private final Map<Location, Building> locationToBuilding;
     private final Map<Location, Hex> locationToHex;
     private final Map<Building, List<Location>> buildingToLocations;
+    
     public Intersections() {
         this.locationToBuilding = new HashMap<>();
         this.locationToHex = new HashMap<>();
@@ -17,10 +19,10 @@ public class Intersections {
 
     public void addHex(Location location, Hex hex) {
         if (location == null) {
-            throw new NullPointerException("Error: Location cannot be a null value");
+            Objects.requireNonNull(location, "Error: Location cannot be a null value");
         }
         if (hex == null) {
-            throw new NullPointerException("Error: Hex cannot be a null value");
+            Objects.requireNonNull(hex, "Error: Hex cannot be a null value");
         }
 
         locationToHex.put(location, hex);
@@ -28,10 +30,10 @@ public class Intersections {
 
     public void addBuilding(Location location, Building building) {
         if (location == null) {
-            throw new NullPointerException("Error: Location cannot be a null value");
+            Objects.requireNonNull(location, "Error: Location cannot be a null value");
         }
         if (building == null) {
-            throw new NullPointerException("Error: Building cannot be a null value");
+            Objects.requireNonNull(building, "Error: Building cannot be a null value");
         }
         locationToBuilding.put(location, building);
         buildingToLocations.computeIfAbsent(building, k -> new ArrayList<>()).add(location);
@@ -39,21 +41,21 @@ public class Intersections {
 
     public Building getBuilding(Location location) {
         if (location == null) {
-            throw new NullPointerException("Error: Location cannot be a null value");
+            Objects.requireNonNull(location, "Error: Location cannot be a null value");
         }
         return locationToBuilding.get(location);
     }
 
     public Hex getHex(Location location) {
         if (location == null) {
-            throw new NullPointerException("Error: Location cannot be a null value");
+            Objects.requireNonNull(location, "Error: Location cannot be a null value");
         }
         return locationToHex.get(location);
     }
 
     public List<Hex> getNeighboringHexes(Location location) {
         if (location == null) {
-            throw new NullPointerException("Error: Location cannot be a null value");
+            Objects.requireNonNull(location, "Error: Location cannot be a null value");
         }
 
         int x = location.getXPos();
@@ -88,14 +90,14 @@ public class Intersections {
 
     public int getBuildingCount(Building building) {
         if (building == null) {
-            throw new NullPointerException("Error: Building cannot be a null value");
+            Objects.requireNonNull(building, "Error: Building cannot be a null value");
         }
         return (buildingToLocations.getOrDefault(building, new ArrayList<Location>())).size();
     }
 
     public List<Location> getBuildingLocations(Building building) {
         if (building == null) {
-            throw new NullPointerException("Error: Building cannot be a null value");
+            Objects.requireNonNull(building, "Error: Building cannot be a null value");
         }
         return buildingToLocations.getOrDefault(building, new ArrayList<Location>());
     }
