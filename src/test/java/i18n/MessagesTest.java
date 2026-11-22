@@ -57,4 +57,11 @@ public class MessagesTest {
         Messages messages = new Messages("i18n/test_messages", Locale.FRENCH);
         assertEquals(Messages.DEFAULT_LOCALE, messages.getLocale());
     }
+
+    // TC8
+    @Test
+    public void get_englishKey_returnsTest() {
+        Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
+        assertEquals("Hello", messages.get("greeting"));
+    }
 }

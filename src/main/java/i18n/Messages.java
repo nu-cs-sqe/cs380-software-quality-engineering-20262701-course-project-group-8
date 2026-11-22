@@ -1,5 +1,6 @@
 package i18n;
 
+import java.security.PrivateKey;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.Objects;
@@ -9,6 +10,7 @@ public class Messages {
     
     public static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
 
+    private final ResourceBundle bundle;
     private final Locale locale;
 
     private static final ResourceBundle.Control NO_FALLBACK = 
@@ -18,12 +20,16 @@ public class Messages {
     public Messages(String baseName, Locale locale) {
         Objects.requireNonNull(baseName, "baseName must not be null");
         Objects.requireNonNull(locale, "locale must not be null");
-        ResourceBundle bundle = loadBundle(baseName, locale);
+        this.bundle = loadBundle(baseName, locale);
         this.locale = resolveLocale(bundle);
     }
 
     public Locale getLocale() {
         return locale;
+    }
+    
+    public String get(String key) {
+        return bundle.getString(key);
     }
 
     private static ResourceBundle loadBundle(String baseName, Locale locale) {
