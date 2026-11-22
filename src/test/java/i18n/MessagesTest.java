@@ -71,4 +71,11 @@ public class MessagesTest {
         Messages messages = new Messages("i18n/test_messages", Locale.JAPANESE);
         assertEquals("こんにちは", messages.get("greeting"));
     }
+
+    // TC10
+    @Test
+    public void get_localeWithoutBundle_fallsBackToDefaultBundle() {
+        Messages messages = new Messages("i18n/test_messages", Locale.FRENCH);
+        assertEquals("Hello", messages.get("greetings"));
+    }
 }
