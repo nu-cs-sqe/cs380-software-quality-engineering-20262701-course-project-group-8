@@ -67,13 +67,6 @@ Rules:
 | Input | `index` | Interval [0, size - 1] | -1, 0, size - 1, size |
 | Output | | Cases | locale, `IndexOutOfBoundsException` |
 
-### Integration: real resource files
-| | Description | Category | Boundary Values |
-|---|---|---|---|
-| Input | each locale in `i18n/languages.properties` | Collection | every listed locale |
-| Input | keys in `i18n/messages.properties` | Collection | every key |
-| Output | | Boolean | every key is translated in every listed locale, a key is missing |
-
 ## Step 4: Test Cases
 
 ### Method under test: `LanguageCatalog(String configResource)`
@@ -100,10 +93,3 @@ Rules:
 | Test Case 11 | Created from `languages_two.properties`, `index` is 1 (size - 1, maximum) | Returns `ja` | :x: |
 | Test Case 12 | Created from `languages_two.properties`, `index` is -1 | `IndexOutOfBoundsException` is thrown | :x: |
 | Test Case 13 | Created from `languages_two.properties`, `index` is 2 (size) | `IndexOutOfBoundsException` is thrown | :x: |
-
-### Integration: real resource files
-|              | State of the System | Expected output | Implemented? |
-|--------------|---------------------|-----------------|--------------|
-| Test Case 14 | Catalog created from the real `i18n/languages.properties` | Contains at least 2 locales (rubric needs at least 2 languages) | :x: |
-| Test Case 15 | For each locale in the real catalog, read `i18n/messages_<code>.properties` (the default bundle for `en`) on its own, without the parent bundle | Every key in `messages.properties` is present in it (no missing translations) | :x: |
-| Test Case 16 | For each locale in the real catalog, `new Messages("i18n/messages", locale).get("language.name")` | Returns a non-empty name, and the names are all different | :x: |
