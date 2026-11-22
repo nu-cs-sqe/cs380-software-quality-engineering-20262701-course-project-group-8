@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+    "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<!--
+    Suppressions for Checkstyle. Keep production (src/main) strict;
+    tests use BVA/table-driven style that conflicts with Google naming/import rules.
+-->
+<suppressions>
+  <suppress checks="MagicNumber"
+            files=".*[\\/]src[\\/]test[\\/].*"/>
+
+  <suppress checks="MethodName"
+            files=".*[\\/]src[\\/]test[\\/].*"/>
+
+  <suppress checks="CustomImportOrder|AvoidStarImport"
+            files=".*[\\/]src[\\/]test[\\/].*"/>
+
+  <suppress checks="LineLength"
+            files=".*[\\/]src[\\/]test[\\/].*"/>
+
+  <suppress checks="EmptyLineSeparator|CommentsIndentation"
+            files=".*[\\/]src[\\/]test[\\/].*"/>
+
+  <suppress checks="VariableDeclarationUsageDistance"
+            files=".*[\\/]src[\\/]test[\\/].*"/>
+
+  <suppress checks="MultipleStringLiterals"
+            files=".*[\\/]src[\\/]test[\\/].*"/>
+
+  <suppress checks="PackageName"
+            files=".*[\\/]i18n[\\/].*"/>
+
+</suppressions>

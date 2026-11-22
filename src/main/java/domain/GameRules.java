@@ -13,13 +13,13 @@ public class GameRules {
     public static final int WINNING_POINTS = 10;
 
     private static final Map<PurchaseType, Map<ResourceType, Integer>> COSTS = Map.of(
-            PurchaseType.ROAD, 
+            PurchaseType.ROAD,
             Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1),
-            PurchaseType.SETTLEMENT, 
+            PurchaseType.SETTLEMENT,
             Map.of(ResourceType.BRICK, 1, ResourceType.LUMBER, 1,
                     ResourceType.WOOL, 1, ResourceType.GRAIN, 1),
             PurchaseType.CITY, Map.of(ResourceType.ORE, 3, ResourceType.GRAIN, 2),
-            PurchaseType.DEVELOPMENT_CARD, 
+            PurchaseType.DEVELOPMENT_CARD,
             Map.of(ResourceType.ORE, 1, ResourceType.WOOL, 1,
                     ResourceType.GRAIN, 1));
 
@@ -64,12 +64,14 @@ public class GameRules {
         return !target.hasRobber();
     }
 
-    public boolean canPlayDevelopmentCard(DevelopmentCard card, int currentTurn, int cardsPlayedThisTurn) {
+    public boolean canPlayDevelopmentCard(DevelopmentCard card, int currentTurn,
+            int cardsPlayedThisTurn) {
         Objects.requireNonNull(card);
         if (cardsPlayedThisTurn < 0) {
             throw new IllegalArgumentException("cardsPlayedThisTurn must be >= 0");
         }
-        return cardsPlayedThisTurn < MAX_DEVELOPMENT_CARDS_PER_TURN && card.canBePlayed(currentTurn);
+        return cardsPlayedThisTurn < MAX_DEVELOPMENT_CARDS_PER_TURN
+                && card.canBePlayed(currentTurn);
     }
 
     public boolean qualifiesForLongestRoad(int roadLength, int holderRoadLength) {

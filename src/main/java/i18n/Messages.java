@@ -1,13 +1,12 @@
 package i18n;
 
-import java.security.PrivateKey;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class Messages {
+public final class Messages {
     
     public static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
 

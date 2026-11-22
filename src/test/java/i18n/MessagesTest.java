@@ -14,7 +14,7 @@ public class MessagesTest {
     @Test
     public void constructor_nullBaseName_throwsNullPointerException() {
         assertThrows(NullPointerException.class,
-        () -> new Messages(null, Locale.ENGLISH));
+            () -> new Messages(null, Locale.ENGLISH));
     }
 
     // TC2
