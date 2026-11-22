@@ -79,7 +79,7 @@ Test resource files (so tests do not depend on the real game text):
 ### Method under test: `Messages(String baseName, Locale locale)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 1  | `baseName` is `null`, `locale` is `ENGLISH` | `NullPointerException` is thrown | :x: |
+| Test Case 1  | `baseName` is `null`, `locale` is `ENGLISH` | `NullPointerException` is thrown | :white_check_mark: |
 | Test Case 2  | `baseName` is `"i18n/test_messages"`, `locale` is `null` | `NullPointerException` is thrown | :x: |
 | Test Case 3  | `baseName` is `"i18n/does_not_exist"`, `locale` is `ENGLISH` | `IllegalArgumentException` is thrown | :x: |
 | Test Case 4  | `baseName` is `"i18n/test_messages"`, `locale` is `ENGLISH` | A `Messages` object is created without exception | :x: |
