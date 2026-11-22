@@ -109,4 +109,12 @@ public class MessagesTest {
         assertThrows(MissingResourceException.class, 
             () -> messages.get("missing"));
     }
+
+    // TC14
+    @Test
+    public void get_emptyKey_throwsMissingResourceException() {
+        Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
+        assertThrows(MissingResourceException.class, 
+            () -> messages.get(""));
+    }
 }
