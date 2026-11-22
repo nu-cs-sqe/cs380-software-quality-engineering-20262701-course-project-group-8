@@ -93,8 +93,8 @@ public class Intersections {
 ### Method under test: ` addHex(Location location, Hex hex);`
 |             | State of the System | Expected output | Implemented? |
 |-------------|---------------------|-----------------|--------------|
-| Test Case 8 | `location` is `null`, 'hex' = DESERT | `NullPointerException` is thrown | :white_check_mark: |
-| Test Case 9 | `location` is a valid `Location` object, 'hex' = DESERT| the Hex at the location is added without exception | :white_check_mark: |
+| Test Case 8 | `location` is `null`, 'hex' = (DESERT, 0) | `NullPointerException` is thrown | :white_check_mark: |
+| Test Case 9 | `location` is a valid `Location` object, 'hex' = (DESERT, 0)| the Hex at the location is added without exception | :white_check_mark: |
 | Test Case 10 | `location` is a valid 'Location' object, Hex is a null value | `NullPointerException` is thrown | :white_check_mark: |
 
 ### Method under test: ` getHex(Location location);`
