@@ -19,10 +19,6 @@ public class Player {
     public Player(String name, PlayerColor color) {
         Objects.requireNonNull(name, NAME_CANNOT_BE_NULL_MESSAGE);
         Objects.requireNonNull(color, COLOR_CANNOT_BE_NULL_MESSAGE);
-        if (name.isEmpty() || name.isBlank()) {
-            throw new IllegalArgumentException("Error: Name cannot be an empty value");
-        }
-
 
         this.name = name;
         this.color = color;

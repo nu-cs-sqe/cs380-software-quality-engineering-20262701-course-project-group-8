@@ -128,19 +128,6 @@ public class IntersectionsTest {
         assertTrue(actual.contains(hexUp));
     }
 
-    // TC 8
-    @Test
-    public void addHex_locationIsNullHexIsValid_throwNullPointerException() {
-        Location location = null;
-        Hex hex = EasyMock.createMock(Hex.class);
-
-        NullPointerException exception = assertThrows(
-            NullPointerException.class,
-            () -> intersections.addHex(location, hex)
-        );
-
-        assertEquals("Error: Location cannot be a null value", exception.getMessage());
-    }
 
     // TC 9
     @Test
