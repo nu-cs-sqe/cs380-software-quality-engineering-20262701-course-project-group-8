@@ -132,4 +132,11 @@ public class MessagesTest {
         Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
         assertEquals("Alice rolled 8", messages.format("roll", "Alice", 8));
     }
+
+    // TC17
+    @Test
+    public void format_japanese_fillsPlaceholders() {
+        Messages messages = new Messages("i18n/test_messages", Locale.JAPANESE);
+        assertEquals("Aliceは8を出しました", messages.format("roll", "Alice", 8));
+    }
 }
