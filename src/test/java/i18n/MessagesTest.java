@@ -21,4 +21,11 @@ public class MessagesTest {
         assertThrows(NullPointerException.class,
             () -> new Messages("i18n/test_messages", null));
     }
+
+    // TC3
+    @Test
+    public void constructor_missingBundle_throwsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class,
+            () -> new Messages("i18n/does_not_exist", Locale.ENGLISH));
+    }
 }
