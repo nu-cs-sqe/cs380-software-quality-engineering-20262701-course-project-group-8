@@ -1,6 +1,7 @@
 package i18n;
 
 import java.security.PrivateKey;
+import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.Objects;
@@ -30,6 +31,10 @@ public class Messages {
     
     public String get(String key) {
         return bundle.getString(key);
+    }
+    
+    public String format(String key, Object... args) {
+        return new MessageFormat(get(key), locale).format(args);
     }
 
     private static ResourceBundle loadBundle(String baseName, Locale locale) {

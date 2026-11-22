@@ -125,4 +125,11 @@ public class MessagesTest {
         assertThrows(NullPointerException.class,
             () -> messages.get(null));
     }
+
+    // TC16
+    @Test
+    public void format_exactArgs_fillsPlaceholders() {
+        Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
+        assertEquals("Alice rolled 8", messages.format("roll", "Alice", 8));
+    }
 }

@@ -106,7 +106,7 @@ Test resource files (so tests do not depend on the real game text):
 ### Method under test: `format(String key, Object... args)`
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 16 | `locale` is `ENGLISH`, `key` is `"roll"`, `args` are `"Alice"`, `8` (exactly the number of placeholders) | Returns `"Alice rolled 8"` | :x: |
+| Test Case 16 | `locale` is `ENGLISH`, `key` is `"roll"`, `args` are `"Alice"`, `8` (exactly the number of placeholders) | Returns `"Alice rolled 8"` | :white_check_mark: |
 | Test Case 17 | `locale` is `ja`, `key` is `"roll"`, `args` are `"Alice"`, `8` | Returns `"Aliceは8を出しました"` | :x: |
 | Test Case 18 | `key` is `"greeting"` (no placeholders), no `args` | Returns `"Hello"` | :x: |
 | Test Case 19 | `key` is `"roll"`, `args` is `"Alice"` (fewer than the placeholders) | Returns `"Alice rolled {1}"` | :x: |
