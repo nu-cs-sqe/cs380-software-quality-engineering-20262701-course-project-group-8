@@ -14,4 +14,11 @@ public class MessagesTest {
         assertThrows(NullPointerException.class,
         () -> new Messages(null, Locale.ENGLISH));
     }
+
+    // TC2
+    @Test
+    public void constructor_nullLocale_throwsNullPointerException() {
+        assertThrows(NullPointerException.class,
+            () -> new Messages("i18n/test_messages", null));
+    }
 }

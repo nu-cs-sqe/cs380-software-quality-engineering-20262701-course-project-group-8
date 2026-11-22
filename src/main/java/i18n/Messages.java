@@ -7,5 +7,6 @@ public class Messages {
     
     public Messages(String baseName, Locale locale) {
         Objects.requireNonNull(baseName, "baseName must not be null");
+        Objects.requireNonNull(locale, "locale must not be null");
     }
 }
