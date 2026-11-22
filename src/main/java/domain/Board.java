@@ -3,7 +3,6 @@ package domain;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 public class Board {
@@ -50,7 +49,7 @@ public class Board {
     }
 
     public Board(Random random) {
-        this.random = Objects.requireNonNull(random);
+        this.random = random;
         this.hexes = new ArrayList<>();
 
         initializeBoard();
@@ -103,22 +102,21 @@ public class Board {
     }
 
     public void moveRobber(Hex targetHex) {
-        if (targetHex == null) {
-            throw new IllegalArgumentException("Error: Target hex cannot be null");
-        }
+        validateRobberMove(targetHex);
 
+        Hex currentHex = getRobberHex();
+        currentHex.setRobber(false);
+        targetHex.setRobber(true);
+    }
+
+    private void validateRobberMove(Hex targetHex) {
         if (!hexes.contains(targetHex)) {
             throw new IllegalArgumentException("Error: Target hex does not belong to this board");
         }
 
-        Hex currentHex = getRobberHex();
-
-        if (currentHex == targetHex) {
+        if (getRobberHex() == targetHex) {
             throw new IllegalArgumentException("Error: Robber must move to a different hex");
         }
-
-        currentHex.setRobber(false);
-        targetHex.setRobber(true);
     }
 
     public List<Hex> getHexesProducingResource(int diceRoll) {
