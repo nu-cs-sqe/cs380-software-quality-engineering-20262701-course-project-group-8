@@ -18,5 +18,12 @@ public class LanguageCatalogTest {
     public void constructor_missingConfigResource_throwsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, 
             () -> new LanguageCatalog("i18n/does_not_exist.properties"));
-    } 
+    }
+
+    // TC3
+    @Test
+    public void constructor_missingLanguagesKey_throwsIllegalStateException() {
+        assertThrows(IllegalStateException.class, 
+        () -> new LanguageCatalog("i18n/languages_no_key.properties"));
+    }
 }
