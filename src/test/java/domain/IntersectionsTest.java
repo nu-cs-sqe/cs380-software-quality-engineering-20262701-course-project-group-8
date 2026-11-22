@@ -133,8 +133,7 @@ public class IntersectionsTest {
     @Test
     public void addHex_locationIsValidHexIsValid_addsHex() {
         Location location = EasyMock.createMock(Location.class);
-        Hex hex = EasyMock.createMock(Hex.class);
-
+        Hex hex = new Hex(TerrainType.DESERTS, 1);
         assertDoesNotThrow(() -> intersections.addHex(location, hex));
     }
 
