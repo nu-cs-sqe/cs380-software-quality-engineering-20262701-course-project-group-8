@@ -39,12 +39,10 @@ public class Location {
 ### Method under test: `Location(int xPos, int yPos)`
 |             | State of the System | Expected output | Implemented? |
 |-------------|---------------------|-----------------|--------------|
-| Test Case 1 | xPos: -1, yPos: 1| `IllegalArgumentException` is thrown  | :white_check_mark: |
-| Test Case 2 | xPos: 1, yPos: -1 | `IllegalArgumentException` is thrown  | :white_check_mark: |
-| Test Case 3 | xPos: 0, yPos: 0 | `IllegalArgumentException` is thrown  | :white_check_mark: |
+| Test Case 1 | xPos: 0, yPos: 0 | `IllegalArgumentException` is thrown  | :white_check_mark: |
 
 ### Method under test: `getXPos()`
-| Test Case 4 | xPos: 1, yPos: 0 | 1 | :white_check_mark: |
+| Test Case 2 | xPos: 1, yPos: 0 | 1 | :white_check_mark: |
 
 ### Method under test: `getYPos()`
-| Test Case 5 | xPos: 0, yPos: 0 | 0 | :white_check_mark: |
+| Test Case 3 | xPos: 0, yPos: 0 | 0 | :white_check_mark: |

@@ -13,7 +13,7 @@ public final class Game {
 
     public Game(List<Player> players) {
         validatePlayerCount(players);
-s        this.players = List.copyOf(players);
+        this.players = List.copyOf(players);
         this.phase = GamePhase.NOT_STARTED;
         this.currentPlayerIndex = 0;
     }
