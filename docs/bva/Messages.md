@@ -95,7 +95,7 @@ Test resource files (so tests do not depend on the real game text):
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
 | Test Case 8  | `locale` is `ENGLISH`, `key` is `"greeting"` | Returns `"Hello"` | :white_check_mark: |
-| Test Case 9  | `locale` is `ja`, `key` is `"greeting"` | Returns `"こんにちは"` (UTF-8 is read correctly) | :x: |
+| Test Case 9  | `locale` is `ja`, `key` is `"greeting"` | Returns `"こんにちは"` (UTF-8 is read correctly) | :white_check_mark: |
 | Test Case 10 | `locale` is `fr` (no bundle), `key` is `"greeting"` | Returns `"Hello"` (falls back to the default bundle) | :x: |
 | Test Case 11 | JVM default locale is set to `ja` for this test only (restored after the test); `locale` is `fr`, `key` is `"greeting"` | Returns `"Hello"`, not `"こんにちは"` (no fallback to the JVM default locale) | :x: |
 | Test Case 12 | `locale` is `ja`, `key` is `"farewell"` (only in the default bundle) | Returns `"Goodbye"` | :x: |

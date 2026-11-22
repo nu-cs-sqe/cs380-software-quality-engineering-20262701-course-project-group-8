@@ -64,4 +64,11 @@ public class MessagesTest {
         Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
         assertEquals("Hello", messages.get("greeting"));
     }
+    
+    // TC9
+    @Test 
+    public void get_japaneseKey_returnsUtf8Text() {
+        Messages messages = new Messages("i18n/test_messages", Locale.JAPANESE);
+        assertEquals("こんにちは", messages.get("greeting"));
+    }
 }
