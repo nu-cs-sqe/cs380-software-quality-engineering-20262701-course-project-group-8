@@ -149,8 +149,15 @@ public class MessagesTest {
 
     // TC19
     @Test
-    public void format_fewerArgs_leavesPlaceholderAsTest() {
+    public void format_fewerArgs_leavesPlaceholderAsText() {
         Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
         assertEquals("Alice rolled {1}", messages.format("roll", "Alice"));
+    }
+
+    // TC20
+    @Test
+    public void format_moreArgs_ignoresExtraArgs() {
+        Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
+        assertEquals("Alice rolled 8", messages.format("roll", "Alice", 8, "extra"));
     }
 }
