@@ -146,4 +146,11 @@ public class MessagesTest {
         Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
         assertEquals("Hello", messages.format("greeting"));
     }
+
+    // TC19
+    @Test
+    public void format_fewerArgs_leavesPlaceholderAsTest() {
+        Messages messages = new Messages("i18n/test_messages", Locale.ENGLISH);
+        assertEquals("Alice rolled {1}", messages.format("roll", "Alice"));
+    }
 }

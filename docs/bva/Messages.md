@@ -109,7 +109,7 @@ Test resource files (so tests do not depend on the real game text):
 | Test Case 16 | `locale` is `ENGLISH`, `key` is `"roll"`, `args` are `"Alice"`, `8` (exactly the number of placeholders) | Returns `"Alice rolled 8"` | :white_check_mark: |
 | Test Case 17 | `locale` is `ja`, `key` is `"roll"`, `args` are `"Alice"`, `8` | Returns `"Aliceは8を出しました"` | :white_check_mark: |
 | Test Case 18 | `key` is `"greeting"` (no placeholders), no `args` | Returns `"Hello"` | :white_check_mark: |
-| Test Case 19 | `key` is `"roll"`, `args` is `"Alice"` (fewer than the placeholders) | Returns `"Alice rolled {1}"` | :x: |
+| Test Case 19 | `key` is `"roll"`, `args` is `"Alice"` (fewer than the placeholders) | Returns `"Alice rolled {1}"` | :white_check_mark: |
 | Test Case 20 | `key` is `"roll"`, `args` are `"Alice"`, `8`, `"extra"` (more than the placeholders) | Returns `"Alice rolled 8"` | :x: |
 | Test Case 21 | `key` is `"quote"`, `args` is `"Alice"` (pattern has `''`) | Returns `"It's Alice"` | :x: |
 | Test Case 22 | `key` is `"missing"`, `args` is `"Alice"` | `MissingResourceException` is thrown | :x: |
