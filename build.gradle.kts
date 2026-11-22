@@ -102,8 +102,8 @@ tasks.build {
 }
 
 pitest {
-    targetClasses = setOf("domain.*")
-    targetTests = setOf("domain.*")
+    targetClasses = setOf("domain.*", "localization.*")
+    targetTests = setOf("domain.*", "localization.*")
     junit5PluginVersion = "1.2.1"
     pitestVersion = "1.15.0"
 
