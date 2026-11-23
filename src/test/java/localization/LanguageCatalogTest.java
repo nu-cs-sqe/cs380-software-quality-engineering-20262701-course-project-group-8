@@ -63,4 +63,14 @@ public class LanguageCatalogTest {
             List.of(Locale.forLanguageTag("en"), Locale.forLanguageTag("ja")),
             catalog.getAvailableLocales());
     }
+
+    // TC8
+    @Test
+    public void getAvailableLocales_codesWithSpacesAndEmptyEntry_trimsAndSkipEmpty() {
+        LanguageCatalog catalog = new LanguageCatalog("i18n/languages_spaces.properties");
+
+        assertEquals(
+            List.of(Locale.forLanguageTag("en"), Locale.forLanguageTag("ja")),
+            catalog.getAvailableLocales());
+    }
 }

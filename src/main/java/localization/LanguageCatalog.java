@@ -24,13 +24,16 @@ public final class LanguageCatalog {
             throw new IllegalStateException(
                 "Missing key '" + LANGUAGES_KEY + "' in " + configResource);
         }
-        if (languages.isBlank()) {
-            throw new IllegalStateException(
-                "No language codes in '" + LANGUAGES_KEY + "' in " + configResource);
-        }
         List<Locale> parsed = new ArrayList<>();
         for (String code : languages.split(",")) {
-            parsed.add(Locale.forLanguageTag(code));
+            String trimmed = code.trim();
+            if (!trimmed.isEmpty()) {
+                parsed.add(Locale.forLanguageTag(trimmed));
+            }
+        }
+        if (parsed.isEmpty()) {
+            throw new IllegalStateException(
+                "No language codes in '" + LANGUAGES_KEY + "' in " + configResource);
         }
         this.locales = parsed;
     }

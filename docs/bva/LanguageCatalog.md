@@ -82,8 +82,8 @@ Rules:
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
 | Test Case 6  | Created from `languages_one.properties` (1 code) | Returns `[en]` | :white_check_mark: |
-| Test Case 7  | Created from `languages_two.properties` (2 codes) | Returns `[en, ja]` in this order | :x: |
-| Test Case 8  | Created from `languages_spaces.properties` (`" en , ,ja "`) | Returns `[en, ja]` (spaces trimmed, empty entry skipped) | :x: |
+| Test Case 7  | Created from `languages_two.properties` (2 codes) | Returns `[en, ja]` in this order | :white_check_mark: |
+| Test Case 8  | Created from `languages_spaces.properties` (`" en , ,ja "`) | Returns `[en, ja]` (spaces trimmed, empty entry skipped) | :white_check_mark: |
 | Test Case 9  | Created from `languages_two.properties`; the caller tries to `add()` to the returned list | `UnsupportedOperationException` is thrown | :x: |
 
 ### Method under test: `getLocale(int index)`
