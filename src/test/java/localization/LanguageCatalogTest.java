@@ -1,7 +1,12 @@
 package localization;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+import java.util.Locale;
 
 import org.junit.jupiter.api.Test;
 
@@ -40,5 +45,12 @@ public class LanguageCatalogTest {
     public void constructor_validConfigWithTwoCodes_createsObject() {
         assertDoesNotThrow(
             () -> new LanguageCatalog("i18n/languages_two.properties"));
+    }
+
+    // TC6
+    @Test
+    public void getAvailableLocales_oneCode_returnsSingleLocale() {
+        LanguageCatalog catalog = new LanguageCatalog("i18n/languages_one.properties");
+        assertEquals(List.of(Locale.forLanguageTag("en")), catalog.getAvailableLocales());
     }
 }

@@ -3,6 +3,9 @@ package localization;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -11,6 +14,7 @@ public final class LanguageCatalog {
     public static final String LANGUAGES_KEY = "languages";
 
     private final Properties config;
+    private final List<Locale> locales;
 
     public LanguageCatalog(String configResource) {
         Objects.requireNonNull(configResource, "configResource must not be null");
@@ -24,6 +28,11 @@ public final class LanguageCatalog {
             throw new IllegalStateException(
                 "No language codes in '" + LANGUAGES_KEY + "' in " + configResource);
         }
+        List<Locale> parsed = new ArrayList<>();
+        for (String code : languages.split(",")) {
+            parsed.add(Locale.forLanguageTag(code));
+        }
+        this.locales = parsed;
     }
 
     private static Properties loadConfig(String configResource) {
@@ -38,5 +47,9 @@ public final class LanguageCatalog {
         } catch (IOException e) {
             throw new UncheckedIOException("Failed to read " + configResource, e);
         }
+    }
+
+    public List<Locale> getAvailableLocales() {
+        return locales;
     }
 }
