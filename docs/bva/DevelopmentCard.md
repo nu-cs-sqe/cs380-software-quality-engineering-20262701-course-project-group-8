@@ -105,4 +105,3 @@ public class DevelopmentCard {
 | Test Case 17 | `KNIGHT` bought turn 3, `play(4)` | No exception, `isPlayed()` is `true` | implemented in Test Case 9 |
 | Test Case 18 | `KNIGHT` bought turn 3, played on turn 4, `play(5)` | `IllegalStateException` | :white_check_mark: |
 | Test Case 19 | `VICTORY_POINT` bought turn 3, `play(4)` | `IllegalStateException` | :white_check_mark: |
-
