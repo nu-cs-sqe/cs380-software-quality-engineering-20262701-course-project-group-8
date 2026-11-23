@@ -73,4 +73,14 @@ public class LanguageCatalogTest {
             List.of(Locale.forLanguageTag("en"), Locale.forLanguageTag("ja")),
             catalog.getAvailableLocales());
     }
+
+    // TC9
+    @Test
+    public void  getAvailableLocales_callerAddsToList_throwsUnsupportedOperationException() {
+        LanguageCatalog catalog = new LanguageCatalog("i18n/languages_two.properties");
+        List<Locale> locales = catalog.getAvailableLocales();
+
+        assertThrows(UnsupportedOperationException.class,
+            () -> locales.add(Locale.forLanguageTag("fr")));
+    }
 }

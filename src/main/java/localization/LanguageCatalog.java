@@ -35,7 +35,7 @@ public final class LanguageCatalog {
             throw new IllegalStateException(
                 "No language codes in '" + LANGUAGES_KEY + "' in " + configResource);
         }
-        this.locales = parsed;
+        this.locales = List.copyOf(parsed);
     }
 
     private static Properties loadConfig(String configResource) {
