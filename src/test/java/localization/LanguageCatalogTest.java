@@ -91,4 +91,12 @@ public class LanguageCatalogTest {
 
         assertEquals(Locale.forLanguageTag("en"), catalog.getLocale(0));
     }
+
+    // TC11
+    @Test
+    public void getLocale_lastIndex_returnsLastLocale() {
+        LanguageCatalog catalog = new LanguageCatalog("i18n/languages_two.properties");
+        
+        assertEquals(Locale.forLanguageTag("ja"), catalog.getLocale(1));
+    }
 }
