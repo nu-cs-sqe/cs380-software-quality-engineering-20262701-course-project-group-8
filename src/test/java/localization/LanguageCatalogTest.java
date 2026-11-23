@@ -53,4 +53,14 @@ public class LanguageCatalogTest {
         LanguageCatalog catalog = new LanguageCatalog("i18n/languages_one.properties");
         assertEquals(List.of(Locale.forLanguageTag("en")), catalog.getAvailableLocales());
     }
+
+    // TC7
+    @Test 
+    public void getAvailableLocales_twoCodes_returnsLocalesInFileOrder() {
+        LanguageCatalog catalog = new LanguageCatalog("i18n/languages_two.properties");
+
+        assertEquals(
+            List.of(Locale.forLanguageTag("en"), Locale.forLanguageTag("ja")),
+            catalog.getAvailableLocales());
+    }
 }
