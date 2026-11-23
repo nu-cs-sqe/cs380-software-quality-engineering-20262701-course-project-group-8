@@ -99,4 +99,13 @@ public class LanguageCatalogTest {
         
         assertEquals(Locale.forLanguageTag("ja"), catalog.getLocale(1));
     }
+
+    // TC12
+    @Test
+    public void getLocale_negativeIndex_throwsIndexOutOfBoundsException() {
+        LanguageCatalog catalog = new LanguageCatalog("i18n/languages_two.properties");
+
+        assertThrows(IndexOutOfBoundsException.class,
+            () -> catalog.getLocale(-1));
+    }
 }
