@@ -83,4 +83,12 @@ public class LanguageCatalogTest {
         assertThrows(UnsupportedOperationException.class,
             () -> locales.add(Locale.forLanguageTag("fr")));
     }
+
+    // TC10
+    @Test
+    public void getLocale_indexZero_returnsFirstLocale() {
+        LanguageCatalog catalog = new LanguageCatalog("i18n/languages_two.properties");
+
+        assertEquals(Locale.forLanguageTag("en"), catalog.getLocale(0));
+    }
 }

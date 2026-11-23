@@ -55,4 +55,8 @@ public final class LanguageCatalog {
     public List<Locale> getAvailableLocales() {
         return locales;
     }
+
+    public Locale getLocale(int index) {
+        return locales.get(index);
+    }
 }
