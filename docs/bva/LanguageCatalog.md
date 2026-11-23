@@ -92,4 +92,4 @@ Rules:
 | Test Case 10 | Created from `languages_two.properties`, `index` is 0 (minimum) | Returns `en` | :white_check_mark: |
 | Test Case 11 | Created from `languages_two.properties`, `index` is 1 (size - 1, maximum) | Returns `ja` | :white_check_mark: |
 | Test Case 12 | Created from `languages_two.properties`, `index` is -1 | `IndexOutOfBoundsException` is thrown | :white_check_mark: |
-| Test Case 13 | Created from `languages_two.properties`, `index` is 2 (size) | `IndexOutOfBoundsException` is thrown | :x: |
+| Test Case 13 | Created from `languages_two.properties`, `index` is 2 (size) | `IndexOutOfBoundsException` is thrown | :white_check_mark: |

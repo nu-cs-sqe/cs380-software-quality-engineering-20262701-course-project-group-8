@@ -108,4 +108,13 @@ public class LanguageCatalogTest {
         assertThrows(IndexOutOfBoundsException.class,
             () -> catalog.getLocale(-1));
     }
+
+    // TC13
+    @Test
+    public void getLocale_indexEqualsSize_throwsIndexOutOfBoundsException() {
+        LanguageCatalog catalog = new LanguageCatalog("i18n/languages_two.properties");
+
+        assertThrows(IndexOutOfBoundsException.class,
+            () -> catalog.getLocale(2));
+    }
 }
