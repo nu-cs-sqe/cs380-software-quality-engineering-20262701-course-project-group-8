@@ -24,6 +24,6 @@ public class LanguageCatalogTest {
     @Test
     public void constructor_missingLanguagesKey_throwsIllegalStateException() {
         assertThrows(IllegalStateException.class, 
-        () -> new LanguageCatalog("i18n/languages_no_key.properties"));
+            () -> new LanguageCatalog("i18n/languages_no_key.properties"));
     }
 }
