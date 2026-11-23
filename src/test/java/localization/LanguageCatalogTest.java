@@ -1,6 +1,7 @@
 package localization;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.Test;
 
@@ -32,5 +33,12 @@ public class LanguageCatalogTest {
     public void constructor_blankLanguagesList_throwsIllegalStateException() {
         assertThrows(IllegalStateException.class,
             () -> new LanguageCatalog("i18n/languages_blank.properties"));
+    }
+
+    // TC5
+    @Test
+    public void constructor_validConfigWithTwoCodes_createsObject() {
+        assertDoesNotThrow(
+            () -> new LanguageCatalog("i18n/languages_two.properties"));
     }
 }

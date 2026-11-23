@@ -76,7 +76,7 @@ Rules:
 | Test Case 2  | `configResource` is `"i18n/does_not_exist.properties"` | `IllegalArgumentException` is thrown | :white_check_mark: |
 | Test Case 3  | `configResource` is `"i18n/languages_no_key.properties"` (no `languages` key) | `IllegalStateException` is thrown | :white_check_mark: |
 | Test Case 4  | `configResource` is `"i18n/languages_blank.properties"` (0 codes) | `IllegalStateException` is thrown | :white_check_mark: |
-| Test Case 5  | `configResource` is `"i18n/languages_two.properties"` | A `LanguageCatalog` object is created without exception | :x: |
+| Test Case 5  | `configResource` is `"i18n/languages_two.properties"` | A `LanguageCatalog` object is created without exception | :white_check_mark: |
 
 ### Method under test: `getAvailableLocales()`
 |              | State of the System | Expected output | Implemented? |
