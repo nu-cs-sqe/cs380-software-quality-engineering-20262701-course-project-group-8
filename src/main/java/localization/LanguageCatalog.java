@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -53,7 +54,7 @@ public final class LanguageCatalog {
     }
 
     public List<Locale> getAvailableLocales() {
-        return locales;
+        return Collections.unmodifiableList(locales);
     }
 
     public Locale getLocale(int index) {
