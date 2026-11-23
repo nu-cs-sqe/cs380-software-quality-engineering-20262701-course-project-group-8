@@ -26,4 +26,11 @@ public class LanguageCatalogTest {
         assertThrows(IllegalStateException.class, 
             () -> new LanguageCatalog("i18n/languages_no_key.properties"));
     }
+
+    // TC4
+    @Test
+    public void constructor_blankLanguagesList_throwsIllegalStateException() {
+        assertThrows(IllegalStateException.class,
+            () -> new LanguageCatalog("i18n/languages_blank.properties"));
+    }
 }

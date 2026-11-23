@@ -15,9 +15,14 @@ public final class LanguageCatalog {
     public LanguageCatalog(String configResource) {
         Objects.requireNonNull(configResource, "configResource must not be null");
         this.config = loadConfig(configResource);
-        if (config.getProperty(LANGUAGES_KEY) == null) {
+        String languages = config.getProperty(LANGUAGES_KEY);
+        if (languages == null) {
             throw new IllegalStateException(
                 "Missing key '" + LANGUAGES_KEY + "' in " + configResource);
+        }
+        if (languages.isBlank()) {
+            throw new IllegalStateException(
+                "No language codes in '" + LANGUAGES_KEY + "' in " + configResource);
         }
     }
 
