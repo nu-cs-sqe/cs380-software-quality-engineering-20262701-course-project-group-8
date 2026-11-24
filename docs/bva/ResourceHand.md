@@ -114,7 +114,7 @@ public class ResourceHand {
 ### Method under test: `removeRandom(Random random)` (`random` is a mock; "index k" means `random.nextInt(total)` returns k)
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 19 | New hand | `IllegalStateException`, `getTotal()` stays `0` | :x: |
+| Test Case 19 | New hand | `IllegalStateException`, `getTotal()` stays `0` | :white_check_mark: |
 | Test Case 20 | Hand holds 1 `BRICK`, index 0 | Returns `BRICK`, `getTotal()` is `0` | :x: |
 | Test Case 21 | Hand holds 2 `BRICK` and 3 `ORE`, index 0 | Returns `BRICK`; 1 `BRICK`, 3 `ORE` left | :x: |
 | Test Case 22 | Hand holds 2 `BRICK` and 3 `ORE`, index 1 (last `BRICK`) | Returns `BRICK`; 1 `BRICK`, 3 `ORE` left | :x: |

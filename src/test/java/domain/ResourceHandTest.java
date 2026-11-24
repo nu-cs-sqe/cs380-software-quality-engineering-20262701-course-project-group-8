@@ -1,6 +1,9 @@
 package domain;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.easymock.EasyMock.*;
+
+import java.util.Random;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -154,5 +157,17 @@ public class ResourceHandTest {
         ResourceHand resourceHand = new ResourceHand();
         resourceHand.add(ResourceType.BRICK, 3);
         assertFalse(resourceHand.has(ResourceType.BRICK, 4));
+    }
+
+    // TC 19
+    @Test
+    public void removeRandom_emptyHand_throwsIllegalStateException() {
+        Random randomMock = mock(Random.class);
+        replay(randomMock);
+        ResourceHand hand = new ResourceHand();
+
+        assertThrows(IllegalStateException.class, () -> hand.removeRandom(randomMock));
+        assertEquals(0, hand.getTotal());
+        verify(randomMock);
     }
 }
