@@ -82,5 +82,8 @@ public final class DevelopmentCardActions {
         if (card.getType() != DevelopmentCardType.KNIGHT) {
             throw new IllegalArgumentException("Card is not KNIGHT");
         }
+        if (!card.canBePlayed(currentTurn)) {
+            throw new IllegalStateException("Card cannot be played this turn");
+        }
     }
 }

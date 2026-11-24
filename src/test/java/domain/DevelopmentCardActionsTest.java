@@ -429,6 +429,22 @@ public class DevelopmentCardActionsTest {
         assertFalse(card.isPlayed());
     }
 
+    // TC26
+    @Test
+    public void playKnight_sameTurnAsPurchase_throwsIllegalStateException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        Board board = new Board();
+        Hex desert = board.getRobberHex();
+        Hex target = nonDesertHex(board);
+
+        assertThrows(IllegalStateException.class,
+            () -> actions.playKnight(card, 3, board, target));
+        assertTrue(desert.hasRobber());
+        assertFalse(target.hasRobber());
+        assertFalse(card.isPlayed());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
