@@ -45,3 +45,8 @@
 5. [done] Stephi Lyou: Fixed spotbug issues in Hex, Board, and Game [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/57]
 6. [done] Sami Khan: Fixed spotbug issues in Player, Location, and Intersection [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/46]
 7. [done] Sami Khan: Fixed checkstyle issues in Board and Game [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/46]
+8. [done] Jiadong Li: Implemented Messages class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/56]
+
+# Week 9 (11/23/2026-11/29/2026)
+**Planning and Progress Tracking**:
+1. [done] Jiadong Li: Implemented LanguageCatalog class with BVA and unit tests [https://github.com/nu-cs-sqe/cs380-software-quality-engineering-20262701-course-project-group-8/pull/56]

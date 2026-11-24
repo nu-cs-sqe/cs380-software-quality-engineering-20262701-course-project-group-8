@@ -38,6 +38,10 @@ tasks.compileJava {
     options.release = 11
 }
 
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
 checkstyle {
     toolVersion = "10.21.1"
     isIgnoreFailures = false
@@ -98,8 +102,8 @@ tasks.build {
 }
 
 pitest {
-    targetClasses = setOf("domain.*")
-    targetTests = setOf("domain.*")
+    targetClasses = setOf("domain.*", "localization.*")
+    targetTests = setOf("domain.*", "localization.*")
     junit5PluginVersion = "1.2.1"
     pitestVersion = "1.15.0"
 
