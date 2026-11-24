@@ -119,4 +119,4 @@ public class ResourceHand {
 | Test Case 21 | Hand holds 2 `BRICK` and 3 `ORE`, index 0 | Returns `BRICK`; 1 `BRICK`, 3 `ORE` left | :white_check_mark: |
 | Test Case 22 | Hand holds 2 `BRICK` and 3 `ORE`, index 1 (last `BRICK`) | Returns `BRICK`; 1 `BRICK`, 3 `ORE` left | :white_check_mark: |
 | Test Case 23 | Hand holds 2 `BRICK` and 3 `ORE`, index 2 (first `ORE`, skipping the empty `LUMBER`) | Returns `ORE`; 2 `BRICK`, 2 `ORE` left | :white_check_mark: |
-| Test Case 24 | Hand holds 2 `BRICK` and 3 `ORE`, index 4 (last card) | Returns `ORE`; 2 `BRICK`, 2 `ORE` left | :x: |
+| Test Case 24 | Hand holds 2 `BRICK` and 3 `ORE`, index 4 (last card) | Returns `ORE`; 2 `BRICK`, 2 `ORE` left | :white_check_mark: |
