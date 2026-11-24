@@ -208,8 +208,9 @@ public class ResourceHandTest {
 
     private static Stream<Arguments> removeRandomIndexCases() {
         return Stream.of(
-            Arguments.of(0, ResourceType.BRICK, 1, 3),  // TC 21
-            Arguments.of(1, ResourceType.BRICK, 1, 3)   // TC 22
+            Arguments.of(0, ResourceType.BRICK, 1, 3),   // TC 21
+            Arguments.of(1, ResourceType.BRICK, 1, 3),   // TC 22
+            Arguments.of(2, ResourceType.ORE, 2, 2)     // TC 23
         );
     }
 }
