@@ -77,4 +77,10 @@ public final class DevelopmentCardActions {
         card.play(currentTurn);
         return total;
     }
+
+    public void playKnight(DevelopmentCard card, int currentTurn, Board board, Hex target) {
+        if (card.getType() != DevelopmentCardType.KNIGHT) {
+            throw new IllegalArgumentException("Card is not KNIGHT");
+        }
+    }
 }

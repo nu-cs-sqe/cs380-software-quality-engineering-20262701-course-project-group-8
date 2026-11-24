@@ -413,6 +413,22 @@ public class DevelopmentCardActionsTest {
         assertTrue(card.isPlayed());
     }
 
+    // TC25
+    @Test
+    public void playKnight_wrongCardType_throwsIllegalArgumentException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.MONOPOLY, 3);
+        Board board = new Board();
+        Hex desert = board.getRobberHex();
+        Hex target = nonDesertHex(board);
+
+        assertThrows(IllegalArgumentException.class,
+            () -> actions.playKnight(card, 4, board, target));
+        assertTrue(desert.hasRobber());
+        assertFalse(target.hasRobber());
+        assertFalse(card.isPlayed());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
@@ -422,5 +438,14 @@ public class DevelopmentCardActionsTest {
         for (int i = 0; i < count; i++) {
             bank.drawDevelopmentCard(0);
         }
+    }
+
+    private static Hex nonDesertHex(Board board) {
+        for (Hex hex : board.getHexes()) {
+            if (!hex.hasRobber()) {
+                return hex;
+            }
+        }
+        throw new IllegalStateException("Board has no hex without the robber");
     }
 }

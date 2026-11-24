@@ -116,7 +116,7 @@ public class DevelopmentCardActions {
 ### Method under test: `playKnight(DevelopmentCard card, int currentTurn, Board board, Hex target)` (card bought on turn 3, `currentTurn = 4`, robber starts on the desert, `target` is a non-desert hex on `board` unless stated)
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 25 | `card` is `MONOPOLY` | `IllegalArgumentException`, robber still on the desert, card not played | :x: |
+| Test Case 25 | `card` is `MONOPOLY` | `IllegalArgumentException`, robber still on the desert, card not played | :white_check_mark: |
 | Test Case 26 | `KNIGHT`, `currentTurn = 3` | `IllegalStateException`, robber still on the desert, card not played | :x: |
 | Test Case 27 | `KNIGHT` already played on turn 4, played again on turn 5 | `IllegalStateException`, robber stays where the first play moved it | :x: |
 | Test Case 28 | `KNIGHT`, `target` is the desert (the robber's current hex) | `IllegalArgumentException`, robber still on the desert, card not played | :x: |
