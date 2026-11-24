@@ -52,6 +52,23 @@ public class ResourceHand {
     }
 
     public ResourceType removeRandom(Random random) {
-        throw new IllegalStateException("Cannot remove from an empty hand");
+        int total = getTotal();
+        if (total == 0) {
+            throw new IllegalStateException("Cannot remove from an empty hand");
+        }
+        ResourceType type = typeAtIndex(random.nextInt(total));
+        remove(type, 1);
+        return type;
+    }
+
+    private ResourceType typeAtIndex(int index) {
+        ResourceType[] types = ResourceType.values();
+        int position = 0;
+        int remaining = index;
+        while (remaining >= getCount(types[position])) {
+            remaining -= getCount(types[position]);
+            position++;
+        }
+        return types[position];
     }
 }

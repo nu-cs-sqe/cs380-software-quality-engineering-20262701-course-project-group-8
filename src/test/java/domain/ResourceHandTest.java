@@ -170,4 +170,18 @@ public class ResourceHandTest {
         assertEquals(0, hand.getTotal());
         verify(randomMock);
     }
+
+    // TC 20
+    @Test
+    public void removeRandom_oneCard_returnsItAndEmptiesHand() {
+        Random randomMock = mock(Random.class);
+        expect(randomMock.nextInt(1)).andReturn(0);
+        replay(randomMock);
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.BRICK, 1);
+
+        assertEquals(ResourceType.BRICK, hand.removeRandom(randomMock));
+        assertEquals(0, hand.getTotal());
+        verify(randomMock);
+    }
 }
