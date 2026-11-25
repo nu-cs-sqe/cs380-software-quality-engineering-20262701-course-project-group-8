@@ -90,4 +90,9 @@ public final class DevelopmentCardActions {
         board.moveRobber(target);
         card.play(currentTurn);
     }
+
+    public int countVictoryPoints(List<DevelopmentCard> cards) {
+        Objects.requireNonNull(cards);
+        return 0;
+    }
 }

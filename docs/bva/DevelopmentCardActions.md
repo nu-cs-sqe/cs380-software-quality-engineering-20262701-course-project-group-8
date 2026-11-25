@@ -137,7 +137,7 @@ public class DevelopmentCardActions {
 ### Method under test: `countVictoryPoints(List<DevelopmentCard> cards)` (every card bought on turn 3 unless stated)
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
-| Test Case 31 | `cards = null` | `NullPointerException` | :x: |
+| Test Case 31 | `cards = null` | `NullPointerException` | :white_check_mark: |
 | Test Case 32 | `cards` is empty | Returns 0 | :x: |
 | Test Case 33 | `cards` has 1 `VICTORY_POINT` | Returns 1 | :x: |
 | Test Case 34 | `cards` has 1 `KNIGHT` and 1 `MONOPOLY`, no `VICTORY_POINT` | Returns 0 | :x: |
