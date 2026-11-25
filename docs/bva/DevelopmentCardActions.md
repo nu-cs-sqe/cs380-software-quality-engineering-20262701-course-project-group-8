@@ -138,7 +138,7 @@ public class DevelopmentCardActions {
 |              | State of the System | Expected output | Implemented? |
 |--------------|---------------------|-----------------|--------------|
 | Test Case 31 | `cards = null` | `NullPointerException` | :white_check_mark: |
-| Test Case 32 | `cards` is empty | Returns 0 | :x: |
+| Test Case 32 | `cards` is empty | Returns 0 | :white_check_mark: |
 | Test Case 33 | `cards` has 1 `VICTORY_POINT` | Returns 1 | :x: |
 | Test Case 34 | `cards` has 1 `KNIGHT` and 1 `MONOPOLY`, no `VICTORY_POINT` | Returns 0 | :x: |
 | Test Case 35 | `cards` has 2 `VICTORY_POINT`, 1 `KNIGHT` already played on turn 4, and 1 `YEAR_OF_PLENTY` | Returns 2, the played `KNIGHT` adds nothing | :x: |

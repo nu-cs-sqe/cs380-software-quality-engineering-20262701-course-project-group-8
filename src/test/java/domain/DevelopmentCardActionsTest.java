@@ -516,6 +516,13 @@ public class DevelopmentCardActionsTest {
         assertThrows(NullPointerException.class, () -> actions.countVictoryPoints(null));
     }
 
+    // TC32
+    @Test
+    public void countVictoryPoints_emptyCards_returnsZero() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        assertEquals(0, actions.countVictoryPoints(List.of()));
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
