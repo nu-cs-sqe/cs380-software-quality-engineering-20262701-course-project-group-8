@@ -11,6 +11,7 @@ public class DevelopmentCardActions {
     public int playMonopoly(DevelopmentCard card, int currentTurn, ResourceHand hand,
                             List<ResourceHand> otherHands, ResourceType type)
     public void playKnight(DevelopmentCard card, int currentTurn, Board board, Hex target)
+    public int countVictoryPoints(List<DevelopmentCard> cards)
 }
 ```
 
@@ -24,6 +25,7 @@ public class DevelopmentCardActions {
 - Year of Plenty: take any 2 resources from the Bank (they may be the same type).
 - Monopoly: take every card of `type` from each other hand and return the total taken. `otherHands` must not contain `hand` -> `IllegalArgumentException`.
 - Knight: move the robber on `board` to `target` and mark the card as played. Moving the robber to the hex it is already on, or to a hex that is not on `board` -> `IllegalArgumentException` (from `Board.moveRobber`). Stealing a card from a player next to `target` is done separately with `ResourceHand.removeRandom`, because choosing the victim needs the board geometry.
+- Victory Point: the card is never played (`DevelopmentCard.canBePlayed` is always false for it). Each `VICTORY_POINT` card in `cards` is worth 1 point, and other card types are worth 0. The Bank holds 5 Victory Point cards, so the count is at most 5. A `null` element in `cards` -> `NullPointerException`.
 
 ## Step 1-3: Analysis
 
@@ -70,6 +72,15 @@ public class DevelopmentCardActions {
 | Input | card playable | Boolean | playable, not playable (same turn as purchase), not playable (already played) |
 | Input | `target` | Cases | hex that has the robber, other hex on `board`, hex not on `board` |
 | Output | | Cases | robber moved and card played, `IllegalArgumentException`, `IllegalStateException` |
+
+### Method: `countVictoryPoints(List<DevelopmentCard> cards)`
+| | Description | Category | Boundary Values |
+|---|---|---|---|
+| Input | `cards` | Pointer | `null`, non-null |
+| Input | `cards` | Collection | empty, 1 card, many cards, contains a `null` element |
+| Input | card types in `cards` | Cases | only `VICTORY_POINT`, no `VICTORY_POINT`, mixed |
+| Input | number of `VICTORY_POINT` cards | Interval [0, 5] | 0, 1, 5 |
+| Output | points | Interval [0, 5] / exception | 0, 1, many, 5, `NullPointerException` |
 
 ## Step 4: Test Cases
 
@@ -122,3 +133,14 @@ public class DevelopmentCardActions {
 | Test Case 28 | `KNIGHT`, `target` is the desert (the robber's current hex) | `IllegalArgumentException`, robber still on the desert, card not played | :white_check_mark: |
 | Test Case 29 | `KNIGHT`, `target` is a hex from a different `Board` | `IllegalArgumentException`, robber still on the desert, card not played | :white_check_mark: |
 | Test Case 30 | `KNIGHT`, valid `target` | Robber on `target`, desert no longer has the robber, card played | :white_check_mark: |
+
+### Method under test: `countVictoryPoints(List<DevelopmentCard> cards)` (every card bought on turn 3 unless stated)
+|              | State of the System | Expected output | Implemented? |
+|--------------|---------------------|-----------------|--------------|
+| Test Case 31 | `cards = null` | `NullPointerException` | :x: |
+| Test Case 32 | `cards` is empty | Returns 0 | :x: |
+| Test Case 33 | `cards` has 1 `VICTORY_POINT` | Returns 1 | :x: |
+| Test Case 34 | `cards` has 1 `KNIGHT` and 1 `MONOPOLY`, no `VICTORY_POINT` | Returns 0 | :x: |
+| Test Case 35 | `cards` has 2 `VICTORY_POINT`, 1 `KNIGHT` already played on turn 4, and 1 `YEAR_OF_PLENTY` | Returns 2, the played `KNIGHT` adds nothing | :x: |
+| Test Case 36 | `cards` has all 5 `VICTORY_POINT` cards | Returns 5 | :x: |
+| Test Case 37 | `cards` has 1 `VICTORY_POINT` and 1 `null` element | `NullPointerException` | :x: |
