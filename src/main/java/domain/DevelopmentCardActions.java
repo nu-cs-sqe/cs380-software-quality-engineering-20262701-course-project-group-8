@@ -93,6 +93,12 @@ public final class DevelopmentCardActions {
 
     public int countVictoryPoints(List<DevelopmentCard> cards) {
         Objects.requireNonNull(cards);
-        return cards.size();
+        int points = 0;
+        for (DevelopmentCard card : cards) {
+            if (card.isVictoryPoint()) {
+                points++;
+            }
+        }
+        return points;
     }
 }

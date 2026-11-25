@@ -533,6 +533,17 @@ public class DevelopmentCardActionsTest {
         assertEquals(1, actions.countVictoryPoints(cards));
     }
 
+    // TC34
+    @Test
+    public void countVictoryPoints_noVictoryPointCards_returnsZero() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        List<DevelopmentCard> cards = List.of(
+            new DevelopmentCard(DevelopmentCardType.KNIGHT, 3),
+            new DevelopmentCard(DevelopmentCardType.MONOPOLY, 3));
+
+        assertEquals(0, actions.countVictoryPoints(cards));
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
