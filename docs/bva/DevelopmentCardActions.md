@@ -121,4 +121,4 @@ public class DevelopmentCardActions {
 | Test Case 27 | `KNIGHT` already played on turn 4, played again on turn 5 | `IllegalStateException`, robber stays where the first play moved it | :white_check_mark: |
 | Test Case 28 | `KNIGHT`, `target` is the desert (the robber's current hex) | `IllegalArgumentException`, robber still on the desert, card not played | :white_check_mark: |
 | Test Case 29 | `KNIGHT`, `target` is a hex from a different `Board` | `IllegalArgumentException`, robber still on the desert, card not played | :white_check_mark: |
-| Test Case 30 | `KNIGHT`, valid `target` | Robber on `target`, desert no longer has the robber, card played | :x: |
+| Test Case 30 | `KNIGHT`, valid `target` | Robber on `target`, desert no longer has the robber, card played | :white_check_mark: |

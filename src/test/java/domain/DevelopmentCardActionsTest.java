@@ -492,6 +492,23 @@ public class DevelopmentCardActionsTest {
         assertFalse(card.isPlayed());
     }
 
+    // TC30
+    @Test 
+    public void playKnight_validTarget_movesRobberAndPlaysCard() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        Board board = new Board();
+        Hex desert = board.getRobberHex();
+        Hex target = nonDesertHex(board);
+
+        actions.playKnight(card, 4, board, target);
+
+        assertEquals(target, board.getRobberHex());
+        assertTrue(target.hasRobber());
+        assertFalse(desert.hasRobber());
+        assertTrue(card.isPlayed());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
