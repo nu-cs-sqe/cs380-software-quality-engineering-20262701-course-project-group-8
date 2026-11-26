@@ -1,10 +1,16 @@
 package domain;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.easymock.EasyMock.*;
+
+import java.util.Random;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class ResourceHandTest {
     // TC 1
@@ -154,5 +160,58 @@ public class ResourceHandTest {
         ResourceHand resourceHand = new ResourceHand();
         resourceHand.add(ResourceType.BRICK, 3);
         assertFalse(resourceHand.has(ResourceType.BRICK, 4));
+    }
+
+    // TC 19
+    @Test
+    public void removeRandom_emptyHand_throwsIllegalStateException() {
+        Random randomMock = mock(Random.class);
+        replay(randomMock);
+        ResourceHand hand = new ResourceHand();
+
+        assertThrows(IllegalStateException.class, () -> hand.removeRandom(randomMock));
+        assertEquals(0, hand.getTotal());
+        verify(randomMock);
+    }
+
+    // TC 20
+    @Test
+    public void removeRandom_oneCard_returnsItAndEmptiesHand() {
+        Random randomMock = mock(Random.class);
+        expect(randomMock.nextInt(1)).andReturn(0);
+        replay(randomMock);
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.BRICK, 1);
+
+        assertEquals(ResourceType.BRICK, hand.removeRandom(randomMock));
+        assertEquals(0, hand.getTotal());
+        verify(randomMock);
+    }
+
+    // TC 21 - TC 24
+    @ParameterizedTest
+    @MethodSource("removeRandomIndexCases")
+    public void removeRandom_twoBrickThreeOre_removesCardAtIndex(
+            int index, ResourceType expected, int brickLeft, int oreLeft) {
+        Random randomMock = mock(Random.class);
+        expect(randomMock.nextInt(5)).andReturn(index);
+        replay(randomMock);
+        ResourceHand hand = new ResourceHand();
+        hand.add(ResourceType.BRICK, 2);
+        hand.add(ResourceType.ORE, 3);
+
+        assertEquals(expected, hand.removeRandom(randomMock));
+        assertEquals(brickLeft, hand.getCount(ResourceType.BRICK));
+        assertEquals(oreLeft, hand.getCount(ResourceType.ORE));
+        verify(randomMock);
+    }
+
+    private static Stream<Arguments> removeRandomIndexCases() {
+        return Stream.of(
+            Arguments.of(0, ResourceType.BRICK, 1, 3),   // TC 21
+            Arguments.of(1, ResourceType.BRICK, 1, 3),   // TC 22
+            Arguments.of(2, ResourceType.ORE, 2, 2),     // TC 23
+            Arguments.of(4, ResourceType.ORE, 2, 2)      // TC 24
+        );
     }
 }

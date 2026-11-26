@@ -3,6 +3,7 @@ package domain;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 
 public class ResourceHand {
     private static final String INVALID_AMOUNT_MESSAGE = "Amount must be at least 1";
@@ -48,5 +49,26 @@ public class ResourceHand {
             throw new IllegalArgumentException(INVALID_AMOUNT_MESSAGE);
         }
         return getCount(type) >= amount;
+    }
+
+    public ResourceType removeRandom(Random random) {
+        int total = getTotal();
+        if (total == 0) {
+            throw new IllegalStateException("Cannot remove from an empty hand");
+        }
+        ResourceType type = typeAtIndex(random.nextInt(total));
+        remove(type, 1);
+        return type;
+    }
+
+    private ResourceType typeAtIndex(int index) {
+        ResourceType[] types = ResourceType.values();
+        int position = 0;
+        int remaining = index;
+        while (remaining >= getCount(types[position])) {
+            remaining -= getCount(types[position]);
+            position++;
+        }
+        return types[position];
     }
 }

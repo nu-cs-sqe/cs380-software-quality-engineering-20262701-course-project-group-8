@@ -10,6 +10,7 @@ public class DevelopmentCardActions {
                                  ResourceType first, ResourceType second)
     public int playMonopoly(DevelopmentCard card, int currentTurn, ResourceHand hand,
                             List<ResourceHand> otherHands, ResourceType type)
+    public void playKnight(DevelopmentCard card, int currentTurn, Board board, Hex target)
 }
 ```
 
@@ -22,6 +23,7 @@ public class DevelopmentCardActions {
 - A failed play changes nothing: no resources move and the card is not marked as played.
 - Year of Plenty: take any 2 resources from the Bank (they may be the same type).
 - Monopoly: take every card of `type` from each other hand and return the total taken. `otherHands` must not contain `hand` -> `IllegalArgumentException`.
+- Knight: move the robber on `board` to `target` and mark the card as played. Moving the robber to the hex it is already on, or to a hex that is not on `board` -> `IllegalArgumentException` (from `Board.moveRobber`). Stealing a card from a player next to `target` is done separately with `ResourceHand.removeRandom`, because choosing the victim needs the board geometry.
 
 ## Step 1-3: Analysis
 
@@ -60,6 +62,14 @@ public class DevelopmentCardActions {
 | Input | `otherHands` | Collection | empty, 1 hand, many hands, contains `hand` |
 | Input | other hands' count of `type` | Interval [0, ∞) | 0, 1, many |
 | Output | total taken | Interval [0, ∞) / exception | 0, 1, many, `NullPointerException`, `IllegalArgumentException`, `IllegalStateException` |
+
+### Method: `playKnight(DevelopmentCard card, int currentTurn, Board board, Hex target)`
+| | Description | Category | Boundary Values |
+|---|---|---|---|
+| Input | `card` type | Cases | `KNIGHT`, other |
+| Input | card playable | Boolean | playable, not playable (same turn as purchase), not playable (already played) |
+| Input | `target` | Cases | hex that has the robber, other hex on `board`, hex not on `board` |
+| Output | | Cases | robber moved and card played, `IllegalArgumentException`, `IllegalStateException` |
 
 ## Step 4: Test Cases
 
@@ -102,3 +112,13 @@ public class DevelopmentCardActions {
 | Test Case 22 | `MONOPOLY`, 1 other hand with 0 WOOL | Returns 0, hand unchanged, card played | :white_check_mark: |
 | Test Case 23 | `MONOPOLY`, 1 other hand with 1 WOOL | Returns 1; other hand 0 WOOL; hand 1 WOOL; card played | :white_check_mark: |
 | Test Case 24 | `MONOPOLY`, hand has 1 WOOL, 3 other hands with 0, 2, 5 WOOL and 1 BRICK each | Returns 7; other hands 0 WOOL and still 1 BRICK; hand 8 WOOL; card played | :white_check_mark: |
+
+### Method under test: `playKnight(DevelopmentCard card, int currentTurn, Board board, Hex target)` (card bought on turn 3, `currentTurn = 4`, robber starts on the desert, `target` is a non-desert hex on `board` unless stated)
+|              | State of the System | Expected output | Implemented? |
+|--------------|---------------------|-----------------|--------------|
+| Test Case 25 | `card` is `MONOPOLY` | `IllegalArgumentException`, robber still on the desert, card not played | :white_check_mark: |
+| Test Case 26 | `KNIGHT`, `currentTurn = 3` | `IllegalStateException`, robber still on the desert, card not played | :white_check_mark: |
+| Test Case 27 | `KNIGHT` already played on turn 4, played again on turn 5 | `IllegalStateException`, robber stays where the first play moved it | :white_check_mark: |
+| Test Case 28 | `KNIGHT`, `target` is the desert (the robber's current hex) | `IllegalArgumentException`, robber still on the desert, card not played | :white_check_mark: |
+| Test Case 29 | `KNIGHT`, `target` is a hex from a different `Board` | `IllegalArgumentException`, robber still on the desert, card not played | :white_check_mark: |
+| Test Case 30 | `KNIGHT`, valid `target` | Robber on `target`, desert no longer has the robber, card played | :white_check_mark: |

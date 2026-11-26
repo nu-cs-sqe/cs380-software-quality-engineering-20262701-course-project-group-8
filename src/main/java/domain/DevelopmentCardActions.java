@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Objects;
 
 public final class DevelopmentCardActions {
+    private static final String CANNOT_PLAY_THIS_TURN = "Card cannot be played this turn";
+
     private final GameRules rules;
     private final Bank bank;
 
@@ -35,7 +37,7 @@ public final class DevelopmentCardActions {
             throw new IllegalArgumentException("Card is not YEAR_OF_PLENTY");
         }
         if (!card.canBePlayed(currentTurn)) {
-            throw new IllegalStateException("Card cannot be played this turn");
+            throw new IllegalStateException(CANNOT_PLAY_THIS_TURN);
         }
         int firstNeeded = first == second ? 2 : 1;
         if (!bank.hasResource(first, firstNeeded) || !bank.hasResource(second, 1)) {
@@ -59,7 +61,7 @@ public final class DevelopmentCardActions {
             throw new IllegalArgumentException("Card is not MONOPOLY");
         }
         if (!card.canBePlayed(currentTurn)) {
-            throw new IllegalStateException("Card cannot be played this turn");
+            throw new IllegalStateException(CANNOT_PLAY_THIS_TURN);
         }
         if (otherHands.contains(hand)) {
             throw new IllegalArgumentException("otherHands must not contain hand");
@@ -76,5 +78,16 @@ public final class DevelopmentCardActions {
         }
         card.play(currentTurn);
         return total;
+    }
+
+    public void playKnight(DevelopmentCard card, int currentTurn, Board board, Hex target) {
+        if (card.getType() != DevelopmentCardType.KNIGHT) {
+            throw new IllegalArgumentException("Card is not KNIGHT");
+        }
+        if (!card.canBePlayed(currentTurn)) {
+            throw new IllegalStateException(CANNOT_PLAY_THIS_TURN);
+        }
+        board.moveRobber(target);
+        card.play(currentTurn);
     }
 }

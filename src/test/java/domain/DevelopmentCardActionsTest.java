@@ -413,6 +413,102 @@ public class DevelopmentCardActionsTest {
         assertTrue(card.isPlayed());
     }
 
+    // TC25
+    @Test
+    public void playKnight_wrongCardType_throwsIllegalArgumentException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.MONOPOLY, 3);
+        Board board = new Board();
+        Hex desert = board.getRobberHex();
+        Hex target = nonDesertHex(board);
+
+        assertThrows(IllegalArgumentException.class,
+            () -> actions.playKnight(card, 4, board, target));
+        assertTrue(desert.hasRobber());
+        assertFalse(target.hasRobber());
+        assertFalse(card.isPlayed());
+    }
+
+    // TC26
+    @Test
+    public void playKnight_sameTurnAsPurchase_throwsIllegalStateException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        Board board = new Board();
+        Hex desert = board.getRobberHex();
+        Hex target = nonDesertHex(board);
+
+        assertThrows(IllegalStateException.class,
+            () -> actions.playKnight(card, 3, board, target));
+        assertTrue(desert.hasRobber());
+        assertFalse(target.hasRobber());
+        assertFalse(card.isPlayed());
+    }
+
+    // TC27
+    @Test 
+    public void playKnight_alreadyPlayed_throwsIllegalStateException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        Board board = new Board();
+        Hex desert = board.getRobberHex();
+        Hex target = nonDesertHex(board);
+        actions.playKnight(card, 4, board, target);
+
+        assertThrows(IllegalStateException.class,
+            () -> actions.playKnight(card, 5, board, desert));
+        assertTrue(target.hasRobber());
+        assertFalse(desert.hasRobber());
+        assertTrue(card.isPlayed());
+    }
+
+    // TC28
+    @Test
+    public void playKnight_targetHasRobber_throwsIllegalArgumentException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        Board board = new Board();
+        Hex desert = board.getRobberHex();
+
+        assertThrows(IllegalArgumentException.class,
+            () -> actions.playKnight(card, 4, board, desert));
+        assertTrue(desert.hasRobber());
+        assertFalse(card.isPlayed());
+    }
+
+    // TC29
+    @Test 
+    public void playKnight_targetNotOnBoard_throwsIllegalArgumentException() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        Board board = new Board();
+        Hex desert = board.getRobberHex();
+        Hex otherBoardHex = nonDesertHex(new Board());
+
+        assertThrows(IllegalArgumentException.class,
+            () -> actions.playKnight(card, 4, board, otherBoardHex));
+        assertTrue(desert.hasRobber());
+        assertFalse(otherBoardHex.hasRobber());
+        assertFalse(card.isPlayed());
+    }
+
+    // TC30
+    @Test 
+    public void playKnight_validTarget_movesRobberAndPlaysCard() {
+        DevelopmentCardActions actions = new DevelopmentCardActions(new GameRules(), new Bank());
+        DevelopmentCard card = new DevelopmentCard(DevelopmentCardType.KNIGHT, 3);
+        Board board = new Board();
+        Hex desert = board.getRobberHex();
+        Hex target = nonDesertHex(board);
+
+        actions.playKnight(card, 4, board, target);
+
+        assertEquals(target, board.getRobberHex());
+        assertTrue(target.hasRobber());
+        assertFalse(desert.hasRobber());
+        assertTrue(card.isPlayed());
+    }
+
     private static void moveFromBank(Bank bank, ResourceHand hand, ResourceType type, int amount) {
         bank.giveResource(type, amount);
         hand.add(type, amount);
@@ -422,5 +518,14 @@ public class DevelopmentCardActionsTest {
         for (int i = 0; i < count; i++) {
             bank.drawDevelopmentCard(0);
         }
+    }
+
+    private static Hex nonDesertHex(Board board) {
+        for (Hex hex : board.getHexes()) {
+            if (!hex.hasRobber()) {
+                return hex;
+            }
+        }
+        throw new IllegalStateException("Board has no hex without the robber");
     }
 }

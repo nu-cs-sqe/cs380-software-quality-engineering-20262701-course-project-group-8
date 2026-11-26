@@ -10,6 +10,7 @@ public class ResourceHand {
     public void add(ResourceType type, int amount)
     public void remove(ResourceType type, int amount)
     public boolean has(ResourceType type, int amount)
+    public ResourceType removeRandom(Random random)
 }
 ```
 
@@ -18,6 +19,7 @@ public class ResourceHand {
 - `amount` must be >= 1 in `add`, `remove` and `has` -> `IllegalArgumentException`
 - `remove()` with `amount` greater than the current count -> `IllegalStateException`, and the count does not change.
 - Each type is counted separately: changing one type does not change the others.
+- `removeRandom()` removes one card picked at random and returns its type. Every card has the same chance: the cards are lined up in `ResourceType` order (`BRICK`, `LUMBER`, `ORE`, `GRAIN`, `WOOL`) and `random.nextInt(getTotal())` picks the index. An empty hand -> `IllegalStateException`. Used for stealing with the robber.
 
 ## Step 1-3: Analysis
 
@@ -61,6 +63,14 @@ public class ResourceHand {
 | Input | `amount` | Interval [1, ∞) | 0, 3, 4 |
 | Output | | Boolean / exception | `true`, `false`, `NullPointerException`, `IllegalArgumentException` |
 
+### Method: `removeRandom(Random random)`
+| | Description | Category | Boundary Values |
+|---|---|---|---|
+| Input | total cards in the hand | Interval [1, ∞) | 0, 1, many |
+| Input | types in the hand | Cases | one type, several types with an empty type between them |
+| Input | index from `random.nextInt(total)` | Interval [0, total - 1] | 0, last card of a type, first card of the next type, total - 1 |
+| Output | removed type | Cases / exception | the type at that index, `IllegalStateException` |
+
 ## Step 4: Test Cases
 
 ### Method under test: `ResourceHand()`, `getCount(ResourceType type)`
@@ -100,3 +110,13 @@ public class ResourceHand {
 | Test Case 16 | Hand holds 3 `BRICK`, `has(BRICK, 0)` | `IllegalArgumentException` | :white_check_mark: |
 | Test Case 17 | Hand holds 3 `BRICK`, `has(BRICK, 3)` | `true` | :white_check_mark: |
 | Test Case 18 | Hand holds 3 `BRICK`, `has(BRICK, 4)` | `false` | :white_check_mark: |
+
+### Method under test: `removeRandom(Random random)` (`random` is a mock; "index k" means `random.nextInt(total)` returns k)
+|              | State of the System | Expected output | Implemented? |
+|--------------|---------------------|-----------------|--------------|
+| Test Case 19 | New hand | `IllegalStateException`, `getTotal()` stays `0` | :white_check_mark: |
+| Test Case 20 | Hand holds 1 `BRICK`, index 0 | Returns `BRICK`, `getTotal()` is `0` | :white_check_mark: |
+| Test Case 21 | Hand holds 2 `BRICK` and 3 `ORE`, index 0 | Returns `BRICK`; 1 `BRICK`, 3 `ORE` left | :white_check_mark: |
+| Test Case 22 | Hand holds 2 `BRICK` and 3 `ORE`, index 1 (last `BRICK`) | Returns `BRICK`; 1 `BRICK`, 3 `ORE` left | :white_check_mark: |
+| Test Case 23 | Hand holds 2 `BRICK` and 3 `ORE`, index 2 (first `ORE`, skipping the empty `LUMBER`) | Returns `ORE`; 2 `BRICK`, 2 `ORE` left | :white_check_mark: |
+| Test Case 24 | Hand holds 2 `BRICK` and 3 `ORE`, index 4 (last card) | Returns `ORE`; 2 `BRICK`, 2 `ORE` left | :white_check_mark: |
